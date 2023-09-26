@@ -37,16 +37,16 @@ export default function Room() {
   };
   return (
     <div>
-      <div className="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-[#f6f5f0] text-white">
+      <div className="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-zinc-900 text-white">
         <Navbar />
         <Sidebar />
         <div className="ml-14 mt-14 mb-10 md:ml-64">
           <div className="flex justify-center items-center">
-            <div className="w-5/6 bg-[#e2e2e2c7] border border-gray-300 rounded pt-8 pb-4">
+            <div className="w-5/6 bg-zinc-800 rounded pt-8 pb-4">
               <div className="flex justify-center items-center">
                 <div className="w-11/12 flex justify-center">
                   <div className="w-11/12 relative overflow-x-auto">
-                    <button className="bg-[#084ccf] p-2 text-white text-sm border border-gray-300 rounded-[6px]">
+                    <button className="bg-zinc-700 p-2 text-white text-sm border border-gray-600 rounded-[6px]">
                       Yeni Oda Ekle
                     </button>
                   </div>
@@ -56,7 +56,7 @@ export default function Room() {
                 <div className="w-11/12 flex justify-center py-4 rounded-sm">
                   <div className="w-11/12 relative rounded-[6px] overflow-x-auto border-2">
                     <table className="text-sm w-full text-left text-[#202020]">
-                      <thead className="text-xs uppercase bg-[#788fb9] text-gray-200">
+                      <thead className="text-xs uppercase bg-zinc-600 text-gray-200">
                         <tr>
                           <th scope="col" className="p-4">
                             <div className="flex items-center">
@@ -89,7 +89,7 @@ export default function Room() {
                       </thead>
                       {rooms.map((room, index) => (
                         <tbody className="" key={index}>
-                          <tr className="border-b-1 border-gray-300 bg-[#f6f6f8] hover:bg-gray-100">
+                          <tr className="border-b-1 border-gray-300 text-white bg-zinc-700 hover:bg-zinc-800">
                             <td className="w-4 p-4">
                               <div className="flex items-center">
                                 <input

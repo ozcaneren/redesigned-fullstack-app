@@ -51,18 +51,18 @@ function RoomEdit() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-[#f6f5f0] text-[#084ccf]">
+    <div className="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-zinc-900">
       <Navbar />
       <Sidebar />
       <div className="ml-14 mt-14 mb-10 md:ml-64">
         <div className="p-4">
-          <h2 className="text-center text-3xl">Oda Duzenle</h2>
+          <h2 className="text-center text-3xl text-gray-200">Oda Duzenle</h2>
           <div className="max-w-3xl mx-auto mt-4">
             <form onSubmit={handleUpdate}>
               <div className="mb-4">
                 <label
                   htmlFor="title"
-                  className="block text-sm font-medium text-[#4c638d] mb-2"
+                  className="block text-sm font-medium text-gray-200 mb-2"
                 >
                   Oda Adı
                 </label>
@@ -79,7 +79,7 @@ function RoomEdit() {
               <div className="mb-4">
                 <label
                   htmlFor="type"
-                  className="block text-sm font-medium text-[#4c638d] mb-2"
+                  className="block text-sm font-medium text-gray-200 mb-2"
                 >
                   Oda Turu
                 </label>
@@ -97,7 +97,7 @@ function RoomEdit() {
               <div className="mb-4">
                 <label
                   htmlFor="description"
-                  className="block text-sm font-medium text-[#4c638d] mb-2"
+                  className="block text-sm font-medium text-gray-200 mb-2"
                 >
                   Detay
                 </label>
@@ -113,7 +113,7 @@ function RoomEdit() {
               <div className="mb-4">
                 <label
                   htmlFor="price"
-                  className="block text-sm font-medium text-[#4c638d] mb-2"
+                  className="block text-sm font-medium text-gray-200 mb-2"
                 >
                   Durum
                 </label>
