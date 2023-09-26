@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 function Sidebar() {
   return (
     <div>
-      <div className="fixed flex flex-col top-14 left-0 w-14 hover:w-64 md:w-64 bg-[#373a43] h-full text-white transition-all duration-300 border-none z-10 sidebar">
-        <div className="overflow-y-auto overflow-x-hidden flex flex-col justify-between flex-grow">
+      <div className="fixed flex flex-col top-14 left-0 w-14 hover:w-64 md:w-64 bg-[#f6f5f0] h-full text-[#084ccf] font-medium transition-all duration-300 border-none z-10 sidebar">
+        <div className="overflow-y-auto overflow-x-hidden flex border-x border-gray-200 flex-col justify-between flex-grow">
           <ul className="flex flex-col py-4 space-y-1">
             {/* menu kismi */}
             <li className="px-5 hidden md:block">
               <div className="flex flex-row items-center h-8">
-                <div className="text-sm font-medium tracking-wide text-gray-300">
+                <div className="text-sm font-medium tracking-wide text-[#7297dd]">
                   Menü
                 </div>
               </div>
@@ -17,7 +17,7 @@ function Sidebar() {
             <li>
               <a
                 href="#"
-                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6"
+                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-[#dee4ed] text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6"
               >
                 <span className="inline-flex justify-center items-center ml-4">
                   <svg
@@ -38,7 +38,7 @@ function Sidebar() {
             <li>
               <a
                 href="#"
-                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6"
+                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-[#dee4ed] text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6"
               >
                 <span className="inline-flex justify-center items-center ml-4">
                   <svg
@@ -59,7 +59,7 @@ function Sidebar() {
             {/* icerik kismi */}
             <li className="px-5 hidden md:block">
               <div className="flex flex-row items-center mt-5 h-8">
-                <div className="text-sm font-medium tracking-wide text-gray-300">
+                <div className="text-sm font-medium tracking-wide text-[#7297dd]">
                   İçerik Yönetimi
                 </div>
               </div>
@@ -67,7 +67,7 @@ function Sidebar() {
             <li>
               <a
                 href="#"
-                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6"
+                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-[#dee4ed] text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6"
               >
                 <span className="inline-flex justify-center items-center ml-4">
                   <svg
