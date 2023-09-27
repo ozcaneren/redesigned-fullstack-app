@@ -61,6 +61,23 @@ function RoomEdit() {
             <form onSubmit={handleUpdate}>
               <div className="mb-4">
                 <label
+                  htmlFor="type"
+                  className="block text-sm font-medium text-gray-200 mb-2"
+                >
+                  Oda Turu
+                </label>
+                <input
+                  type="text"
+                  id="type"
+                  name="type"
+                  value={room.type || ""}
+                  onChange={handleChange}
+                  required
+                  className="mt-1 p-2 bg-white border-gray-300 w-full border  rounded-md"
+                />
+              </div>
+              <div className="mb-4">
+                <label
                   htmlFor="title"
                   className="block text-sm font-medium text-gray-200 mb-2"
                 >
@@ -78,33 +95,59 @@ function RoomEdit() {
               </div>
               <div className="mb-4">
                 <label
-                  htmlFor="type"
-                  className="block text-sm font-medium text-gray-200 mb-2"
-                >
-                  Oda Turu
-                </label>
-                <input
-                  type="text"
-                  id="type"
-                  name="type"
-                  value={room.type || ""}
-                  onChange={handleChange}
-                  required
-                  className="mt-1 p-2 bg-white border-gray-300 w-full border  rounded-md"
-                />
-              </div>
-
-              <div className="mb-4">
-                <label
                   htmlFor="description"
                   className="block text-sm font-medium text-gray-200 mb-2"
                 >
-                  Detay
+                  Açıklama
                 </label>
                 <textarea
                   id="description"
                   name="description"
                   value={room.description || ""}
+                  onChange={handleChange}
+                  required
+                  className="mt-1 p-2 w-full bg-white border-gray-300 border rounded-md"
+                />
+              </div>
+              <div className="mb-4">
+                <label
+                  htmlFor="shortDescription"
+                  className="block text-sm font-medium text-gray-200 mb-2"
+                >
+                  Kısa Açıklama
+                </label>
+                <input
+                  type="text"
+                  id="shortDescription"
+                  name="shortDescription"
+                  value={room.shortDescription || ""}
+                  onChange={handleChange}
+                  required
+                  className="mt-1 p-2 w-full bg-white border-gray-300 border rounded-md"
+                />
+              </div>
+              <div className="mb-4">
+                <label htmlFor="features" className="block text-sm font-medium text-gray-200 mb-2">
+                  Özellikler
+                </label>
+                <textarea
+                  id="features"
+                  name="features"
+                  value={room.features || ""}
+                  onChange={handleChange}
+                  required
+                  className="mt-1 p-2 w-full bg-white border-gray-300 border rounded-md"
+                />
+              </div>
+              <div className="mb-4">
+                <label htmlFor="price" className="block text-sm font-medium text-gray-200 mb-2">
+                  Fiyat
+                </label>
+                <input
+                  type="number"
+                  id="price"
+                  name="price"
+                  value={room.price}
                   onChange={handleChange}
                   required
                   className="mt-1 p-2 w-full bg-white border-gray-300 border rounded-md"

@@ -35,6 +35,11 @@ export default function Room() {
   const handleCardClick = (id) => {
     navigate(`/room/${id}/edit`);
   };
+
+  const handleAddRoom = () => {
+    navigate("/room/add");
+  };
+
   return (
     <div>
       <div className="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-zinc-900 text-white">
@@ -46,7 +51,10 @@ export default function Room() {
               <div className="flex justify-center items-center">
                 <div className="w-11/12 flex justify-center">
                   <div className="w-11/12 relative overflow-x-auto">
-                    <button className="bg-zinc-700 p-2 text-white text-sm border border-gray-600 rounded-[6px]">
+                    <button
+                      onClick={handleAddRoom}
+                      className="bg-zinc-700 p-2 text-white text-sm border border-gray-600 rounded-[6px]"
+                    >
                       Yeni Oda Ekle
                     </button>
                   </div>
@@ -54,16 +62,16 @@ export default function Room() {
               </div>
               <div className="flex justify-center items-center">
                 <div className="w-11/12 flex justify-center py-4 rounded-sm">
-                  <div className="w-11/12 relative rounded-[6px] overflow-x-auto border-2">
+                  <div className="w-11/12 relative rounded-[6px] overflow-x-auto border border-solid border-zinc-700">
                     <table className="text-sm w-full text-left text-[#202020]">
-                      <thead className="text-xs uppercase bg-zinc-600 text-gray-200">
+                      <thead className="text-xs uppercase bg-zinc-700 text-gray-200">
                         <tr>
                           <th scope="col" className="p-4">
                             <div className="flex items-center">
                               <input
                                 id="checkbox-all-search"
                                 type="checkbox"
-                                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                className="w-4 h-4 text-blue-600 bg-gray-100 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700"
                               />
                               <label
                                 htmlFor="checkbox-all-search"
@@ -89,7 +97,7 @@ export default function Room() {
                       </thead>
                       {rooms.map((room, index) => (
                         <tbody className="" key={index}>
-                          <tr className="border-b-1 border-gray-300 text-white bg-zinc-700 hover:bg-zinc-800">
+                          <tr className="border-b-1 border-gray-300 text-white bg-zinc-800 hover:bg-zinc-800">
                             <td className="w-4 p-4">
                               <div className="flex items-center">
                                 <input
