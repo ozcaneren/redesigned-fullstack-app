@@ -4,6 +4,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const connectDB = require('./db/Database');
 const roomRouter = require('./routes/roomRouter');
+const featureRouter = require('./routes/featureRouter');
 
 dotenv.config();
 
@@ -19,6 +20,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api', roomRouter);
+app.use('/api', featureRouter);
 
 app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`));
 

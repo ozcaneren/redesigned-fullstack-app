@@ -1,7 +1,10 @@
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
+import Breadcrumb from "../components/Breadcrumbs";
 
 export default function Home() {
+  const breadcrumbPaths = [{ url: "/", label: "Ana Sayfa" }];
+
   return (
     <div>
       <div className="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-zinc-900 text-white">
@@ -9,6 +12,13 @@ export default function Home() {
         <Sidebar />
         {/* ana kisim */}
         <div className="h-full ml-14 mt-14 mb-10 md:ml-64">
+          <div className="pt-8 pb-4 px-4">
+            <div className="w-1/12">
+              <div className="">
+                <Breadcrumb paths={breadcrumbPaths} />
+              </div>
+            </div>
+          </div>
           {/* 4lü kartlar */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 p-4 gap-4">
             <div className=" bg-neutral-700 shadow-lg rounded-md flex items-center justify-between p-3 border-b-2 border-gray-400 font-medium group">
@@ -257,7 +267,6 @@ export default function Home() {
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </div>

@@ -5,11 +5,16 @@ import { useEffect, useState } from "react";
 import { AiOutlineEdit } from "react-icons/ai";
 import { HiOutlineTrash } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
+import Breadcrumb from "../components/Breadcrumbs";
 
 export default function Room() {
   const [rooms, setRooms] = useState([]);
   const navigate = useNavigate();
 
+  const breadcrumbPaths = [
+    { url: "/", label: "Ana Sayfa" },
+    { url: "/odalar", label: "Odalar" },
+  ];
   const getRooms = async () => {
     try {
       const response = await axios.get("http://localhost:4000/api/rooms");
@@ -45,12 +50,19 @@ export default function Room() {
       <div className="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-zinc-900 text-white">
         <Navbar />
         <Sidebar />
-        <div className="ml-14 mt-14 mb-10 md:ml-64">
-          <div className="flex justify-center items-center">
-            <div className="w-5/6 bg-zinc-800 rounded pt-8 pb-4">
+        <div className="ml-14 mt-20 md:mt-14 mb-10 md:ml-64">
+          <div className="pt-8 pb-4 px-4">
+            <div className="w-2/12">
+              <div className="">
+                <Breadcrumb paths={breadcrumbPaths} />
+              </div>
+            </div>
+          </div>
+          <div className="p-4">
+            <div className="bg-zinc-800 rounded pt-8 pb-4">
               <div className="flex justify-center items-center">
-                <div className="w-11/12 flex justify-center">
-                  <div className="w-11/12 relative overflow-x-auto">
+                <div className="w-full flex justify-center">
+                  <div className="w-full px-4 relative">
                     <button
                       onClick={handleAddRoom}
                       className="bg-zinc-700 p-2 text-white text-sm border border-gray-600 rounded-[6px]"
@@ -61,8 +73,8 @@ export default function Room() {
                 </div>
               </div>
               <div className="flex justify-center items-center">
-                <div className="w-11/12 flex justify-center py-4 rounded-sm">
-                  <div className="w-11/12 relative rounded-[6px] overflow-x-auto border border-solid border-zinc-700">
+                <div className="w-full px-4 flex justify-center py-4 rounded-sm">
+                  <div className="w-full relative rounded-[6px] overflow-x-auto border border-solid border-zinc-700">
                     <table className="text-sm w-full text-left text-[#202020]">
                       <thead className="text-xs uppercase bg-zinc-700 text-gray-200">
                         <tr>
