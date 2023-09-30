@@ -169,7 +169,7 @@ const RoomAdd = () => {
                             <input
                               type="checkbox"
                               name="features"
-                              value={item._id}
+                              value={item.theFeature}
                               onChange={handleFeature}
                               className=""
                             />
