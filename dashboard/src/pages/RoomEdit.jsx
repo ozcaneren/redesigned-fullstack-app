@@ -183,12 +183,16 @@ function RoomEdit() {
                             id={feature._id}
                             name={feature.theFeature}
                             type="checkbox"
-                            checked={selectedRoomFeatures.includes(feature._id)}
-                            onChange={() => toggleRoomFeature(feature._id)}
+                            checked={selectedRoomFeatures.includes(
+                              feature.theFeature
+                            )}
+                            onChange={() =>
+                              toggleRoomFeature(feature.theFeature)
+                            }
                             className="h-4 w-4"
                           />
                           <label
-                            htmlFor={feature._id}
+                            htmlFor={feature.theFeature}
                             className="ml-3 text-sm font-medium text-gray-200"
                           >
                             {feature.theFeature}

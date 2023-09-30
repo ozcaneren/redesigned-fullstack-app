@@ -70,7 +70,7 @@ function Sidebar() {
                 </div>
               </div>
             </li>
-            <li className="">
+            <li className="cursor-pointer">
               <span
                 onClick={toggleDropdown}
                 className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-zinc-700 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6"
