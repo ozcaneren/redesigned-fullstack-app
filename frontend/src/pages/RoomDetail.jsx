@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import Divide from "../components/Divide";
 import { BsArrowReturnLeft, BsWhatsapp } from "react-icons/bs";
 
 function RoomDetail() {
@@ -47,11 +46,6 @@ function RoomDetail() {
                       <h1 className="lg:text-2xl text-xl font-semibold lg:leading-6 leading-7 text-gray-800 mt-2">
                         {room.title}
                       </h1>
-                    </div>
-                    <div className="py-4 border-b border-gray-200 flex items-center justify-between">
-                      <p className="text-base leading-4 text-gray-800">
-                        {room.piece} adet kaldi.
-                      </p>
                     </div>
                     <button className="uppercase focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-base flex items-center justify-center leading-none text-white bg-blue-300 w-full py-4 hover:bg-gray-700 focus:outline-none">
                       yer ayirttir
