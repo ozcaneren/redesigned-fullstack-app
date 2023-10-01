@@ -10,14 +10,15 @@ import {
 } from "react-icons/pi";
 import { BiWifi, BiFridge } from "react-icons/bi";
 import { TbAirConditioning } from "react-icons/tb";
-import { RiCustomerService2Fill, RiSafe2Fill } from "react-icons/ri";
+import { RiCustomerService2Fill, RiSafe2Fill, RiTShirtAirFill } from "react-icons/ri";
 import { BsTelephoneOutbound } from "react-icons/bs";
 
-// import { useNavigate } from "react-router-dom";
+
+import { useNavigate } from "react-router-dom";
 
 export default function Rooms() {
   const [rooms, setRooms] = useState([]);
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const getRooms = async () => {
     try {
@@ -32,9 +33,9 @@ export default function Rooms() {
     getRooms();
   }, []);
 
-  // const handleCardClick = (id) => {
-  //   navigate(`/rooms/${id}`);
-  // };
+  const handleCardClick = (id) => {
+    navigate(`/rooms/${id}`);
+  };
 
   function renderWifiIcon(room) {
     if (room.features.includes("wifi")) {
@@ -99,6 +100,13 @@ export default function Rooms() {
     return null;
   }
 
+  function renderAirfryIcon(room) {
+    if (room.features.includes("airfryer")) {
+      return <RiTShirtAirFill />;
+    }
+    return null;
+  }
+
   return (
     <div className="bg-gray-300">
       <Header />
@@ -131,6 +139,7 @@ export default function Rooms() {
                           {renderToiletIcon(room)}
                           {renderBathtubIcon(room)}
                           {renderSafeIcon(room)}
+                          {renderAirfryIcon(room)}
                         </div>
                       </div>
                       <div className="mt-4">
@@ -139,7 +148,10 @@ export default function Rooms() {
                         </p>
                       </div>
                       <div className="mt-4">
-                        <button className="bg-blue-500 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded">
+                        <button
+                          onClick={() => handleCardClick(room._id)}
+                          className="bg-blue-500 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded"
+                        >
                           Incele
                         </button>
                       </div>
