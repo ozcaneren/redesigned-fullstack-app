@@ -4,8 +4,8 @@
   git clone https://github.com/ozcaneren/redesigned-fullstack-app.git
   cd redesigned-fullstack-app
   cd backend && yarn && yarn start
-  cd dashboard && yarn && yarn start
-  cd frontend && yarn && yarn start
+  cd dashboard && yarn && yarn dev
+  cd frontend && yarn && yarn dev
 ```
 
 ## Tech Stack
