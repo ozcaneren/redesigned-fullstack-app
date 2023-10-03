@@ -10,9 +10,12 @@ import {
 } from "react-icons/pi";
 import { BiWifi, BiFridge } from "react-icons/bi";
 import { TbAirConditioning } from "react-icons/tb";
-import { RiCustomerService2Fill, RiSafe2Fill, RiTShirtAirFill } from "react-icons/ri";
+import {
+  RiCustomerService2Fill,
+  RiSafe2Fill,
+  RiTShirtAirFill,
+} from "react-icons/ri";
 import { BsTelephoneOutbound } from "react-icons/bs";
-
 
 import { useNavigate } from "react-router-dom";
 
@@ -114,51 +117,53 @@ export default function Rooms() {
         <div className="flex justify-center items-center">
           <div className="pt-14">
             <div className="grid grid-cols-3 gap-8 justify-center mt-14">
-              {rooms.map((room, index) => (
-                <div key={index} className="">
-                  <div className="max-w-md bg-gray-200 p-2 rounded overflow-hidden shadow-lg hover:shadow-xl">
-                    <img
-                      className="w-full"
-                      src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bW9kZXJuJTIwaG91c2V8ZW58MHx8MHx8&w=1000&q=80"
-                      alt="Property Image"
-                    />
-                    <div className="px-4 py-4">
-                      <div className="mb-2">
-                        <h2 className="text-xl font-bold text-gray-900">
-                          {room.title}
-                        </h2>
-                      </div>
-                      <div className="flex justify-between">
-                        <div className="flex items-center space-x-2">
-                          {renderWifiIcon(room)}
-                          {renderTvIcon(room)}
-                          {renderAirConditioningIcon(room)}
-                          {renderFridgeIcon(room)}
-                          {renderCustomerServiceIcon(room)}
-                          {renderTelephoneIcon(room)}
-                          {renderToiletIcon(room)}
-                          {renderBathtubIcon(room)}
-                          {renderSafeIcon(room)}
-                          {renderAirfryIcon(room)}
+              {rooms.map((room, index) =>
+                room.visibility ? (
+                  <div key={index} className="">
+                    <div className="max-w-md bg-gray-200 p-2 rounded overflow-hidden shadow-lg hover:shadow-xl">
+                      <img
+                        className="w-full"
+                        src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bW9kZXJuJTIwaG91c2V8ZW58MHx8MHx8&w=1000&q=80"
+                        alt="Property Image"
+                      />
+                      <div className="px-4 py-4">
+                        <div className="mb-2">
+                          <h2 className="text-xl font-bold text-gray-900">
+                            {room.title}
+                          </h2>
                         </div>
-                      </div>
-                      <div className="mt-4">
-                        <p className="text-3xl font-extrabold text-blue-600">
-                          {room.price} TL
-                        </p>
-                      </div>
-                      <div className="mt-4">
-                        <button
-                          onClick={() => handleCardClick(room._id)}
-                          className="bg-blue-500 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded"
-                        >
-                          Incele
-                        </button>
+                        <div className="flex justify-between">
+                          <div className="flex items-center space-x-2">
+                            {renderWifiIcon(room)}
+                            {renderTvIcon(room)}
+                            {renderAirConditioningIcon(room)}
+                            {renderFridgeIcon(room)}
+                            {renderCustomerServiceIcon(room)}
+                            {renderTelephoneIcon(room)}
+                            {renderToiletIcon(room)}
+                            {renderBathtubIcon(room)}
+                            {renderSafeIcon(room)}
+                            {renderAirfryIcon(room)}
+                          </div>
+                        </div>
+                        <div className="mt-4">
+                          <p className="text-3xl font-extrabold text-blue-600">
+                            {room.price} TL
+                          </p>
+                        </div>
+                        <div className="mt-4">
+                          <button
+                            onClick={() => handleCardClick(room._id)}
+                            className="bg-blue-500 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded"
+                          >
+                            Incele
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ) : null
+              )}
             </div>
           </div>
         </div>
