@@ -44,13 +44,18 @@ updateRoom = async (req, res) => {
       });
     }
 
-    room.type = req.body.type;
-    room.title = req.body.title;
-    room.description = req.body.description;
-    room.shortDescription = req.body.shortDescription;
-    room.features = req.body.features;
-    room.price = req.body.price;
-    room.visibility = req.body.visibility;
+    room.roomType = req.body.roomType;
+    room.roomType_en = req.body.roomType_en;
+    room.roomTitle = req.body.roomTitle;
+    room.roomTitle_en = req.body.roomTitle_en;
+    room.roomDescription = req.body.roomDescription;
+    room.roomDescription_en = req.body.roomDescription_en;
+    room.roomShortDescription = req.body.roomShortDescription;
+    room.roomShortDescription_en = req.body.roomShortDescription_en;
+    room.roomFeatures = req.body.roomFeatures;
+    room.roomFeatures_en = req.body.roomFeatures_en;
+    room.roomVisibility = req.body.roomVisibility;
+    room.roomVisibility_en = req.body.roomVisibility_en;
 
     const updatedRoom = await room.save();
 

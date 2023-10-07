@@ -1,6 +1,6 @@
-const ExtraFeature = require('../models/featureModel');
+const EnglishExtraFeature = require('../models/englishFeatureModel');
 
-createExtraFeature = (req, res) => {
+createEnglishExtraFeature = (req, res) => {
   const body = req.body;
 
   if (!body) {
@@ -10,7 +10,7 @@ createExtraFeature = (req, res) => {
     });
   }
 
-  const extraFeature = new ExtraFeature(body);
+  const extraFeature = new EnglishExtraFeature(body);
 
   if (!extraFeature) {
     return res.status(400).json({ success: false, error: err });
@@ -33,9 +33,9 @@ createExtraFeature = (req, res) => {
     });
 }
 
-updateExtraFeature = async (req, res) => {
+updateEnglishExtraFeature = async (req, res) => {
   try {
-    const extraFeature = await ExtraFeature.findOne({ _id: req.params.id });
+    const extraFeature = await EnglishExtraFeature.findOne({ _id: req.params.id });
 
     if (!extraFeature) {
       return res.status(404).json({
@@ -44,7 +44,8 @@ updateExtraFeature = async (req, res) => {
       });
     }
 
-    extraFeature.feature = req.body.feature;
+    extraFeature.EnglishFeature = req.body.EnglishFeature;
+
     const updatedExtraFeature = await extraFeature.save();
     return res.status(200).json({
       success: true,
@@ -59,9 +60,9 @@ updateExtraFeature = async (req, res) => {
   }
 }
 
-deleteExtraFeature = async (req, res) => {
+deleteEnglishExtraFeature = async (req, res) => {
   try {
-    const extraFeature = await ExtraFeature.findOneAndDelete({ _id: req.params.id });
+    const extraFeature = await EnglishExtraFeature.findOneAndDelete({ _id: req.params.id });
     if (!extraFeature) {
       return res.status(404).json({ success: false, error: 'Extra feature not found' });
     }
@@ -71,11 +72,11 @@ deleteExtraFeature = async (req, res) => {
   }
 }
 
-getExtraFeatureById = async (req, res) => {
+getEnglishExtraFeatureById = async (req, res) => {
   try {
-    const extraFeature = await ExtraFeature.findOne({ _id: req.params.id });
+    const extraFeature = await EnglishExtraFeature.findOne({ _id: req.params.id });
     if (!extraFeature) {
-      return res.status(404).json({ success: false, error: 'Extra feature not found' });
+      return res.status(404).jsonTurkish({ success: false, error: 'Extra feature not found' });
     }
     return res.status(200).json({ success: true, data: extraFeature });
   } catch (err) {
@@ -83,9 +84,9 @@ getExtraFeatureById = async (req, res) => {
   }
 }
 
-getExtraFeatures = async (req, res) => {
+getEnglishExtraFeatures = async (req, res) => {
   try {
-    const extraFeatures = await ExtraFeature.find({});
+    const extraFeatures = await EnglishExtraFeature.find({});
     if (!extraFeatures.length) {
       return res.status(404).json({ success: false, error: 'Extra features not found' });
     }
@@ -96,10 +97,9 @@ getExtraFeatures = async (req, res) => {
 }
 
 module.exports = {
-  createExtraFeature,
-  updateExtraFeature,
-  deleteExtraFeature,
-  getExtraFeatures,
-  getExtraFeatureById,
+  createEnglishExtraFeature,
+  updateEnglishExtraFeature,
+  deleteEnglishExtraFeature,
+  getEnglishExtraFeatures,
+  getEnglishExtraFeatureById,
 }
-
