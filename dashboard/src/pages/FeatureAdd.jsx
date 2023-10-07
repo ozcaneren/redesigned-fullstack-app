@@ -26,7 +26,10 @@ const FeatureAdd = () => {
         TurkishFeature: language === "Turkish" ? TurkishFeature : "",
         EnglishFeature: language === "English" ? EnglishFeature : "",
       };
-      await axios.post(`http://localhost:4000/api/extrafeature/${language.toLowerCase()}`, newExtraFeature);
+      await axios.post(
+        `http://localhost:4000/api/extrafeature/${language.toLowerCase()}`,
+        newExtraFeature
+      );
       navigate(`/room/feature`);
       setTurkishFeature("");
       setEnglishFeature("");
@@ -50,8 +53,11 @@ const FeatureAdd = () => {
             <div className="flex justify-center items-center">
               <div className="w-full flex justify-center rounded-sm bg-zinc-800">
                 <div className="w-full relative rounded-[6px] p-4 overflow-x-auto">
-                  <div className="mx-auto mt-4">
-                    <form onSubmit={(e) => handleSubmit(e, "Turkish")}>
+                  <div className="mx-auto mt-4 space-y-4">
+                    <form
+                      className=""
+                      onSubmit={(e) => handleSubmit(e, "Turkish")}
+                    >
                       <div className="mb-4">
                         <label
                           htmlFor="TurkishFeature"
@@ -61,19 +67,29 @@ const FeatureAdd = () => {
                         </label>
                         <input
                           type="text"
-                          className="mt-1 p-2 w-full text-black bg-white border-gray-300 border rounded-md"
+                          className="mt-1 p-2 text-black bg-white border-gray-300 border rounded-md"
                           id="TurkishFeature"
                           placeholder="Türkçe Özellik"
                           value={TurkishFeature}
                           onChange={(e) => setTurkishFeature(e.target.value)}
                         />
                       </div>
-                      <button type="submit" className="btn btn-primary">
-                        Türkçe Ekle
+                      <div className="">
+                      <button
+                        type="submit"
+                        className="border border-gray-200 p-1 bg-zinc-700"
+                      >
+                        Türkçe Olarak Ekle
                       </button>
+                      </div>
                     </form>
-                    <div className="h-[1px] w-full bg-gray-500 my-4"></div>
-                    <form onSubmit={(e) => handleSubmit(e, "English")}>
+                    <div className="bg-gray-300 w-full h-[1px]"></div>
+                    <div className="bg-gray-300 w-full h-[1px]"></div>
+                    <div className="bg-gray-300 w-full h-[1px]"></div>
+                    <form
+                      className=""
+                      onSubmit={(e) => handleSubmit(e, "English")}
+                    >
                       <div className="mb-4">
                         <label
                           htmlFor="EnglishFeature"
@@ -83,16 +99,21 @@ const FeatureAdd = () => {
                         </label>
                         <input
                           type="text"
-                          className="mt-1 p-2 w-full text-black bg-white border-gray-300 border rounded-md"
+                          className="mt-1 p-2 text-black bg-white border-gray-300 border rounded-md"
                           id="EnglishFeature"
                           placeholder="İngilizce Özellik"
                           value={EnglishFeature}
                           onChange={(e) => setEnglishFeature(e.target.value)}
                         />
                       </div>
-                      <button type="submit" className="btn btn-primary">
-                        İngilizce Ekle
-                      </button>
+                      <div className="">
+                        <button
+                          type="submit"
+                          className=" border border-gray-200 p-1 bg-zinc-700"
+                        >
+                          İngilizce Olarak Ekle
+                        </button>
+                      </div>
                     </form>
                   </div>
                 </div>
