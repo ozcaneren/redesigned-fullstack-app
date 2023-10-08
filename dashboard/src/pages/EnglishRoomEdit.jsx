@@ -5,16 +5,16 @@ import Sidebar from "../components/Sidebar";
 import { useParams, useNavigate } from "react-router-dom";
 import Breadcrumb from "../components/Breadcrumbs";
 
-function RoomEdit() {
+function EnglishRoomEdit() {
   const { roomId } = useParams();
 
-  const [room, setRoom] = useState({});
-  
-  const navigate = useNavigate();
-  
-  const [theFeature, setTheFeature] = useState([]);
+  const [englishRoom, setEnglishRoom] = useState({});
 
-  const [selectedRoomFeatures, setSelectedRoomFeatures] = useState([]);
+  const navigate = useNavigate();
+
+  const [theFeature_en, setTheFeature_en] = useState([]);
+
+  const [selectedEnglishRoomFeatures, setSelectedEnglishRoomFeatures] = useState([]);
 
   const breadcrumbPaths = [
     { url: "/", label: "Ana Sayfa" },
@@ -22,43 +22,43 @@ function RoomEdit() {
     { url: `/room/${roomId}/edit`, label: "Oda Düzenle" },
   ];
 
-  const fetchRoomById = useCallback(async () => {
+  const fetchEnglishRoomById = useCallback(async () => {
     try {
       const response = await axios.get(
-        `http://localhost:4000/api/room/turkish/${roomId}`
+        `http://localhost:4000/api/room/english/${roomId}`
       );
-      setRoom(response.data.data);
-      setSelectedRoomFeatures(response.data.data.roomFeatures || []);
+      setEnglishRoom(response.data.data);
+      setSelectedEnglishRoomFeatures(response.data.data.roomFeatures_en || []);
     } catch (error) {
       console.error("Oda getirilirken hata oluştu:", error);
     }
   }, [roomId]);
 
   useEffect(() => {
-    fetchRoomById();
-  }, [fetchRoomById, roomId]);
+    fetchEnglishRoomById();
+  }, [fetchEnglishRoomById, roomId]);
 
-  const getExtraFeatures = async () => {
+  const getExtraFeatures_en = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:4000/api/extrafeatures/turkish"
+        "http://localhost:4000/api/extrafeatures/english"
       );
-      setTheFeature(response.data.data);
+      setTheFeature_en(response.data.data);
     } catch (error) {
       console.error("Ekstra özellikler getirilirken hata oluştu:", error);
     }
   };
 
   useEffect(() => {
-    getExtraFeatures();
+    getExtraFeatures_en();
   }, []);
 
-  const handleUpdate = async (e) => {
+  const handleUpdate_en = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:4000/api/room/turkish/${roomId}`, {
-        ...room,
-        roomFeatures: selectedRoomFeatures,
+      await axios.put(`http://localhost:4000/api/room/english/${roomId}`, {
+        ...englishRoom,
+        roomFeature_en: selectedEnglishRoomFeatures,
       });
       navigate("/room");
     } catch (error) {
@@ -66,29 +66,29 @@ function RoomEdit() {
     }
   };
 
-  const handleChange = (e) => {
+  const handleChange_en = (e) => {
     const { name, value } = e.target;
 
-    if (name === "roomVisibility") {
-      setRoom((prevRoom) => ({
+    if (name === "roomVisibility_en") {
+      setEnglishRoom((prevRoom) => ({
         ...prevRoom,
         [name]: value === "true",
       }));
     } else {
-      setRoom((prevRoom) => ({
+      setEnglishRoom((prevRoom) => ({
         ...prevRoom,
         [name]: value,
       }));
     }
   };
 
-  const toggleRoomFeature = (featureId) => {
-    if (selectedRoomFeatures.includes(featureId)) {
-      setSelectedRoomFeatures(
-        selectedRoomFeatures.filter((id) => id !== featureId)
+  const toggleEnglishRoomFeature = (englishFeatureId) => {
+    if (selectedEnglishRoomFeatures.includes(englishFeatureId)) {
+      setSelectedEnglishRoomFeatures(
+        selectedEnglishRoomFeatures.filter((id) => id !== englishFeatureId)
       );
     } else {
-      setSelectedRoomFeatures([...selectedRoomFeatures, featureId]);
+      setSelectedEnglishRoomFeatures([...selectedEnglishRoomFeatures, englishFeatureId]);
     }
   };
 
@@ -109,70 +109,70 @@ function RoomEdit() {
             <div className="w-full flex justify-center rounded-sm bg-zinc-800">
               <div className="w-full relative rounded-[6px] p-4 overflow-x-auto">
                 <div className="mx-auto mt-4">
-                  <form onSubmit={handleUpdate}>
+                  <form onSubmit={handleUpdate_en}>
                     <div className="mb-4">
                       <label
-                        htmlFor="roomType"
+                        htmlFor="roomType_en"
                         className="block text-sm font-medium text-gray-200 mb-2"
                       >
                         Oda Türü
                       </label>
                       <input
                         type="text"
-                        id="roomType"
-                        name="roomType"
-                        value={room.roomType || ""}
-                        onChange={handleChange}
+                        id="roomType_en"
+                        name="roomType_en"
+                        value={englishRoom.roomType_en || ""}
+                        onChange={handleChange_en}
                         required
                         className="mt-1 p-2 w-full rounded-sm"
                       />
                     </div>
                     <div className="mb-4">
                       <label
-                        htmlFor="roomTitle"
+                        htmlFor="roomTitle_en"
                         className="block text-sm font-medium text-gray-200 mb-2"
                       >
                         Oda Adı
                       </label>
                       <input
                         type="text"
-                        id="roomTitle"
-                        name="roomTitle"
-                        value={room.roomTitle || ""}
-                        onChange={handleChange}
+                        id="roomTitle_en"
+                        name="roomTitle_en"
+                        value={englishRoom.roomTitle_en || ""}
+                        onChange={handleChange_en}
                         required
                         className="mt-1 p-2 w-full bg-white rounded-sm"
                       />
                     </div>
                     <div className="mb-4">
                       <label
-                        htmlFor="roomDescription"
+                        htmlFor="roomDescription_en"
                         className="block text-sm font-medium text-gray-200 mb-2"
                       >
                         Açıklama
                       </label>
                       <textarea
-                        id="roomDescription"
-                        name="roomDescription"
-                        value={room.roomDescription || ""}
-                        onChange={handleChange}
+                        id="roomDescription_en"
+                        name="roomDescription_en"
+                        value={englishRoom.roomDescription_en || ""}
+                        onChange={handleChange_en}
                         required
                         className="mt-1 p-2 w-full bg-white rounded-sm"
                       />
                     </div>
                     <div className="mb-4">
                       <label
-                        htmlFor="roomShortDescription"
+                        htmlFor="roomShortDescription_en"
                         className="block text-sm font-medium text-gray-200 mb-2"
                       >
                         Kısa Açıklama
                       </label>
                       <input
                         type="text"
-                        id="roomShortDescription"
-                        name="roomShortDescription"
-                        value={room.roomShortDescription || ""}
-                        onChange={handleChange}
+                        id="roomShortDescription_en"
+                        name="roomShortDescription_en"
+                        value={englishRoom.roomShortDescription_en || ""}
+                        onChange={handleChange_en}
                         required
                         className="mt-1 p-2 w-full bg-white rounded-sm"
                       />
@@ -181,41 +181,41 @@ function RoomEdit() {
                       <label className="block text-sm font-medium text-gray-200 mb-2">
                         Özellikler
                       </label>
-                      {theFeature.map((feature, index) => (
+                      {theFeature_en.map((englishFeature, index) => (
                         <div key={index} className="flex items-center">
                           <input
-                            id={feature._id}
-                            name={feature.TurkishFeature}
+                            id={englishFeature._id}
+                            name={englishFeature.EnglishFeature}
                             type="checkbox"
-                            checked={selectedRoomFeatures.includes(
-                              feature.TurkishFeature
+                            checked={selectedEnglishRoomFeatures.includes(
+                              englishFeature.EnglishFeature
                             )}
                             onChange={() =>
-                              toggleRoomFeature(feature.TurkishFeature)
+                              toggleEnglishRoomFeature(englishFeature.EnglishFeature)
                             }
                             className="h-4 w-4"
                           />
                           <label
-                            htmlFor={feature.TurkishFeature}
+                            htmlFor={englishFeature.EnglishFeature}
                             className="ml-3 text-sm font-medium text-gray-200"
                           >
-                            {feature.TurkishFeature}
+                            {englishFeature.EnglishFeature}
                           </label>
                         </div>
                       ))}
                     </div>
                     <div className="mb-4">
                       <label
-                        htmlFor="roomVisibility"
+                        htmlFor="roomVisibility_en"
                         className="block text-sm font-medium text-gray-200 mb-2"
                       >
                         Durum
                       </label>
                       <select
-                        id="roomVisibility"
-                        name="roomVisibility"
-                        value={room.roomVisibility ? "true" : "false"}
-                        onChange={handleChange}
+                        id="roomVisibility_en"
+                        name="roomVisibility_en"
+                        value={englishRoom.roomVisibility_en ? "true" : "false"}
+                        onChange={handleChange_en}
                         required
                         className="mt-1 p-2 w-full bg-white rounded-sm"
                       >
@@ -247,6 +247,9 @@ function RoomEdit() {
       </div>
     </div>
   );
+
+
+
 }
 
-export default RoomEdit;
+export default EnglishRoomEdit;

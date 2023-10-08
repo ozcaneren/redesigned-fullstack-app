@@ -9,6 +9,7 @@ import Breadcrumb from "../components/Breadcrumbs";
 
 export default function Room() {
   const [rooms, setRooms] = useState([]);
+  const [englishRooms, setEnglishRooms] = useState([]);
   const navigate = useNavigate();
 
   const breadcrumbPaths = [
@@ -17,7 +18,7 @@ export default function Room() {
   ];
   const getRooms = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/api/rooms");
+      const response = await axios.get("http://localhost:4000/api/rooms/turkish");
       setRooms(response.data.data);
     } catch (error) {
       console.error("Error fetching rooms:", error);
@@ -27,18 +28,45 @@ export default function Room() {
   useEffect(() => {
     getRooms();
   }, []);
+  
+
+  const getEnglishRooms = async () => {
+    try {
+      const response = await axios.get("http://localhost:4000/api/rooms/english");
+      setEnglishRooms(response.data.data);
+    } catch (error) {
+      console.error("Error fetching rooms:", error);
+    }
+  };
+
+  useEffect(() => {
+    getEnglishRooms();
+  }, []);
 
   const handleDelete = async (roomId) => {
     try {
-      await axios.delete(`http://localhost:4000/api/room/${roomId}`);
+      await axios.delete(`http://localhost:4000/api/room/turkish/${roomId}`);
       getRooms();
     } catch (error) {
       console.error("Error deleting room:", error);
     }
   };
 
+  const handleDeleteEnglish = async (roomId) => {
+    try {
+      await axios.delete(`http://localhost:4000/api/room/english/${roomId}`);
+      getEnglishRooms();
+    } catch (error) {
+      console.error("Error deleting room:", error);
+    }
+  }
+
   const handleCardClick = (id) => {
-    navigate(`/room/${id}/edit`);
+    navigate(`/room/turkish/${id}/edit`);
+  };
+
+  const handleCardClickEnglish = (id) => {
+    navigate(`/room/english/${id}/edit`);
   };
 
   const handleAddRoom = () => {
@@ -129,19 +157,19 @@ export default function Room() {
                               scope="row"
                               className="px-6 py-4 font-medium whitespace-nowrap"
                             >
-                              {room.title}
+                              {room.roomTitle}
                             </th>
-                            <td className="px-6 py-4">{room.type}</td>
+                            <td className="px-6 py-4">{room.roomType}</td>
                             <td className="px-6 py-4">
                               <div className="flex items-center">
                                 <div
                                   className={`bg-${
-                                    room.visibility ? "green-500" : "red-500"
+                                    room.roomVisibility ? "green-500" : "red-500"
                                   } text-${
-                                    room.visibility ? "green-500" : "red-500"
+                                    room.roomVisibility ? "green-500" : "red-500"
                                   }  h-2.5 w-2.5 rounded-full mr-2`}
                                 ></div>{" "}
-                                {room.visibility ? "Aktif" : "Gizli"}
+                                {room.roomVisibility ? "Aktif" : "Gizli"}
                               </div>
                             </td>
                             <td className="flex items-center pl-7 py-4 space-x-2">
@@ -151,6 +179,97 @@ export default function Room() {
                                 </div>
                               </button>
                               <button onClick={() => handleDelete(room._id)}>
+                                <div className="font-medium text-red-600 dark:text-red-500 hover:underline">
+                                  <HiOutlineTrash />
+                                </div>
+                              </button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      ))}
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div className="flex justify-center items-center">
+                <div className="w-full px-4 flex justify-center py-4 rounded-sm">
+                  <div className="w-full relative rounded-[6px] overflow-x-auto border border-solid border-zinc-700">
+                    <table className="text-sm w-full text-left text-[#202020]">
+                      <thead className="text-xs uppercase bg-zinc-700 text-gray-200">
+                        <tr>
+                          <th scope="col" className="p-4">
+                            <div className="flex items-center">
+                              <input
+                                id="checkbox-all-search"
+                                type="checkbox"
+                                className="w-4 h-4 text-blue-600 bg-gray-100 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700"
+                              />
+                              <label
+                                htmlFor="checkbox-all-search"
+                                className="sr-only"
+                              >
+                                checkbox
+                              </label>
+                            </div>
+                          </th>
+                          <th scope="col" className="px-6 py-3">
+                            Urun Adi
+                          </th>
+                          <th scope="col" className="px-6 py-3">
+                            Urun Turu
+                          </th>
+                          <th scope="col" className="px-6 py-3">
+                            Gorunurluk
+                          </th>
+                          <th scope="col" className="pl-6 py-3">
+                            Action
+                          </th>
+                        </tr>
+                      </thead>
+                      {englishRooms.map((room, index) => (
+                        <tbody className="" key={index}>
+                          <tr className="border-b-1 border-gray-300 text-white bg-zinc-800 hover:bg-zinc-800">
+                            <td className="w-4 p-4">
+                              <div className="flex items-center">
+                                <input
+                                  id="checkbox-table-search-1"
+                                  type="checkbox"
+                                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                />
+                                <label
+                                  htmlFor="checkbox-table-search-1"
+                                  className="sr-only"
+                                >
+                                  checkbox
+                                </label>
+                              </div>
+                            </td>
+                            <th
+                              scope="row"
+                              className="px-6 py-4 font-medium whitespace-nowrap"
+                            >
+                              {room.roomTitle_en}
+                            </th>
+                            <td className="px-6 py-4">{room.roomType_en}</td>
+                            <td className="px-6 py-4">
+                              <div className="flex items-center">
+                                <div
+                                  className={`bg-${
+                                    room.roomVisibility_en ? "green-500" : "red-500"
+                                  } text-${
+                                    room.roomVisibility_en ? "green-500" : "red-500"
+                                  }  h-2.5 w-2.5 rounded-full mr-2`}
+                                ></div>{" "}
+                                {room.roomVisibility_en ? "Aktif" : "Gizli"}
+                              </div>
+                            </td>
+                            <td className="flex items-center pl-7 py-4 space-x-2">
+                              <button onClick={() => handleCardClickEnglish(room._id)}>
+                                <div className="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                                  <AiOutlineEdit />
+                                </div>
+                              </button>
+                              <button onClick={() => handleDeleteEnglish(room._id)}>
                                 <div className="font-medium text-red-600 dark:text-red-500 hover:underline">
                                   <HiOutlineTrash />
                                 </div>

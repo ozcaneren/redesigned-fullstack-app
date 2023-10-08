@@ -19,7 +19,6 @@ const Feature = () => {
 
   const getTurkishExtraFeatures = async () => {
     try {
-      // Türkçe özellikleri getir
       const turkishResponse = await axios.get(
         "http://localhost:4000/api/extrafeatures/turkish"
       );
@@ -35,7 +34,6 @@ const Feature = () => {
 
   const getEnglishExtraFeatures = async () => {
     try {
-      // İngilizce özellikleri getir
       const englishResponse = await axios.get(
         "http://localhost:4000/api/extrafeatures/english"
       );
