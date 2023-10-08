@@ -12,9 +12,9 @@ function EnglishRoomEdit() {
 
   const navigate = useNavigate();
 
-  const [theFeature_en, setTheFeature_en] = useState([]);
+  const [theFeature, setTheFeature] = useState([]);
 
-  const [selectedEnglishRoomFeatures, setSelectedEnglishRoomFeatures] = useState([]);
+  const [selectedRoomFeatures, setSelectedRoomFeatures] = useState([]);
 
   const breadcrumbPaths = [
     { url: "/", label: "Ana Sayfa" },
@@ -28,7 +28,7 @@ function EnglishRoomEdit() {
         `http://localhost:4000/api/room/english/${roomId}`
       );
       setEnglishRoom(response.data.data);
-      setSelectedEnglishRoomFeatures(response.data.data.roomFeatures_en || []);
+      setSelectedRoomFeatures(response.data.data.roomFeatures_en || []);
     } catch (error) {
       console.error("Oda getirilirken hata oluştu:", error);
     }
@@ -43,7 +43,7 @@ function EnglishRoomEdit() {
       const response = await axios.get(
         "http://localhost:4000/api/extrafeatures/english"
       );
-      setTheFeature_en(response.data.data);
+      setTheFeature(response.data.data);
     } catch (error) {
       console.error("Ekstra özellikler getirilirken hata oluştu:", error);
     }
@@ -58,7 +58,7 @@ function EnglishRoomEdit() {
     try {
       await axios.put(`http://localhost:4000/api/room/english/${roomId}`, {
         ...englishRoom,
-        roomFeature_en: selectedEnglishRoomFeatures,
+        roomFeatures_en: selectedRoomFeatures,
       });
       navigate("/room");
     } catch (error) {
@@ -82,13 +82,13 @@ function EnglishRoomEdit() {
     }
   };
 
-  const toggleEnglishRoomFeature = (englishFeatureId) => {
-    if (selectedEnglishRoomFeatures.includes(englishFeatureId)) {
-      setSelectedEnglishRoomFeatures(
-        selectedEnglishRoomFeatures.filter((id) => id !== englishFeatureId)
+  const toggleRoomFeature = (featureId) => {
+    if (selectedRoomFeatures.includes(featureId)) {
+      setSelectedRoomFeatures(
+        selectedRoomFeatures.filter((id) => id !== featureId)
       );
     } else {
-      setSelectedEnglishRoomFeatures([...selectedEnglishRoomFeatures, englishFeatureId]);
+      setSelectedRoomFeatures([...selectedRoomFeatures, featureId]);
     }
   };
 
@@ -181,25 +181,25 @@ function EnglishRoomEdit() {
                       <label className="block text-sm font-medium text-gray-200 mb-2">
                         Özellikler
                       </label>
-                      {theFeature_en.map((englishFeature, index) => (
+                      {theFeature.map((feature, index) => (
                         <div key={index} className="flex items-center">
                           <input
-                            id={englishFeature._id}
-                            name={englishFeature.EnglishFeature}
+                            id={feature._id}
+                            name={feature.EnglishFeature}
                             type="checkbox"
-                            checked={selectedEnglishRoomFeatures.includes(
-                              englishFeature.EnglishFeature
+                            checked={selectedRoomFeatures.includes(
+                              feature.EnglishFeature
                             )}
                             onChange={() =>
-                              toggleEnglishRoomFeature(englishFeature.EnglishFeature)
+                              toggleRoomFeature(feature.EnglishFeature)
                             }
                             className="h-4 w-4"
                           />
                           <label
-                            htmlFor={englishFeature.EnglishFeature}
+                            htmlFor={feature.EnglishFeature}
                             className="ml-3 text-sm font-medium text-gray-200"
                           >
-                            {englishFeature.EnglishFeature}
+                            {feature.EnglishFeature}
                           </label>
                         </div>
                       ))}
