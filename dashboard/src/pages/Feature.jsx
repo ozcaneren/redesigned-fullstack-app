@@ -86,7 +86,7 @@ const Feature = () => {
               </div>
             </div>
             <div className="p-4">
-              <div className="bg-zinc-800 rounded pt-8 pb-4">
+              <div className="bg-zinc-800 rounded pt-4 pb-4">
                 <div className="flex justify-center items-center">
                   <div className="w-full flex justify-center">
                     <div className="w-full px-4 relative">

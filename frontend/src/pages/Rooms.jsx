@@ -25,7 +25,7 @@ export default function Rooms() {
 
   const getRooms = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/api/rooms");
+      const response = await axios.get("http://localhost:4000/api/rooms/turkish");
       setRooms(response.data.data);
     } catch (error) {
       console.error("Error fetching rooms:", error);
@@ -41,70 +41,70 @@ export default function Rooms() {
   };
 
   function renderWifiIcon(room) {
-    if (room.features.includes("wifi")) {
+    if (room.roomFeatures.includes("wifi")) {
       return <BiWifi />;
     }
     return null;
   }
 
   function renderTvIcon(room) {
-    if (room.features.includes("tv")) {
+    if (room.roomFeatures.includes("tv")) {
       return <PiTelevisionSimpleBold />;
     }
     return null;
   }
 
   function renderAirConditioningIcon(room) {
-    if (room.features.includes("Klima")) {
+    if (room.roomFeatures.includes("klima")) {
       return <TbAirConditioning />;
     }
     return null;
   }
 
   function renderFridgeIcon(room) {
-    if (room.features.includes("mini bar")) {
+    if (room.roomFeatures.includes("mini bar")) {
       return <BiFridge />;
     }
     return null;
   }
 
   function renderCustomerServiceIcon(room) {
-    if (room.features.includes("7/24 servis")) {
+    if (room.roomFeatures.includes("7/24 servis")) {
       return <RiCustomerService2Fill />;
     }
     return null;
   }
 
   function renderTelephoneIcon(room) {
-    if (room.features.includes("telefon")) {
+    if (room.roomFeatures.includes("telefon")) {
       return <BsTelephoneOutbound />;
     }
     return null;
   }
 
   function renderToiletIcon(room) {
-    if (room.features.includes("cift wc")) {
+    if (room.roomFeatures.includes("wc")) {
       return <PiToiletBold />;
     }
     return null;
   }
 
   function renderBathtubIcon(room) {
-    if (room.features.includes("cift banyo")) {
+    if (room.roomFeatures.includes("banyo")) {
       return <PiBathtubBold />;
     }
     return null;
   }
 
   function renderSafeIcon(room) {
-    if (room.features.includes("elektronik kasa")) {
+    if (room.roomFeatures.includes("elektronik kasa")) {
       return <RiSafe2Fill />;
     }
     return null;
   }
 
   function renderAirfryIcon(room) {
-    if (room.features.includes("airfryer")) {
+    if (room.roomFeatures.includes("airfryer")) {
       return <RiTShirtAirFill />;
     }
     return null;
@@ -118,7 +118,7 @@ export default function Rooms() {
           <div className="pt-14">
             <div className="grid grid-cols-3 gap-8 justify-center mt-14">
               {rooms.map((room, index) =>
-                room.visibility ? (
+                room.roomVisibility ? (
                   <div key={index} className="">
                     <div className="max-w-md bg-gray-200 p-2 rounded overflow-hidden shadow-lg hover:shadow-xl">
                       <img
@@ -128,8 +128,8 @@ export default function Rooms() {
                       />
                       <div className="px-4 py-4">
                         <div className="mb-2">
-                          <h2 className="text-xl font-bold text-gray-900">
-                            {room.title}
+                          <h2 className="text-xl font-bold text-gray-900 truncate">
+                            {room.roomTitle}
                           </h2>
                         </div>
                         <div className="flex justify-between">
@@ -148,7 +148,7 @@ export default function Rooms() {
                         </div>
                         <div className="mt-4">
                           <p className="text-3xl font-extrabold text-blue-600">
-                            {room.price} TL
+                            XYZ TL
                           </p>
                         </div>
                         <div className="mt-4">

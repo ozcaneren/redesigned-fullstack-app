@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <>
-      <footer className="relative bg-gray-300 pt-8 pb-6 top-0">
+      <footer className="relative bg-gray-200 pt-8 pb-6 top-0">
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap text-left lg:text-left">
             <div className="w-full lg:w-6/12 px-4">
@@ -21,14 +21,6 @@ export default function Footer() {
                     Other Resources
                   </span>
                 </div>
-              </div>
-            </div>
-          </div>
-          <hr className="my-6 border-blueGray-300" />
-          <div className="flex flex-wrap items-center md:justify-between justify-center">
-            <div className="w-full md:w-4/12 px-4 mx-auto text-center">
-              <div className="text-sm text-blueGray-500 font-semibold py-1">
-                Copyright © <span>2023</span>
               </div>
             </div>
           </div>

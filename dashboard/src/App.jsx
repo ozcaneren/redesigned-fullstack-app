@@ -6,6 +6,8 @@ import EnglishRoomEdit from './pages/EnglishRoomEdit';
 import RoomAdd from './pages/RoomAdd';
 import Feature from './pages/Feature';
 import FeatureAdd from './pages/FeatureAdd';
+import Contact from './pages/Contact';
+import ContactEdit from './pages/ContactEdit';
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
         <Route path='/room/english/:roomId/edit/' element={<EnglishRoomEdit/>} />
         <Route path='/room/feature' element={<Feature/>} />
         <Route path='/room/feature/add' element={<FeatureAdd/>} />
+        <Route path='/contact' element={<Contact/>} />
+        <Route path='/contact/:contactId/edit' element={<ContactEdit/>} />
       </Routes>
     </>
   );
