@@ -26,7 +26,7 @@ export default function Contact() {
         <div className="">
           <div className="pt-14">
             <div className="">
-              <div className="grid  place-items-center sm:mt-20">
+              <div className="grid place-items-center sm:mt-20">
                 <img
                   className="sm:w-96 w-48"
                   src="https://i.ibb.co/2M7rtLk/Remote1.png"
@@ -37,7 +37,7 @@ export default function Contact() {
                   <h1 className="text-center text-2xl sm:text-5xl py-10 font-medium">
                     {contact.mainTitle}
                   </h1>
-                  <div className="grid grid-cols-1 lg:grid-cols-2 sm:grid-cols-2 text-center mx-6 sm:mx-48 gap-x-5 gap-y-5 my-10">
+                  <div className="grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 text-center mx-6 sm:mx-48 gap-x-5 gap-y-5 my-10">
                     <div className="block border shadow-lg rounded-lg py-20">
                       <h1 className="text-lg">{contact.cardText}</h1>
                       <span className="font-bold">{contact.cardValue}</span>

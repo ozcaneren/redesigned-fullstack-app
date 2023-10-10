@@ -8,6 +8,8 @@ import Feature from './pages/Feature';
 import FeatureAdd from './pages/FeatureAdd';
 import Contact from './pages/Contact';
 import ContactEdit from './pages/ContactEdit';
+import About from './pages/About';
+import AboutEdit from './pages/AboutEdit';
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
         <Route path='/room/feature/add' element={<FeatureAdd/>} />
         <Route path='/contact' element={<Contact/>} />
         <Route path='/contact/:contactId/edit' element={<ContactEdit/>} />
+        <Route path='/about' element={<About/>} />
+        <Route path='/about/:aboutId/edit' element={<AboutEdit/>} />
       </Routes>
     </>
   );
