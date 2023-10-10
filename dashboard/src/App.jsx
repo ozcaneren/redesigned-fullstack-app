@@ -12,6 +12,8 @@ import About from './pages/About';
 import AboutEdit from './pages/AboutEdit';
 import Header from './pages/Header';
 import HeaderEdit from './pages/HeaderEdit';
+import Footer from './pages/Footer';
+import FooterEdit from './pages/FooterEdit';
 
 function App() {
   return (
@@ -30,6 +32,9 @@ function App() {
         <Route path='/about/:aboutId/edit' element={<AboutEdit/>} />
         <Route path='/header' element={<Header/>} />
         <Route path='/header/:headerId/edit' element={<HeaderEdit/>} />
+        <Route path='/footer' element={<Footer/>} />
+        <Route path='/footer/:footerId/edit' element={<FooterEdit/>} />
+
       </Routes>
     </>
   );

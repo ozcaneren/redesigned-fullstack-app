@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useLanguage } from "../LanguageContext";
 
 export default function Header() {
   const [data, setData] = useState([]);
+  const { language, toggleLanguage } = useLanguage();
 
   const getData = async () => {
     try {
@@ -29,10 +31,16 @@ export default function Header() {
             <Link to="/">
               <span className="flex items-center">
                 <span className="self-center text-emerald-800 text-xl font-semibold whitespace-nowrap">
-                  {header.headerTitle}
+                  {language === "tr"
+                    ? header.headerTitle
+                    : header.headerTitle_en
+                  }
                 </span>
               </span>
             </Link>
+            <div className="flex items-center">
+            <button onClick={toggleLanguage}>Dil Değiştir</button>
+            </div>
             <div className="hidden justify-between items-center w-full lg:flex lg:w-auto">
               <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
                 <li>

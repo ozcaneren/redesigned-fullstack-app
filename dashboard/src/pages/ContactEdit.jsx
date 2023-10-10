@@ -71,7 +71,7 @@ function ContactEdit() {
               <div className="w-full relative rounded-[6px] p-4 overflow-x-auto">
                 <div className="mx-auto mt-4">
                   <form onSubmit={handleUpdate}>
-                    <div className="flex items-center justify-center">
+                    <div className="flex items-center justify-center space-x-8">
                       <div className="border p-4 mb-4 border-gray-600 rounded bg-zinc-700">
                         <label
                           htmlFor="mainTitle"
@@ -84,6 +84,22 @@ function ContactEdit() {
                           id="mainTitle"
                           name="mainTitle"
                           value={contact.mainTitle}
+                          onChange={handleChange}
+                          className="mt-1 p-2 rounded-sm"
+                        />
+                      </div>
+                      <div className="border p-4 mb-4 border-gray-600 rounded bg-zinc-700">
+                        <label
+                          htmlFor="mainTitle"
+                          className="block text-sm font-medium text-gray-200"
+                        >
+                          Ingilizce Ana Başlık
+                        </label>
+                        <input
+                          type="text"
+                          id="mainTitle_en"
+                          name="mainTitle_en"
+                          value={contact.mainTitle_en}
                           onChange={handleChange}
                           className="mt-1 p-2 rounded-sm"
                         />

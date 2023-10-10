@@ -224,6 +224,159 @@ export default function AboutEdit() {
                         </div>
                       </div>
                     </div>
+                    <h1 className="text-2xl text-white text-center my-4">Ingilizce Veriler</h1>
+                    <div className="grid grid-cols-3 gap-4">
+                      <div className="border p-4 mb-4 border-gray-600 rounded bg-zinc-700">
+                        <div className="mb-4">
+                          <label
+                            htmlFor="cardTitle"
+                            className="block text-sm font-medium text-gray-200"
+                          >
+                            Kart Basligi_en
+                          </label>
+                          <input
+                            type="text"
+                            id="cardTitle_en"
+                            name="cardTitle_en"
+                            value={about.cardTitle_en}
+                            onChange={handleChange}
+                            className="mt-1 p-2 rounded-sm"
+                          />
+                        </div>
+                        <div className="mb-4">
+                          <label
+                            htmlFor="cardText"
+                            className="block text-sm font-medium text-gray-200"
+                          >
+                            Kart Icerigi_en
+                          </label>
+                          <textarea
+                            type="text"
+                            id="cardText_en"
+                            name="cardText_en"
+                            value={about.cardText_en}
+                            onChange={handleChange}
+                            className="mt-1 p-2 rounded-sm"
+                          />
+                        </div>
+                        <div className="mb-4">
+                          <label
+                            htmlFor="cardButton"
+                            className="block text-sm font-medium text-gray-200"
+                          >
+                            Kart Buton_en
+                          </label>
+                          <input
+                            type="text"
+                            id="cardButton_en"
+                            name="cardButton_en"
+                            value={about.cardButton_en}
+                            onChange={handleChange}
+                            className="mt-1 p-2 rounded-sm"
+                          />
+                        </div>
+                      </div>
+                      <div className="border p-4 mb-4 border-gray-600 rounded bg-zinc-700">
+                        <div className="mb-4">
+                          <label
+                            htmlFor="cardTitle1"
+                            className="block text-sm font-medium text-gray-200"
+                          >
+                            Kart Basligi 1
+                          </label>
+                          <input
+                            type="text"
+                            id="cardTitle1_en"
+                            name="cardTitle1_en"
+                            value={about.cardTitle1_en}
+                            onChange={handleChange}
+                            className="mt-1 p-2 rounded-sm"
+                          />
+                        </div>
+                        <div className="mb-4">
+                          <label
+                            htmlFor="cardText1_en"
+                            className="block text-sm font-medium text-gray-200"
+                          >
+                            Kart Icerigi 1
+                          </label>
+                          <textarea
+                            type="text"
+                            id="cardText1_en"
+                            name="cardText1_en"
+                            value={about.cardText1_en}
+                            onChange={handleChange}
+                            className="mt-1 p-2 rounded-sm"
+                          />
+                        </div>
+                        <div className="mb-4">
+                          <label
+                            htmlFor="cardButton1"
+                            className="block text-sm font-medium text-gray-200"
+                          >
+                            Kart Buton 1_en
+                          </label>
+                          <input
+                            type="text"
+                            id="cardButton1_en"
+                            name="cardButton1_en"
+                            value={about.cardButton1_en}
+                            onChange={handleChange}
+                            className="mt-1 p-2 rounded-sm"
+                          />
+                        </div>
+                      </div>
+                      <div className="border p-4 mb-4 border-gray-600 rounded bg-zinc-700">
+                        <div className="mb-4">
+                          <label
+                            htmlFor="cardTitle2"
+                            className="block text-sm font-medium text-gray-200"
+                          >
+                            Kart Basligi2_en
+                          </label>
+                          <input
+                            type="text"
+                            id="cardTitle2_en"
+                            name="cardTitle2_en"
+                            value={about.cardTitle2_en}
+                            onChange={handleChange}
+                            className="mt-1 p-2 rounded-sm"
+                          />
+                        </div>
+                        <div className="mb-4">
+                          <label
+                            htmlFor="cardText2"
+                            className="block text-sm font-medium text-gray-200"
+                          >
+                            Kart Icerigi 2_en
+                          </label>
+                          <textarea
+                            type="text"
+                            id="cardText2_en"
+                            name="cardText2_en"
+                            value={about.cardText2_en}
+                            onChange={handleChange}
+                            className="mt-1 p-2 rounded-sm"
+                          />
+                        </div>
+                        <div className="mb-4">
+                          <label
+                            htmlFor="cardButton2_en"
+                            className="block text-sm font-medium text-gray-200"
+                          >
+                            Kart Buton 2_en
+                          </label>
+                          <input
+                            type="text"
+                            id="cardButton2_en"
+                            name="cardButton2_en"
+                            value={about.cardButton2_en}
+                            onChange={handleChange}
+                            className="mt-1 p-2 rounded-sm"
+                          />
+                        </div>
+                      </div>
+                    </div>
                     <div className="flex justify-center mt-4">
                       <button
                         type="button"

@@ -63,6 +63,30 @@ export default function Contact() {
                           </div>
                         </div>
                       </div>
+                      <div className="grid grid-cols-2">
+                        <div className="flex items-center justify-center">
+                          <div className="border p-4 w-[300px] border-gray-600 rounded">
+                            <label
+                              htmlFor="mainTitle"
+                              className="block text-sm text-center mb-2 font-medium text-gray-200"
+                            >
+                              Ana Başlık
+                            </label>
+                            <h1 className="text-lg text-center">{contact.mainTitle}</h1>
+                          </div>
+                        </div>
+                        <div className="flex items-center justify-center">
+                          <div className="border w-[300px] p-4 border-gray-600 rounded">
+                            <label
+                              htmlFor="mainTitle"
+                              className="block text-sm text-center mb-2 font-medium text-gray-200"
+                            >
+                              Ingilizce Ana Başlık
+                            </label>
+                            <h1 className="text-lg text-center">{contact.mainTitle_en}</h1>
+                          </div>
+                        </div>
+                      </div>
                       <div className="grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 text-center mx-6 sm:mx-48 gap-x-5 gap-y-5 my-10">
                         <div className="block border shadow-lg rounded-lg py-20">
                           <h1 className="text-lg">{contact.cardText}</h1>

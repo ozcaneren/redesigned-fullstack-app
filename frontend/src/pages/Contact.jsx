@@ -2,9 +2,13 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useLanguage } from "../LanguageContext";
+
 
 export default function Contact() {
   const [contactData, setContactData] = useState([]);
+  const { language } = useLanguage();
+
 
   const getContactData = async () => {
     try {
@@ -35,7 +39,10 @@ export default function Contact() {
               {contactData.map((contact, index) => (
                 <div key={index}>
                   <h1 className="text-center text-2xl sm:text-5xl py-10 font-medium">
-                    {contact.mainTitle}
+                    {language === "tr"
+                      ? contact.mainTitle
+                      : contact.mainTitle_en
+                    }
                   </h1>
                   <div className="grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 text-center mx-6 sm:mx-48 gap-x-5 gap-y-5 my-10">
                     <div className="block border shadow-lg rounded-lg py-20">

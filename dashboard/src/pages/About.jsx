@@ -63,6 +63,7 @@ export default function About() {
                           </div>
                         </div>
                       </div>
+                      <h1 className="text-center text-2xl mb-4">Turkce Hakkimizda Verileri</h1>
                       <div className="grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 mx-6 sm:mx-48 gap-x-5 gap-y-5">
                         <div className="flex justify-center items-center text-center">
                           <div className="grid grid-rows-1 max-h-[320px] max-w-[400px] min-w-[400px] min-h-[300px]  p-4 border shadow-lg rounded-lg space-y-4">
@@ -88,6 +89,36 @@ export default function About() {
                             <span className="font-bold">{about.cardText2}</span>
                             <div className="">
                               <button className="">{about.cardButton2}</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <h1 className="text-center text-2xl my-12 mb-4">Ingilizce Hakkimizda Verileri</h1>
+                      <div className="grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 mx-6 sm:mx-48 gap-x-5 gap-y-5">
+                        <div className="flex justify-center items-center text-center">
+                          <div className="grid grid-rows-1 max-h-[320px] max-w-[400px] min-w-[400px] min-h-[300px]  p-4 border shadow-lg rounded-lg space-y-4">
+                            <h1 className="text-lg">{about.cardTitle_en}</h1>
+                            <span className="font-bold">{about.cardText_en.substring(0,300)}</span>
+                            <div className="">
+                              <button className="">{about.cardButton_en}</button>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="flex justify-center items-center text-center">
+                          <div className="grid grid-rows-1 max-h-[320px] max-w-[400px] min-w-[400px] min-h-[300px] p-4 border shadow-lg rounded-lg space-y-4">
+                            <h1 className="text-lg">{about.cardTitle1_en}</h1>
+                            <span className="font-bold">{about.cardText1_en.substring(0,300)}</span>
+                            <div className="">
+                              <button className="">{about.cardButton1_en}</button>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="flex justify-center items-center text-center">
+                          <div className="grid grid-rows-1 max-h-[320px] max-w-[400px] min-w-[400px] min-h-[300px] p-4 border shadow-lg rounded-lg space-y-4">
+                            <h1 className="text-lg">{about.cardTitle2_en}</h1>
+                            <span className="font-bold">{about.cardText2_en.substring(0,300)}</span>
+                            <div className="">
+                              <button className="">{about.cardButton2_en}</button>
                             </div>
                           </div>
                         </div>

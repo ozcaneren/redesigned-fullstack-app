@@ -11,7 +11,7 @@ function RoomDetail() {
 
   const getRoom = async (id) => {
     try {
-      const response = await axios.get(`http://localhost:4000/api/room/${id}`);
+      const response = await axios.get(`http://localhost:4000/api/room/turkish/${id}`);
       setRooms([response.data.data]);
     } catch (error) {
       console.error("Error fetching rooms:", error);
@@ -41,10 +41,10 @@ function RoomDetail() {
                   <div className="xl:w-2/5 md:w-1/2 lg:ml-8 md:ml-6 md:mt-0 mt-6">
                     <div className="border-b border-gray-200 pb-6">
                       <p className="text-sm leading-none text-gray-600">
-                        {room.type}
+                        {room.roomType}
                       </p>
                       <h1 className="lg:text-2xl text-xl font-semibold lg:leading-6 leading-7 text-gray-800 mt-2">
-                        {room.title}
+                        {room.roomTitle}
                       </h1>
                     </div>
                     <button className="uppercase focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-base flex items-center justify-center leading-none text-white bg-blue-300 w-full py-4 hover:bg-gray-700 focus:outline-none">
@@ -52,7 +52,7 @@ function RoomDetail() {
                     </button>
                     <div>
                       <p className="text-base leading-normal text-gray-600 mt-7">
-                        {room.description}
+                        {room.roomDescription}
                       </p>
                     </div>
                     <div>
