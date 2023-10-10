@@ -64,7 +64,6 @@ export default function About() {
                         </div>
                       </div>
                       <div className="grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 mx-6 sm:mx-48 gap-x-5 gap-y-5">
-
                         <div className="flex justify-center items-center text-center">
                           <div className="grid grid-rows-1 max-h-[320px] max-w-[400px] min-w-[400px] min-h-[300px]  p-4 border shadow-lg rounded-lg space-y-4">
                             <h1 className="text-lg">{about.cardTitle}</h1>

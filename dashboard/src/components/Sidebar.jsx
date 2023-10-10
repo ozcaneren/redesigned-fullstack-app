@@ -2,7 +2,8 @@ import { Link } from "react-router-dom";
 import { MdOutlineRoundaboutRight, MdMeetingRoom } from "react-icons/md";
 import { RiContactsLine } from "react-icons/ri";
 import { BiHomeAlt2 } from "react-icons/bi";
-import { LuSettings2 } from "react-icons/lu";
+import { LuSettings2, LuPanelBottomClose } from "react-icons/lu";
+import { TbLayoutNavbarCollapse } from "react-icons/tb";
 
 function Sidebar() {
   return (
@@ -34,7 +35,7 @@ function Sidebar() {
             <li className="px-5 hidden md:block">
               <div className="flex flex-row items-center mt-5 h-8">
                 <div className="text-md font-medium tracking-wide text-gray-400">
-                  İçerik Yönetimi
+                  Sayfa Yonetimi
                 </div>
               </div>
             </li>
@@ -62,6 +63,32 @@ function Sidebar() {
                 </span>
                 <span className="ml-2 text-md tracking-wide truncate">
                   Hakkimizda
+                </span>
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/header"
+                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-zinc-700 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6"
+              >
+                <span className="inline-flex justify-center items-center ml-4">
+                  <TbLayoutNavbarCollapse size={20} />
+                </span>
+                <span className="ml-2 text-md tracking-wide truncate">
+                  Header
+                </span>
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/footer"
+                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-zinc-700 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6"
+              >
+                <span className="inline-flex justify-center items-center ml-4">
+                  <LuPanelBottomClose size={20} />
+                </span>
+                <span className="ml-2 text-md tracking-wide truncate">
+                  Footer
                 </span>
               </Link>
             </li>

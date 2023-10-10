@@ -7,6 +7,7 @@ const roomRouter = require('./routes/roomRouter');
 const featureRouter = require('./routes/featureRouter');
 const contactRouter = require('./routes/contactRouter');
 const aboutRouter = require('./routes/aboutRouter');
+const headerRouter = require('./routes/headerRouter');
 
 dotenv.config();
 
@@ -25,6 +26,7 @@ app.use('/api', roomRouter);
 app.use('/api', featureRouter);
 app.use('/api', contactRouter);
 app.use('/api', aboutRouter);
+app.use('/api', headerRouter);
 
 
 app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`));

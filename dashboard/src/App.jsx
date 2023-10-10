@@ -10,6 +10,8 @@ import Contact from './pages/Contact';
 import ContactEdit from './pages/ContactEdit';
 import About from './pages/About';
 import AboutEdit from './pages/AboutEdit';
+import Header from './pages/Header';
+import HeaderEdit from './pages/HeaderEdit';
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
         <Route path='/contact/:contactId/edit' element={<ContactEdit/>} />
         <Route path='/about' element={<About/>} />
         <Route path='/about/:aboutId/edit' element={<AboutEdit/>} />
+        <Route path='/header' element={<Header/>} />
+        <Route path='/header/:headerId/edit' element={<HeaderEdit/>} />
       </Routes>
     </>
   );
