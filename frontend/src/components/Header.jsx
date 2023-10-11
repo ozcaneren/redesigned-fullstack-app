@@ -49,7 +49,7 @@ export default function Header() {
               <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
                 {header.headerText || header.headerText_en ? (
                   <li>
-                    {header.headerDropdown || header.headerDropdown1 ? (
+                    {header.headerTextDropdown || header.headerTextDropdown1 ? (
                       <li>
                         <span
                           onClick={toggleDropdown}
@@ -72,37 +72,37 @@ export default function Header() {
                           </span>
                           {isDropdownOpen ? (
                             <ul className="mt-2 space-y-2">
-                              {header.headerDropdown && (
+                              {header.headerTextDropdown && (
                                 <li className="ml-2 cursor-pointer">
                                   <Link
                                     to={
-                                      header.headerDropdown === "Iletisim"
+                                      header.headerTextDropdown === "Iletisim"
                                         ? "/contact"
-                                        : header.headerDropdown === "Odalarimiz"
+                                        : header.headerTextDropdown === "Odalarimiz"
                                         ? "/rooms"
-                                        : header.headerDropdown === "Hakkimizda"
+                                        : header.headerTextDropdown === "Hakkimizda"
                                         ? "/about"
                                         : "/"
                                     }
                                   >
                                     <span className="ml-2 text-md tracking-wide truncate">
                                       {language === "tr"
-                                        ? header.headerDropdown
-                                        : header.headerDropdown_en}
+                                        ? header.headerTextDropdown
+                                        : header.headerTextDropdown_en}
                                     </span>
                                   </Link>
                                 </li>
                               )}
-                              {header.headerDropdown1 && (
+                              {header.headerTextDropdown1 && (
                                 <li className="ml-2 cursor-pointer">
                                   <Link
                                     to={
-                                      header.headerDropdown1 === "Iletisim"
+                                      header.headerTextDropdown1 === "Iletisim"
                                         ? "/contact"
-                                        : header.headerDropdown1 ===
+                                        : header.headerTextDropdown1 ===
                                           "Odalarimiz"
                                         ? "/rooms"
-                                        : header.headerDropdown1 ===
+                                        : header.headerTextDropdown1 ===
                                           "Hakkimizda"
                                         ? "/about"
                                         : "/"
@@ -110,8 +110,8 @@ export default function Header() {
                                   >
                                     <span className="ml-2 text-md tracking-wide truncate">
                                       {language === "tr"
-                                        ? header.headerDropdown1
-                                        : header.headerDropdown1_en}
+                                        ? header.headerTextDropdown1
+                                        : header.headerTextDropdown1_en}
                                     </span>
                                   </Link>
                                 </li>
