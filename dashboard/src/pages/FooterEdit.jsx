@@ -142,7 +142,109 @@ export default function FooterEdit() {
                         </div>
                       </div>
                     </div>
-                    <div className="grid grid-cols-3 gap-4">
+                    <div className="flex justify-center items-center space-x-4">
+                      <div className="border p-4 mb-4 border-gray-600 rounded bg-zinc-700">
+                        <div className="mb-4">
+                          <div>
+                            <label
+                              className="block text-sm font-medium text-gray-200"
+                              htmlFor="footerIcon"
+                            >
+                              Footer Icon (kucuk harfler)
+                            </label>
+                            <input
+                              type="text"
+                              name="footerIcon"
+                              id="footerIcon"
+                              value={footer.footerIcon}
+                              onChange={handleChange}
+                              className="mt-1 p-2 rounded-sm"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div className="border p-4 mb-4 border-gray-600 rounded bg-zinc-700">
+                        <div className="mb-4">
+                          <div>
+                            <label
+                              className="block text-sm font-medium text-gray-200"
+                              htmlFor="footerIcon1"
+                            >
+                              Footer Icon1 (kucuk harfler)
+                            </label>
+                            <input
+                              type="text"
+                              name="footerIcon1"
+                              id="footerIcon1"
+                              value={footer.footerIcon1}
+                              onChange={handleChange}
+                              className="mt-1 p-2 rounded-sm"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div className="border p-4 mb-4 border-gray-600 rounded bg-zinc-700">
+                        <div className="mb-4">
+                          <div>
+                            <label
+                              className="block text-sm font-medium text-gray-200"
+                              htmlFor="footerIcon2"
+                            >
+                              Footer Icon2 (kucuk harfler)
+                            </label>
+                            <input
+                              type="text"
+                              name="footerIcon2"
+                              id="footerIcon2"
+                              value={footer.footerIcon2}
+                              onChange={handleChange}
+                              className="mt-1 p-2 rounded-sm"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div className="border p-4 mb-4 border-gray-600 rounded bg-zinc-700">
+                        <div className="mb-4">
+                          <div>
+                            <label
+                              className="block text-sm font-medium text-gray-200"
+                              htmlFor="footerIcon3"
+                            >
+                              Footer Icon3 (kucuk harfler)
+                            </label>
+                            <input
+                              type="text"
+                              name="footerIcon3"
+                              id="footerIcon3"
+                              value={footer.footerIcon3}
+                              onChange={handleChange}
+                              className="mt-1 p-2 rounded-sm"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div className="border p-4 mb-4 border-gray-600 rounded bg-zinc-700">
+                        <div className="mb-4">
+                          <div>
+                            <label
+                              className="block text-sm font-medium text-gray-200"
+                              htmlFor="footerIcon4"
+                            >
+                              Footer Icon4 (kucuk harfler)
+                            </label>
+                            <input
+                              type="text"
+                              name="footerIcon4"
+                              id="footerIcon4"
+                              value={footer.footerIcon4}
+                              onChange={handleChange}
+                              className="mt-1 p-2 rounded-sm"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-4 gap-4">
                       <div className="border p-4 mb-4 border-gray-600 rounded bg-zinc-700">
                         <div className="mb-4">
                           <div>

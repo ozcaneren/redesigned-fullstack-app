@@ -87,7 +87,7 @@ export default function AboutEdit() {
                             name="cardTitle"
                             value={about.cardTitle}
                             onChange={handleChange}
-                            className="mt-1 p-2 rounded-sm"
+                            className="mt-1 p-2 rounded-sm w-full"
                           />
                         </div>
                         <div className="mb-4">
@@ -103,7 +103,7 @@ export default function AboutEdit() {
                             name="cardText"
                             value={about.cardText}
                             onChange={handleChange}
-                            className="mt-1 p-2 rounded-sm"
+                            className="mt-1 p-2 rounded-sm w-full"
                           />
                         </div>
                         <div className="mb-4">
@@ -119,7 +119,7 @@ export default function AboutEdit() {
                             name="cardButton"
                             value={about.cardButton}
                             onChange={handleChange}
-                            className="mt-1 p-2 rounded-sm"
+                            className="mt-1 p-2 rounded-sm w-full"
                           />
                         </div>
                       </div>
@@ -137,7 +137,7 @@ export default function AboutEdit() {
                             name="cardTitle1"
                             value={about.cardTitle1}
                             onChange={handleChange}
-                            className="mt-1 p-2 rounded-sm"
+                            className="mt-1 p-2 rounded-sm w-full"
                           />
                         </div>
                         <div className="mb-4">
@@ -153,7 +153,7 @@ export default function AboutEdit() {
                             name="cardText1"
                             value={about.cardText1}
                             onChange={handleChange}
-                            className="mt-1 p-2 rounded-sm"
+                            className="mt-1 p-2 rounded-sm w-full"
                           />
                         </div>
                         <div className="mb-4">
@@ -169,7 +169,7 @@ export default function AboutEdit() {
                             name="cardButton1"
                             value={about.cardButton1}
                             onChange={handleChange}
-                            className="mt-1 p-2 rounded-sm"
+                            className="mt-1 p-2 rounded-sm w-full"
                           />
                         </div>
                       </div>
@@ -187,7 +187,7 @@ export default function AboutEdit() {
                             name="cardTitle2"
                             value={about.cardTitle2}
                             onChange={handleChange}
-                            className="mt-1 p-2 rounded-sm"
+                            className="mt-1 p-2 rounded-sm w-full"
                           />
                         </div>
                         <div className="mb-4">
@@ -203,7 +203,7 @@ export default function AboutEdit() {
                             name="cardText2"
                             value={about.cardText2}
                             onChange={handleChange}
-                            className="mt-1 p-2 rounded-sm"
+                            className="mt-1 p-2 rounded-sm w-full"
                           />
                         </div>
                         <div className="mb-4">
@@ -219,7 +219,7 @@ export default function AboutEdit() {
                             name="cardButton2"
                             value={about.cardButton2}
                             onChange={handleChange}
-                            className="mt-1 p-2 rounded-sm"
+                            className="mt-1 p-2 rounded-sm w-full"
                           />
                         </div>
                       </div>
@@ -240,7 +240,7 @@ export default function AboutEdit() {
                             name="cardTitle_en"
                             value={about.cardTitle_en}
                             onChange={handleChange}
-                            className="mt-1 p-2 rounded-sm"
+                            className="mt-1 p-2 rounded-sm w-full"
                           />
                         </div>
                         <div className="mb-4">
@@ -256,7 +256,7 @@ export default function AboutEdit() {
                             name="cardText_en"
                             value={about.cardText_en}
                             onChange={handleChange}
-                            className="mt-1 p-2 rounded-sm"
+                            className="mt-1 p-2 rounded-sm w-full"
                           />
                         </div>
                         <div className="mb-4">
@@ -272,7 +272,7 @@ export default function AboutEdit() {
                             name="cardButton_en"
                             value={about.cardButton_en}
                             onChange={handleChange}
-                            className="mt-1 p-2 rounded-sm"
+                            className="mt-1 p-2 rounded-sm w-full"
                           />
                         </div>
                       </div>
@@ -290,7 +290,7 @@ export default function AboutEdit() {
                             name="cardTitle1_en"
                             value={about.cardTitle1_en}
                             onChange={handleChange}
-                            className="mt-1 p-2 rounded-sm"
+                            className="mt-1 p-2 rounded-sm w-full"
                           />
                         </div>
                         <div className="mb-4">
@@ -306,7 +306,7 @@ export default function AboutEdit() {
                             name="cardText1_en"
                             value={about.cardText1_en}
                             onChange={handleChange}
-                            className="mt-1 p-2 rounded-sm"
+                            className="mt-1 p-2 rounded-sm w-full"
                           />
                         </div>
                         <div className="mb-4">
@@ -322,7 +322,7 @@ export default function AboutEdit() {
                             name="cardButton1_en"
                             value={about.cardButton1_en}
                             onChange={handleChange}
-                            className="mt-1 p-2 rounded-sm"
+                            className="mt-1 p-2 rounded-sm w-full"
                           />
                         </div>
                       </div>
@@ -340,7 +340,7 @@ export default function AboutEdit() {
                             name="cardTitle2_en"
                             value={about.cardTitle2_en}
                             onChange={handleChange}
-                            className="mt-1 p-2 rounded-sm"
+                            className="mt-1 p-2 rounded-sm w-full"
                           />
                         </div>
                         <div className="mb-4">
@@ -356,7 +356,7 @@ export default function AboutEdit() {
                             name="cardText2_en"
                             value={about.cardText2_en}
                             onChange={handleChange}
-                            className="mt-1 p-2 rounded-sm"
+                            className="mt-1 p-2 rounded-sm w-full"
                           />
                         </div>
                         <div className="mb-4">
@@ -372,7 +372,7 @@ export default function AboutEdit() {
                             name="cardButton2_en"
                             value={about.cardButton2_en}
                             onChange={handleChange}
-                            className="mt-1 p-2 rounded-sm"
+                            className="mt-1 p-2 rounded-sm w-full"
                           />
                         </div>
                       </div>

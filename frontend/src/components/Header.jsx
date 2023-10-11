@@ -107,11 +107,11 @@ export default function Header() {
                               <li className="block py-2 pr-4 pl-3 text-gray-100 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:p-0">
                                 <Link
                                   to={
-                                    header.headerTextDropdown === "Iletisim"
-                                      ? "/contact"
+                                    header.headerTextDropdown === "Belgeler"
+                                      ? "/documents"
                                       : header.headerTextDropdown ===
-                                        "Odalarimiz"
-                                      ? "/rooms"
+                                        "Sikca Sorulan Sorular"
+                                      ? "/faq"
                                       : header.headerTextDropdown ===
                                         "Hakkimizda"
                                       ? "/about"
@@ -130,11 +130,11 @@ export default function Header() {
                               <li className="block py-2 pr-4 pl-3 text-gray-100 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:p-0">
                                 <Link
                                   to={
-                                    header.headerTextDropdown1 === "Iletisim"
-                                      ? "/contact"
+                                    header.headerTextDropdown1 === "Belgeler"
+                                      ? "/documents"
                                       : header.headerTextDropdown1 ===
-                                        "Odalarimiz"
-                                      ? "/rooms"
+                                        "Sikca Sorulan Sorular"
+                                      ? "/faq"
                                       : header.headerTextDropdown1 ===
                                         "Hakkimizda"
                                       ? "/about"

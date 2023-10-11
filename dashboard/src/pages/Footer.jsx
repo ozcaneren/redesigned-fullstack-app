@@ -66,7 +66,9 @@ export default function Footer() {
                       <div className="mx-6 sm:mx-48 gap-x-5 gap-y-5">
                         <div className="w-full flex justify-center items-center my-4 space-x-4">
                           <div className="p-4 flex justify-center items-center flex-col space-y-2 bg-zinc-700 border shadow-lg rounded-lg w-[200px] h-[100px]">
-                            <label htmlFor="" className="">Baslik</label>
+                            <label htmlFor="" className="">
+                              Baslik
+                            </label>
                             {footer.footerMainTitle ? (
                               <h1 className="text-lg">
                                 {footer.footerMainTitle}
@@ -80,11 +82,53 @@ export default function Footer() {
                           <div className="p-4 flex justify-center items-center flex-col space-y-2 bg-zinc-700 border shadow-lg rounded-lg w-[200px] h-[100px]">
                             <label htmlFor="">Yazi</label>
                             {footer.footerMainText ? (
-                              <h1 className="text-lg">{footer.footerMainText}</h1>
+                              <h1 className="text-lg">
+                                {footer.footerMainText}
+                              </h1>
                             ) : (
-                              <p className="text-gray-400">
-                                Yazi eklemediniz.
-                              </p>
+                              <p className="text-gray-400">Yazi eklemediniz.</p>
+                            )}
+                          </div>
+                        </div>
+                        <div className="w-full flex justify-center items-center my-4 space-x-4">
+                          <div className="p-4 flex justify-center items-center flex-col space-y-2 bg-zinc-700 border shadow-lg rounded-lg w-[200px] h-[100px]">
+                            <label htmlFor="">Icon</label>
+                            {footer.footerIcon ? (
+                              <h1 className="text-lg">{footer.footerIcon}</h1>
+                            ) : (
+                              <p className="text-gray-400">Icon eklemediniz.</p>
+                            )}
+                          </div>
+                          <div className="p-4 flex justify-center items-center flex-col space-y-2 bg-zinc-700 border shadow-lg rounded-lg w-[200px] h-[100px]">
+                            <label htmlFor="">Icon 1</label>
+                            {footer.footerIcon1 ? (
+                              <h1 className="text-lg">{footer.footerIcon1}</h1>
+                            ) : (
+                              <p className="text-gray-400">Icon eklemediniz.</p>
+                            )}
+                          </div>
+                          <div className="p-4 flex justify-center items-center flex-col space-y-2 bg-zinc-700 border shadow-lg rounded-lg w-[200px] h-[100px]">
+                            <label htmlFor="">Icon 2</label>
+                            {footer.footerIcon2 ? (
+                              <h1 className="text-lg">{footer.footerIcon2}</h1>
+                            ) : (
+                              <p className="text-gray-400">Icon eklemediniz.</p>
+                            )}
+                          </div>
+                          <div className="p-4 flex justify-center items-center flex-col space-y-2 bg-zinc-700 border shadow-lg rounded-lg w-[200px] h-[100px]">
+                            <label htmlFor="">Icon 3</label>
+                            {footer.footerIcon3 ? (
+                              <h1 className="text-lg">{footer.footerIcon3}</h1>
+                            ) : (
+                              <p className="text-gray-400">Icon eklemediniz.</p>
+                            )}
+                          </div>
+                          <div className="p-4 flex justify-center items-center flex-col space-y-2 bg-zinc-700 border shadow-lg rounded-lg w-[200px] h-[100px]">
+                            <label htmlFor="">Icon 4</label>
+                            {footer.footerIcon4 ? (
+                              <h1 className="text-lg">{footer.footerIcon4}</h1>
+                            ) : (
+                              <p className="text-gray-400">Icon eklemediniz.</p>
                             )}
                           </div>
                         </div>
@@ -235,7 +279,7 @@ export default function Footer() {
                               <div>
                                 <label htmlFor="">Link 1</label>
                                 {footer.footerTitle2Link ? (
-                                  <h1 className="text-lg">
+                                  <h1 className="text-lg truncate">
                                     {footer.footerTitle2Link}
                                   </h1>
                                 ) : (
@@ -245,7 +289,7 @@ export default function Footer() {
                               <div>
                                 <label htmlFor="">Link 2</label>
                                 {footer.footerTitle2Link1 ? (
-                                  <h1 className="text-lg">
+                                  <h1 className="text-lg truncate">
                                     {footer.footerTitle2Link1}
                                   </h1>
                                 ) : (
