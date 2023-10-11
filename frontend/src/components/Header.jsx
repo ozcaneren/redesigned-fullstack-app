@@ -6,6 +6,11 @@ import { useLanguage } from "../LanguageContext";
 export default function Header() {
   const [data, setData] = useState([]);
   const { language, toggleLanguage } = useLanguage();
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setDropdownOpen(!isDropdownOpen);
+  };
 
   const getData = async () => {
     try {
@@ -33,34 +38,130 @@ export default function Header() {
                 <span className="self-center text-emerald-800 text-xl font-semibold whitespace-nowrap">
                   {language === "tr"
                     ? header.headerTitle
-                    : header.headerTitle_en
-                  }
+                    : header.headerTitle_en}
                 </span>
               </span>
             </Link>
             <div className="flex items-center">
-            <button onClick={toggleLanguage}>Dil Değiştir</button>
+              <button onClick={toggleLanguage}>Dil Değiştir</button>
             </div>
             <div className="hidden justify-between items-center w-full lg:flex lg:w-auto">
               <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
-                <li>
-                  <Link
-                    to={
-                      header.headerText === "Iletisim"
-                        ? "/contact"
-                        : header.headerText === "Odalarimiz"
-                        ? "/rooms"
-                        : header.headerText === "Hakkimizda"
-                        ? "/about"
-                        : // Diğer durumları buraya ekleyebilirsiniz
-                          "/" // Varsayılan bir yol belirleyin veya hata durumunda kullanabilirsiniz
-                    }
-                  >
-                    <span className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:p-0 ">
-                      {header.headerText}
-                    </span>
-                  </Link>
-                </li>
+                {header.headerText || header.headerText_en ? (
+                  <li>
+                    {header.headerDropdown || header.headerDropdown1 ? (
+                      <li>
+                        <span
+                          onClick={toggleDropdown}
+                          className="relative flex flex-row items-center h-11 focus:outline-none text-white-600 hover:text-white-800 border-l-4 border-transparent"
+                        >
+                          <span
+                            className={`ml-2 ${
+                              isDropdownOpen ? "rotate-180" : "rotate-0"
+                            } transition-transform`}
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="w-4 h-4"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path d="M6 9l6 6 6-6" />
+                            </svg>
+                          </span>
+                          {isDropdownOpen ? (
+                            <ul className="mt-2 space-y-2">
+                              {header.headerDropdown && (
+                                <li className="ml-2 cursor-pointer">
+                                  <Link
+                                    to={
+                                      header.headerDropdown === "Iletisim"
+                                        ? "/contact"
+                                        : header.headerDropdown === "Odalarimiz"
+                                        ? "/rooms"
+                                        : header.headerDropdown === "Hakkimizda"
+                                        ? "/about"
+                                        : "/"
+                                    }
+                                  >
+                                    <span className="ml-2 text-md tracking-wide truncate">
+                                      {language === "tr"
+                                        ? header.headerDropdown
+                                        : header.headerDropdown_en}
+                                    </span>
+                                  </Link>
+                                </li>
+                              )}
+                              {header.headerDropdown1 && (
+                                <li className="ml-2 cursor-pointer">
+                                  <Link
+                                    to={
+                                      header.headerDropdown1 === "Iletisim"
+                                        ? "/contact"
+                                        : header.headerDropdown1 ===
+                                          "Odalarimiz"
+                                        ? "/rooms"
+                                        : header.headerDropdown1 ===
+                                          "Hakkimizda"
+                                        ? "/about"
+                                        : "/"
+                                    }
+                                  >
+                                    <span className="ml-2 text-md tracking-wide truncate">
+                                      {language === "tr"
+                                        ? header.headerDropdown1
+                                        : header.headerDropdown1_en}
+                                    </span>
+                                  </Link>
+                                </li>
+                              )}
+                            </ul>
+                          ) : (
+                            <Link
+                              to={
+                                header.headerText === "Iletisim"
+                                  ? "/contact"
+                                  : header.headerText === "Odalarimiz"
+                                  ? "/rooms"
+                                  : header.headerText === "Hakkimizda"
+                                  ? "/about"
+                                  : "/"
+                              }
+                            >
+                              <span className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:p-0">
+                                {language === "tr"
+                                  ? header.headerText
+                                  : header.headerText_en}
+                              </span>
+                            </Link>
+                          )}
+                        </span>
+                      </li>
+                    ) : (
+                      <li>
+                        <Link
+                          to={
+                            header.headerText === "Iletisim"
+                              ? "/contact"
+                              : header.headerText === "Odalarimiz"
+                              ? "/rooms"
+                              : header.headerText === "Hakkimizda"
+                              ? "/about"
+                              : "/"
+                          }
+                        >
+                          <span className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:p-0">
+                            {language === "tr"
+                              ? header.headerText
+                              : header.headerText_en}
+                          </span>
+                        </Link>
+                      </li>
+                    )}
+                  </li>
+                ) : null}
+
                 <li>
                   <Link
                     to={
@@ -70,51 +171,105 @@ export default function Header() {
                         ? "/rooms"
                         : header.headerText1 === "Hakkimizda"
                         ? "/about"
-                        : // Diğer durumları buraya ekleyebilirsiniz
-                          "/" // Varsayılan bir yol belirleyin veya hata durumunda kullanabilirsiniz
+                        : "/"
                     }
                   >
                     <span className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:p-0 ">
-                      {header.headerText1}
+                      {language === "tr"
+                        ? header.headerText1
+                        : header.headerText1_en}
                     </span>
                   </Link>
                 </li>
-                <li>
-                  <Link
-                    to={
-                      header.headerText2 === "Iletisim"
-                        ? "/contact"
-                        : header.headerText2 === "Odalarimiz"
-                        ? "/rooms"
-                        : header.headerText2 === "Hakkimizda"
-                        ? "/about"
-                        : // Diğer durumları buraya ekleyebilirsiniz
-                          "/" // Varsayılan bir yol belirleyin veya hata durumunda kullanabilirsiniz
-                    }
-                  >
-                    <span className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:p-0 ">
-                      {header.headerText2}
-                    </span>
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to={
-                      header.headerText3 === "Iletisim"
-                        ? "/contact"
-                        : header.headerText3 === "Odalarimiz"
-                        ? "/rooms"
-                        : header.headerText3 === "Hakkimizda"
-                        ? "/about"
-                        : // Diğer durumları buraya ekleyebilirsiniz
-                          "/" // Varsayılan bir yol belirleyin veya hata durumunda kullanabilirsiniz
-                    }
-                  >
-                    <span className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:p-0 ">
-                      {header.headerText3}
-                    </span>
-                  </Link>
-                </li>
+                {header.headerText2 || header.headerText2_en ? (
+                  <li>
+                    <Link
+                      to={
+                        header.headerText2 === "Iletisim"
+                          ? "/contact"
+                          : header.headerText2 === "Odalarimiz"
+                          ? "/rooms"
+                          : header.headerText2 === "Hakkimizda"
+                          ? "/about"
+                          : "/"
+                      }
+                    >
+                      <span className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:p-0 ">
+                        {language === "tr"
+                          ? header.headerText2
+                          : header.headerText2_en}
+                      </span>
+                    </Link>
+                  </li>
+                ) : null}
+                {/* headerText3 */}
+                {header.headerText3 || header.headerText3_en ? (
+                  <li>
+                    <Link
+                      to={
+                        header.headerText3 === "Iletisim"
+                          ? "/contact"
+                          : header.headerText3 === "Odalarimiz"
+                          ? "/rooms"
+                          : header.headerText3 === "Hakkimizda"
+                          ? "/about"
+                          : "/"
+                      }
+                    >
+                      <span className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:p-0 ">
+                        {language === "tr"
+                          ? header.headerText3
+                          : header.headerText3_en}
+                      </span>
+                    </Link>
+                  </li>
+                ) : null}
+
+                {/* headerText4 */}
+                {header.headerText4 || header.headerText4_en ? (
+                  <li>
+                    <Link
+                      to={
+                        header.headerText4 === "Iletisim"
+                          ? "/contact"
+                          : header.headerText4 === "Odalarimiz"
+                          ? "/rooms"
+                          : header.headerText4 === "Hakkimizda"
+                          ? "/about"
+                          : "/"
+                      }
+                    >
+                      <span className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:p-0 ">
+                        {language === "tr"
+                          ? header.headerText4
+                          : header.headerText4_en}
+                      </span>
+                    </Link>
+                  </li>
+                ) : null}
+
+                {/* headerText5 */}
+                {header.headerText5 || header.headerText5_en ? (
+                  <li>
+                    <Link
+                      to={
+                        header.headerText5 === "Iletisim"
+                          ? "/contact"
+                          : header.headerText5 === "Odalarimiz"
+                          ? "/rooms"
+                          : header.headerText5 === "Hakkimizda"
+                          ? "/about"
+                          : "/"
+                      }
+                    >
+                      <span className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:p-0 ">
+                        {language === "tr"
+                          ? header.headerText5
+                          : header.headerText5_en}
+                      </span>
+                    </Link>
+                  </li>
+                ) : null}
               </ul>
             </div>
           </div>

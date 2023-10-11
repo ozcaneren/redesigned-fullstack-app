@@ -72,202 +72,415 @@ export default function HeaderEdit() {
                     <div className="grid grid-cols-3 gap-4">
                       <div className="border p-4 mb-4 border-gray-600 rounded bg-zinc-700">
                         <div className="mb-4">
-                          <label
-                            htmlFor="headerTitle"
-                            className="block text-sm font-medium text-gray-200"
-                          >
-                            Baslik
-                          </label>
-                          <input
-                            type="text"
-                            name="headerTitle"
-                            id="headerTitle"
-                            value={header.headerTitle}
-                            onChange={handleChange}
-                            className="mt-1 p-2 rounded-sm"
-                          />
+                          <div>
+                            <label
+                              htmlFor="headerTitle"
+                              className="block text-sm font-medium text-gray-200"
+                            >
+                              Baslik
+                            </label>
+                            <input
+                              type="text"
+                              name="headerTitle"
+                              id="headerTitle"
+                              value={header.headerTitle}
+                              onChange={handleChange}
+                              className="mt-1 p-2 rounded-sm"
+                            />
+                          </div>
+                          <div className="mt-4">
+                            <label
+                              htmlFor="headerTitle"
+                              className="block text-sm font-medium text-gray-200"
+                            >
+                              Baslik_en
+                            </label>
+                            <input
+                              type="text"
+                              name="headerTitle_en"
+                              id="headerTitle_en"
+                              value={header.headerTitle_en}
+                              onChange={handleChange}
+                              className="mt-1 p-2 rounded-sm"
+                            />
+                          </div>
                         </div>
                       </div>
                       <div className="border p-4 mb-4 border-gray-600 rounded bg-zinc-700">
                         <div className="mb-4">
-                          <label
-                            htmlFor="headerText"
-                            className="block text-sm font-medium text-gray-200"
-                          >
-                            Link 1
-                          </label>
-                          <input
-                            type="text"
-                            name="headerText"
-                            id="headerText"
-                            value={header.headerText}
-                            onChange={handleChange}
-                            className="mt-1 p-2 rounded-sm"
-                          />
+                          <div>
+                            <label
+                              htmlFor="headerText"
+                              className="block text-sm font-medium text-gray-200"
+                            >
+                              Link 1
+                            </label>
+                            <input
+                              type="text"
+                              name="headerText"
+                              id="headerText"
+                              value={header.headerText}
+                              onChange={handleChange}
+                              className="mt-1 p-2 rounded-sm"
+                            />
+                          </div>
+                          <div className="mt-4">
+                            <label
+                              htmlFor="headerText"
+                              className="block text-sm font-medium text-gray-200"
+                            >
+                              Link 1_en
+                            </label>
+                            <input
+                              type="text"
+                              name="headerText_en"
+                              id="headerText_en"
+                              value={header.headerText_en}
+                              onChange={handleChange}
+                              className="mt-1 p-2 rounded-sm"
+                            />
+                          </div>
                         </div>
                       </div>
                       <div className="border p-4 mb-4 border-gray-600 rounded bg-zinc-700">
                         <div className="mb-4">
-                          <label
-                            htmlFor="headerText1"
-                            className="block text-sm font-medium text-gray-200"
-                          >
-                            Link 2
-                          </label>
-                          <input
-                            type="text"
-                            name="headerText1"
-                            id="headerText1"
-                            value={header.headerText1}
-                            onChange={handleChange}
-                            className="mt-1 p-2 rounded-sm"
-                          />
+                          <div>
+                            <label
+                              htmlFor="headerText1"
+                              className="block text-sm font-medium text-gray-200"
+                            >
+                              Link 2
+                            </label>
+                            <input
+                              type="text"
+                              name="headerText1"
+                              id="headerText1"
+                              value={header.headerText1}
+                              onChange={handleChange}
+                              className="mt-1 p-2 rounded-sm"
+                            />
+                          </div>
+                          <div className="mt-4">
+                            <label
+                              htmlFor="headerText1"
+                              className="block text-sm font-medium text-gray-200"
+                            >
+                              Link 2_en
+                            </label>
+                            <input
+                              type="text"
+                              name="headerText1_en"
+                              id="headerText1_en"
+                              value={header.headerText1_en}
+                              onChange={handleChange}
+                              className="mt-1 p-2 rounded-sm"
+                            />
+                          </div>
                         </div>
                       </div>
                       <div className="border p-4 mb-4 border-gray-600 rounded bg-zinc-700">
                         <div className="mb-4">
-                          <label
-                            htmlFor="headerText2"
-                            className="block text-sm font-medium text-gray-200"
-                          >
-                            Link 3
-                          </label>
-                          <input
-                            type="text"
-                            name="headerText2"
-                            id="headerText2"
-                            value={header.headerText2}
-                            onChange={handleChange}
-                            className="mt-1 p-2 rounded-sm"
-                          />
+                          <div>
+                            <label
+                              htmlFor="headerText2"
+                              className="block text-sm font-medium text-gray-200"
+                            >
+                              Link 3
+                            </label>
+                            <input
+                              type="text"
+                              name="headerText2"
+                              id="headerText2"
+                              value={header.headerText2}
+                              onChange={handleChange}
+                              className="mt-1 p-2 rounded-sm"
+                            />
+                          </div>
+                          <div className="mt-4">
+                            <label
+                              htmlFor="headerText2"
+                              className="block text-sm font-medium text-gray-200"
+                            >
+                              Link 3_en
+                            </label>
+                            <input
+                              type="text"
+                              name="headerText2_en"
+                              id="headerText2_en"
+                              value={header.headerText2_en}
+                              onChange={handleChange}
+                              className="mt-1 p-2 rounded-sm"
+                            />
+                          </div>
                         </div>
                       </div>
                       <div className="border p-4 mb-4 border-gray-600 rounded bg-zinc-700">
                         <div className="mb-4">
-                          <label
-                            htmlFor="headerText3"
-                            className="block text-sm font-medium text-gray-200"
-                          >
-                            Link 4
-                          </label>
-                          <input
-                            type="text"
-                            name="headerText3"
-                            id="headerText3"
-                            value={header.headerText3}
-                            onChange={handleChange}
-                            className="mt-1 p-2 rounded-sm"
-                          />
+                          <div>
+                            <label
+                              htmlFor="headerText3"
+                              className="block text-sm font-medium text-gray-200"
+                            >
+                              Link 4
+                            </label>
+                            <input
+                              type="text"
+                              name="headerText3"
+                              id="headerText3"
+                              value={header.headerText3}
+                              onChange={handleChange}
+                              className="mt-1 p-2 rounded-sm"
+                            />
+                          </div>
+                          <div className="mt-4">
+                            <label
+                              htmlFor="headerText3_en"
+                              className="block text-sm font-medium text-gray-200"
+                            >
+                              Link 4_en
+                            </label>
+                            <input
+                              type="text"
+                              name="headerText3_en"
+                              id="headerText3_en"
+                              value={header.headerText3_en}
+                              onChange={handleChange}
+                              className="mt-1 p-2 rounded-sm"
+                            />
+                          </div>
                         </div>
                       </div>
                       <div className="border p-4 mb-4 border-gray-600 rounded bg-zinc-700">
                         <div className="mb-4">
-                          <label
-                            htmlFor="headerText4"
-                            className="block text-sm font-medium text-gray-200"
-                          >
-                            Link 5
-                          </label>
-                          <input
-                            type="text"
-                            name="headerText4"
-                            id="headerText4"
-                            value={header.headerText4}
-                            onChange={handleChange}
-                            className="mt-1 p-2 rounded-sm"
-                          />
+                          <div>
+                            <label
+                              htmlFor="headerText4"
+                              className="block text-sm font-medium text-gray-200"
+                            >
+                              Link 5
+                            </label>
+                            <input
+                              type="text"
+                              name="headerText4"
+                              id="headerText4"
+                              value={header.headerText4}
+                              onChange={handleChange}
+                              className="mt-1 p-2 rounded-sm"
+                            />
+                          </div>
+                          <div className="mt-4">
+                            <label
+                              htmlFor="headerText4_en"
+                              className="block text-sm font-medium text-gray-200"
+                            >
+                              Link 5_en
+                            </label>
+                            <input
+                              type="text"
+                              name="headerText4_en"
+                              id="headerText4_en"
+                              value={header.headerText4_en}
+                              onChange={handleChange}
+                              className="mt-1 p-2 rounded-sm"
+                            />
+                          </div>
                         </div>
                       </div>
                       <div className="border p-4 mb-4 border-gray-600 rounded bg-zinc-700">
                         <div className="mb-4">
-                          <label
-                            htmlFor="headerText5"
-                            className="block text-sm font-medium text-gray-200"
-                          >
-                            Link 6
-                          </label>
-                          <input
-                            type="text"
-                            name="headerText5"
-                            id="headerText5"
-                            value={header.headerText5}
-                            onChange={handleChange}
-                            className="mt-1 p-2 rounded-sm"
-                          />
+                          <div>
+                            <label
+                              htmlFor="headerText5"
+                              className="block text-sm font-medium text-gray-200"
+                            >
+                              Link 6
+                            </label>
+                            <input
+                              type="text"
+                              name="headerText5"
+                              id="headerText5"
+                              value={header.headerText5}
+                              onChange={handleChange}
+                              className="mt-1 p-2 rounded-sm"
+                            />
+                          </div>
+                          <div className="mt-4">
+                            <label
+                              htmlFor="headerText5_en"
+                              className="block text-sm font-medium text-gray-200"
+                            >
+                              Link 6_en
+                            </label>
+                            <input
+                              type="text"
+                              name="headerText5_en"
+                              id="headerText5_en"
+                              value={header.headerText5_en}
+                              onChange={handleChange}
+                              className="mt-1 p-2 rounded-sm"
+                            />
+                          </div>
                         </div>
                       </div>
                       <div className="border p-4 mb-4 border-gray-600 rounded bg-zinc-700">
                         <div className="mb-4">
-                          <label
-                            htmlFor="headerDrowdown"
-                            className="block text-sm font-medium text-gray-200"
-                          >
-                            headerDropdown
-                          </label>
-                          <input
-                            type="text"
-                            name="headerDropdown"
-                            id="headerDropdown"
-                            value={header.headerDropdown}
-                            onChange={handleChange}
-                            className="mt-1 p-2 rounded-sm"
-                          />
+                          <div>
+                            <label
+                              htmlFor="headerDrowdown"
+                              className="block text-sm font-medium text-gray-200"
+                            >
+                              headerDropdown
+                            </label>
+                            <input
+                              type="text"
+                              name="headerDropdown"
+                              id="headerDropdown"
+                              value={header.headerDropdown}
+                              onChange={handleChange}
+                              className="mt-1 p-2 rounded-sm"
+                            />
+                          </div>
+                          <div className="mt-4">
+                            <label
+                              htmlFor="headerDrowdown"
+                              className="block text-sm font-medium text-gray-200"
+                            >
+                              headerDropdown_en
+                            </label>
+                            <input
+                              type="text"
+                              name="headerDropdown_en"
+                              id="headerDropdown_en"
+                              value={header.headerDropdown_en}
+                              onChange={handleChange}
+                              className="mt-1 p-2 rounded-sm"
+                            />
+                          </div>
                         </div>
                       </div>
                       <div className="border p-4 mb-4 border-gray-600 rounded bg-zinc-700">
                         <div className="mb-4">
-                          <label
-                            htmlFor="headerDrowdown"
-                            className="block text-sm font-medium text-gray-200"
-                          >
-                            headerDropdown1
-                          </label>
-                          <input
-                            type="text"
-                            name="headerDropdown1"
-                            id="headerDropdown1"
-                            value={header.headerDropdown1}
-                            onChange={handleChange}
-                            className="mt-1 p-2 rounded-sm"
-                          />
+                          <div>
+                            <label
+                              htmlFor="headerDrowdown"
+                              className="block text-sm font-medium text-gray-200"
+                            >
+                              headerDropdown1
+                            </label>
+                            <input
+                              type="text"
+                              name="headerDropdown1"
+                              id="headerDropdown1"
+                              value={header.headerDropdown1}
+                              onChange={handleChange}
+                              className="mt-1 p-2 rounded-sm"
+                            />
+                          </div>
+                          <div className="mt-4">
+                            <label
+                              htmlFor="headerDrowdown"
+                              className="block text-sm font-medium text-gray-200"
+                            >
+                              headerDropdown1_en
+                            </label>
+                            <input
+                              type="text"
+                              name="headerDropdown1_en"
+                              id="headerDropdown1_en"
+                              value={header.headerDropdown1_en}
+                              onChange={handleChange}
+                              className="mt-1 p-2 rounded-sm"
+                            />
+                          </div>
                         </div>
                       </div>
                       <div className="border p-4 mb-4 border-gray-600 rounded bg-zinc-700">
                         <div className="mb-4">
-                          <label
-                            htmlFor="headerDrowdown"
-                            className="block text-sm font-medium text-gray-200"
-                          >
-                            headerDropdown2
-                          </label>
-                          <input
-                            type="text"
-                            name="headerDropdown2"
-                            id="headerDropdown2"
-                            value={header.headerDropdown2}
-                            onChange={handleChange}
-                            className="mt-1 p-2 rounded-sm"
-                          />
+                          <div>
+                            <label
+                              htmlFor="headerDrowdown"
+                              className="block text-sm font-medium text-gray-200"
+                            >
+                              headerDropdown2
+                            </label>
+                            <input
+                              type="text"
+                              name="headerDropdown2"
+                              id="headerDropdown2"
+                              value={header.headerDropdown2}
+                              onChange={handleChange}
+                              className="mt-1 p-2 rounded-sm"
+                            />
+                          </div>
+                          <div className="mt-4">
+                            <label
+                              htmlFor="headerDrowdown"
+                              className="block text-sm font-medium text-gray-200"
+                            >
+                              headerDropdown2_en
+                            </label>
+                            <input
+                              type="text"
+                              name="headerDropdown2_en"
+                              id="headerDropdown2_en"
+                              value={header.headerDropdown2_en}
+                              onChange={handleChange}
+                              className="mt-1 p-2 rounded-sm"
+                            />
+                          </div>
                         </div>
                       </div>
                       <div className="border p-4 mb-4 border-gray-600 rounded bg-zinc-700">
                         <div className="mb-4">
-                          <label
-                            htmlFor="headerDrowdown3"
-                            className="block text-sm font-medium text-gray-200"
-                          >
-                            headerDropdown3
-                          </label>
-                          <input
-                            type="text"
-                            name="headerDropdown3"
-                            id="headerDropdown3"
-                            value={header.headerDropdown3}
-                            onChange={handleChange}
-                            className="mt-1 p-2 rounded-sm"
-                          />
+                          <div>
+                            <label
+                              htmlFor="headerDrowdown3"
+                              className="block text-sm font-medium text-gray-200"
+                            >
+                              headerDropdown3
+                            </label>
+                            <input
+                              type="text"
+                              name="headerDropdown3"
+                              id="headerDropdown3"
+                              value={header.headerDropdown3}
+                              onChange={handleChange}
+                              className="mt-1 p-2 rounded-sm"
+                            />
+                          </div>
+                          <div className="mt-4">
+                            <label
+                              htmlFor="headerDrowdown3"
+                              className="block text-sm font-medium text-gray-200"
+                            >
+                              headerDropdown3_en
+                            </label>
+                            <input
+                              type="text"
+                              name="headerDropdown3_en"
+                              id="headerDropdown3_en"
+                              value={header.headerDropdown3_en}
+                              onChange={handleChange}
+                              className="mt-1 p-2 rounded-sm"
+                            />
+                          </div>
                         </div>
                       </div>
+                    </div>
+                    <div className="flex justify-center mt-4">
+                      <button
+                        type="button"
+                        onClick={() => navigate("/about")}
+                        className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+                      >
+                        İptal
+                      </button>
+                      <button
+                        type="submit"
+                        className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+                      >
+                        Kaydet
+                      </button>
                     </div>
                   </form>
                 </div>

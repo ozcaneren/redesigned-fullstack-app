@@ -64,26 +64,94 @@ export default function Header() {
                         </div>
                       </div>
                       <div className="mx-6 sm:mx-48 gap-x-5 gap-y-5">
-                        <div className="flex justify-center items-center text-center space-x-4">
-                          <div className="p-4 border shadow-lg rounded-lg space-y-4">
+                        <div className="grid grid-cols-3 gap-6">
+                          <div className="p-4 bg-zinc-700 border shadow-lg rounded-lg space-y-4">
                             <label htmlFor="">Baslik</label>
                             <h1 className="text-lg">{header.headerTitle}</h1>
                           </div>
-                          <div className="p-4 border shadow-lg rounded-lg space-y-4">
+                          <div className="p-4 bg-zinc-700 border shadow-lg rounded-lg space-y-4">
                             <label htmlFor="">Link 1</label>
                             <h1 className="text-lg">{header.headerText}</h1>
                           </div>
-                          <div className="p-4 border shadow-lg rounded-lg space-y-4">
+                          <div className="p-4 bg-zinc-700 border shadow-lg rounded-lg space-y-4">
                             <label htmlFor="">Link 2</label>
                             <h1 className="text-lg">{header.headerText1}</h1>
                           </div>
-                          <div className="p-4 border shadow-lg rounded-lg space-y-4">
+                          <div className="p-4 bg-zinc-700 border shadow-lg rounded-lg space-y-4">
                             <label htmlFor="">Link 3</label>
                             <h1 className="text-lg">{header.headerText2}</h1>
                           </div>
-                          <div className="p-4 border shadow-lg rounded-lg space-y-4">
+                          <div className="p-4 bg-zinc-700 border shadow-lg rounded-lg space-y-4">
                             <label htmlFor="">Link 4</label>
                             <h1 className="text-lg">{header.headerText3}</h1>
+                          </div>
+                          <div className="p-4 bg-zinc-700 border shadow-lg rounded-lg space-y-4">
+                            <label htmlFor="">Link 5</label>
+                            {header.headerText4 ? (
+                              <h1 className="text-lg">{header.headerText4}</h1>
+                            ) : (
+                              <p className="text-gray-400">
+                                İçini doldurmadınız
+                              </p>
+                            )}
+                          </div>
+                          <div className="p-4 bg-zinc-700 border shadow-lg rounded-lg space-y-4">
+                            <label htmlFor="">Link 6</label>
+                            {header.headerText5 ? (
+                              <h1 className="text-lg">{header.headerText5}</h1>
+                            ) : (
+                              <p className="text-gray-400">
+                                İçini doldurmadınız
+                              </p>
+                            )}
+                          </div>
+                          <div className="p-4 bg-zinc-700 border shadow-lg rounded-lg space-y-4">
+                            <label htmlFor="">Dropdown</label>
+                            {header.headerDropdown ? (
+                              <h1 className="text-lg">
+                                {header.headerDropdown}
+                              </h1>
+                            ) : (
+                              <p className="text-gray-400">
+                                İçini doldurmadınız
+                              </p>
+                            )}
+                          </div>
+                          <div className="p-4 bg-zinc-700 border shadow-lg rounded-lg space-y-4">
+                            <label htmlFor="">Dropdown 1</label>
+                            {header.headerDropdown1 ? (
+                              <h1 className="text-lg">
+                                {header.headerDropdown1}
+                              </h1>
+                            ) : (
+                              <p className="text-gray-400">
+                                İçini doldurmadınız
+                              </p>
+                            )}
+                          </div>
+                          <div className="p-4 bg-zinc-700 border shadow-lg rounded-lg space-y-4">
+                            <label htmlFor="">Dropdown 2</label>
+                            {header.headerDropdown2 ? (
+                              <h1 className="text-lg">
+                                {header.headerDropdown2}
+                              </h1>
+                            ) : (
+                              <p className="text-gray-400">
+                                İçini doldurmadınız
+                              </p>
+                            )}
+                          </div>
+                          <div className="p-4 bg-zinc-700 border shadow-lg rounded-lg space-y-4">
+                            <label htmlFor="">Dropdown 3</label>
+                            {header.headerDropdown3 ? (
+                              <h1 className="text-lg">
+                                {header.headerDropdown3}
+                              </h1>
+                            ) : (
+                              <p className="text-gray-400">
+                                İçini doldurmadınız
+                              </p>
+                            )}
                           </div>
                         </div>
                       </div>
