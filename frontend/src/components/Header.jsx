@@ -67,9 +67,7 @@ export default function Header() {
                 </span>
               </span>
             </Link>
-            <div className="flex items-center">
-              <button onClick={toggleLanguage}>Dil Değiştir</button>
-            </div>
+            
             <div className="hidden justify-between items-center w-full lg:flex lg:w-auto">
               <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
                 {header.headerText || header.headerText_en ? (
@@ -708,6 +706,12 @@ export default function Header() {
                   </div>
                 ) : null}
               </ul>
+            </div>
+
+            <div className="">
+              <button onClick={toggleLanguage}>
+                {language === "tr" ? "EN" : "TR"}
+              </button>
             </div>
           </div>
         </nav>

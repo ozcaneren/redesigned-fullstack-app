@@ -197,6 +197,24 @@ export default function TeamsEdit() {
                             />
                           </div>
                         </div>
+                        <div className="">
+                          <div>
+                            <label
+                              className="block text-sm font-medium text-gray-200"
+                              htmlFor="cardText_en"
+                            >
+                              Ekip Üyesi Rolu_en
+                            </label>
+                            <input
+                              type="text"
+                              name="cardText_en"
+                              id="cardText_en"
+                              value={team.cardText_en}
+                              onChange={handleChange}
+                              className="mt-1 p-2 rounded-sm"
+                            />
+                          </div>
+                        </div>
                       </div>
                       <div className="border p-4 mb-4 border-gray-600 rounded bg-zinc-700">
                         <div className="mb-4">
@@ -248,6 +266,24 @@ export default function TeamsEdit() {
                               name="cardText1"
                               id="cardText1"
                               value={team.cardText1}
+                              onChange={handleChange}
+                              className="mt-1 p-2 rounded-sm"
+                            />
+                          </div>
+                        </div>
+                        <div className="">
+                          <div>
+                            <label
+                              className="block text-sm font-medium text-gray-200"
+                              htmlFor="cardText1_en"
+                            >
+                              Ekip Üyesi Rolu 1_en
+                            </label>
+                            <input
+                              type="text"
+                              name="cardText1_en"
+                              id="cardText1_en"
+                              value={team.cardText1_en}
                               onChange={handleChange}
                               className="mt-1 p-2 rounded-sm"
                             />
@@ -308,6 +344,25 @@ export default function TeamsEdit() {
                               className="mt-1 p-2 rounded-sm"
                             />
                           </div>
+                          
+                        </div>
+                        <div className="">
+                          <div>
+                            <label
+                              className="block text-sm font-medium text-gray-200"
+                              htmlFor="cardText2_en"
+                            >
+                              Ekip Üyesi Rolu 2_en
+                            </label>
+                            <input
+                              type="text"
+                              name="cardText2_en"
+                              id="cardText2_en"
+                              value={team.cardText2_en}
+                              onChange={handleChange}
+                              className="mt-1 p-2 rounded-sm"
+                            />
+                          </div>
                         </div>
                       </div>
                       <div className="border p-4 mb-4 border-gray-600 rounded bg-zinc-700">
@@ -360,6 +415,25 @@ export default function TeamsEdit() {
                               name="cardText3"
                               id="cardText3"
                               value={team.cardText3}
+                              onChange={handleChange}
+                              className="mt-1 p-2 rounded-sm"
+                            />
+                          </div>
+                          
+                        </div>
+                        <div className="">
+                          <div>
+                            <label
+                              className="block text-sm font-medium text-gray-200"
+                              htmlFor="cardText3_en"
+                            >
+                              Ekip Üyesi Rolu 3_en
+                            </label>
+                            <input
+                              type="text"
+                              name="cardText3_en"
+                              id="cardText3_en"
+                              value={team.cardText3_en}
                               onChange={handleChange}
                               className="mt-1 p-2 rounded-sm"
                             />
@@ -421,6 +495,24 @@ export default function TeamsEdit() {
                             />
                           </div>
                         </div>
+                        <div className="">
+                          <div>
+                            <label
+                              className="block text-sm font-medium text-gray-200"
+                              htmlFor="cardText4_en"
+                            >
+                              Ekip Üyesi Rolu 4_en
+                            </label>
+                            <input
+                              type="text"
+                              name="cardText4_en"
+                              id="cardText4_en"
+                              value={team.cardText4_en}
+                              onChange={handleChange}
+                              className="mt-1 p-2 rounded-sm"
+                            />
+                          </div>
+                        </div>
                       </div>
                       <div className="border p-4 mb-4 border-gray-600 rounded bg-zinc-700">
                         <div className="mb-4">
@@ -472,6 +564,24 @@ export default function TeamsEdit() {
                               name="cardText5"
                               id="cardText5"
                               value={team.cardText5}
+                              onChange={handleChange}
+                              className="mt-1 p-2 rounded-sm"
+                            />
+                          </div>
+                        </div>
+                        <div className="">
+                          <div>
+                            <label
+                              className="block text-sm font-medium text-gray-200"
+                              htmlFor="cardText5_en"
+                            >
+                              Ekip Üyesi Rolu 5_en
+                            </label>
+                            <input
+                              type="text"
+                              name="cardText5_en"
+                              id="cardText5_en"
+                              value={team.cardText5_en}
                               onChange={handleChange}
                               className="mt-1 p-2 rounded-sm"
                             />
