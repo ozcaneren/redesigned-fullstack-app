@@ -10,6 +10,8 @@ export default function About() {
 
   const navigate = useNavigate();
 
+  const [toggle, setToggle] = useState(false);
+
   const breadcrumbPaths = [
     { url: "/", label: "Ana Sayfa" },
     { url: "/about", label: "Hakkimizda" },
@@ -32,6 +34,10 @@ export default function About() {
     navigate(`/about/${id}/edit`);
   };
 
+  const handleToggle = () => {
+    setToggle(!toggle);
+  };
+
   return (
     <div>
       <div className="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-zinc-900 text-white">
@@ -51,78 +57,195 @@ export default function About() {
                 <div>
                   {abouts.map((about, index) => (
                     <div key={index}>
-                      <div className="flex justify-center items-center">
-                        <div className="w-full flex justify-center">
-                          <div className="w-full px-4 relative space-x-2">
-                            <button
-                              onClick={() => handleClick(about._id)}
-                              className="bg-zinc-700 p-2 text-white text-sm border border-gray-600 rounded-[6px]"
-                            >
-                              Kartlari Duzenle
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                      <h1 className="text-center text-2xl mb-4">Turkce Hakkimizda Verileri</h1>
-                      <div className="grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 mx-6 sm:mx-48 gap-x-5 gap-y-5">
-                        <div className="flex justify-center items-center text-center">
-                          <div className="grid grid-rows-1 max-h-[320px] max-w-[400px] min-w-[400px] min-h-[300px]  p-4 border shadow-lg rounded-lg space-y-4">
-                            <h1 className="text-lg">{about.cardTitle}</h1>
-                            <span className="font-bold">{about.cardText}</span>
-                            <div className="">
-                              <button className="">{about.cardButton}</button>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="flex justify-center items-center text-center">
-                          <div className="grid grid-rows-1 max-h-[320px] max-w-[400px] min-w-[400px] min-h-[300px] p-4 border shadow-lg rounded-lg space-y-4">
-                            <h1 className="text-lg">{about.cardTitle1}</h1>
-                            <span className="font-bold">{about.cardText1}</span>
-                            <div className="">
-                              <button className="">{about.cardButton1}</button>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="flex justify-center items-center text-center">
-                          <div className="grid grid-rows-1 max-h-[320px] max-w-[400px] min-w-[400px] min-h-[300px] p-4 border shadow-lg rounded-lg space-y-4">
-                            <h1 className="text-lg">{about.cardTitle2}</h1>
-                            <span className="font-bold">{about.cardText2}</span>
-                            <div className="">
-                              <button className="">{about.cardButton2}</button>
+                      <div className="flex flex-row">
+                        <div className="flex justify-center items-center">
+                          <div className="w-full flex justify-center">
+                            <div className="w-full px-4 relative space-x-2">
+                              <button
+                                onClick={() => handleClick(about._id)}
+                                className="bg-zinc-700 p-2 text-white text-sm border border-gray-600 rounded-[6px]"
+                              >
+                                Kartlari Duzenle
+                              </button>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <h1 className="text-center text-2xl my-12 mb-4">Ingilizce Hakkimizda Verileri</h1>
-                      <div className="grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 mx-6 sm:mx-48 gap-x-5 gap-y-5">
-                        <div className="flex justify-center items-center text-center">
-                          <div className="grid grid-rows-1 max-h-[320px] max-w-[400px] min-w-[400px] min-h-[300px]  p-4 border shadow-lg rounded-lg space-y-4">
-                            <h1 className="text-lg">{about.cardTitle_en}</h1>
-                            <span className="font-bold">{about.cardText_en.substring(0,300)}</span>
-                            <div className="">
-                              <button className="">{about.cardButton_en}</button>
+                      {!toggle ? (
+                        <div>
+                          <div className="flex justify-center items-center">
+                            <div className="w-full flex justify-center">
+                              <div className="w-full px-4 mt-4 relative space-x-2">
+                                <button
+                                  onClick={() => handleToggle()}
+                                  className="bg-zinc-700 p-2 text-white text-sm border border-gray-600 rounded-[6px]"
+                                >
+                                  {toggle
+                                    ? "Ingilizce Verileri Gizle"
+                                    : "Ingilizce Verileri Goster"}
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                          <h1 className="text-center text-2xl mb-4">
+                            Türkçe Hakkımızda Verileri
+                          </h1>
+                          <div className="grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 mx-6 sm:mx-48 gap-x-5 gap-y-5">
+                            <div className="flex justify-center items-center text-center bg-zinc-700">
+                              <div className="grid grid-rows-1 max-h-[320px] max-w-[400px] min-w-[400px] min-h-[300px]  p-4 border shadow-lg rounded-lg space-y-4">
+                                <h1 className="text-lg">{about.cardTitle}</h1>
+                                <span className="font-bold">
+                                  {about.cardText}
+                                </span>
+                                <div className="">
+                                  <button className="">
+                                    {about.cardButton}
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="flex justify-center items-center text-center bg-zinc-700">
+                              <div className="grid grid-rows-1 max-h-[320px] max-w-[400px] min-w-[400px] min-h-[300px] p-4 border shadow-lg rounded-lg space-y-4">
+                                <h1 className="text-lg">{about.cardTitle1}</h1>
+                                <span className="font-bold">
+                                  {about.cardText1}
+                                </span>
+                                <div className="">
+                                  <button className="">
+                                    {about.cardButton1}
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="flex justify-center items-center text-center bg-zinc-700">
+                              <div className="grid grid-rows-1 max-h-[320px] max-w-[400px] min-w-[400px] min-h-[300px] p-4 border shadow-lg rounded-lg space-y-4">
+                                <h1 className="text-lg">{about.cardTitle2}</h1>
+                                <span className="font-bold">
+                                  {about.cardText2}
+                                </span>
+                                <div className="">
+                                  <button className="">
+                                    {about.cardButton2}
+                                  </button>
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>
-                        <div className="flex justify-center items-center text-center">
-                          <div className="grid grid-rows-1 max-h-[320px] max-w-[400px] min-w-[400px] min-h-[300px] p-4 border shadow-lg rounded-lg space-y-4">
-                            <h1 className="text-lg">{about.cardTitle1_en}</h1>
-                            <span className="font-bold">{about.cardText1_en.substring(0,300)}</span>
-                            <div className="">
-                              <button className="">{about.cardButton1_en}</button>
+                      ) : (
+                        <div>
+                          <div className="flex justify-center items-center">
+                            <div className="w-full flex justify-center">
+                              <div className="w-full px-4 mt-4 relative space-x-2">
+                                <button
+                                  onClick={() => handleToggle()}
+                                  className="bg-zinc-700 p-2 text-white text-sm border border-gray-600 rounded-[6px]"
+                                >
+                                  {toggle
+                                    ? "Ingilizce Verileri Gizle"
+                                    : "Ingilizce Verileri Goster"}
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                          <h1 className="text-center text-2xl mb-4">
+                            Türkçe Hakkımızda Verileri
+                          </h1>
+                          <div className="grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 mx-6 sm:mx-48 gap-x-5 gap-y-5">
+                            <div className="flex justify-center items-center text-center bg-zinc-700">
+                              <div className="grid grid-rows-1 max-h-[320px] max-w-[400px] min-w-[400px] min-h-[300px]  p-4 border shadow-lg rounded-lg space-y-4">
+                                <h1 className="text-lg">{about.cardTitle}</h1>
+                                <span className="font-bold">
+                                  {about.cardText}
+                                </span>
+                                <div className="">
+                                  <button className="">
+                                    {about.cardButton}
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="flex justify-center items-center text-center bg-zinc-700">
+                              <div className="grid grid-rows-1 max-h-[320px] max-w-[400px] min-w-[400px] min-h-[300px] p-4 border shadow-lg rounded-lg space-y-4">
+                                <h1 className="text-lg">{about.cardTitle1}</h1>
+                                <span className="font-bold">
+                                  {about.cardText1}
+                                </span>
+                                <div className="">
+                                  <button className="">
+                                    {about.cardButton1}
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="flex justify-center items-center text-center bg-zinc-700">
+                              <div className="grid grid-rows-1 max-h-[320px] max-w-[400px] min-w-[400px] min-h-[300px] p-4 border shadow-lg rounded-lg space-y-4">
+                                <h1 className="text-lg">{about.cardTitle2}</h1>
+                                <span className="font-bold">
+                                  {about.cardText2}
+                                </span>
+                                <div className="">
+                                  <button className="">
+                                    {about.cardButton2}
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div>
+                            <h1 className="text-center text-2xl my-12 mb-4">
+                              Ingilizce Hakkımızda Verileri
+                            </h1>
+                            <div className="grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 mx-6 sm:mx-48 gap-x-5 gap-y-5">
+                              <div className="flex justify-center items-center text-center bg-zinc-700">
+                                <div className="grid grid-rows-1 max-h-[320px] max-w-[400px] min-w-[400px] min-h-[300px]  p-4 border shadow-lg rounded-lg space-y-4">
+                                  <h1 className="text-lg">
+                                    {about.cardTitle_en}
+                                  </h1>
+                                  <span className="font-bold">
+                                    {about.cardText_en.substring(0, 300)}
+                                  </span>
+                                  <div className="">
+                                    <button className="">
+                                      {about.cardButton_en}
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="flex justify-center items-center text-center bg-zinc-700">
+                                <div className="grid grid-rows-1 max-h-[320px] max-w-[400px] min-w-[400px] min-h-[300px] p-4 border shadow-lg rounded-lg space-y-4">
+                                  <h1 className="text-lg">
+                                    {about.cardTitle1_en}
+                                  </h1>
+                                  <span className="font-bold">
+                                    {about.cardText1_en.substring(0, 300)}
+                                  </span>
+                                  <div className="">
+                                    <button className="">
+                                      {about.cardButton1_en}
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="flex justify-center items-center text-center bg-zinc-700">
+                                <div className="grid grid-rows-1 max-h-[320px] max-w-[400px] min-w-[400px] min-h-[300px] p-4 border shadow-lg rounded-lg space-y-4">
+                                  <h1 className="text-lg">
+                                    {about.cardTitle2_en}
+                                  </h1>
+                                  <span className="font-bold">
+                                    {about.cardText2_en.substring(0, 300)}
+                                  </span>
+                                  <div className="">
+                                    <button className="">
+                                      {about.cardButton2_en}
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>
-                        <div className="flex justify-center items-center text-center">
-                          <div className="grid grid-rows-1 max-h-[320px] max-w-[400px] min-w-[400px] min-h-[300px] p-4 border shadow-lg rounded-lg space-y-4">
-                            <h1 className="text-lg">{about.cardTitle2_en}</h1>
-                            <span className="font-bold">{about.cardText2_en.substring(0,300)}</span>
-                            <div className="">
-                              <button className="">{about.cardButton2_en}</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                      )}
                     </div>
                   ))}
                 </div>
