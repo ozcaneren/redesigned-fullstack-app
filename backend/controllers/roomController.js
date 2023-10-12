@@ -50,6 +50,12 @@ updateRoom = async (req, res) => {
     room.roomShortDescription = req.body.roomShortDescription;
     room.roomFeatures = req.body.roomFeatures;
     room.roomVisibility = req.body.roomVisibility;
+    room.roomType_en = req.body.roomType_en;
+    room.roomTitle_en = req.body.roomTitle_en;
+    room.roomDescription_en = req.body.roomDescription_en;
+    room.roomShortDescription_en = req.body.roomShortDescription_en;
+    room.roomFeatures_en = req.body.roomFeatures_en;
+    room.roomVisibility_en = req.body.roomVisibility_en;
 
     const updatedRoom = await room.save();
 

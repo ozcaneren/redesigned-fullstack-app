@@ -16,12 +16,13 @@ import {
   RiTShirtAirFill,
 } from "react-icons/ri";
 import { BsTelephoneOutbound } from "react-icons/bs";
-
+import { useLanguage } from "../LanguageContext";
 import { useNavigate } from "react-router-dom";
 
 export default function Rooms() {
   const [rooms, setRooms] = useState([]);
   const navigate = useNavigate();
+  const { language } = useLanguage();
 
   const getRooms = async () => {
     try {
@@ -129,7 +130,9 @@ export default function Rooms() {
                       <div className="px-4 py-4">
                         <div className="mb-2">
                           <h2 className="text-xl font-bold text-gray-900 truncate">
-                            {room.roomTitle}
+                            {language === "tr"
+                              ? room.roomTitle
+                              : room.roomTitle_en}
                           </h2>
                         </div>
                         <div className="flex justify-between">
@@ -156,7 +159,7 @@ export default function Rooms() {
                             onClick={() => handleCardClick(room._id)}
                             className="bg-blue-500 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded"
                           >
-                            Incele
+                            {language === "tr" ? "Daha Fazla" : "More"}
                           </button>
                         </div>
                       </div>

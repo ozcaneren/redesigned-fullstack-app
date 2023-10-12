@@ -9,9 +9,7 @@ import Breadcrumb from "../components/Breadcrumbs";
 
 export default function Room() {
   const [rooms, setRooms] = useState([]);
-  const [englishRooms, setEnglishRooms] = useState([]);
   const navigate = useNavigate();
-  const [roomLanguage, setRoomLanguage] = useState(false);
 
   const breadcrumbPaths = [
     { url: "/", label: "Ana Sayfa" },
@@ -32,21 +30,6 @@ export default function Room() {
     getRooms();
   }, []);
 
-  const getEnglishRooms = async () => {
-    try {
-      const response = await axios.get(
-        "http://localhost:4000/api/rooms/english"
-      );
-      setEnglishRooms(response.data.data);
-    } catch (error) {
-      console.error("Error fetching rooms:", error);
-    }
-  };
-
-  useEffect(() => {
-    getEnglishRooms();
-  }, []);
-
   const handleDelete = async (roomId) => {
     try {
       await axios.delete(`http://localhost:4000/api/room/turkish/${roomId}`);
@@ -56,29 +39,12 @@ export default function Room() {
     }
   };
 
-  const handleDeleteEnglish = async (roomId) => {
-    try {
-      await axios.delete(`http://localhost:4000/api/room/english/${roomId}`);
-      getEnglishRooms();
-    } catch (error) {
-      console.error("Error deleting room:", error);
-    }
-  };
-
   const handleCardClick = (id) => {
     navigate(`/room/turkish/${id}/edit`);
   };
 
-  const handleCardClickEnglish = (id) => {
-    navigate(`/room/english/${id}/edit`);
-  };
-
   const handleAddRoom = () => {
     navigate("/room/add");
-  };
-
-  const handleLanguage = () => {
-    setRoomLanguage(!roomLanguage);
   };
 
   return (
@@ -94,146 +60,130 @@ export default function Room() {
               </div>
             </div>
           </div>
-          {!roomLanguage ? (
-            <div className="p-4">
-              <div className="bg-zinc-800 rounded pt-4 pb-4">
-                <div className="flex justify-center items-center">
-                  <div className="w-full flex justify-center">
-                    <div className="w-full px-4 relative space-x-2">
-                      <button
-                        onClick={handleAddRoom}
-                        className="bg-zinc-700 p-2 text-white text-sm border border-gray-600 rounded-[6px]"
-                      >
-                        Yeni Oda Ekle
-                      </button>
-                      <button
-                        onClick={handleLanguage}
-                        className="bg-zinc-700 p-2 text-white text-sm border border-gray-600 rounded-[6px]"
-                      >
-                        {roomLanguage
-                          ? "Türkçe Odalari Getir"
-                          : "Ingilizce Odalari Getir"}
-                      </button>
-                    </div>
+          <div className="p-4">
+            <div className="bg-zinc-800 rounded pt-4 pb-4">
+              <div className="flex justify-center items-center">
+                <div className="w-full flex justify-center">
+                  <div className="w-full px-4 relative space-x-2">
+                    <button
+                      onClick={handleAddRoom}
+                      className="bg-zinc-700 p-2 text-white text-sm border border-gray-600 rounded-[6px]"
+                    >
+                      Yeni Oda Ekle
+                    </button>
                   </div>
                 </div>
+              </div>
+              <div className="">
                 <div className="">
-                  <div className="">
-                    <div className="max-w-full mx-auto px-4 pt-4">
-                      <div className="overflow-x-auto shadow-md sm:rounded-lg">
-                        <div className="inline-block min-w-full align-middle">
-                          <div className="overflow-hidden">
-                            <table className="min-w-full table-fixed">
-                              <thead className="bg-zinc-600">
-                                <tr>
-                                  <th
-                                    scope="col"
-                                    className="py-3 pl-6 text-xs font-medium tracking-wider text-left text-gray-100 uppercase w-[400px]"
-                                  >
-                                    Oda Turu
-                                  </th>
-                                  <th
-                                    scope="col"
-                                    className="py-3 text-xs font-medium tracking-wider text-left text-gray-100 uppercase w-[400px]"
-                                  >
-                                    Oda Adı
-                                  </th>
-                                  <th
-                                    scope="col"
-                                    className="py-3 text-xs font-medium tracking-wider text-left text-gray-100 uppercase w-[400px]"
-                                  >
-                                    Durum
-                                  </th>
-                                  <th
-                                    scope="col"
-                                    className="py-3 text-xs font-medium tracking-wider text-left text-gray-100 uppercase w-[400px]"
-                                  >
-                                    Sayfa
-                                  </th>
-                                  <th
-                                    scope="col"
-                                    className="py-3 flex justify-end pr-6 text-xs font-medium tracking-wider text-gray-100 uppercase"
-                                  >
-                                    Islemler
-                                  </th>
+                  <div className="max-w-full mx-auto px-4 pt-4">
+                    <div className="overflow-x-auto shadow-md sm:rounded-lg">
+                      <div className="inline-block min-w-full align-middle">
+                        <div className="overflow-hidden">
+                          <table className="min-w-full table-fixed">
+                            <thead className="bg-zinc-600">
+                              <tr>
+                                <th
+                                  scope="col"
+                                  className="py-3 pl-6 text-xs font-medium tracking-wider text-left text-gray-100 uppercase w-[400px]"
+                                >
+                                  Oda Turu
+                                </th>
+                                <th
+                                  scope="col"
+                                  className="py-3 text-xs font-medium tracking-wider text-left text-gray-100 uppercase w-[400px]"
+                                >
+                                  Oda Adı
+                                </th>
+                                <th
+                                  scope="col"
+                                  className="py-3 text-xs font-medium tracking-wider text-left text-gray-100 uppercase w-[400px]"
+                                >
+                                  Durum
+                                </th>
+                                <th
+                                  scope="col"
+                                  className="py-3 text-xs font-medium tracking-wider text-left text-gray-100 uppercase w-[400px]"
+                                >
+                                  Sayfa
+                                </th>
+                                <th
+                                  scope="col"
+                                  className="py-3 flex justify-end pr-6 text-xs font-medium tracking-wider text-gray-100 uppercase"
+                                >
+                                  Islemler
+                                </th>
+                              </tr>
+                            </thead>
+                            {rooms.map((room, index) => (
+                              <tbody key={index} className="bg-zinc-700 ">
+                                <tr className="hover:bg-zinc-800">
+                                  <td className="max-w-[320px] w-[320px]">
+                                    <div className="py-4 max-w-xs px-6 text-sm font-medium text-gray-200 truncate">
+                                      <p className="truncate">
+                                        {room.roomType}
+                                      </p>
+                                    </div>
+                                  </td>
+                                  <td className="max-w-[320px] w-[320px]">
+                                    <div className="py-4 text-sm pr-6 max-w-xs font-medium text-gray-200 truncate">
+                                      <p className="truncate">
+                                        {room.roomTitle}
+                                      </p>
+                                    </div>
+                                  </td>
+                                  <td className="py-4 text-sm max-w-xs font-medium text-gray-200 whitespace-nowrap">
+                                    <div className="flex items-center">
+                                      <div
+                                        className={`bg-${
+                                          room.roomVisibility
+                                            ? "green-500"
+                                            : "red-500"
+                                        } text-${
+                                          room.roomVisibility
+                                            ? "green-500"
+                                            : "red-500"
+                                        }  h-2.5 w-2.5 rounded-full mr-2`}
+                                      ></div>{" "}
+                                      {room.roomVisibility ? "Aktif" : "Gizli"}
+                                    </div>
+                                  </td>
+                                  <td className="py-4 text-sm max-w-xs font-medium text-gray-200 whitespace-nowrap">
+                                    <div className="flex items-center">
+                                      <div
+                                        className={`bg-${
+                                          room.roomVisibility
+                                            ? "green-500"
+                                            : "red-500"
+                                        } text-${
+                                          room.roomVisibility
+                                            ? "green-500"
+                                            : "red-500"
+                                        }  h-2.5 w-2.5 rounded-full mr-2`}
+                                      ></div>{" "}
+                                      {room.roomVisibility ? "Aktif" : "Gizli"}
+                                    </div>
+                                  </td>
+                                  <td className="py-4 flex justify-end pr-10 text-sm font-medium text-gray-200 whitespace-nowrap space-x-2">
+                                    <button
+                                      onClick={() => handleCardClick(room._id)}
+                                    >
+                                      <div className="font-medium mt-1 text-blue-600 dark:text-blue-500 hover:underline">
+                                        <AiOutlineEdit />
+                                      </div>
+                                    </button>
+                                    <button
+                                      onClick={() => handleDelete(room._id)}
+                                    >
+                                      <div className="font-medium mt-1 text-red-600 dark:text-red-500 hover:underline">
+                                        <HiOutlineTrash />
+                                      </div>
+                                    </button>
+                                  </td>
                                 </tr>
-                              </thead>
-                              {rooms.map((room, index) => (
-                                <tbody key={index} className="bg-zinc-700 ">
-                                  <tr className="hover:bg-zinc-800">
-                                    <td className="max-w-[320px] w-[320px]">
-                                      <div className="py-4 max-w-xs px-6 text-sm font-medium text-gray-200 truncate">
-                                        <p className="truncate">
-                                          {room.roomType}
-                                        </p>
-                                      </div>
-                                    </td>
-                                    <td className="max-w-[320px] w-[320px]">
-                                      <div className="py-4 text-sm pr-6 max-w-xs font-medium text-gray-200 truncate">
-                                        <p className="truncate">
-                                          {room.roomTitle}
-                                        </p>
-                                      </div>
-                                    </td>
-                                    <td className="py-4 text-sm max-w-xs font-medium text-gray-200 whitespace-nowrap">
-                                      <div className="flex items-center">
-                                        <div
-                                          className={`bg-${
-                                            room.roomVisibility
-                                              ? "green-500"
-                                              : "red-500"
-                                          } text-${
-                                            room.roomVisibility
-                                              ? "green-500"
-                                              : "red-500"
-                                          }  h-2.5 w-2.5 rounded-full mr-2`}
-                                        ></div>{" "}
-                                        {room.roomVisibility
-                                          ? "Aktif"
-                                          : "Gizli"}
-                                      </div>
-                                    </td>
-                                    <td className="py-4 text-sm max-w-xs font-medium text-gray-200 whitespace-nowrap">
-                                      <div className="flex items-center">
-                                        <div
-                                          className={`bg-${
-                                            room.roomVisibility
-                                              ? "green-500"
-                                              : "red-500"
-                                          } text-${
-                                            room.roomVisibility
-                                              ? "green-500"
-                                              : "red-500"
-                                          }  h-2.5 w-2.5 rounded-full mr-2`}
-                                        ></div>{" "}
-                                        {room.roomVisibility
-                                          ? "Aktif"
-                                          : "Gizli"}
-                                      </div>
-                                    </td>
-                                    <td className="py-4 flex justify-end pr-10 text-sm font-medium text-gray-200 whitespace-nowrap space-x-2">
-                                      <button
-                                        onClick={() =>
-                                          handleCardClick(room._id)
-                                        }
-                                      >
-                                        <div className="font-medium mt-1 text-blue-600 dark:text-blue-500 hover:underline">
-                                          <AiOutlineEdit />
-                                        </div>
-                                      </button>
-                                      <button
-                                        onClick={() => handleDelete(room._id)}
-                                      >
-                                        <div className="font-medium mt-1 text-red-600 dark:text-red-500 hover:underline">
-                                          <HiOutlineTrash />
-                                        </div>
-                                      </button>
-                                    </td>
-                                  </tr>
-                                </tbody>
-                              ))}
-                            </table>
-                          </div>
+                              </tbody>
+                            ))}
+                          </table>
                         </div>
                       </div>
                     </div>
@@ -241,158 +191,7 @@ export default function Room() {
                 </div>
               </div>
             </div>
-          ) : (
-            <div className="p-4">
-              <div className="bg-zinc-800 rounded pt-4 pb-4">
-                <div className="flex justify-center items-center">
-                  <div className="w-full flex justify-center">
-                    <div className="w-full px-4 relative space-x-2">
-                      <button
-                        onClick={handleAddRoom}
-                        className="bg-zinc-700 p-2 text-white text-sm border border-gray-600 rounded-[6px]"
-                      >
-                        Yeni Oda Ekle
-                      </button>
-                      <button
-                        onClick={handleLanguage}
-                        className="bg-zinc-700 p-2 text-white text-sm border border-gray-600 rounded-[6px]"
-                      >
-                        {roomLanguage
-                          ? "Türkçe Odalari Getir"
-                          : "Ingilizce Odalari Getir"}
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                <div className="">
-                  <div className="">
-                    <div className="max-w-full mx-auto px-4 pt-4">
-                      <div className="overflow-x-auto shadow-md sm:rounded-lg">
-                        <div className="inline-block min-w-full align-middle">
-                          <div className="overflow-hidden">
-                            <table className="min-w-full table-fixed">
-                              <thead className="bg-zinc-600">
-                                <tr>
-                                  <th
-                                    scope="col"
-                                    className="py-3 pl-6 text-xs font-medium tracking-wider text-left text-gray-100 uppercase w-[400px]"
-                                  >
-                                    Oda Turu
-                                  </th>
-                                  <th
-                                    scope="col"
-                                    className="py-3 text-xs font-medium tracking-wider text-left text-gray-100 uppercase w-[400px]"
-                                  >
-                                    Oda Adı
-                                  </th>
-                                  <th
-                                    scope="col"
-                                    className="py-3 text-xs font-medium tracking-wider text-left text-gray-100 uppercase w-[400px]"
-                                  >
-                                    Durum
-                                  </th>
-                                  <th
-                                    scope="col"
-                                    className="py-3 text-xs font-medium tracking-wider text-left text-gray-100 uppercase w-[400px]"
-                                  >
-                                    Sayfa
-                                  </th>
-                                  <th
-                                    scope="col"
-                                    className="py-3 flex justify-end pr-6 text-xs font-medium tracking-wider text-gray-100 uppercase"
-                                  >
-                                    Islemler
-                                  </th>
-                                </tr>
-                              </thead>
-                              {englishRooms.map((englishRooms, index) => (
-                                <tbody key={index} className="bg-zinc-700 ">
-                                  <tr className="hover:bg-zinc-800">
-                                    <td className="max-w-[320px] w-[320px]">
-                                      <div className="py-4 max-w-xs px-6 text-sm font-medium text-gray-200 truncate">
-                                        <p className="truncate">
-                                          {englishRooms.roomType_en}
-                                        </p>
-                                      </div>
-                                    </td>
-                                    <td className="max-w-[320px] w-[320px]">
-                                      <div className="py-4 text-sm pr-6 max-w-xs font-medium text-gray-200 truncate">
-                                        <p className="truncate">
-                                          {englishRooms.roomTitle_en}
-                                        </p>
-                                      </div>
-                                    </td>
-                                    <td className="py-4 text-sm max-w-xs font-medium text-gray-200 whitespace-nowrap">
-                                      <div className="flex items-center">
-                                        <div
-                                          className={`bg-${
-                                            englishRooms.roomVisibility_en
-                                              ? "green-500"
-                                              : "red-500"
-                                          } text-${
-                                            englishRooms.roomVisibility_en
-                                              ? "green-500"
-                                              : "red-500"
-                                          }  h-2.5 w-2.5 rounded-full mr-2`}
-                                        ></div>{" "}
-                                        {englishRooms.roomVisibility_en
-                                          ? "Aktif"
-                                          : "Gizli"}
-                                      </div>
-                                    </td>
-                                    <td className="py-4 text-sm max-w-xs font-medium text-gray-200 whitespace-nowrap">
-                                      <div className="flex items-center">
-                                        <div
-                                          className={`bg-${
-                                            englishRooms.roomVisibility_en
-                                              ? "green-500"
-                                              : "red-500"
-                                          } text-${
-                                            englishRooms.roomVisibility_en
-                                              ? "green-500"
-                                              : "red-500"
-                                          }  h-2.5 w-2.5 rounded-full mr-2`}
-                                        ></div>{" "}
-                                        {englishRooms.roomVisibility_en
-                                          ? "Aktif"
-                                          : "Gizli"}
-                                      </div>
-                                    </td>
-                                    <td className="py-4 flex justify-end pr-10 text-sm font-medium text-gray-200 whitespace-nowrap space-x-2">
-                                      <button
-                                        onClick={() =>
-                                          handleCardClickEnglish(
-                                            englishRooms._id
-                                          )
-                                        }
-                                      >
-                                        <div className="font-medium mt-1 text-blue-600 dark:text-blue-500 hover:underline">
-                                          <AiOutlineEdit />
-                                        </div>
-                                      </button>
-                                      <button
-                                        onClick={() =>
-                                          handleDeleteEnglish(englishRooms._id)
-                                        }
-                                      >
-                                        <div className="font-medium mt-1 text-red-600 dark:text-red-500 hover:underline">
-                                          <HiOutlineTrash />
-                                        </div>
-                                      </button>
-                                    </td>
-                                  </tr>
-                                </tbody>
-                              ))}
-                            </table>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
+          </div>
         </div>
       </div>
     </div>

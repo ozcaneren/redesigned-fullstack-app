@@ -9,9 +9,9 @@ function RoomEdit() {
   const { roomId } = useParams();
 
   const [room, setRoom] = useState({});
-  
+
   const navigate = useNavigate();
-  
+
   const [theFeature, setTheFeature] = useState([]);
 
   const [selectedRoomFeatures, setSelectedRoomFeatures] = useState([]);
@@ -123,7 +123,22 @@ function RoomEdit() {
                         name="roomType"
                         value={room.roomType || ""}
                         onChange={handleChange}
-                        required
+                        className="mt-1 p-2 w-full rounded-sm"
+                      />
+                    </div>
+                    <div className="mb-4">
+                      <label
+                        htmlFor="roomType_en"
+                        className="block text-sm font-medium text-gray-200 mb-2"
+                      >
+                        Oda Türü_en
+                      </label>
+                      <input
+                        type="text"
+                        id="roomType_en"
+                        name="roomType_en"
+                        value={room.roomType_en}
+                        onChange={handleChange}
                         className="mt-1 p-2 w-full rounded-sm"
                       />
                     </div>
@@ -140,7 +155,22 @@ function RoomEdit() {
                         name="roomTitle"
                         value={room.roomTitle || ""}
                         onChange={handleChange}
-                        required
+                        className="mt-1 p-2 w-full bg-white rounded-sm"
+                      />
+                    </div>
+                    <div className="mb-4">
+                      <label
+                        htmlFor="roomTitle_en"
+                        className="block text-sm font-medium text-gray-200 mb-2"
+                      >
+                        Oda Adı_en
+                      </label>
+                      <input
+                        type="text"
+                        id="roomTitle_en"
+                        name="roomTitle_en"
+                        value={room.roomTitle_en}
+                        onChange={handleChange}
                         className="mt-1 p-2 w-full bg-white rounded-sm"
                       />
                     </div>
@@ -156,7 +186,21 @@ function RoomEdit() {
                         name="roomDescription"
                         value={room.roomDescription || ""}
                         onChange={handleChange}
-                        required
+                        className="mt-1 p-2 w-full bg-white rounded-sm"
+                      />
+                    </div>
+                    <div className="mb-4">
+                      <label
+                        htmlFor="roomDescription_en"
+                        className="block text-sm font-medium text-gray-200 mb-2"
+                      >
+                        Açıklama_en
+                      </label>
+                      <textarea
+                        id="roomDescription_en"
+                        name="roomDescription_en"
+                        value={room.roomDescription_en}
+                        onChange={handleChange}
                         className="mt-1 p-2 w-full bg-white rounded-sm"
                       />
                     </div>
@@ -173,7 +217,22 @@ function RoomEdit() {
                         name="roomShortDescription"
                         value={room.roomShortDescription || ""}
                         onChange={handleChange}
-                        required
+                        className="mt-1 p-2 w-full bg-white rounded-sm"
+                      />
+                    </div>
+                    <div className="mb-4">
+                      <label
+                        htmlFor="roomShortDescription_en"
+                        className="block text-sm font-medium text-gray-200 mb-2"
+                      >
+                        Kısa Açıklama_en
+                      </label>
+                      <input
+                        type="text"
+                        id="roomShortDescription_en"
+                        name="roomShortDescription_en"
+                        value={room.roomShortDescription_en}
+                        onChange={handleChange}
                         className="mt-1 p-2 w-full bg-white rounded-sm"
                       />
                     </div>
