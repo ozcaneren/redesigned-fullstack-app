@@ -40,8 +40,8 @@ export default function Footer() {
                 </div>
                 <p className="mt-4 max-w-xs text-gray-500">
                   {language === "tr"
-                    ? footer.footerMainTitleText
-                    : footer.footerMainTitleText_en}
+                    ? footer.footerMainText
+                    : footer.footerMainText_en}
                 </p>
                 <ul className="mt-8 flex gap-6">
                   <li>

@@ -83,7 +83,7 @@ export default function Footer() {
                             <label htmlFor="">Yazi</label>
                             {footer.footerMainText ? (
                               <h1 className="text-lg">
-                                {footer.footerMainText}
+                                {footer.footerMainText.substring(0, 20)}
                               </h1>
                             ) : (
                               <p className="text-gray-400">Yazi eklemediniz.</p>

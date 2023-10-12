@@ -142,7 +142,7 @@ export default function FooterEdit() {
                         </div>
                       </div>
                     </div>
-                    <div className="flex justify-center items-center space-x-4">
+                    <div className="flex justify-center flex-row flex-wrap items-center space-x-4">
                       <div className="border p-4 mb-4 border-gray-600 rounded bg-zinc-700">
                         <div className="mb-4">
                           <div>
@@ -244,7 +244,7 @@ export default function FooterEdit() {
                         </div>
                       </div>
                     </div>
-                    <div className="grid grid-cols-4 gap-4">
+                    <div className="grid grid-cols-2 gap-4">
                       <div className="border p-4 mb-4 border-gray-600 rounded bg-zinc-700">
                         <div className="mb-4">
                           <div>
