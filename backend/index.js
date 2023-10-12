@@ -9,6 +9,9 @@ const contactRouter = require('./routes/contactRouter');
 const aboutRouter = require('./routes/aboutRouter');
 const headerRouter = require('./routes/headerRouter');
 const footerRouter = require('./routes/footerRouter');
+const heroRouter = require('./routes/heroRouter');
+const servicesRouter = require('./routes/servicesRouter');
+const teamsRouter = require('./routes/teamsRouter');
 
 dotenv.config();
 
@@ -29,6 +32,9 @@ app.use('/api', contactRouter);
 app.use('/api', aboutRouter);
 app.use('/api', headerRouter);
 app.use('/api', footerRouter);
+app.use('/api', heroRouter);
+app.use('/api', servicesRouter);
+app.use('/api', teamsRouter);
 
 
 app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`));

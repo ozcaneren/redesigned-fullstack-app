@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
-import { MdOutlineRoundaboutRight, MdMeetingRoom } from "react-icons/md";
-import { RiContactsLine } from "react-icons/ri";
+import { MdOutlineRoundaboutRight, MdMeetingRoom, MdOutlineRoomService } from "react-icons/md";
+import { RiContactsLine, RiTeamLine } from "react-icons/ri";
 import { BiHomeAlt2 } from "react-icons/bi";
 import { LuSettings2, LuPanelBottomClose } from "react-icons/lu";
 import { TbLayoutNavbarCollapse } from "react-icons/tb";
+import { FaPager } from "react-icons/fa";
 
 function Sidebar() {
   return (
@@ -38,8 +39,7 @@ function Sidebar() {
                   Sayfa Yonetimi
                 </div>
               </div>
-            </li>
-            
+            </li>          
             <li>
               <Link
                 to="/contact"
@@ -89,6 +89,54 @@ function Sidebar() {
                 </span>
                 <span className="ml-2 text-md tracking-wide truncate">
                   Footer
+                </span>
+              </Link>
+            </li>
+
+            {/* ana sayfa kismi */}
+            <li className="px-5 hidden md:block">
+              <div className="flex flex-row items-center mt-5 h-8">
+                <div className="text-md font-medium tracking-wide text-gray-400">
+                  Ana Sayfa Yonetimi
+                </div>
+              </div>
+            </li>
+            <li>
+              <Link
+                to="/hero"
+                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-zinc-700 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6"
+              >
+                <span className="text-blue-100 inline-flex justify-center items-center ml-4">
+                  <FaPager className="" size={20} />
+                </span>
+                <span className="ml-2 text-md tracking-wide truncate">
+                  Hero Section
+                </span>
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/services"
+                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-zinc-700 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6"
+              >
+                <span className="text-blue-100 inline-flex justify-center items-center ml-4">
+                  <MdOutlineRoomService className="" size={20} />
+                </span>
+                <span className="ml-2 text-md tracking-wide truncate">
+                  Servisler
+                </span>
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/team"
+                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-zinc-700 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6"
+              >
+                <span className="text-blue-100 inline-flex justify-center items-center ml-4">
+                  <RiTeamLine className="" size={20} />
+                </span>
+                <span className="ml-2 text-md tracking-wide truncate">
+                  Ekip
                 </span>
               </Link>
             </li>

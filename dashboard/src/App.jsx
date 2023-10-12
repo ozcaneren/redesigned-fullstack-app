@@ -14,6 +14,12 @@ import Header from './pages/Header';
 import HeaderEdit from './pages/HeaderEdit';
 import Footer from './pages/Footer';
 import FooterEdit from './pages/FooterEdit';
+import Hero from './pages/Hero';
+import HeroEdit from './pages/HeroEdit';
+import Services from './pages/Services';
+import ServicesEdit from './pages/ServicesEdit';
+import Teams from './pages/Teams';
+import TeamsEdit from './pages/TeamsEdit';
 
 function App() {
   return (
@@ -34,7 +40,12 @@ function App() {
         <Route path='/header/:headerId/edit' element={<HeaderEdit/>} />
         <Route path='/footer' element={<Footer/>} />
         <Route path='/footer/:footerId/edit' element={<FooterEdit/>} />
-
+        <Route path='/hero' element={<Hero/>} />
+        <Route path='/hero/:heroId/edit' element={<HeroEdit/>} />
+        <Route path='/services' element={<Services/>} />
+        <Route path='/services/:servicesId/edit' element={<ServicesEdit/>} />
+        <Route path='/teams' element={<Teams/>} />
+        <Route path='/teams/:teamsId/edit' element={<TeamsEdit/>} />
       </Routes>
     </>
   );
