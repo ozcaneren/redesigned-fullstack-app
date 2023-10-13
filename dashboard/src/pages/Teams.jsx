@@ -86,7 +86,7 @@ export default function Teams() {
                         </div>
                         <div className="container xl:max-w-6xl mx-auto px-4">
                           <div className="flex flex-wrap flex-row -mx-4 justify-center">
-                            <div className="flex-shrink max-w-full px-4 w-2/3 sm:w-1/2 md:w-5/12 lg:w-1/4 xl:px-6">
+                            <div className="max-w-full px-4 w-2/3 sm:w-1/2 md:w-5/12 lg:w-1/4 xl:px-6">
                               <h1 className="text-center bg-zinc-700 rounded border border-gray-500 mb-2">
                                 Ekip Uyesi
                               </h1>
@@ -95,7 +95,7 @@ export default function Teams() {
                                   {team.cardIcon ? (
                                     <img
                                       src={team.cardIcon}
-                                      className="w-[143px] h-[143px] object-cover mx-auto rounded-full bg-gray-50 grayscale"
+                                      className="w-[143px] h-[143px] object-cover mx-auto rounded-full bg-gray-50"
                                       alt="title image"
                                     />
                                   ) : (
@@ -122,7 +122,7 @@ export default function Teams() {
                                 </div>
                               </div>
                             </div>
-                            <div className="flex-shrink max-w-full px-4 w-2/3 sm:w-1/2 md:w-5/12 lg:w-1/4 xl:px-6">
+                            <div className="max-w-full px-4 w-2/3 sm:w-1/2 md:w-5/12 lg:w-1/4 xl:px-6">
                               <h1 className="text-center bg-zinc-700 rounded border border-gray-500 mb-2">
                                 Ekip Uyesi 1
                               </h1>
@@ -131,7 +131,7 @@ export default function Teams() {
                                   {team.cardIcon1 ? (
                                     <img
                                       src={team.cardIcon1}
-                                      className="w-[143px] h-[143px] object-cover mx-auto rounded-full bg-gray-50 grayscale"
+                                      className="w-[143px] h-[143px] object-cover mx-auto rounded-full bg-gray-50"
                                       alt="title image"
                                     />
                                   ) : (
@@ -158,7 +158,7 @@ export default function Teams() {
                                 </div>
                               </div>
                             </div>
-                            <div className="flex-shrink max-w-full px-4 w-2/3 sm:w-1/2 md:w-5/12 lg:w-1/4 xl:px-6">
+                            <div className="max-w-full px-4 w-2/3 sm:w-1/2 md:w-5/12 lg:w-1/4 xl:px-6">
                               <h1 className="text-center bg-zinc-700 rounded border border-gray-500 mb-2">
                                 Ekip Uyesi 2
                               </h1>
@@ -168,7 +168,7 @@ export default function Teams() {
                                   {team.cardIcon2 ? (
                                     <img
                                       src={team.cardIcon2}
-                                      className="w-[143px] h-[143px] object-cover mx-auto rounded-full bg-gray-50 grayscale"
+                                      className="w-[143px] h-[143px] object-cover mx-auto rounded-full bg-gray-50"
                                       alt="title image"
                                     />
                                   ) : (
@@ -195,7 +195,7 @@ export default function Teams() {
                                 </div>
                               </div>
                             </div>
-                            <div className="flex-shrink max-w-full px-4 w-2/3 sm:w-1/2 md:w-5/12 lg:w-1/4 xl:px-6">
+                            <div className="max-w-full px-4 w-2/3 sm:w-1/2 md:w-5/12 lg:w-1/4 xl:px-6">
                               <h1 className="text-center bg-zinc-700 rounded border border-gray-500 mb-2">
                                 Ekip Uyesi 3
                               </h1>
@@ -205,7 +205,7 @@ export default function Teams() {
                                   {team.cardIcon3 ? (
                                     <img
                                       src={team.cardIcon3}
-                                      className="w-[143px] h-[143px] object-cover mx-auto rounded-full bg-gray-50 grayscale"
+                                      className="w-[143px] h-[143px] object-cover mx-auto rounded-full bg-gray-50"
                                       alt="title image"
                                     />
                                   ) : (
@@ -232,7 +232,7 @@ export default function Teams() {
                                 </div>
                               </div>
                             </div>
-                            <div className="flex-shrink max-w-full px-4 w-2/3 sm:w-1/2 md:w-5/12 lg:w-1/4 xl:px-6">
+                            <div className="max-w-full px-4 w-2/3 sm:w-1/2 md:w-5/12 lg:w-1/4 xl:px-6">
                               <h1 className="text-center bg-zinc-700 rounded border border-gray-500 mb-2">
                                 Ekip Uyesi 4
                               </h1>
@@ -242,7 +242,7 @@ export default function Teams() {
                                   {team.cardIcon4 ? (
                                     <img
                                       src={team.cardIcon4}
-                                      className="w-[143px] h-[143px] object-cover mx-auto rounded-full bg-gray-50 grayscale"
+                                      className="w-[143px] h-[143px] object-cover mx-auto rounded-full bg-gray-50"
                                       alt="title image"
                                     />
                                   ) : (
@@ -269,7 +269,7 @@ export default function Teams() {
                                 </div>
                               </div>
                             </div>
-                            <div className="flex-shrink max-w-full px-4 w-2/3 sm:w-1/2 md:w-5/12 lg:w-1/4 xl:px-6">
+                            <div className="max-w-full px-4 w-2/3 sm:w-1/2 md:w-5/12 lg:w-1/4 xl:px-6">
                               <h1 className="text-center bg-zinc-700 rounded border border-gray-500 mb-2">
                                 Ekip Uyesi 5
                               </h1>
@@ -279,7 +279,7 @@ export default function Teams() {
                                   {team.cardIcon5 ? (
                                     <img
                                       src={team.cardIcon5}
-                                      className="w-[143px] h-[143px] object-cover mx-auto rounded-full bg-gray-50 grayscale"
+                                      className="w-[143px] h-[143px] object-cover mx-auto rounded-full bg-gray-50"
                                       alt="title image"
                                     />
                                   ) : (

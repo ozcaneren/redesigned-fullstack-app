@@ -84,7 +84,7 @@ export default function FooterEdit() {
                               id="footerMainTitle"
                               value={footer.footerMainTitle}
                               onChange={handleChange}
-                              className="mt-1 p-2 rounded-sm"
+                              className="mt-1 p-2 rounded-sm w-full"
                             />
                           </div>
                           <div className="mt-4">
@@ -100,7 +100,7 @@ export default function FooterEdit() {
                               id="footerMainTitle_en"
                               value={footer.footerMainTitle_en}
                               onChange={handleChange}
-                              className="mt-1 p-2 rounded-sm"
+                              className="mt-1 p-2 rounded-sm w-full"
                             />
                           </div>
                         </div>
@@ -120,7 +120,7 @@ export default function FooterEdit() {
                               id="footerMainText"
                               value={footer.footerMainText}
                               onChange={handleChange}
-                              className="mt-1 p-2 rounded-sm"
+                              className="mt-1 p-2 rounded-sm w-full"
                             />
                           </div>
                           <div className="mt-4">
@@ -136,7 +136,7 @@ export default function FooterEdit() {
                               id="footerMainText_en"
                               value={footer.footerMainText_en}
                               onChange={handleChange}
-                              className="mt-1 p-2 rounded-sm"
+                              className="mt-1 p-2 rounded-sm w-full"
                             />
                           </div>
                         </div>
@@ -158,7 +158,7 @@ export default function FooterEdit() {
                               id="footerIcon"
                               value={footer.footerIcon}
                               onChange={handleChange}
-                              className="mt-1 p-2 rounded-sm"
+                              className="mt-1 p-2 rounded-sm w-full"
                             />
                           </div>
                         </div>
@@ -178,7 +178,7 @@ export default function FooterEdit() {
                               id="footerIcon1"
                               value={footer.footerIcon1}
                               onChange={handleChange}
-                              className="mt-1 p-2 rounded-sm"
+                              className="mt-1 p-2 rounded-sm w-full"
                             />
                           </div>
                         </div>
@@ -198,7 +198,7 @@ export default function FooterEdit() {
                               id="footerIcon2"
                               value={footer.footerIcon2}
                               onChange={handleChange}
-                              className="mt-1 p-2 rounded-sm"
+                              className="mt-1 p-2 rounded-sm w-full"
                             />
                           </div>
                         </div>
@@ -218,7 +218,7 @@ export default function FooterEdit() {
                               id="footerIcon3"
                               value={footer.footerIcon3}
                               onChange={handleChange}
-                              className="mt-1 p-2 rounded-sm"
+                              className="mt-1 p-2 rounded-sm w-full"
                             />
                           </div>
                         </div>
@@ -238,7 +238,7 @@ export default function FooterEdit() {
                               id="footerIcon4"
                               value={footer.footerIcon4}
                               onChange={handleChange}
-                              className="mt-1 p-2 rounded-sm"
+                              className="mt-1 p-2 rounded-sm w-full"
                             />
                           </div>
                         </div>
@@ -261,7 +261,7 @@ export default function FooterEdit() {
                                 id="footerTitle"
                                 value={footer.footerTitle}
                                 onChange={handleChange}
-                                className="mt-1 p-2 rounded-sm"
+                                className="mt-1 p-2 rounded-sm w-full"
                               />
                             </div>
                             <div className="mt-4">
@@ -277,7 +277,7 @@ export default function FooterEdit() {
                                 id="footerTitle_en"
                                 value={footer.footerTitle_en}
                                 onChange={handleChange}
-                                className="mt-1 p-2 rounded-sm"
+                                className="mt-1 p-2 rounded-sm w-full"
                               />
                             </div>
                           </div>
@@ -295,7 +295,7 @@ export default function FooterEdit() {
                                 id="footerTitleLink"
                                 value={footer.footerTitleLink}
                                 onChange={handleChange}
-                                className="mt-1 p-2 rounded-sm"
+                                className="mt-1 p-2 rounded-sm w-full"
                               />
                             </div>
                             <div className="mt-4">
@@ -311,7 +311,7 @@ export default function FooterEdit() {
                                 id="footerTitleLink_en"
                                 value={footer.footerTitleLink_en}
                                 onChange={handleChange}
-                                className="mt-1 p-2 rounded-sm"
+                                className="mt-1 p-2 rounded-sm w-full"
                               />
                             </div>
                             <div className="mt-4">
@@ -327,7 +327,7 @@ export default function FooterEdit() {
                                 id="footerTitleLink1"
                                 value={footer.footerTitleLink1}
                                 onChange={handleChange}
-                                className="mt-1 p-2 rounded-sm"
+                                className="mt-1 p-2 rounded-sm w-full"
                               />
                             </div>
                             <div className="mt-4">
@@ -343,7 +343,7 @@ export default function FooterEdit() {
                                 id="footerTitleLink1_en"
                                 value={footer.footerTitleLink1_en}
                                 onChange={handleChange}
-                                className="mt-1 p-2 rounded-sm"
+                                className="mt-1 p-2 rounded-sm w-full"
                               />
                             </div>
                             <div className="mt-4">
@@ -359,7 +359,7 @@ export default function FooterEdit() {
                                 id="footerTitleLink2"
                                 value={footer.footerTitleLink2}
                                 onChange={handleChange}
-                                className="mt-1 p-2 rounded-sm"
+                                className="mt-1 p-2 rounded-sm w-full"
                               />
                             </div>
                             <div className="mt-4">
@@ -375,7 +375,7 @@ export default function FooterEdit() {
                                 id="footerTitleLink2_en"
                                 value={footer.footerTitleLink2_en}
                                 onChange={handleChange}
-                                className="mt-1 p-2 rounded-sm"
+                                className="mt-1 p-2 rounded-sm w-full"
                               />
                             </div>
                             <div className="mt-4">
@@ -391,7 +391,7 @@ export default function FooterEdit() {
                                 id="footerTitleLink3"
                                 value={footer.footerTitleLink3}
                                 onChange={handleChange}
-                                className="mt-1 p-2 rounded-sm"
+                                className="mt-1 p-2 rounded-sm w-full"
                               />
                             </div>
                             <div className="mt-4">
@@ -407,7 +407,7 @@ export default function FooterEdit() {
                                 id="footerTitleLink3_en"
                                 value={footer.footerTitleLink3_en}
                                 onChange={handleChange}
-                                className="mt-1 p-2 rounded-sm"
+                                className="mt-1 p-2 rounded-sm w-full"
                               />
                             </div>
                             <div className="mt-4">
@@ -423,7 +423,7 @@ export default function FooterEdit() {
                                 id="footerTitleLink4"
                                 value={footer.footerTitleLink4}
                                 onChange={handleChange}
-                                className="mt-1 p-2 rounded-sm"
+                                className="mt-1 p-2 rounded-sm w-full"
                               />
                             </div>
                             <div className="mt-4">
@@ -439,7 +439,7 @@ export default function FooterEdit() {
                                 id="footerTitleLink4_en"
                                 value={footer.footerTitleLink4_en}
                                 onChange={handleChange}
-                                className="mt-1 p-2 rounded-sm"
+                                className="mt-1 p-2 rounded-sm w-full"
                               />
                             </div>
                           </div>
@@ -461,7 +461,7 @@ export default function FooterEdit() {
                                 id="footerTitle1"
                                 value={footer.footerTitle1}
                                 onChange={handleChange}
-                                className="mt-1 p-2 rounded-sm"
+                                className="mt-1 p-2 rounded-sm w-full"
                               />
                             </div>
                             <div className="mt-4">
@@ -477,7 +477,7 @@ export default function FooterEdit() {
                                 id="footerTitle1_en"
                                 value={footer.footerTitle1_en}
                                 onChange={handleChange}
-                                className="mt-1 p-2 rounded-sm"
+                                className="mt-1 p-2 rounded-sm w-full"
                               />
                             </div>
                           </div>
@@ -495,7 +495,7 @@ export default function FooterEdit() {
                                 id="footerTitle1Link"
                                 value={footer.footerTitle1Link}
                                 onChange={handleChange}
-                                className="mt-1 p-2 rounded-sm"
+                                className="mt-1 p-2 rounded-sm w-full"
                               />
                             </div>
                             <div className="mt-4">
@@ -511,7 +511,7 @@ export default function FooterEdit() {
                                 id="footerTitle1Link_en"
                                 value={footer.footerTitle1Link_en}
                                 onChange={handleChange}
-                                className="mt-1 p-2 rounded-sm"
+                                className="mt-1 p-2 rounded-sm w-full"
                               />
                             </div>
                             <div className="mt-4">
@@ -527,7 +527,7 @@ export default function FooterEdit() {
                                 id="footerTitle1Link1"
                                 value={footer.footerTitle1Link1}
                                 onChange={handleChange}
-                                className="mt-1 p-2 rounded-sm"
+                                className="mt-1 p-2 rounded-sm w-full"
                               />
                             </div>
                             <div className="mt-4">
@@ -543,7 +543,7 @@ export default function FooterEdit() {
                                 id="footerTitle1Link1_en"
                                 value={footer.footerTitle1Link1_en}
                                 onChange={handleChange}
-                                className="mt-1 p-2 rounded-sm"
+                                className="mt-1 p-2 rounded-sm w-full"
                               />
                             </div>
                             <div className="mt-4">
@@ -559,7 +559,7 @@ export default function FooterEdit() {
                                 id="footerTitle1Link2"
                                 value={footer.footerTitle1Link2}
                                 onChange={handleChange}
-                                className="mt-1 p-2 rounded-sm"
+                                className="mt-1 p-2 rounded-sm w-full"
                               />
                             </div>
                             <div className="mt-4">
@@ -575,7 +575,7 @@ export default function FooterEdit() {
                                 id="footerTitle1Link2_en"
                                 value={footer.footerTitle1Link2_en}
                                 onChange={handleChange}
-                                className="mt-1 p-2 rounded-sm"
+                                className="mt-1 p-2 rounded-sm w-full"
                               />
                             </div>
                             <div className="mt-4">
@@ -591,7 +591,7 @@ export default function FooterEdit() {
                                 id="footerTitle1Link3"
                                 value={footer.footerTitle1Link3}
                                 onChange={handleChange}
-                                className="mt-1 p-2 rounded-sm"
+                                className="mt-1 p-2 rounded-sm w-full"
                               />
                             </div>
                             <div className="mt-4">
@@ -607,7 +607,7 @@ export default function FooterEdit() {
                                 id="footerTitle1Link3_en"
                                 value={footer.footerTitle1Link3_en}
                                 onChange={handleChange}
-                                className="mt-1 p-2 rounded-sm"
+                                className="mt-1 p-2 rounded-sm w-full"
                               />
                             </div>
                             <div className="mt-4">
@@ -623,7 +623,7 @@ export default function FooterEdit() {
                                 id="footerTitle1Link4"
                                 value={footer.footerTitle1Link4}
                                 onChange={handleChange}
-                                className="mt-1 p-2 rounded-sm"
+                                className="mt-1 p-2 rounded-sm w-full"
                               />
                             </div>
                             <div className="mt-4">
@@ -639,7 +639,7 @@ export default function FooterEdit() {
                                 id="footerTitle1Link4_en"
                                 value={footer.footerTitle1Link4_en}
                                 onChange={handleChange}
-                                className="mt-1 p-2 rounded-sm"
+                                className="mt-1 p-2 rounded-sm w-full"
                               />
                             </div>
                           </div>
@@ -661,7 +661,7 @@ export default function FooterEdit() {
                                 id="footerTitle2"
                                 value={footer.footerTitle2}
                                 onChange={handleChange}
-                                className="mt-1 p-2 rounded-sm"
+                                className="mt-1 p-2 rounded-sm w-full"
                               />
                             </div>
                             <div className="mt-4">
@@ -677,7 +677,7 @@ export default function FooterEdit() {
                                 id="footerTitle2_en"
                                 value={footer.footerTitle2_en}
                                 onChange={handleChange}
-                                className="mt-1 p-2 rounded-sm"
+                                className="mt-1 p-2 rounded-sm w-full"
                               />
                             </div>
                           </div>
@@ -695,7 +695,7 @@ export default function FooterEdit() {
                                 id="footerTitle2Link"
                                 value={footer.footerTitle2Link}
                                 onChange={handleChange}
-                                className="mt-1 p-2 rounded-sm"
+                                className="mt-1 p-2 rounded-sm w-full"
                               />
                             </div>
                             <div className="mt-4">
@@ -711,7 +711,7 @@ export default function FooterEdit() {
                                 id="footerTitle2Link_en"
                                 value={footer.footerTitle2Link_en}
                                 onChange={handleChange}
-                                className="mt-1 p-2 rounded-sm"
+                                className="mt-1 p-2 rounded-sm w-full"
                               />
                             </div>
                             <div className="mt-4">
@@ -727,7 +727,7 @@ export default function FooterEdit() {
                                 id="footerTitle2Link1"
                                 value={footer.footerTitle2Link1}
                                 onChange={handleChange}
-                                className="mt-1 p-2 rounded-sm"
+                                className="mt-1 p-2 rounded-sm w-full"
                               />
                             </div>
                             <div className="mt-4">
@@ -743,7 +743,7 @@ export default function FooterEdit() {
                                 id="footerTitle2Link1_en"
                                 value={footer.footerTitle2Link1_en}
                                 onChange={handleChange}
-                                className="mt-1 p-2 rounded-sm"
+                                className="mt-1 p-2 rounded-sm w-full"
                               />
                             </div>
                             <div className="mt-4">
@@ -759,7 +759,7 @@ export default function FooterEdit() {
                                 id="footerTitle2Link2"
                                 value={footer.footerTitle2Link2}
                                 onChange={handleChange}
-                                className="mt-1 p-2 rounded-sm"
+                                className="mt-1 p-2 rounded-sm w-full"
                               />
                             </div>
                             <div className="mt-4">
@@ -775,7 +775,7 @@ export default function FooterEdit() {
                                 id="footerTitle2Link2_en"
                                 value={footer.footerTitle2Link2_en}
                                 onChange={handleChange}
-                                className="mt-1 p-2 rounded-sm"
+                                className="mt-1 p-2 rounded-sm w-full"
                               />
                             </div>
                             <div className="mt-4">
@@ -791,7 +791,7 @@ export default function FooterEdit() {
                                 id="footerTitle2Link3"
                                 value={footer.footerTitle2Link3}
                                 onChange={handleChange}
-                                className="mt-1 p-2 rounded-sm"
+                                className="mt-1 p-2 rounded-sm w-full"
                               />
                             </div>
                             <div className="mt-4">
@@ -807,7 +807,7 @@ export default function FooterEdit() {
                                 id="footerTitle2Link3_en"
                                 value={footer.footerTitle2Link3_en}
                                 onChange={handleChange}
-                                className="mt-1 p-2 rounded-sm"
+                                className="mt-1 p-2 rounded-sm w-full"
                               />
                             </div>
                             <div className="mt-4">
@@ -823,7 +823,7 @@ export default function FooterEdit() {
                                 id="footerTitle2Link4"
                                 value={footer.footerTitle2Link4}
                                 onChange={handleChange}
-                                className="mt-1 p-2 rounded-sm"
+                                className="mt-1 p-2 rounded-sm w-full"
                               />
                             </div>
                             <div className="mt-4">
@@ -839,7 +839,7 @@ export default function FooterEdit() {
                                 id="footerTitle2Link4_en"
                                 value={footer.footerTitle2Link4_en}
                                 onChange={handleChange}
-                                className="mt-1 p-2 rounded-sm"
+                                className="mt-1 p-2 rounded-sm w-full"
                               />
                             </div>
                           </div>
@@ -861,7 +861,7 @@ export default function FooterEdit() {
                                 id="footerTitle3"
                                 value={footer.footerTitle3}
                                 onChange={handleChange}
-                                className="mt-1 p-2 rounded-sm"
+                                className="mt-1 p-2 rounded-sm w-full"
                               />
                             </div>
                             <div className="mt-4">
@@ -877,7 +877,7 @@ export default function FooterEdit() {
                                 id="footerTitle3_en"
                                 value={footer.footerTitle3_en}
                                 onChange={handleChange}
-                                className="mt-1 p-2 rounded-sm"
+                                className="mt-1 p-2 rounded-sm w-full"
                               />
                             </div>
                           </div>
@@ -895,7 +895,7 @@ export default function FooterEdit() {
                                 id="footerTitle3Link"
                                 value={footer.footerTitle3Link}
                                 onChange={handleChange}
-                                className="mt-1 p-2 rounded-sm"
+                                className="mt-1 p-2 rounded-sm w-full"
                               />
                             </div>
                             <div className="mt-4">
@@ -911,7 +911,7 @@ export default function FooterEdit() {
                                 id="footerTitle3Link_en"
                                 value={footer.footerTitle3Link_en}
                                 onChange={handleChange}
-                                className="mt-1 p-2 rounded-sm"
+                                className="mt-1 p-2 rounded-sm w-full"
                               />
                             </div>
                             <div className="mt-4">
@@ -927,7 +927,7 @@ export default function FooterEdit() {
                                 id="footerTitle3Link1"
                                 value={footer.footerTitle3Link1}
                                 onChange={handleChange}
-                                className="mt-1 p-2 rounded-sm"
+                                className="mt-1 p-2 rounded-sm w-full"
                               />
                             </div>
                             <div className="mt-4">
@@ -943,7 +943,7 @@ export default function FooterEdit() {
                                 id="footerTitle3Link1_en"
                                 value={footer.footerTitle3Link1_en}
                                 onChange={handleChange}
-                                className="mt-1 p-2 rounded-sm"
+                                className="mt-1 p-2 rounded-sm w-full"
                               />
                             </div>
                             <div className="mt-4">
@@ -959,7 +959,7 @@ export default function FooterEdit() {
                                 id="footerTitle3Link2"
                                 value={footer.footerTitle3Link2}
                                 onChange={handleChange}
-                                className="mt-1 p-2 rounded-sm"
+                                className="mt-1 p-2 rounded-sm w-full"
                               />
                             </div>
                             <div className="mt-4">
@@ -975,7 +975,7 @@ export default function FooterEdit() {
                                 id="footerTitle3Link2_en"
                                 value={footer.footerTitle3Link2_en}
                                 onChange={handleChange}
-                                className="mt-1 p-2 rounded-sm"
+                                className="mt-1 p-2 rounded-sm w-full"
                               />
                             </div>
                             <div className="mt-4">
@@ -991,7 +991,7 @@ export default function FooterEdit() {
                                 id="footerTitle3Link3"
                                 value={footer.footerTitle3Link3}
                                 onChange={handleChange}
-                                className="mt-1 p-2 rounded-sm"
+                                className="mt-1 p-2 rounded-sm w-full"
                               />
                             </div>
                             <div className="mt-4">
@@ -1007,7 +1007,7 @@ export default function FooterEdit() {
                                 id="footerTitle3Link3_en"
                                 value={footer.footerTitle3Link3_en}
                                 onChange={handleChange}
-                                className="mt-1 p-2 rounded-sm"
+                                className="mt-1 p-2 rounded-sm w-full"
                               />
                             </div>
                             <div className="mt-4">
@@ -1023,7 +1023,7 @@ export default function FooterEdit() {
                                 id="footerTitle3Link4"
                                 value={footer.footerTitle3Link4}
                                 onChange={handleChange}
-                                className="mt-1 p-2 rounded-sm"
+                                className="mt-1 p-2 rounded-sm w-full"
                               />
                             </div>
                             <div className="mt-4">
@@ -1039,7 +1039,7 @@ export default function FooterEdit() {
                                 id="footerTitle3Link4_en"
                                 value={footer.footerTitle3Link4_en}
                                 onChange={handleChange}
-                                className="mt-1 p-2 rounded-sm"
+                                className="mt-1 p-2 rounded-sm w-full"
                               />
                             </div>
                           </div>

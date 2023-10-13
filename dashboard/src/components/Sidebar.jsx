@@ -5,6 +5,7 @@ import { BiHomeAlt2 } from "react-icons/bi";
 import { LuSettings2, LuPanelBottomClose } from "react-icons/lu";
 import { TbLayoutNavbarCollapse } from "react-icons/tb";
 import { FaPager } from "react-icons/fa";
+import { HiOutlineDocumentText } from "react-icons/hi";
 
 function Sidebar() {
   return (
@@ -89,6 +90,19 @@ function Sidebar() {
                 </span>
                 <span className="ml-2 text-md tracking-wide truncate">
                   Footer
+                </span>
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/document"
+                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-zinc-700 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6"
+              >
+                <span className="inline-flex justify-center items-center ml-4">
+                  <HiOutlineDocumentText size={20} />
+                </span>
+                <span className="ml-2 text-md tracking-wide truncate">
+                  Belgeler
                 </span>
               </Link>
             </li>

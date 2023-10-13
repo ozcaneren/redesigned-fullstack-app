@@ -43,7 +43,7 @@ export default function Teams() {
                         <div className="relative overflow-hidden px-6">
                           <img
                             src={team.cardIcon}
-                            className="w-[143px] h-[143px] object-cover mx-auto rounded-full bg-gray-50 grayscale"
+                            className="w-[143px] h-[143px] object-cover mx-auto rounded-full bg-gray-50"
                             alt="title image"
                           />
                         </div>
@@ -66,7 +66,7 @@ export default function Teams() {
                         <div className="relative overflow-hidden px-6">
                           <img
                             src={team.cardIcon1}
-                            className="w-[143px] h-[143px] object-cover mx-auto rounded-full bg-gray-50 grayscale"
+                            className="w-[143px] h-[143px] object-cover mx-auto rounded-full bg-gray-50"
                             alt="title image"
                           />
                         </div>
@@ -89,7 +89,7 @@ export default function Teams() {
                         <div className="relative overflow-hidden px-6">
                           <img
                             src={team.cardIcon2}
-                            className="w-[143px] h-[143px] object-cover mx-auto rounded-full bg-gray-50 grayscale"
+                            className="w-[143px] h-[143px] object-cover mx-auto rounded-full bg-gray-50"
                             alt="title image"
                           />
                         </div>
@@ -112,7 +112,7 @@ export default function Teams() {
                         <div className="relative overflow-hidden px-6">
                           <img
                             src={team.cardIcon3}
-                            className="w-[143px] h-[143px] object-cover mx-auto rounded-full bg-gray-50 grayscale"
+                            className="w-[143px] h-[143px] object-cover mx-auto rounded-full bg-gray-50"
                             alt="title image"
                           />
                         </div>
@@ -135,7 +135,7 @@ export default function Teams() {
                         <div className="relative overflow-hidden px-6">
                           <img
                             src={team.cardIcon4}
-                            className="w-[143px] h-[143px] object-cover mx-auto rounded-full bg-gray-50 grayscale"
+                            className="w-[143px] h-[143px] object-cover mx-auto rounded-full bg-gray-50"
                             alt="title image"
                           />
                         </div>
@@ -145,8 +145,8 @@ export default function Teams() {
                           </p>
                           <p className="text-gray-500 leading-relaxed font-light mb-4">
                             {language === "tr"
-                              ? team.cardText5
-                              : team.cardText5_en}
+                              ? team.cardText4
+                              : team.cardText4_en}
                           </p>
                         </div>
                       </div>
@@ -158,7 +158,7 @@ export default function Teams() {
                         <div className="relative overflow-hidden px-6">
                           <img
                             src={team.cardIcon5}
-                            className="w-[143px] h-[143px] object-cover mx-auto rounded-full bg-gray-50 grayscale"
+                            className="w-[143px] h-[143px] object-cover mx-auto rounded-full bg-gray-50"
                             alt="title image"
                           />
                         </div>

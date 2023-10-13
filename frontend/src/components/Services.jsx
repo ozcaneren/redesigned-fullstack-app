@@ -33,7 +33,7 @@ export default function Services() {
               </p>
             </header>
             <div className="flex flex-wrap flex-row justify-center items-center mx-4 text-center">
-              <div className="flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-1/3 lg:px-6">
+              <div className="px-4 w-[314px] h-[222px] sm:w-1/2 lg:w-1/3 lg:px-6">
                 <div className="py-8 px-12 mb-12 bg-gray-50 border-b border-gray-100 transform transition duration-300 ease-in-out hover:-translate-y-2">
                   <h3 className="text-lg leading-normal mb-2 font-semibold text-black">
                     {language === "tr"
@@ -45,7 +45,7 @@ export default function Services() {
                   </p>
                 </div>
               </div>
-              <div className="flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-1/3 lg:px-6">
+              <div className="px-4 w-[314px] h-[222px] sm:w-1/2 lg:w-1/3 lg:px-6">
                 <div className="py-8 px-12 mb-12 bg-gray-50 border-b border-gray-100 transform transition duration-300 ease-in-out hover:-translate-y-2">
                   <h3 className="text-lg leading-normal mb-2 font-semibold text-black">
                     {language === "tr"
@@ -59,7 +59,7 @@ export default function Services() {
                   </p>
                 </div>
               </div>
-              <div className="flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-1/3 lg:px-6">
+              <div className="px-4 w-[314px] h-[222px] sm:w-1/2 lg:w-1/3 lg:px-6">
                 <div className="py-8 px-12 mb-12 bg-gray-50 border-b border-gray-100 transform transition duration-300 ease-in-out hover:-translate-y-2">
                   <h3 className="text-lg leading-normal mb-2 font-semibold text-black">
                     {language === "tr"
@@ -73,7 +73,7 @@ export default function Services() {
                   </p>
                 </div>
               </div>
-              <div className="flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-1/3 lg:px-6">
+              <div className="px-4 w-[314px] h-[222px] sm:w-1/2 lg:w-1/3 lg:px-6">
                 <div className="py-8 px-12 mb-12 bg-gray-50 border-b border-gray-100 transform transition duration-300 ease-in-out hover:-translate-y-2">
                   <h3 className="text-lg leading-normal mb-2 font-semibold text-black">
                     {language === "tr"
@@ -88,7 +88,7 @@ export default function Services() {
                 </div>
               </div>
               {service.cardTitle4 || service.cardText4 ? (
-                <div className="flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-1/3 lg:px-6 wow fadeInUp">
+                <div className="px-4 w-[314px] h-[222px] sm:w-1/2 lg:w-1/3 lg:px-6 wow fadeInUp">
                   <div className="py-8 px-12 mb-12 bg-gray-50 border-b border-gray-100 transform transition duration-300 ease-in-out hover:-translate-y-2">
                     <h3 className="text-lg leading-normal mb-2 font-semibold text-black">
                       {language === "tr"
@@ -104,7 +104,7 @@ export default function Services() {
                 </div>
               ) : null}
               {service.cardTitle5 || service.cardText5 ? (
-                <div className="flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-1/3 lg:px-6 wow fadeInUp">
+                <div className="px-4 w-[314px] h-[222px] sm:w-1/2 lg:w-1/3 lg:px-6 wow fadeInUp">
                   <div className="py-8 px-12 mb-12 bg-gray-50 border-b border-gray-100 transform transition duration-300 ease-in-out hover:-translate-y-2">
                     <h3 className="text-lg leading-normal mb-2 font-semibold text-black">
                       {language === "tr"

@@ -19,6 +19,7 @@ import Services from './pages/Services';
 import ServicesEdit from './pages/ServicesEdit';
 import Teams from './pages/Teams';
 import TeamsEdit from './pages/TeamsEdit';
+import Document from './pages/Document';
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
         <Route path='/services/:servicesId/edit' element={<ServicesEdit/>} />
         <Route path='/teams' element={<Teams/>} />
         <Route path='/teams/:teamsId/edit' element={<TeamsEdit/>} />
+        <Route path='/document' element={<Document/>} />
       </Routes>
     </>
   );
