@@ -8,7 +8,7 @@ import Breadcrumb from "../components/Breadcrumbs";
 function ContactEdit() {
   const { contactId } = useParams();
 
-  const [contact, setContact] = useState({});
+  const [contact, setContact] = useState([]);
 
   const navigate = useNavigate();
 

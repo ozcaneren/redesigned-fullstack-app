@@ -8,7 +8,7 @@ import Breadcrumb from "../components/Breadcrumbs";
 export default function AboutEdit() {
   const { aboutId } = useParams();
 
-  const [about, setAbout] = useState({});
+  const [about, setAbout] = useState([]);
 
   const navigate = useNavigate();
 

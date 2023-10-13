@@ -654,7 +654,7 @@ export default function Footer() {
                             ? "/events"
                             : footer.footerTitle2Link3 === "Foto Galeri"
                             ? "/gallery"
-                            : "/"
+                            : "/documents"
                         }
                         className="text-gray-700 transition hover:opacity-75"
                       >
