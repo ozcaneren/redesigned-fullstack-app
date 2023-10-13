@@ -32,3 +32,5 @@
 ![Screenshot_20231013_212105](https://github.com/ozcaneren/redesigned-fullstack-app/assets/100240225/2be4ece5-f117-4d83-a962-b76df3ae23fd)
 ![Screenshot_20231013_212121](https://github.com/ozcaneren/redesigned-fullstack-app/assets/100240225/0c3b8c0e-1c5f-4725-9f02-cafad8dd631d)
 ![Screenshot_20231013_212135](https://github.com/ozcaneren/redesigned-fullstack-app/assets/100240225/23a3e517-26a7-4910-a12a-e9b51e815723)
+![Screenshot_20231013_212322](https://github.com/ozcaneren/redesigned-fullstack-app/assets/100240225/33b2bc08-004d-4750-907d-9e6d5c520ccd)
+![Screenshot_20231013_212333](https://github.com/ozcaneren/redesigned-fullstack-app/assets/100240225/e9609598-c6e5-4e1b-aa1b-d83269b7d95b)
