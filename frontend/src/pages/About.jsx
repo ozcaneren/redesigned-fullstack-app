@@ -51,7 +51,7 @@ export default function About() {
                 alt="logo"
                 width="420"
                 height="120"
-                src="https://cdn.dribbble.com/userupload/2338354/file/original-ae1855a82a249b8522e6d62be6351828.png?resize=752x"
+                src="http://www.clubaida.com.tr//tema/genel/uploads/fotogaleri/diger/bLaIrUHXO7q5xkMd8AZ3KiYjwVDs4m9E.png"
               />
             </div>
           </div>
@@ -62,7 +62,7 @@ export default function About() {
                 alt="logo"
                 width="420"
                 height="120"
-                src="https://cdn.dribbble.com/userupload/2338354/file/original-ae1855a82a249b8522e6d62be6351828.png?resize=752x"
+                src="http://www.clubaida.com.tr//tema/genel/uploads/fotogaleri/diger/bLaIrUHXO7q5xkMd8AZ3KiYjwVDs4m9E.png"
               />
               <div className="mb-16 lg:mb-0 lg:max-w-lg lg:pr-5">
                 <div className="max-w-xl mb-6">
@@ -111,7 +111,7 @@ export default function About() {
                 alt="logo"
                 width="420"
                 height="120"
-                src="https://cdn.dribbble.com/userupload/2338354/file/original-ae1855a82a249b8522e6d62be6351828.png?resize=752x"
+                src="http://www.clubaida.com.tr//tema/genel/uploads/fotogaleri/diger/bLaIrUHXO7q5xkMd8AZ3KiYjwVDs4m9E.png"
               />
             </div>
           </div>

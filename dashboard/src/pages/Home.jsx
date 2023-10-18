@@ -1,4 +1,3 @@
-import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import Breadcrumb from "../components/Breadcrumbs";
 
@@ -8,11 +7,10 @@ export default function Home() {
   return (
     <div>
       <div className="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-zinc-900 text-white">
-        <Navbar />
         <Sidebar />
         {/* ana kisim */}
-        <div className="h-full ml-14 mt-14 mb-10 md:ml-64">
-          <div className="pt-8 pb-4 px-4">
+        <div className="h-full ml-14 mb-10 md:ml-64">
+          <div className="pt-4 pb-4 px-4">
             <div className="w-1/12">
               <div className="">
                 <Breadcrumb paths={breadcrumbPaths} />

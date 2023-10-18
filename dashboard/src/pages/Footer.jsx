@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import Breadcrumb from "../components/Breadcrumbs";
 import { useNavigate } from "react-router-dom";
@@ -35,10 +34,9 @@ export default function Footer() {
   return (
     <div>
       <div className="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-zinc-900 text-white">
-        <Navbar />
         <Sidebar />
-        <div className="ml-14 mt-20 md:mt-14 mb-10 md:ml-64">
-          <div className="pt-8 pb-4 px-4">
+        <div className="ml-14   mb-10 md:ml-64">
+          <div className="pt-4 pb-4 px-4">
             <div className="w-2/12">
               <div>
                 <Breadcrumb paths={breadcrumbPaths} />

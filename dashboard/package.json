@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@heroicons/react": "1.0.6",
+    "@material-tailwind/react": "^2.1.4",
     "@tremor/cli": "^1.1.0",
     "@tremor/react": "^3.7.9",
     "axios": "^1.5.0",

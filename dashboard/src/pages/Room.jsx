@@ -1,20 +1,21 @@
-import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { AiOutlineEdit } from "react-icons/ai";
 import { HiOutlineTrash } from "react-icons/hi";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import Breadcrumb from "../components/Breadcrumbs";
+import Modal from "./RoomModal";
+import RoomEditModal from "./RoomEditModal";
 
 export default function Room() {
   const [rooms, setRooms] = useState([]);
-  const navigate = useNavigate();
-
+  const [showModal, setShowModal] = useState(false);
+  const [roomId, setRoomId] = useState();
   const breadcrumbPaths = [
     { url: "/", label: "Ana Sayfa" },
     { url: "/odalar", label: "Odalar" },
   ];
+
   const getRooms = async () => {
     try {
       const response = await axios.get(
@@ -39,21 +40,17 @@ export default function Room() {
     }
   };
 
-  const handleCardClick = (id) => {
-    navigate(`/room/turkish/${id}/edit`);
-  };
-
-  const handleAddRoom = () => {
-    navigate("/room/add");
+  const handleCardClick = (roomId) => {
+    setRoomId(roomId);
+    setShowModal(true);
   };
 
   return (
     <div>
       <div className="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-zinc-900 text-white">
-        <Navbar />
         <Sidebar />
-        <div className="ml-14 mt-20 md:mt-14 mb-10 md:ml-64">
-          <div className="pt-8 pb-4 px-4">
+        <div className="ml-14 mb-10 md:ml-64">
+          <div className="pt-4 pb-4 px-4">
             <div className="w-2/12">
               <div className="">
                 <Breadcrumb paths={breadcrumbPaths} />
@@ -62,15 +59,12 @@ export default function Room() {
           </div>
           <div className="p-4">
             <div className="bg-zinc-800 rounded pt-4 pb-4">
-              <div className="flex justify-center items-center">
-                <div className="w-full flex justify-center">
-                  <div className="w-full px-4 relative space-x-2">
-                    <button
-                      onClick={handleAddRoom}
-                      className="bg-zinc-700 p-2 text-white text-sm border border-gray-600 rounded-[6px]"
-                    >
-                      Yeni Oda Ekle
-                    </button>
+              <div className="flex flex-row">
+                <div className="flex justify-center items-center">
+                  <div className="w-full flex justify-center">
+                    <div className="w-full px-4 relative space-x-2">
+                      <Modal />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -169,7 +163,11 @@ export default function Room() {
                                       onClick={() => handleCardClick(room._id)}
                                     >
                                       <div className="font-medium mt-1 text-blue-600 dark:text-blue-500 hover:underline">
-                                        <AiOutlineEdit />
+                                        <RoomEditModal
+                                          showModal={showModal}
+                                          setShowModal={setShowModal}
+                                          roomId={roomId}
+                                        />
                                       </div>
                                     </button>
                                     <button
@@ -180,6 +178,7 @@ export default function Room() {
                                       </div>
                                     </button>
                                   </td>
+                                  <td></td>
                                 </tr>
                               </tbody>
                             ))}

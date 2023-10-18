@@ -39,7 +39,7 @@ export default function Teams() {
                 <div className="flex flex-wrap flex-row -mx-4 justify-center">
                   {team.cardTitle || team.cardText ? (
                     <div className="flex-shrink max-w-full px-4 w-2/3 sm:w-1/2 md:w-5/12 lg:w-1/4 xl:px-6">
-                      <div className="relative py-2 overflow-hidden bg-gray-200 rounded-lg border border-gray-300 mb-12 hover-grayscale-0 wow fadeInUp">
+                      <div className="relative py-2 overflow-hidden bg-gray-100 rounded-lg border border-gray-100 mb-12 hover-grayscale-0 wow fadeInUp">
                         <div className="relative overflow-hidden px-6">
                           <img
                             src={team.cardIcon}
@@ -62,7 +62,7 @@ export default function Teams() {
                   ) : null}
                   {team.cardTitle1 || team.cardText1 ? (
                     <div className="flex-shrink max-w-full px-4 w-2/3 sm:w-1/2 md:w-5/12 lg:w-1/4 xl:px-6">
-                      <div className="relative py-2 overflow-hidden bg-gray-200 rounded-lg border border-gray-300 mb-12 hover-grayscale-0 wow fadeInUp">
+                      <div className="relative py-2 overflow-hidden bg-gray-100 rounded-lg border border-gray-100 mb-12 hover-grayscale-0 wow fadeInUp">
                         <div className="relative overflow-hidden px-6">
                           <img
                             src={team.cardIcon1}
@@ -85,7 +85,7 @@ export default function Teams() {
                   ) : null}
                   {team.cardTitle2 || team.cardText2 ? (
                     <div className="flex-shrink max-w-full px-4 w-2/3 sm:w-1/2 md:w-5/12 lg:w-1/4 xl:px-6">
-                      <div className="relative py-2 overflow-hidden bg-gray-200 rounded-lg border border-gray-300 mb-12 hover-grayscale-0 wow fadeInUp">
+                      <div className="relative py-2 overflow-hidden bg-gray-100 rounded-lg border border-gray-100 mb-12 hover-grayscale-0 wow fadeInUp">
                         <div className="relative overflow-hidden px-6">
                           <img
                             src={team.cardIcon2}
@@ -108,7 +108,7 @@ export default function Teams() {
                   ) : null}
                   {team.cardTitle3 || team.cardText3 ? (
                     <div className="flex-shrink max-w-full px-4 w-2/3 sm:w-1/2 md:w-5/12 lg:w-1/4 xl:px-6">
-                      <div className="relative py-2 overflow-hidden bg-gray-200 rounded-lg border border-gray-300 mb-12 hover-grayscale-0 wow fadeInUp">
+                      <div className="relative py-2 overflow-hidden bg-gray-100 rounded-lg border border-gray-100 mb-12 hover-grayscale-0 wow fadeInUp">
                         <div className="relative overflow-hidden px-6">
                           <img
                             src={team.cardIcon3}
@@ -131,7 +131,7 @@ export default function Teams() {
                   ) : null}
                   {team.cardTitle4 || team.cardText4 ? (
                     <div className="flex-shrink max-w-full px-4 w-2/3 sm:w-1/2 md:w-5/12 lg:w-1/4 xl:px-6">
-                      <div className="relative py-2 overflow-hidden bg-gray-200 rounded-lg border border-gray-300 mb-12 hover-grayscale-0 wow fadeInUp">
+                      <div className="relative py-2 overflow-hidden bg-gray-100 rounded-lg border border-gray-100 mb-12 hover-grayscale-0 wow fadeInUp">
                         <div className="relative overflow-hidden px-6">
                           <img
                             src={team.cardIcon4}
@@ -154,7 +154,7 @@ export default function Teams() {
                   ) : null}
                   {team.cardTitle5 || team.cardText5 ? (
                     <div className="flex-shrink max-w-full px-4 w-2/3 sm:w-1/2 md:w-5/12 lg:w-1/4 xl:px-6">
-                      <div className="relative py-2 overflow-hidden bg-gray-200 rounded-lg border border-gray-300 mb-12 hover-grayscale-0 wow fadeInUp">
+                      <div className="relative py-2 overflow-hidden bg-gray-100 rounded-lg border border-gray-100 mb-12 hover-grayscale-0 wow fadeInUp">
                         <div className="relative overflow-hidden px-6">
                           <img
                             src={team.cardIcon5}

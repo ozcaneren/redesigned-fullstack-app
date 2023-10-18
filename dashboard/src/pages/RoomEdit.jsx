@@ -1,19 +1,14 @@
 import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
-import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import { useParams, useNavigate } from "react-router-dom";
 import Breadcrumb from "../components/Breadcrumbs";
 
 function RoomEdit() {
-  const { roomId } = useParams();
-
-  const [room, setRoom] = useState({});
-
   const navigate = useNavigate();
-
+  const { roomId } = useParams();
   const [theFeature, setTheFeature] = useState([]);
-
+  const [room, setRoom] = useState({});
   const [selectedRoomFeatures, setSelectedRoomFeatures] = useState([]);
 
   const breadcrumbPaths = [
@@ -94,10 +89,9 @@ function RoomEdit() {
 
   return (
     <div className="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-zinc-900">
-      <Navbar />
       <Sidebar />
-      <div className="ml-14 mt-20 md:mt-14 mb-10 md:ml-64">
-        <div className="pt-8 pb-4 px-4">
+      <div className="ml-14   mb-10 md:ml-64">
+        <div className="pt-4 pb-4 px-4">
           <div className="w-4/12">
             <div className="">
               <Breadcrumb paths={breadcrumbPaths} />

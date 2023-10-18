@@ -6,13 +6,26 @@ import { LuSettings2, LuPanelBottomClose } from "react-icons/lu";
 import { TbLayoutNavbarCollapse } from "react-icons/tb";
 import { FaPager } from "react-icons/fa";
 import { HiOutlineDocumentText } from "react-icons/hi";
+import { FaUserAlt } from "react-icons/fa";
 
 function Sidebar() {
   return (
     <div>
-      <div className="fixed flex flex-col top-14 left-0 w-14 hover:w-64 md:w-64 bg-zinc-800 h-full text-gray-200 font-medium transition-all duration-300 z-10">
+      <div className="fixed flex flex-col top-0 left-0 w-14 hover:w-64 md:w-64 bg-zinc-800 h-full text-gray-200 font-medium transition-all duration-300 z-10">
         <div className="overflow-y-auto overflow-x-hidden flex flex-col justify-between flex-grow">
           <ul className="flex flex-col py-4 space-y-1">
+            <li className="hidden md:block mb-2">
+              <div className="flex pl-5 items-center space-x-2">
+                <div className="bg-gray-700 p-2 rounded-full">
+                  <FaUserAlt size={20} className="text-gray-300" />
+                </div>
+                <span>
+                  <p className="text-base font-medium tracking-wider text-gray-100">
+                    Admin
+                  </p>
+                </span>
+              </div>
+            </li>
             <li className="px-5 hidden md:block">
               <div className="flex flex-row items-center h-8">
                 <div className="text-md font-medium tracking-wide text-gray-400">
@@ -190,7 +203,7 @@ function Sidebar() {
               </Link>
             </li>
           </ul>
-          <p className="mb-14 px-5 py-3 hidden md:block text-center text-xs">
+          <p className="px-5 py-3 hidden md:block text-center text-xs">
             Copyright @2023
           </p>
         </div>

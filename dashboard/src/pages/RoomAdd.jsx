@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import { useNavigate } from "react-router-dom";
 import Breadcrumb from "../components/Breadcrumbs";
@@ -75,10 +74,9 @@ const RoomAdd = () => {
 
   return (
     <div className="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-zinc-900">
-      <Navbar />
       <Sidebar />
-      <div className="ml-14 mt-14 mb-10 md:ml-64">
-        <div className="pt-8 pb-4 px-4">
+      <div className="ml-14 mb-10 md:ml-64">
+        <div className="pt-4 pb-4 px-4">
           <div className="w-3/12">
             <div className="">
               <Breadcrumb paths={breadcrumbPaths} />
