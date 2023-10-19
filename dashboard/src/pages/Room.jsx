@@ -47,10 +47,10 @@ export default function Room() {
 
   return (
     <div>
-      <div className="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-zinc-900 text-white">
+      <div className="bg-background text-white min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased ">
         <Sidebar />
         <div className="ml-14 mb-10 md:ml-64">
-          <div className="pt-4 pb-4 px-4">
+          <div className="pt-4 pb-4 px-4 ">
             <div className="w-2/12">
               <div className="">
                 <Breadcrumb paths={breadcrumbPaths} />
@@ -58,7 +58,7 @@ export default function Room() {
             </div>
           </div>
           <div className="p-4">
-            <div className="bg-zinc-800 rounded pt-4 pb-4">
+            <div className="bg-[#FEFEFE] rounded border border-gray-200/70 pt-4 pb-4">
               <div className="flex flex-row">
                 <div className="flex justify-center items-center">
                   <div className="w-full flex justify-center">
@@ -75,43 +75,43 @@ export default function Room() {
                       <div className="inline-block min-w-full align-middle">
                         <div className="overflow-hidden">
                           <table className="min-w-full table-fixed">
-                            <thead className="bg-zinc-600">
+                            <thead className="bg-[#9BA4B5] text-white">
                               <tr>
                                 <th
                                   scope="col"
-                                  className="py-3 pl-6 text-xs font-medium tracking-wider text-left text-gray-100 uppercase w-[400px]"
+                                  className="py-3 pl-6 text-xs font-medium tracking-wider text-left  uppercase w-[400px]"
                                 >
                                   Oda Turu
                                 </th>
                                 <th
                                   scope="col"
-                                  className="py-3 text-xs font-medium tracking-wider text-left text-gray-100 uppercase w-[400px]"
+                                  className="py-3 text-xs font-medium tracking-wider text-left  uppercase w-[400px]"
                                 >
                                   Oda Adı
                                 </th>
                                 <th
                                   scope="col"
-                                  className="py-3 text-xs font-medium tracking-wider text-left text-gray-100 uppercase w-[400px]"
+                                  className="py-3 text-xs font-medium tracking-wider text-left uppercase w-[400px]"
                                 >
                                   Durum
                                 </th>
                                 <th
                                   scope="col"
-                                  className="py-3 text-xs font-medium tracking-wider text-left text-gray-100 uppercase w-[400px]"
+                                  className="py-3 text-xs font-medium tracking-wider text-left  uppercase w-[400px]"
                                 >
                                   Sayfa
                                 </th>
                                 <th
                                   scope="col"
-                                  className="py-3 flex justify-end pr-6 text-xs font-medium tracking-wider text-gray-100 uppercase"
+                                  className="py-3 flex justify-end pr-6 text-xs font-medium tracking-wider uppercase"
                                 >
                                   Islemler
                                 </th>
                               </tr>
                             </thead>
                             {rooms.map((room, index) => (
-                              <tbody key={index} className="bg-zinc-700 ">
-                                <tr className="hover:bg-zinc-800">
+                              <tbody key={index} className="bg-[#474E68] ">
+                                <tr className="hover:bg-[#6B728E]">
                                   <td className="max-w-[320px] w-[320px]">
                                     <div className="py-4 max-w-xs px-6 text-sm font-medium text-gray-200 truncate">
                                       <p className="truncate">
@@ -178,7 +178,6 @@ export default function Room() {
                                       </div>
                                     </button>
                                   </td>
-                                  <td></td>
                                 </tr>
                               </tbody>
                             ))}

@@ -11,7 +11,7 @@ import { FaUserAlt } from "react-icons/fa";
 function Sidebar() {
   return (
     <div>
-      <div className="fixed flex flex-col top-0 left-0 w-14 hover:w-64 md:w-64 bg-zinc-800 h-full text-gray-200 font-medium transition-all duration-300 z-10">
+      <div className="fixed flex flex-col top-0 left-0 w-14 hover:w-64 md:w-64 bg-[#2e3344] h-full text-gray-200 font-medium transition-all duration-300 z-10">
         <div className="overflow-y-auto overflow-x-hidden flex flex-col justify-between flex-grow">
           <ul className="flex flex-col py-4 space-y-1">
             <li className="hidden md:block mb-2">
@@ -36,7 +36,7 @@ function Sidebar() {
             <li>
               <Link
                 to="/"
-                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-zinc-700 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6"
+                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-[#6B728E] text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6"
               >
                 <span className="inline-flex justify-center items-center ml-4">
                   <BiHomeAlt2 size={20} />
@@ -57,7 +57,7 @@ function Sidebar() {
             <li>
               <Link
                 to="/contact"
-                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-zinc-700 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6"
+                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-[#6B728E] text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6"
               >
                 <span className="text-blue-100 inline-flex justify-center items-center ml-4">
                   <RiContactsLine className="" size={20} />
@@ -70,7 +70,7 @@ function Sidebar() {
             <li>
               <Link
                 to="/about"
-                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-zinc-700 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6"
+                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-[#6B728E] text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6"
               >
                 <span className="inline-flex justify-center items-center ml-4">
                   <MdOutlineRoundaboutRight size={20} />
@@ -83,7 +83,7 @@ function Sidebar() {
             <li>
               <Link
                 to="/header"
-                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-zinc-700 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6"
+                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-[#6B728E] text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6"
               >
                 <span className="inline-flex justify-center items-center ml-4">
                   <TbLayoutNavbarCollapse size={20} />
@@ -96,7 +96,7 @@ function Sidebar() {
             <li>
               <Link
                 to="/footer"
-                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-zinc-700 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6"
+                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-[#6B728E] text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6"
               >
                 <span className="inline-flex justify-center items-center ml-4">
                   <LuPanelBottomClose size={20} />
@@ -109,7 +109,7 @@ function Sidebar() {
             <li>
               <Link
                 to="/document"
-                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-zinc-700 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6"
+                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-[#6B728E] text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6"
               >
                 <span className="inline-flex justify-center items-center ml-4">
                   <HiOutlineDocumentText size={20} />
@@ -131,7 +131,7 @@ function Sidebar() {
             <li>
               <Link
                 to="/hero"
-                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-zinc-700 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6"
+                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-[#6B728E] text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6"
               >
                 <span className="text-blue-100 inline-flex justify-center items-center ml-4">
                   <FaPager className="" size={20} />
@@ -144,7 +144,7 @@ function Sidebar() {
             <li>
               <Link
                 to="/services"
-                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-zinc-700 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6"
+                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-[#6B728E] text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6"
               >
                 <span className="text-blue-100 inline-flex justify-center items-center ml-4">
                   <MdOutlineRoomService className="" size={20} />
@@ -157,7 +157,7 @@ function Sidebar() {
             <li>
               <Link
                 to="/teams"
-                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-zinc-700 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6"
+                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-[#6B728E] text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6"
               >
                 <span className="text-blue-100 inline-flex justify-center items-center ml-4">
                   <RiTeamLine className="" size={20} />
@@ -179,7 +179,7 @@ function Sidebar() {
             <li>
               <Link
                 to="/room"
-                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-zinc-700 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6"
+                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-[#6B728E] text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6"
               >
                 <span className="inline-flex justify-center items-center ml-4">
                   <MdMeetingRoom size={20} />
@@ -192,7 +192,7 @@ function Sidebar() {
             <li>
               <Link
                 to="/room/feature"
-                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-zinc-700 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6"
+                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-[#6B728E] text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6"
               >
                 <span className="inline-flex justify-center items-center ml-4">
                   <LuSettings2 size={20} />

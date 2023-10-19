@@ -90,7 +90,7 @@ export default function Modal() {
   return (
     <>
       <button
-        className="bg-zinc-700 p-2 text-white text-sm border border-gray-600 rounded-[6px]"
+        className="bg-[#474E68] p-2 text-white text-sm rounded-[6px]"
         type="button"
         onClick={() => setShowModal(true)}
       >
@@ -101,15 +101,15 @@ export default function Modal() {
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
             <div className="relative my-6 mx-auto w-[1000px]">
               {/*content*/}
-              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-zinc-800 outline-none focus:outline-none">
+              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-[#f7f9fa] outline-none focus:outline-none">
                 {/*header*/}
                 <div className="flex items-start justify-between p-5 border-b border-solid border-blue-200 rounded-t">
-                  <h3 className="text-3xl font-semibold">Oda Ekle</h3>
+                  <h3 className="text-3xl text-[#65647C] font-semibold">Oda Ekle</h3>
                   <button
                     className="p-1 ml-auto  border-0 text-white float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
                     onClick={() => setShowModal(false)}
                   >
-                    <span className=" text-white h-6 w-6 text-2xl block outline-none focus:outline-none">
+                    <span className=" text-[#65647C] h-6 w-6 text-2xl block outline-none focus:outline-none">
                       ×
                     </span>
                   </button>
@@ -120,22 +120,26 @@ export default function Modal() {
                     <div className="mb-4">
                       <label
                         htmlFor="type"
-                        className="block text-sm font-medium text-gray-200 mb-2"
+                        className="block text-sm font-medium text-[#3d3d4d] mb-2"
                       >
                         Oda Tipi
                       </label>
-                      <input
+                      <select
                         type="text"
                         name="type"
                         value={roomType}
                         onChange={(e) => setRoomType(e.target.value)}
                         className="mt-1 p-2 w-full bg-white border-gray-300 border rounded-sm"
-                      />
+                      >
+                        <option value="">Seç</option>
+                        <option value="standart">Standart</option>
+                        <option value="family">Family</option>
+                      </select>
                     </div>
                     <div className="mb-4">
                       <label
                         htmlFor="title"
-                        className="block text-sm font-medium text-gray-200 mb-2"
+                        className="block text-sm font-medium text-[#3d3d4d] mb-2"
                       >
                         Oda Adı
                       </label>
@@ -150,7 +154,7 @@ export default function Modal() {
                     <div className="mb-4">
                       <label
                         htmlFor="description"
-                        className="block text-sm font-medium text-gray-200 mb-2"
+                        className="block text-sm font-medium text-[#3d3d4d] mb-2"
                       >
                         Açıklama
                       </label>
@@ -165,7 +169,7 @@ export default function Modal() {
                     <div className="mb-4">
                       <label
                         htmlFor="shortDescription"
-                        className="block text-sm font-medium text-gray-200 mb-2"
+                        className="block text-sm font-medium text-[#3d3d4d] mb-2"
                       >
                         Kısa Açıklama
                       </label>
@@ -182,7 +186,7 @@ export default function Modal() {
                     <div className="mb-4">
                       <label
                         htmlFor="features"
-                        className="block text-sm font-medium text-gray-200 mb-2"
+                        className="block text-sm font-medium text-[#3d3d4d] mb-2"
                       >
                         Özellikler
                       </label>
@@ -197,7 +201,7 @@ export default function Modal() {
                               className=""
                             />
                             <label
-                              className="mx-2 text-white"
+                              className="mx-2 text-[#131318]"
                               htmlFor="features"
                             >
                               {item.TurkishFeature}
@@ -209,7 +213,7 @@ export default function Modal() {
                     <div className="mb-4">
                       <label
                         htmlFor="visibility"
-                        className="block text-sm font-medium text-gray-200 mb-2"
+                        className="block text-sm font-medium text-[#3d3d4d] mb-2"
                       >
                         Durum
                       </label>
@@ -229,23 +233,23 @@ export default function Modal() {
                   </form>
                 </div>
                 {/*footer*/}
-                <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
+                <div className="flex items-center justify-end p-6 border-t border-solid border-blue-200 rounded-b">
                   <button
-                    className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    className="bg-[#353A4E] text-white background-transparent font-bold uppercase px-6 py-3 rounded text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
                     onClick={() => setShowModal(false)}
                   >
                     Kapat
                   </button>
                   <button
-                    className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    className="bg-[#353A4E] text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
                     onClick={() => {
                       submitForm();
                       setShowModal(false);
                     }}
                   >
-                    Değişiklikleri Kaydet
+                    Kaydet
                   </button>
                 </div>
               </div>
