@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumbs";
 import { HiOutlineTrash } from "react-icons/hi";
 import ContactModel from "./ContactModel";
 import ContactEditModal from "./ContactEditModal";
+import { TbEdit } from "react-icons/tb";
 
 export default function Contact() {
   const [contacts, setContacts] = useState([]);
@@ -115,14 +116,17 @@ export default function Contact() {
                                   <button
                                     onClick={() => handleClick(contact._id)}
                                   >
-                                    <div className="font-medium mt-2.5 text-cyan-500 hover:underline">
-                                      <ContactEditModal
-                                        showModal={showModal}
-                                        setShowModal={setShowModal}
-                                        contactId={contactId}
-                                      />
+                                    <div className="font-medium mt-1 text-cyan-500 hover:underline">
+                                      <TbEdit size={19} />
                                     </div>
                                   </button>
+                                  {showModal && (
+                                    <ContactEditModal
+                                    showModal={showModal}
+                                    setShowModal={setShowModal}
+                                    contactId={contactId}
+                                  />
+                                  )}
                                   <button
                                     onClick={() => handleDelete(contact._id)}
                                   >

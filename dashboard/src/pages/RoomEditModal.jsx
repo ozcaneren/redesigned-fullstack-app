@@ -1,14 +1,17 @@
 import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import { TbEdit } from "react-icons/tb";
 
-const RoomEditModal = ({ roomId }) => {
-  const navigate = useNavigate();
+import PropTypes from "prop-types";
+
+const RoomEditModal = ({ roomId, showModal, setShowModal }) => {
+  RoomEditModal.propTypes = {
+    roomId: PropTypes.string.isRequired,
+    showModal: PropTypes.bool.isRequired,
+    setShowModal: PropTypes.func.isRequired,
+  };
   const [theFeature, setTheFeature] = useState([]);
   const [room, setRoom] = useState({});
   const [selectedRoomFeatures, setSelectedRoomFeatures] = useState([]);
-  const [showModal, setShowModal] = useState(false);
 
   const fetchRoomById = useCallback(async () => {
     try {
@@ -21,8 +24,6 @@ const RoomEditModal = ({ roomId }) => {
       console.error("Oda getirilirken hata oluştu:", error);
     }
   }, [roomId]);
-
-  console.log(roomId);
 
   useEffect(() => {
     fetchRoomById();
@@ -43,18 +44,18 @@ const RoomEditModal = ({ roomId }) => {
     getExtraFeatures();
   }, []);
 
-  const handleUpdate = async (e) => {
-    e.preventDefault();
+  const handleUpdate = async () => {
     try {
       await axios.put(`http://localhost:4000/api/room/turkish/${roomId}`, {
         ...room,
         roomFeatures: selectedRoomFeatures,
       });
-      navigate("/room");
+      setShowModal(false); // İşlem başarılı olduğunda modalı kapat
     } catch (error) {
       console.error("Oda güncellenirken hata oluştu:", error);
     }
   };
+  
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -84,9 +85,6 @@ const RoomEditModal = ({ roomId }) => {
 
   return (
     <>
-      <button type="button" onClick={() => setShowModal(true)}>
-        <TbEdit size={20} />
-      </button>
       {showModal && (
         <>
           <div className="justify-center items-center text-white flex overflow-x-auto overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">

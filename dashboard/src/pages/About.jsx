@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumbs";
 import { HiOutlineTrash } from "react-icons/hi";
 import AboutModal from "./AboutModal";
 import AboutEditModal from "./AboutEditModal";
+import { TbEdit } from "react-icons/tb";
 
 export default function About() {
   const [abouts, setAbouts] = useState([]);
@@ -111,13 +112,16 @@ export default function About() {
                                     onClick={() => handleClick(about._id)}
                                   >
                                     <div className="font-medium mt-2.5 text-cyan-500 hover:underline">
-                                      <AboutEditModal
-                                        showModal={showModal}
-                                        setShowModal={setShowModal}
-                                        aboutId={aboutId}
-                                      />
+                                      <TbEdit size={20} />
                                     </div>
                                   </button>
+                                  {showModal ? (
+                                    <AboutEditModal
+                                      showModal={showModal}
+                                      setShowModal={setShowModal}
+                                      aboutId={aboutId}
+                                    />
+                                  ) : null}
                                   <button
                                     onClick={() => handleDelete(about._id)}
                                   >

@@ -6,6 +6,7 @@ import { HiOutlineTrash } from "react-icons/hi";
 import Breadcrumb from "../components/Breadcrumbs";
 import Modal from "./RoomModal";
 import RoomEditModal from "./RoomEditModal";
+import { TbEdit } from "react-icons/tb";
 
 export default function Room() {
   const [rooms, setRooms] = useState([]);
@@ -15,7 +16,7 @@ export default function Room() {
     { url: "/", label: "Ana Sayfa" },
     { url: "/odalar", label: "Odalar" },
   ];
-  
+
   const getRooms = async () => {
     try {
       const response = await axios.get(
@@ -164,14 +165,17 @@ export default function Room() {
                                     <button
                                       onClick={() => handleCardClick(room._id)}
                                     >
-                                      <div className="font-medium mt-2.5 text-cyan-500 hover:underline">
-                                        <RoomEditModal
-                                          showModal={showModal}
-                                          setShowModal={setShowModal}
-                                          roomId={roomId}
-                                        />
+                                      <div className="font-medium mt-1 text-cyan-500 hover:underline">
+                                        <TbEdit size={20} />
                                       </div>
                                     </button>
+                                    {showModal && (
+                                      <RoomEditModal
+                                        showModal={showModal}
+                                        setShowModal={setShowModal}
+                                        roomId={roomId}
+                                      />
+                                    )}
                                     <button
                                       onClick={() => handleDelete(room._id)}
                                     >

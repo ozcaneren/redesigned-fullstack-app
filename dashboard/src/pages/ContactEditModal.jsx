@@ -1,10 +1,14 @@
 import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
-import { TbEdit } from "react-icons/tb";
+import PropTypes from "prop-types";
 
-const ContactEditModal = ({ contactId }) => {
-  const [contact, setContact] = useState([]);
-  const [showModal, setShowModal] = useState(false);
+const ContactEditModal = ({ contactId, showModal, setShowModal }) => {
+  ContactEditModal.propTypes = {
+    contactId: PropTypes.string,
+    showModal: PropTypes.bool,
+    setShowModal: PropTypes.func,
+  };
+  const [contact, setContact] = useState({});
 
   const fetchContactById = useCallback(async () => {
     try {
@@ -21,12 +25,12 @@ const ContactEditModal = ({ contactId }) => {
     fetchContactById();
   }, [fetchContactById, contactId]);
 
-  const handleUpdate = async (e) => {
-    e.preventDefault();
+  const handleUpdate = async () => {
     try {
       await axios.put(`http://localhost:4000/api/contact/${contactId}`, {
         ...contact,
       });
+      setShowModal(false);
     } catch (error) {
       console.error("Iletisim güncellenirken hata oluştu:", error);
     }
@@ -42,9 +46,6 @@ const ContactEditModal = ({ contactId }) => {
 
   return (
     <>
-      <button type="button" onClick={() => setShowModal(true)}>
-        <TbEdit size={19} />
-      </button>
       {showModal ? (
         <>
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
@@ -100,7 +101,8 @@ const ContactEditModal = ({ contactId }) => {
                       />
                     </div>
                   </div>
-                  <div className="flex items-center justify-end p-6 border-t border-solid border-gray-300 rounded-b">
+                </form>
+                <div className="flex items-center justify-end p-6 border-t border-solid border-gray-300 rounded-b">
                     <button
                       className="bg-[#353A4E] text-white background-transparent font-bold uppercase px-6 py-3 rounded text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                       type="button"
@@ -112,13 +114,13 @@ const ContactEditModal = ({ contactId }) => {
                       className="bg-[#353A4E] text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                       type="submit"
                       onClick={() => {
+                        handleUpdate();
                         setShowModal(false);
                       }}
                     >
                       Kaydet
                     </button>
                   </div>
-                </form>
               </div>
             </div>
           </div>
