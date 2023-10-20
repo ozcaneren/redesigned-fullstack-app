@@ -6,7 +6,7 @@ export default function Home() {
 
   return (
     <div>
-      <div className="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-[#F6F5F0] text-white">
+      <div className="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-background text-white">
         <Sidebar />
         {/* ana kisim */}
         <div className="h-full ml-14 mb-10 md:ml-64">

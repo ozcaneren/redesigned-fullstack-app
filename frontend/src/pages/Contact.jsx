@@ -4,11 +4,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useLanguage } from "../LanguageContext";
 
-
 export default function Contact() {
   const [contactData, setContactData] = useState([]);
   const { language } = useLanguage();
-
 
   const getContactData = async () => {
     try {
@@ -36,42 +34,21 @@ export default function Contact() {
                   src="https://i.ibb.co/2M7rtLk/Remote1.png"
                 />
               </div>
-              {contactData.map((contact, index) => (
-                <div key={index}>
-                  <h1 className="text-center text-2xl sm:text-5xl py-10 font-medium">
-                    {language === "tr"
-                      ? contact.mainTitle
-                      : contact.mainTitle_en
-                    }
-                  </h1>
-                  <div className="grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 text-center mx-6 sm:mx-48 gap-x-5 gap-y-5 my-10">
+              <div className="grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 text-center mx-6 sm:mx-48 gap-x-5 gap-y-5 my-10">
+                {contactData.map((contact, index) => (
+                  <div key={index}>
+                    <h1 className="text-center text-2xl sm:text-5xl py-10 font-medium">
+                      {language === "tr"
+                        ? contact.mainTitle
+                        : contact.mainTitle_en}
+                    </h1>
                     <div className="block border shadow-lg rounded-lg py-20">
                       <h1 className="text-lg">{contact.cardText}</h1>
                       <span className="font-bold">{contact.cardValue}</span>
                     </div>
-                    <div className="border shadow-lg rounded-lg py-20">
-                      <h1 className="text-lg">{contact.cardText1}</h1>
-                      <span className="font-bold">{contact.cardValue1}</span>
-                    </div>
-                    <div className="border shadow-lg rounded-lg py-20">
-                      <h1 className="text-lg">{contact.cardText2}</h1>
-                      <span className="font-bold">{contact.cardValue2}</span>
-                    </div>
-                    <div className="border shadow-lg rounded-lg py-20">
-                      <h1 className="text-lg">{contact.cardText3}</h1>
-                      <span className="font-bold">{contact.cardValue3}</span>
-                    </div>
-                    <div className="border shadow-lg rounded-lg py-20">
-                      <h1 className="text-lg">{contact.cardText4}</h1>
-                      <span className="font-bold">{contact.cardValue4}</span>
-                    </div>
-                    <div className="border shadow-lg rounded-lg py-20">
-                      <h1 className="text-lg">{contact.cardText5}</h1>
-                      <span className="font-bold">{contact.cardValue5}</span>
-                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>

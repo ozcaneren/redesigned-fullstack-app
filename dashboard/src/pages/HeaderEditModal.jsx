@@ -2,44 +2,44 @@ import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import PropTypes from "prop-types";
 
-const ContactEditModal = ({ contactId, showModal, setShowModal }) => {
-  ContactEditModal.propTypes = {
-    contactId: PropTypes.string,
+const HeaderEditModal = ({ headerId, showModal, setShowModal }) => {
+  HeaderEditModal.propTypes = {
+    headerId: PropTypes.string,
     showModal: PropTypes.bool,
     setShowModal: PropTypes.func,
   };
-  const [contact, setContact] = useState({});
+  const [header, setHeader] = useState({});
 
-  const fetchContactById = useCallback(async () => {
+  const fetchHeaderById = useCallback(async () => {
     try {
       const response = await axios.get(
-        `http://localhost:4000/api/contact/${contactId}`
+        `http://localhost:4000/api/header/${headerId}`
       );
-      setContact(response.data.data);
+      setHeader(response.data.data);
     } catch (error) {
-      console.error("Iletisim getirilirken hata oluştu:", error);
+      console.error("Header getirilirken hata oluştu:", error);
     }
-  }, [contactId]);
+  }, [headerId]);
 
   useEffect(() => {
-    fetchContactById();
-  }, [fetchContactById, contactId]);
+    fetchHeaderById();
+  }, [fetchHeaderById, headerId]);
 
   const handleUpdate = async () => {
     try {
-      await axios.put(`http://localhost:4000/api/contact/${contactId}`, {
-        ...contact,
+      await axios.put(`http://localhost:4000/api/header/${headerId}`, {
+        ...header,
       });
       setShowModal(false);
     } catch (error) {
-      console.error("Iletisim güncellenirken hata oluştu:", error);
+      console.error("Header güncellenirken hata oluştu:", error);
     }
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setContact((prevContact) => ({
-      ...prevContact,
+    setHeader((prevHeader) => ({
+      ...prevHeader,
       [name]: value,
     }));
   };
@@ -68,36 +68,66 @@ const ContactEditModal = ({ contactId, showModal, setShowModal }) => {
                   <div className="relative p-6 flex-auto">
                     <div className="mb-4">
                       <label
-                        className="block text-gray-700 text-sm text-left font-bold mb-2"
-                        htmlFor="cardTitle"
+                        htmlFor="headerText"
+                        className="block text-sm font-medium text-gray-700"
                       >
-                        Iletisim Basligi
+                        Header Text
                       </label>
                       <input
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="cardText"
                         type="text"
-                        placeholder="Iletisim Basligi"
-                        name="cardText"
-                        value={contact.cardText}
+                        name="headerText"
+                        id="headerText"
+                        value={header.headerText}
                         onChange={handleChange}
+                        className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md py-2"
                       />
                     </div>
                     <div className="mb-4">
                       <label
-                        className="block text-gray-700 text-sm text-left font-bold mb-2"
-                        htmlFor="cardValue"
+                        htmlFor="headerTextDropdown"
+                        className="block text-sm font-medium text-gray-700"
                       >
-                        Iletisim Degeri
+                        Header Text Dropdown
                       </label>
                       <input
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="cardValue"
                         type="text"
-                        placeholder="Iletisim Degeri"
-                        name="cardValue"
-                        value={contact.cardValue}
+                        name="headerTextDropdown"
+                        id="headerTextDropdown"
+                        value={header.headerTextDropdown}
                         onChange={handleChange}
+                        className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md py-2"
+                      />
+                    </div>
+                    <div className="mb-4">
+                      <label
+                        htmlFor="headerTextDropdown1"
+                        className="block text-sm font-medium text-gray-700"
+                      >
+                        Header Text Dropdown 1
+                      </label>
+                      <input
+                        type="text"
+                        name="headerTextDropdown1"
+                        id="headerTextDropdown1"
+                        value={header.headerTextDropdown1}
+                        onChange={handleChange}
+                        className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md py-2"
+                      />
+                    </div>
+                    <div className="mb-4">
+                      <label
+                        htmlFor="headerTextDropdown2"
+                        className="block text-sm font-medium text-gray-700"
+                      >
+                        Header Text Dropdown 2
+                      </label>
+                      <input
+                        type="text"
+                        name="headerTextDropdown2"
+                        id="headerTextDropdown2"
+                        value={header.headerTextDropdown2}
+                        onChange={handleChange}
+                        className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md py-2"
                       />
                     </div>
                   </div>
@@ -131,4 +161,4 @@ const ContactEditModal = ({ contactId, showModal, setShowModal }) => {
   );
 };
 
-export default ContactEditModal;
+export default HeaderEditModal;
