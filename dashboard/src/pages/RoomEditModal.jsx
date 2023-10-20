@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { FiEdit2 } from "react-icons/fi";
+import { TbEdit } from "react-icons/tb";
 
 const RoomEditModal = ({ roomId }) => {
   const navigate = useNavigate();
@@ -85,9 +85,7 @@ const RoomEditModal = ({ roomId }) => {
   return (
     <>
       <button type="button" onClick={() => setShowModal(true)}>
-        <div className="font-medium mt-1 text-blue-300 hover:underline">
-          <FiEdit2 size={12} />
-        </div>
+        <TbEdit size={20} />
       </button>
       {showModal && (
         <>
@@ -126,7 +124,7 @@ const RoomEditModal = ({ roomId }) => {
                           name="roomType"
                           value={room.roomType || ""}
                           onChange={handleChange}
-                          className="mt-1 p-2 w-full bg-white rounded-sm"
+                          className="mt-1 p-2 w-full bg-white border-gray-300 border rounded-sm"
                         >
                           <option value="">Seç</option>
                           <option value="standart">Standart</option>
@@ -140,14 +138,18 @@ const RoomEditModal = ({ roomId }) => {
                         >
                           Oda Türü_en
                         </label>
-                        <input
+                        <select
                           type="text"
                           id="roomType_en"
                           name="roomType_en"
-                          value={room.roomType_en}
+                          value={room.roomType_en || ""}
                           onChange={handleChange}
-                          className="mt-1 p-2 w-full rounded-sm"
-                        />
+                          className="mt-1 p-2 w-full bg-white border-gray-300 border rounded-sm"
+                        >
+                          <option value="">Seç</option>
+                          <option value="standart">Standart</option>
+                          <option value="family">Family</option>
+                        </select>
                       </div>
                     </div>
                     <div className="grid grid-cols-2 gap-x-4 border-b border-solid border-[#dbdbf1] mb-4">
@@ -164,7 +166,7 @@ const RoomEditModal = ({ roomId }) => {
                           name="roomTitle"
                           value={room.roomTitle || ""}
                           onChange={handleChange}
-                          className="mt-1 p-2 w-full bg-white rounded-sm"
+                          className="mt-1 p-2 w-full bg-white border-gray-300 border rounded-sm"
                         />
                       </div>
                       <div className="mb-4">
@@ -180,7 +182,7 @@ const RoomEditModal = ({ roomId }) => {
                           name="roomTitle_en"
                           value={room.roomTitle_en}
                           onChange={handleChange}
-                          className="mt-1 p-2 w-full bg-white rounded-sm"
+                          className="mt-1 p-2 w-full bg-white border-gray-300 border rounded-sm"
                         />
                       </div>
                     </div>
@@ -197,7 +199,7 @@ const RoomEditModal = ({ roomId }) => {
                           name="roomDescription"
                           value={room.roomDescription || ""}
                           onChange={handleChange}
-                          className="mt-1 p-2 w-full bg-white rounded-sm"
+                          className="mt-1 p-2 w-full bg-white border-gray-300 border rounded-sm"
                         />
                       </div>
                       <div className="mb-4">
@@ -212,7 +214,7 @@ const RoomEditModal = ({ roomId }) => {
                           name="roomDescription_en"
                           value={room.roomDescription_en}
                           onChange={handleChange}
-                          className="mt-1 p-2 w-full bg-white rounded-sm"
+                          className="mt-1 p-2 w-full bg-white border-gray-300 border rounded-sm"
                         />
                       </div>
                     </div>
@@ -230,7 +232,7 @@ const RoomEditModal = ({ roomId }) => {
                           name="roomShortDescription"
                           value={room.roomShortDescription || ""}
                           onChange={handleChange}
-                          className="mt-1 p-2 w-full bg-white rounded-sm"
+                          className="mt-1 p-2 w-full bg-white border-gray-300 border rounded-sm"
                         />
                       </div>
                       <div className="mb-4">
@@ -246,7 +248,7 @@ const RoomEditModal = ({ roomId }) => {
                           name="roomShortDescription_en"
                           value={room.roomShortDescription_en}
                           onChange={handleChange}
-                          className="mt-1 p-2 w-full bg-white rounded-sm"
+                          className="mt-1 p-2 w-full bg-white border-gray-300 border rounded-sm"
                         />
                       </div>
                     </div>
@@ -295,7 +297,7 @@ const RoomEditModal = ({ roomId }) => {
                         value={room.roomVisibility ? "true" : "false"}
                         onChange={handleChange}
                         required
-                        className="mt-1 p-2 w-full bg-white rounded-sm"
+                        className="mt-1 p-2 w-full bg-white border-gray-300 border rounded-sm"
                       >
                         <option value="true">Aktif</option>
                         <option value="false">Gizli</option>
@@ -316,16 +318,17 @@ const RoomEditModal = ({ roomId }) => {
                     className="bg-[#353A4E] text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
                     onClick={() => {
+                      handleUpdate();
                       setShowModal(false);
                     }}
                   >
-                    Değişiklikleri Kaydet
+                    Kaydet
                   </button>
                 </div>
               </div>
             </div>
           </div>
-          <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+          <div className="backdrop-blur-[1px] backdrop-opacity-80 backdrop-brightness-90 fixed inset-0 z-40"></div>
         </>
       )}
     </>

@@ -15,7 +15,7 @@ export default function Room() {
     { url: "/", label: "Ana Sayfa" },
     { url: "/odalar", label: "Odalar" },
   ];
-
+  
   const getRooms = async () => {
     try {
       const response = await axios.get(
@@ -46,7 +46,7 @@ export default function Room() {
   };
 
   return (
-    <div>
+    <div className="">
       <div className="bg-background text-white min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased ">
         <Sidebar />
         <div className="ml-14 mb-10 md:ml-64">
@@ -63,7 +63,9 @@ export default function Room() {
                 <div className="flex justify-center items-center">
                   <div className="w-full flex justify-center">
                     <div className="w-full px-4 relative space-x-2">
-                      <Modal />
+                      <div>
+                        <Modal />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -162,7 +164,7 @@ export default function Room() {
                                     <button
                                       onClick={() => handleCardClick(room._id)}
                                     >
-                                      <div className="font-medium mt-1 text-blue-600 dark:text-blue-500 hover:underline">
+                                      <div className="font-medium mt-2.5 text-cyan-500 hover:underline">
                                         <RoomEditModal
                                           showModal={showModal}
                                           setShowModal={setShowModal}
@@ -174,7 +176,7 @@ export default function Room() {
                                       onClick={() => handleDelete(room._id)}
                                     >
                                       <div className="font-medium mt-1 text-red-600 dark:text-red-500 hover:underline">
-                                        <HiOutlineTrash />
+                                        <HiOutlineTrash size={20} />
                                       </div>
                                     </button>
                                   </td>

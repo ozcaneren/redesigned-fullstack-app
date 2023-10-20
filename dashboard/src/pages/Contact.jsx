@@ -36,7 +36,7 @@ export default function Contact() {
     } catch (error) {
       console.error("Error deleting contact:", error);
     }
-  }
+  };
 
   const handleClick = (contactId) => {
     setContactId(contactId);
@@ -57,7 +57,7 @@ export default function Contact() {
           </div>
           <div className="p-4">
             <div className="bg-[#FEFEFE] border border-gray-200/70 rounded pt-4 pb-4">
-            <div className="flex flex-row">
+              <div className="flex flex-row">
                 <div className="flex justify-center items-center">
                   <div className="w-full flex justify-center">
                     <div className="w-full px-4 relative space-x-2">
@@ -115,7 +115,7 @@ export default function Contact() {
                                   <button
                                     onClick={() => handleClick(contact._id)}
                                   >
-                                    <div className="font-medium mt-1 text-blue-600 dark:text-blue-500 hover:underline">
+                                    <div className="font-medium mt-2.5 text-cyan-500 hover:underline">
                                       <ContactEditModal
                                         showModal={showModal}
                                         setShowModal={setShowModal}
@@ -127,7 +127,7 @@ export default function Contact() {
                                     onClick={() => handleDelete(contact._id)}
                                   >
                                     <div className="font-medium mt-1 text-red-600 dark:text-red-500 hover:underline">
-                                      <HiOutlineTrash />
+                                      <HiOutlineTrash size={20} />
                                     </div>
                                   </button>
                                 </td>

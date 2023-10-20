@@ -6,9 +6,7 @@ import RoomAdd from './pages/RoomAdd';
 import Feature from './pages/Feature';
 import FeatureAdd from './pages/FeatureAdd';
 import Contact from './pages/Contact';
-import ContactEdit from './pages/ContactEdit';
 import About from './pages/About';
-import AboutEdit from './pages/AboutEdit';
 import Header from './pages/Header';
 import HeaderEdit from './pages/HeaderEdit';
 import Footer from './pages/Footer';
@@ -33,9 +31,7 @@ function App() {
         <Route path='/room/feature' element={<Feature/>} />
         <Route path='/room/feature/add' element={<FeatureAdd/>} />
         <Route path='/contact' element={<Contact/>} />
-        <Route path='/contact/:contactId/edit' element={<ContactEdit/>} />
         <Route path='/about' element={<About/>} />
-        <Route path='/about/:aboutId/edit' element={<AboutEdit/>} />
         <Route path='/header' element={<Header/>} />
         <Route path='/header/:headerId/edit' element={<HeaderEdit/>} />
         <Route path='/footer' element={<Footer/>} />

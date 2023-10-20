@@ -50,19 +50,7 @@ updateAbout = async (req, res) => {
     about.cardText_en = req.body.cardText_en;
     about.cardButton = req.body.cardButton;
     about.cardButton_en = req.body.cardButton_en;
-    about.cardTitle1 = req.body.cardTitle1;
-    about.cardTitle1_en = req.body.cardTitle1_en;
-    about.cardText1 = req.body.cardText1;
-    about.cardText1_en = req.body.cardText1_en;
-    about.cardButton1 = req.body.cardButton1;
-    about.cardButton1_en = req.body.cardButton1_en;
-    about.cardTitle2 = req.body.cardTitle2;
-    about.cardTitle2_en = req.body.cardTitle2_en;
-    about.cardText2 = req.body.cardText2;
-    about.cardText2_en = req.body.cardText2_en;
-    about.cardButton2 = req.body.cardButton2;
-    about.cardButton2_en = req.body.cardButton2_en;
-
+    
     about
       .save()
       .then(() => {
