@@ -1,9 +1,9 @@
-import Sidebar from "../components/Sidebar";
+import Sidebar from "../../components/Sidebar";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { HiOutlineTrash } from "react-icons/hi";
 // import { useNavigate } from "react-router-dom";
-import Breadcrumb from "../components/Breadcrumbs";
+import Breadcrumb from "../../components/Breadcrumbs";
 import Modal from "./RoomModal";
 import RoomEditModal from "./RoomEditModal";
 import { TbEdit } from "react-icons/tb";

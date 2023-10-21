@@ -1,34 +1,34 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Sidebar from "../components/Sidebar";
-import Breadcrumb from "../components/Breadcrumbs";
+import Sidebar from "../../components/Sidebar";
+import Breadcrumb from "../../components/Breadcrumbs";
 import { useNavigate } from "react-router-dom";
 
-export default function Services() {
-  const [services, setServices] = useState([]);
+export default function Teams() {
+  const [teams, setTeams] = useState([]);
 
   const navigate = useNavigate();
 
   const breadcrumbPaths = [
     { url: "/", label: "Ana Sayfa" },
-    { url: "/services", label: "Hizmetler" },
+    { url: "/teams", label: "Ekip" },
   ];
 
-  const getServices = async () => {
+  const getTeams = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/api/services");
-      setServices(response.data.data);
+      const response = await axios.get("http://localhost:4000/api/teams");
+      setTeams(response.data.data);
     } catch (error) {
-      console.log("Error fetching services", error);
+      console.error("Error fetching teams:", error);
     }
   };
 
   useEffect(() => {
-    getServices();
+    getTeams();
   }, []);
 
   const handleClick = (id) => {
-    navigate(`/services/${id}/edit`);
+    navigate(`/teams/${id}/edit`);
   };
 
   return (
@@ -48,16 +48,16 @@ export default function Services() {
               <div>
                 <div>
                   <div>
-                    {services.map((service, index) => (
+                    {teams.map((team, index) => (
                       <div key={index}>
                         <div className="flex justify-center items-center">
                           <div className="w-full flex justify-center">
                             <div className="w-full px-4 relative space-x-2">
                               <button
-                                onClick={() => handleClick(service._id)}
+                                onClick={() => handleClick(team._id)}
                                 className="bg-zinc-700 p-2 text-white text-sm border border-gray-600 rounded-[6px]"
                               >
-                                Hizmetleri Düzenle
+                                Ekip Bilgilerini Düzenle
                               </button>
                             </div>
                           </div>
@@ -68,7 +68,7 @@ export default function Services() {
                               Ana Başlık
                             </h1>
                             <h1 className="text-center text-lg">
-                              {service.mainTitle}
+                              {team.mainTitle}
                             </h1>
                           </div>
                         </div>
@@ -78,41 +78,41 @@ export default function Services() {
                               Alt Başlık
                             </h1>
                             <h1 className="text-center text-lg">
-                              {service.mainText}
+                              {team.mainText}
                             </h1>
                           </div>
                         </div>
                         <div className="container xl:max-w-6xl mx-auto px-4">
                           <div className="flex flex-wrap flex-row -mx-4 justify-center">
-                            <div className="flex-shrink max-w-full px-4 w-2/3 sm:w-1/2 md:w-5/12 lg:w-1/4 xl:px-6">
+                            <div className="max-w-full px-4 w-2/3 sm:w-1/2 md:w-5/12 lg:w-1/4 xl:px-6">
                               <h1 className="text-center bg-zinc-700 rounded border border-gray-500 mb-2">
-                                Hizmet
+                                Ekip Uyesi
                               </h1>
-                              <div className="relative py-2 w-[240px] h-[208px] overflow-hidden bg-zinc-700 rounded-lg border border-gray-500 mb-12 hover-grayscale-0">
-                                {/* <div className="relative overflow-hidden px-6">
-                                  {service.cardIcon ? (
+                              <div className="relative py-2 w-[240px] h-[258px] overflow-hidden bg-zinc-700 rounded-lg border border-gray-500 mb-12 hover-grayscale-0">
+                                <div className="relative overflow-hidden px-6">
+                                  {team.cardIcon ? (
                                     <img
-                                      src={service.cardIcon}
-                                      className="w-[143px] h-[143px] object-cover mx-auto rounded-full bg-gray-50 grayscale"
+                                      src={team.cardIcon}
+                                      className="w-[143px] h-[143px] object-cover mx-auto rounded-full bg-gray-50"
                                       alt="title image"
                                     />
                                   ) : (
                                     <p className="text-center"></p>
                                   )}
-                                </div> */}
+                                </div>
                                 <div className="pt-6 text-center">
-                                  {service.cardTitle ? (
+                                  {team.cardTitle ? (
                                     <p className="text-lg leading-normal font-bold mb-1">
-                                      {service.cardTitle}
+                                      {team.cardTitle}
                                     </p>
                                   ) : (
-                                    <p className="text-center h-[150px] flex items-center justify-center">
-                                      Hizmet Eklenmedi.
+                                    <p className="text-center h-[200px] flex items-center justify-center">
+                                      Ekip üyesi eklenmedi.
                                     </p>
                                   )}
-                                  {service.cardText ? (
+                                  {team.cardText ? (
                                     <p className="text-gray-300 leading-relaxed mb-4">
-                                      {service.cardText.substring(0, 150)}...
+                                      {team.cardText}
                                     </p>
                                   ) : (
                                     <p className="text-center"></p>
@@ -120,35 +120,35 @@ export default function Services() {
                                 </div>
                               </div>
                             </div>
-                            <div className="flex-shrink max-w-full px-4 w-2/3 sm:w-1/2 md:w-5/12 lg:w-1/4 xl:px-6">
+                            <div className="max-w-full px-4 w-2/3 sm:w-1/2 md:w-5/12 lg:w-1/4 xl:px-6">
                               <h1 className="text-center bg-zinc-700 rounded border border-gray-500 mb-2">
-                                Hizmet 1
+                                Ekip Uyesi 1
                               </h1>
-                              <div className="relative py-2 w-[240px] h-[208px] overflow-hidden bg-zinc-700 rounded-lg border border-gray-500 mb-12 hover-grayscale-0">
-                                {/* <div className="relative overflow-hidden px-6">
-                                  {service.cardIcon ? (
+                              <div className="relative py-2 w-[240px] h-[258px] overflow-hidden bg-zinc-700 rounded-lg border border-gray-500 mb-12 hover-grayscale-0">
+                                <div className="relative overflow-hidden px-6">
+                                  {team.cardIcon1 ? (
                                     <img
-                                      src={service.cardIcon}
-                                      className="w-[143px] h-[143px] object-cover mx-auto rounded-full bg-gray-50 grayscale"
+                                      src={team.cardIcon1}
+                                      className="w-[143px] h-[143px] object-cover mx-auto rounded-full bg-gray-50"
                                       alt="title image"
                                     />
                                   ) : (
                                     <p className="text-center"></p>
                                   )}
-                                </div> */}
+                                </div>
                                 <div className="pt-6 text-center">
-                                  {service.cardTitle1 ? (
+                                  {team.cardTitle1 ? (
                                     <p className="text-lg leading-normal font-bold mb-1">
-                                      {service.cardTitle1}
+                                      {team.cardTitle1}
                                     </p>
                                   ) : (
-                                    <p className="text-center h-[150px] flex items-center justify-center">
-                                      Hizmet Eklenmedi.
+                                    <p className="text-center h-[200px] flex items-center justify-center">
+                                      Ekip üyesi eklenmedi.
                                     </p>
                                   )}
-                                  {service.cardText ? (
+                                  {team.cardText1 ? (
                                     <p className="text-gray-300 leading-relaxed mb-4">
-                                      {service.cardText1.substring(0, 150)}...
+                                      {team.cardText1}
                                     </p>
                                   ) : (
                                     <p className="text-center"></p>
@@ -156,35 +156,36 @@ export default function Services() {
                                 </div>
                               </div>
                             </div>
-                            <div className="flex-shrink max-w-full px-4 w-2/3 sm:w-1/2 md:w-5/12 lg:w-1/4 xl:px-6">
+                            <div className="max-w-full px-4 w-2/3 sm:w-1/2 md:w-5/12 lg:w-1/4 xl:px-6">
                               <h1 className="text-center bg-zinc-700 rounded border border-gray-500 mb-2">
-                                Hizmet 2
+                                Ekip Uyesi 2
                               </h1>
-                              <div className="relative py-2 w-[240px] h-[208px] overflow-hidden bg-zinc-700 rounded-lg border border-gray-500 mb-12 hover-grayscale-0">
-                                {/* <div className="relative overflow-hidden px-6">
-                                  {service.cardIcon ? (
+
+                              <div className="relative py-2 w-[240px] h-[258px] overflow-hidden bg-zinc-700 rounded-lg border border-gray-500 mb-12 hover-grayscale-0">
+                                <div className="relative overflow-hidden px-6">
+                                  {team.cardIcon2 ? (
                                     <img
-                                      src={service.cardIcon}
-                                      className="w-[143px] h-[143px] object-cover mx-auto rounded-full bg-gray-50 grayscale"
+                                      src={team.cardIcon2}
+                                      className="w-[143px] h-[143px] object-cover mx-auto rounded-full bg-gray-50"
                                       alt="title image"
                                     />
                                   ) : (
                                     <p className="text-center"></p>
                                   )}
-                                </div> */}
+                                </div>
                                 <div className="pt-6 text-center">
-                                  {service.cardTitle2 ? (
+                                  {team.cardTitle2 ? (
                                     <p className="text-lg leading-normal font-bold mb-1">
-                                      {service.cardTitle2}
+                                      {team.cardTitle2}
                                     </p>
                                   ) : (
-                                    <p className="text-center h-[150px] flex items-center justify-center">
-                                      Hizmet Eklenmedi.
+                                    <p className="text-center h-[200px] flex items-center justify-center">
+                                      Ekip üyesi eklenmedi.
                                     </p>
                                   )}
-                                  {service.cardText ? (
+                                  {team.cardText2 ? (
                                     <p className="text-gray-300 leading-relaxed mb-4">
-                                      {service.cardText2.substring(0, 150)}...
+                                      {team.cardText2}
                                     </p>
                                   ) : (
                                     <p className="text-center"></p>
@@ -192,35 +193,36 @@ export default function Services() {
                                 </div>
                               </div>
                             </div>
-                            <div className="flex-shrink max-w-full px-4 w-2/3 sm:w-1/2 md:w-5/12 lg:w-1/4 xl:px-6">
+                            <div className="max-w-full px-4 w-2/3 sm:w-1/2 md:w-5/12 lg:w-1/4 xl:px-6">
                               <h1 className="text-center bg-zinc-700 rounded border border-gray-500 mb-2">
-                                Hizmet 3
+                                Ekip Uyesi 3
                               </h1>
-                              <div className="relative py-2 w-[240px] h-[208px] overflow-hidden bg-zinc-700 rounded-lg border border-gray-500 mb-12 hover-grayscale-0">
-                                {/* <div className="relative overflow-hidden px-6">
-                                  {service.cardIcon ? (
+
+                              <div className="relative py-2 w-[240px] h-[258px] overflow-hidden bg-zinc-700 rounded-lg border border-gray-500 mb-12 hover-grayscale-0">
+                                <div className="relative overflow-hidden px-6">
+                                  {team.cardIcon3 ? (
                                     <img
-                                      src={service.cardIcon}
-                                      className="w-[143px] h-[143px] object-cover mx-auto rounded-full bg-gray-50 grayscale"
+                                      src={team.cardIcon3}
+                                      className="w-[143px] h-[143px] object-cover mx-auto rounded-full bg-gray-50"
                                       alt="title image"
                                     />
                                   ) : (
                                     <p className="text-center"></p>
                                   )}
-                                </div> */}
+                                </div>
                                 <div className="pt-6 text-center">
-                                  {service.cardTitle3 ? (
+                                  {team.cardTitle3 ? (
                                     <p className="text-lg leading-normal font-bold mb-1">
-                                      {service.cardTitle3.substring(0, 150)}...
+                                      {team.cardTitle3}
                                     </p>
                                   ) : (
-                                    <p className="text-center h-[150px] flex items-center justify-center">
-                                      Hizmet Eklenmedi.
+                                    <p className="text-center h-[200px] flex items-center justify-center">
+                                      Ekip üyesi eklenmedi.
                                     </p>
                                   )}
-                                  {service.cardText ? (
+                                  {team.cardText3 ? (
                                     <p className="text-gray-300 leading-relaxed mb-4">
-                                      {service.cardText3.substring(0, 150)}...
+                                      {team.cardText3}
                                     </p>
                                   ) : (
                                     <p className="text-center"></p>
@@ -228,35 +230,36 @@ export default function Services() {
                                 </div>
                               </div>
                             </div>
-                            <div className="flex-shrink max-w-full px-4 w-2/3 sm:w-1/2 md:w-5/12 lg:w-1/4 xl:px-6">
+                            <div className="max-w-full px-4 w-2/3 sm:w-1/2 md:w-5/12 lg:w-1/4 xl:px-6">
                               <h1 className="text-center bg-zinc-700 rounded border border-gray-500 mb-2">
-                                Hizmet 4
+                                Ekip Uyesi 4
                               </h1>
-                              <div className="relative py-2 w-[240px] h-[208px] overflow-hidden bg-zinc-700 rounded-lg border border-gray-500 mb-12 hover-grayscale-0">
-                                {/* <div className="relative overflow-hidden px-6">
-                                  {service.cardIcon ? (
+
+                              <div className="relative py-2 w-[240px] h-[258px] overflow-hidden bg-zinc-700 rounded-lg border border-gray-500 mb-12 hover-grayscale-0">
+                                <div className="relative overflow-hidden px-6">
+                                  {team.cardIcon4 ? (
                                     <img
-                                      src={service.cardIcon}
-                                      className="w-[143px] h-[143px] object-cover mx-auto rounded-full bg-gray-50 grayscale"
+                                      src={team.cardIcon4}
+                                      className="w-[143px] h-[143px] object-cover mx-auto rounded-full bg-gray-50"
                                       alt="title image"
                                     />
                                   ) : (
                                     <p className="text-center"></p>
                                   )}
-                                </div> */}
+                                </div>
                                 <div className="pt-6 text-center">
-                                  {service.cardTitle4 ? (
+                                  {team.cardTitle4 ? (
                                     <p className="text-lg leading-normal font-bold mb-1">
-                                      {service.cardTitle4}
+                                      {team.cardTitle4}
                                     </p>
                                   ) : (
-                                    <p className="text-center h-[150px] flex items-center justify-center">
-                                      Hizmet Eklenmedi.
+                                    <p className="text-center h-[200px] flex items-center justify-center">
+                                      Ekip üyesi eklenmedi.
                                     </p>
                                   )}
-                                  {service.cardText ? (
-                                    <p className="text-gray-300 leading-relaxed mb-4 truncate">
-                                      {service.cardText4}
+                                  {team.cardText4 ? (
+                                    <p className="text-gray-300 leading-relaxed mb-4">
+                                      {team.cardText4}
                                     </p>
                                   ) : (
                                     <p className="text-center"></p>
@@ -264,35 +267,36 @@ export default function Services() {
                                 </div>
                               </div>
                             </div>
-                            <div className="flex-shrink max-w-full px-4 w-2/3 sm:w-1/2 md:w-5/12 lg:w-1/4 xl:px-6">
+                            <div className="max-w-full px-4 w-2/3 sm:w-1/2 md:w-5/12 lg:w-1/4 xl:px-6">
                               <h1 className="text-center bg-zinc-700 rounded border border-gray-500 mb-2">
-                                Hizmet 5
+                                Ekip Uyesi 5
                               </h1>
-                              <div className="relative py-2 w-[240px] h-[208px] overflow-hidden bg-zinc-700 rounded-lg border border-gray-500 mb-12 hover-grayscale-0">
-                                {/* <div className="relative overflow-hidden px-6">
-                                  {service.cardIcon ? (
+
+                              <div className="relative py-2 w-[240px] h-[258px] overflow-hidden bg-zinc-700 rounded-lg border border-gray-500 mb-12 hover-grayscale-0">
+                                <div className="relative overflow-hidden px-6">
+                                  {team.cardIcon5 ? (
                                     <img
-                                      src={service.cardIcon}
-                                      className="w-[143px] h-[143px] object-cover mx-auto rounded-full bg-gray-50 grayscale"
+                                      src={team.cardIcon5}
+                                      className="w-[143px] h-[143px] object-cover mx-auto rounded-full bg-gray-50"
                                       alt="title image"
                                     />
                                   ) : (
                                     <p className="text-center"></p>
                                   )}
-                                </div> */}
+                                </div>
                                 <div className="pt-6 text-center">
-                                  {service.cardTitle5 ? (
+                                  {team.cardTitle5 ? (
                                     <p className="text-lg leading-normal font-bold mb-1">
-                                      {service.cardTitle5}
+                                      {team.cardTitle5}
                                     </p>
                                   ) : (
-                                    <p className="text-center h-[150px] flex items-center justify-center">
-                                      Hizmet Eklenmedi.
+                                    <p className="text-center h-[200px] flex items-center justify-center">
+                                      Ekip üyesi eklenmedi.
                                     </p>
                                   )}
-                                  {service.cardText ? (
-                                    <p className="text-gray-300 leading-relaxed mb-4 truncate">
-                                      {service.cardText5}
+                                  {team.cardText5 ? (
+                                    <p className="text-gray-300 leading-relaxed mb-4">
+                                      {team.cardText5}
                                     </p>
                                   ) : (
                                     <p className="text-center"></p>

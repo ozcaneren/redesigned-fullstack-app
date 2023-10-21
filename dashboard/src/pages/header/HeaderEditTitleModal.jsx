@@ -2,20 +2,20 @@ import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import PropTypes from "prop-types";
 
-const HeaderEditModal = ({ headerId, showModal, setShowModal }) => {
-  HeaderEditModal.propTypes = {
+const HeaderEditTitleModal = ({ headerId, showTitleModal, setShowTitleModal }) => {
+  HeaderEditTitleModal.propTypes = {
     headerId: PropTypes.string,
-    showModal: PropTypes.bool,
-    setShowModal: PropTypes.func,
+    showTitleModal: PropTypes.bool,
+    setShowTitleModal: PropTypes.func,
   };
   const [header, setHeader] = useState({});
 
   const fetchHeaderById = useCallback(async () => {
     try {
       const response = await axios.get(
-        `http://localhost:4000/api/header/${headerId}`
+        `http://localhost:4000/api/header/text/${headerId}`
       );
-      setHeader(response.data.data);
+      setHeader(response.data);
     } catch (error) {
       console.error("Header getirilirken hata oluştu:", error);
     }
@@ -27,10 +27,10 @@ const HeaderEditModal = ({ headerId, showModal, setShowModal }) => {
 
   const handleUpdate = async () => {
     try {
-      await axios.put(`http://localhost:4000/api/header/${headerId}`, {
+      await axios.put(`http://localhost:4000/api/header/text/${headerId}`, {
         ...header,
       });
-      setShowModal(false);
+      setShowTitleModal(false);
     } catch (error) {
       console.error("Header güncellenirken hata oluştu:", error);
     }
@@ -46,18 +46,18 @@ const HeaderEditModal = ({ headerId, showModal, setShowModal }) => {
 
   return (
     <>
-      {showModal ? (
+      {showTitleModal ? (
         <>
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
             <div className="relative w-[600px] my-6 mx-auto max-w-3xl">
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 <div className="flex items-start justify-between p-5 border-b border-solid border-gray-300 rounded-t">
                   <h3 className="text-2xl text-modalMainText font-semibold">
-                    Iletisim Duzenle
+                    Header Baslik Duzenle
                   </h3>
                   <button
                     className="p-1 ml-auto bg-transparent border-0 text-modalMainText float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
-                    onClick={() => setShowModal(false)}
+                    onClick={() => setShowTitleModal(false)}
                   >
                     <span className="bg-transparent flex justify-center items-center text-modalMainText h-6 w-6 text-2xl outline-none focus:outline-none">
                       ×
@@ -68,82 +68,32 @@ const HeaderEditModal = ({ headerId, showModal, setShowModal }) => {
                   <div className="relative p-6 flex-auto">
                     <div className="mb-4">
                       <label
-                        htmlFor="headerText"
-                        className="block text-sm font-medium text-modalLabelText"
+                        className="block text-modalLabelText text-sm font-bold mb-2"
+                        htmlFor="headerTitle"
                       >
-                        Header Text
+                        Header Basligi
                       </label>
                       <input
-                        type="text"
-                        name="headerText"
-                        id="headerText"
-                        value={header.headerText}
-                        onChange={handleChange}
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
+                        type="text"
+                        name="headerTitle"
+                        value={header.headerTitle}
+                        onChange={handleChange}
                       />
                     </div>
                     <div className="mb-4">
                       <label
-                        htmlFor="headerTextDropdown"
-                        className="block text-sm font-medium text-modalLabelText"
+                        className="block text-modalLabelText text-sm font-bold mb-2"
+                        htmlFor="headerTitle_en"
                       >
-                        Header Text Dropdown
+                        Header Basligi (EN)
                       </label>
                       <input
-                        type="text"
-                        name="headerTextDropdown"
-                        id="headerTextDropdown"
-                        value={header.headerTextDropdown}
-                        onChange={handleChange}
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
-                      />
-                    </div>
-                    <div className="mb-4">
-                      <label
-                        htmlFor="headerTextDropdown1"
-                        className="block text-sm font-medium text-modalLabelText"
-                      >
-                        Header Text Dropdown 1
-                      </label>
-                      <input
                         type="text"
-                        name="headerTextDropdown1"
-                        id="headerTextDropdown1"
-                        value={header.headerTextDropdown1}
+                        name="headerTitle_en"
+                        value={header.headerTitle_en}
                         onChange={handleChange}
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
-                      />
-                    </div>
-                    <div className="mb-4">
-                      <label
-                        htmlFor="headerTextDropdown2"
-                        className="block text-sm font-medium text-modalLabelText"
-                      >
-                        Header Text Dropdown 2
-                      </label>
-                      <input
-                        type="text"
-                        name="headerTextDropdown2"
-                        id="headerTextDropdown2"
-                        value={header.headerTextDropdown2}
-                        onChange={handleChange}
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
-                      />
-                    </div>
-                    <div className="mb-4">
-                      <label
-                        htmlFor="headerTextDropdown3"
-                        className="block text-sm font-medium text-modalLabelText"
-                      >
-                        Header Text Dropdown 3
-                      </label>
-                      <input
-                        type="text"
-                        name="headerTextDropdown3"
-                        id="headerTextDropdown3"
-                        value={header.headerTextDropdown3}
-                        onChange={handleChange}
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
                       />
                     </div>
                   </div>
@@ -152,7 +102,7 @@ const HeaderEditModal = ({ headerId, showModal, setShowModal }) => {
                   <button
                     className="bg-[#353A4E] text-white background-transparent font-bold uppercase px-6 py-3 rounded text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
-                    onClick={() => setShowModal(false)}
+                    onClick={() => setShowTitleModal(false)}
                   >
                     Kapat
                   </button>
@@ -161,7 +111,7 @@ const HeaderEditModal = ({ headerId, showModal, setShowModal }) => {
                     type="submit"
                     onClick={() => {
                       handleUpdate();
-                      setShowModal(false);
+                      setShowTitleModal(false);
                     }}
                   >
                     Kaydet
@@ -175,6 +125,6 @@ const HeaderEditModal = ({ headerId, showModal, setShowModal }) => {
       ) : null}
     </>
   );
-};
+}
 
-export default HeaderEditModal;
+export default HeaderEditTitleModal;

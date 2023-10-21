@@ -1,5 +1,5 @@
-import Sidebar from "../components/Sidebar";
-import Breadcrumb from "../components/Breadcrumbs";
+import Sidebar from "../../../components/Sidebar";
+import Breadcrumb from "../../../components/Breadcrumbs";
 
 export default function Home() {
   const breadcrumbPaths = [{ url: "/", label: "Ana Sayfa" }];

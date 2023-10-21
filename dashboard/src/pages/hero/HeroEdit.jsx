@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
-import Sidebar from "../components/Sidebar";
-import Breadcrumb from "../components/Breadcrumbs";
+import Sidebar from "../../components/Sidebar";
+import Breadcrumb from "../../components/Breadcrumbs";
 import { useParams, useNavigate } from "react-router-dom";
 
 export default function HeroEdit() {

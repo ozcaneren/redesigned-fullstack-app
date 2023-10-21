@@ -1,22 +1,17 @@
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
-// import { useLanguage } from "../LanguageContext";
 
 export default function Header() {
   const [data, setData] = useState([]);
-  // const { language, toggleLanguage } = useLanguage();
-
-  const [isDropdownOpen1, setDropdownOpen1] = useState(false);
-  const [isDropdownOpen2, setDropdownOpen2] = useState(false);
-  const [isDropdownOpen3, setDropdownOpen3] = useState(false);
-  const [isDropdownOpen4, setDropdownOpen4] = useState(false);
-  const [isDropdownOpen5, setDropdownOpen5] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(null);
 
   const getData = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/api/headers");
-      setData(response.data.data);
+      const response = await axios.get(
+        "http://localhost:4000/api/header/links"
+      );
+      setData(response.data);
     } catch (error) {
       console.error("Error fetching headers:", error);
     }
@@ -39,13 +34,11 @@ export default function Header() {
                       <li>
                         <span
                           onClick={() => toggleDropdown(index)}
-                          className="relative flex cursor-pointer flex-row items-center h-11 focus:outline-none text-white-600 hover:text-white-800 border-l-4 border-transparent"
+                          className="relative flex cursor-pointer flex-row items-center h-11 focus:outline-none border-l-4 border-transparent"
                         >
                           <span
                             className={`ml-2 ${
-                              getDropdownState(index)
-                                ? "rotate-180"
-                                : "rotate-0"
+                              index === openDropdown ? "rotate-180" : "rotate-0"
                             } transition-transform`}
                           >
                             <svg
@@ -58,33 +51,37 @@ export default function Header() {
                               <path d="M6 9l6 6 6-6" />
                             </svg>
                           </span>
-                          <span className="block py-2 pr-4 pl-3 text-modalLabelText border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:p-0">                            
+                          <span className="block py-2 pr-4 text-purple-800 pl-3 border-b lg:border-0  lg:p-0">
                             {header.headerText}
                           </span>
                         </span>
-                        {getDropdownState(index) && (
+                        {index === openDropdown && (
                           <ul className="absolute bg-gray-400 mt-2 p-1 px-5 ml-4 rounded-b space-y-2">
-                            {header.headerTextDropdown && (
-                              <li className="block py-2 pr-4 pl-3 text-gray-100 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover-text-blue-700 lg:p-0">
-                                <Link
-                                  to={
-                                    header.headerTextDropdown === "Belgeler"
-                                      ? "/documents"
-                                      : header.headerTextDropdown ===
-                                        "Sikca Sorulan Sorular"
-                                      ? "/faq"
-                                      : header.headerTextDropdown ===
-                                        "Hakkimizda"
-                                      ? "/about"
-                                      : "/"
-                                  }
-                                >
-                                  <span className="ml-1 text-md tracking-wide truncate">
-                                    {header.headerTextDropdown}
-                                  </span>
-                                </Link>
-                              </li>
-                            )}
+                            {header.headerTextDropdown &&
+                              header.headerTextDropdown.map(
+                                (item, itemIndex) => (
+                                  <li
+                                    key={itemIndex}
+                                    className="block py-2 pr-4 pl-3 text-gray-100 border-b border-gray-100 hover-bg-gray-50 lg:hover-bg-transparent lg-border-0 lg-hover-text-blue-700 lg-p-0"
+                                  >
+                                    <Link
+                                      to={
+                                        item === "deneme"
+                                          ? "/deneme"
+                                          : item === "selam"
+                                          ? "/faq"
+                                          : item === "Hakkimizda"
+                                          ? "/about"
+                                          : "/"
+                                      }
+                                    >
+                                      <span className="ml-1 text-md tracking-wide truncate">
+                                        {item}
+                                      </span>
+                                    </Link>
+                                  </li>
+                                )
+                              )}
                           </ul>
                         )}
                       </li>
@@ -101,9 +98,9 @@ export default function Header() {
                               : "/"
                           }
                         >
-                          <span className="relative flex cursor-pointer flex-row items-center focus:outline-none text-white-600 hover:text-white-800 border-l-4 border-transparent">
-                            <span className="block py-2 pr-4 pl-3 text-modalLabelText border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:p-0">
-                                {header.headerText}
+                          <span className="relative flex cursor-pointer flex-row items-center focus:outline-none border-l-4 border-transparent">
+                            <span className="block py-2 pr-4 pl-3 border-b border-gray-100 lg:hover-bg-transparent lg-border-0 lg-p-0">
+                              {header.headerText}
                             </span>
                           </span>
                         </Link>
@@ -119,44 +116,7 @@ export default function Header() {
     </>
   );
 
-  // Her dropdown için ilgili state değerini döndüren bir yardımcı fonksiyon
-  function getDropdownState(index) {
-    switch (index) {
-      case 0:
-        return isDropdownOpen1;
-      case 1:
-        return isDropdownOpen2;
-      case 2:
-        return isDropdownOpen3;
-      case 3:
-        return isDropdownOpen4;
-      case 4:
-        return isDropdownOpen5;
-      default:
-        return false;
-    }
-  }
-
-  // Her dropdown için ilgili açma/kapama fonksiyonunu döndüren bir yardımcı fonksiyon
   function toggleDropdown(index) {
-    switch (index) {
-      case 0:
-        setDropdownOpen1(!isDropdownOpen1);
-        break;
-      case 1:
-        setDropdownOpen2(!isDropdownOpen2);
-        break;
-      case 2:
-        setDropdownOpen3(!isDropdownOpen3);
-        break;
-      case 3:
-        setDropdownOpen4(!isDropdownOpen4);
-        break;
-      case 4:
-        setDropdownOpen5(!isDropdownOpen5);
-        break;
-      default:
-        break;
-    }
+    setOpenDropdown(index === openDropdown ? null : index);
   }
 }

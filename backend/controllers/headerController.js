@@ -1,125 +1,102 @@
-const headerModel = require("../models/headerModel");
+const HeaderText = require("../models/headerModel").model("HeaderText");
+const HeaderLink = require("../models/headerModel").model("HeaderLink");
 
-createHeader = (req, res) => {
-  const body = req.body;
-
-  if (!body) {
-    return res.status(400).json({
-      success: false,
-      message: "You must provide a header",
-    });
+// HeaderText işlemleri
+exports.getHeaderTexts = async (req, res) => {
+  try {
+    const texts = await HeaderText.find({});
+    res.status(200).json(texts);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
   }
-
-  const header = new headerModel(body);
-
-  if (!header) {
-    return res.status(400).json({ success: false, message: err });
-  }
-
-  header
-    .save()
-    .then(() => {
-      return res.status(201).json({
-        success: true,
-        id: header._id,
-        message: "Header created!",
-      });
-    })
-    .catch((error) => {
-      return res.status(400).json({
-        error,
-        message: "Header not created!",
-      });
-    });
 };
 
-updateHeader = async (req, res) => {
+exports.getHeaderTextById = async (req, res) => {
   try {
-    const header = await headerModel.findOne({ _id: req.params.id });
-
-    if (!header) {
-      return res.status(404).json({
-        success: false,
-        message: "Header not found",
-      });
+    const text = await HeaderText.findById(req.params.id);
+    if (!text) {
+      return res.status(404).json({ error: "HeaderText not found" });
     }
-
-    header.headerTitle = req.body.headerTitle;
-    header.headerTitle_en = req.body.headerTitle_en;
-    header.headerText = req.body.headerText;
-    header.headerText_en = req.body.headerText_en;
-    header.headerTextDropdown = req.body.headerTextDropdown;
-    header.headerTextDropdown_en = req.body.headerTextDropdown_en;
-    header.headerTextDropdown1 = req.body.headerTextDropdown1;
-    header.headerTextDropdown1_en = req.body.headerTextDropdown1_en;
-    header.headerTextDropdown2 = req.body.headerTextDropdown2;
-    header.headerTextDropdown2_en = req.body.headerTextDropdown2_en;
-    header.headerTextDropdown3 = req.body.headerTextDropdown3;
-    header.headerTextDropdown3_en = req.body.headerTextDropdown3_en;
-    
-    header
-      .save()
-      .then(() => {
-        return res.status(200).json({
-          success: true,
-          id: header._id,
-          message: "Header updated!",
-        });
-      })
-      .catch((error) => {
-        return res.status(404).json({
-          error,
-          message: "Header not updated!",
-        });
-      });
-  } catch (error) {
-    console.log(error);
+    res.status(200).json(text);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
   }
 };
 
-deleteHeader = async (req, res) => {
+exports.createHeaderText = async (req, res) => {
   try {
-    const header = await headerModel.findOneAndDelete({ _id: req.params.id });
+    const newText = new HeaderText(req.body);
+    const text = await newText.save();
+    res.status(201).json(text);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
 
-    if (!header) {
-      return res
-        .status(404)
-        .json({ success: false, message: "Header not found!" });
+exports.updateHeaderText = async (req, res) => {
+  try {
+    const text = await HeaderText.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    res.status(200).json(text);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+exports.deleteHeaderText = async (req, res) => {
+  try {
+    await HeaderText.findByIdAndRemove(req.params.id);
+    res.status(204).send();
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+// HeaderLink işlemleri (aynı şekilde uygulanabilir)
+exports.getHeaderLinks = async (req, res) => {
+  try {
+    const links = await HeaderLink.find({});
+    res.status(200).json(links);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+exports.getHeaderLinkById = async (req, res) => {
+  try {
+    const link = await HeaderLink.findById(req.params.id);
+    if (!link) {
+      return res.status(404).json({ error: "HeaderLink not found" });
     }
-
-    return res.status(200).json({ success: true, data: header });
-  } catch (error) {
-    console.log(error);
+    res.status(200).json(link);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
   }
 };
 
-getHeaderById = async (req, res) => {
+exports.createHeaderLink = async (req, res) => {
   try {
-    const header = await headerModel.findOne({ _id: req.params.id });
-    if (!header) {
-      return res
-        .status(404)
-        .json({ success: false, message: "Header not found!" });
-    }
-    return res.status(200).json({ success: true, data: header });
-  } catch (error) {
-    console.log(error);
+    const newLink = new HeaderLink(req.body);
+    const link = await newLink.save();
+    res.status(201).json(link);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
   }
 };
 
-getHeaders = async (req, res) => {
+exports.updateHeaderLink = async (req, res) => {
   try {
-    const headers = await headerModel.find({});
-    return res.status(200).json({ success: true, data: headers });
-  } catch (error) {
-    console.log(error);
+    const link = await HeaderLink.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    res.status(200).json(link);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
   }
 };
 
-module.exports = {
-  createHeader,
-  updateHeader,
-  deleteHeader,
-  getHeaders,
-  getHeaderById,
+exports.deleteHeaderLink = async (req, res) => {
+  try {
+    await HeaderLink.findByIdAndRemove(req.params.id);
+    res.status(204).send();
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 };

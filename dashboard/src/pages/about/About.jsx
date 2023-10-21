@@ -1,46 +1,46 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Sidebar from "../components/Sidebar";
-import Breadcrumb from "../components/Breadcrumbs";
+import Sidebar from "../../components/Sidebar";
+import Breadcrumb from "../../components/Breadcrumbs";
 import { HiOutlineTrash } from "react-icons/hi";
-import ContactModel from "./ContactModel";
-import ContactEditModal from "./ContactEditModal";
+import AboutModal from "./AboutModal";
+import AboutEditModal from "./AboutEditModal";
 import { TbEdit } from "react-icons/tb";
 
-export default function Contact() {
-  const [contacts, setContacts] = useState([]);
+export default function About() {
+  const [abouts, setAbouts] = useState([]);
+  const [aboutId, setAboutId] = useState();
   const [showModal, setShowModal] = useState(false);
-  const [contactId, setContactId] = useState();
 
   const breadcrumbPaths = [
     { url: "/", label: "Ana Sayfa" },
-    { url: "/contact", label: "Iletisim" },
+    { url: "/about", label: "Hakkimizda" },
   ];
 
-  const getContacts = async () => {
+  const getAbouts = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/api/contacts");
-      setContacts(response.data.data);
+      const response = await axios.get("http://localhost:4000/api/abouts");
+      setAbouts(response.data.data);
     } catch (error) {
-      console.error("Error fetching contacts:", error);
+      console.error("Error fetching abouts:", error);
     }
   };
 
   useEffect(() => {
-    getContacts();
+    getAbouts();
   }, []);
 
-  const handleDelete = async (contactId) => {
+  const handleDelete = async (aboutId) => {
     try {
-      await axios.delete(`http://localhost:4000/api/contact/${contactId}`);
-      getContacts();
+      await axios.delete(`http://localhost:4000/api/contact/${aboutId}`);
+      getAbouts();
     } catch (error) {
       console.error("Error deleting contact:", error);
     }
   };
 
-  const handleClick = (contactId) => {
-    setContactId(contactId);
+  const handleClick = (aboutId) => {
+    setAboutId(aboutId);
     setShowModal(true);
   };
 
@@ -62,13 +62,13 @@ export default function Contact() {
                 <div className="flex justify-center items-center">
                   <div className="w-full flex justify-center">
                     <div className="w-full px-4 relative space-x-2">
-                      <ContactModel />
+                      <AboutModal />
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="">
-                <div className="max-w-5xl mx-auto px-4 pt-4">
+              <div>
+                <div className="max-w-7xl mx-auto px-4 pt-4">
                   <div className="overflow-x-auto shadow-md sm:rounded-lg">
                     <div className="inline-block min-w-full align-middle">
                       <div className="overflow-hidden">
@@ -79,56 +79,51 @@ export default function Contact() {
                                 scope="col"
                                 className="py-3 pl-6 text-xs font-medium tracking-wider text-left  uppercase w-[400px]"
                               >
-                                Iletisim Başlığı
+                                Başlık
                               </th>
                               <th
                                 scope="col"
                                 className="py-3 text-xs font-medium tracking-wider text-left  uppercase w-[400px]"
                               >
-                                Iletisim Bilgisi
+                                Metin
                               </th>
                               <th
                                 scope="col"
                                 className="py-3 flex justify-end pr-6 text-xs font-medium tracking-wider uppercase"
                               >
-                                Islemler
+                                Duzenle/Sil
                               </th>
                             </tr>
                           </thead>
-                          {contacts.map((contact, index) => (
-                            <tbody key={index} className="bg-[#474E68] ">
-                              <tr className="hover:bg-[#6B728E]">
-                                <td className="max-w-[320px] w-[320px]">
-                                  <div className="py-4 max-w-xs px-6 text-sm font-medium text-gray-200 truncate">
-                                    <p className="truncate">
-                                      {contact.cardText}
-                                    </p>
-                                  </div>
+                          {abouts.map((about, index) => (
+                            <tbody
+                              key={index}
+                              className="bg-[#474E68] divide-y divide-gray-200"
+                            >
+                              <tr className="hover:bg-[#6B728E] text-gray-200">
+                                <td className="py-4 pl-6 whitespace-nowrap text-sm font-medium">
+                                  {about.cardTitle}
                                 </td>
-                                <td className="max-w-[320px] w-[320px]">
-                                  <div className="py-4 text-sm pr-6 max-w-xs font-medium text-gray-200 truncate">
-                                    <p className="truncate">
-                                      {contact.cardValue}
-                                    </p>
-                                  </div>
+                                <td className="py-4 max-w-xs whitespace-nowrap text-sm truncate">
+                                  {about.cardText}
                                 </td>
                                 <td className="py-4 flex justify-end pr-10 text-sm font-medium text-gray-200 whitespace-nowrap space-x-2">
                                   <button
-                                    onClick={() => handleClick(contact._id)}
+                                    onClick={() => handleClick(about._id)}
                                   >
-                                    <div className="font-medium mt-1 text-cyan-500 hover:underline">
-                                      <TbEdit size={19} />
+                                    <div className="font-medium mt-2.5 text-cyan-500 hover:underline">
+                                      <TbEdit size={20} />
                                     </div>
                                   </button>
-                                  {showModal && (
-                                    <ContactEditModal
-                                    showModal={showModal}
-                                    setShowModal={setShowModal}
-                                    contactId={contactId}
-                                  />
-                                  )}
+                                  {showModal ? (
+                                    <AboutEditModal
+                                      showModal={showModal}
+                                      setShowModal={setShowModal}
+                                      aboutId={aboutId}
+                                    />
+                                  ) : null}
                                   <button
-                                    onClick={() => handleDelete(contact._id)}
+                                    onClick={() => handleDelete(about._id)}
                                   >
                                     <div className="font-medium mt-1 text-red-600 dark:text-red-500 hover:underline">
                                       <HiOutlineTrash size={20} />

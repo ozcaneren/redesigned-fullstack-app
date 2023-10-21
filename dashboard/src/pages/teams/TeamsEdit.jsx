@@ -1,52 +1,52 @@
 import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
-import Sidebar from "../components/Sidebar";
-import Breadcrumb from "../components/Breadcrumbs";
+import Sidebar from "../../components/Sidebar";
+import Breadcrumb from "../../components/Breadcrumbs";
 import { useParams, useNavigate } from "react-router-dom";
 
-export default function ServicesEdit() {
-  const { servicesId } = useParams();
+export default function TeamsEdit() {
+  const { teamsId } = useParams();
 
-  const [service, setService] = useState([]);
-
+  const [team, setTeam] = useState([]);
+  
   const navigate = useNavigate();
 
   const breadcrumbPaths = [
     { url: "/", label: "Ana Sayfa" },
-    { url: "/services", label: "Hizmetler" },
-    { url: `/services/${servicesId}/edit`, label: "Hizmetleri Düzenle" },
+    { url: "/teams", label: "Ekip" },
+    { url: `/teams/${teamsId}/edit`, label: "Ekip Düzenle" },
   ];
 
-  const getService = useCallback(async () => {
+  const getTeam = useCallback(async () => {
     try {
       const response = await axios.get(
-        `http://localhost:4000/api/service/${servicesId}`
+        `http://localhost:4000/api/team/${teamsId}`
       );
-      setService(response.data.data);
+      setTeam(response.data.data);
     } catch (error) {
       console.error("Error fetching teams:", error);
     }
-  }, [servicesId]);
+  }, [teamsId]);
 
   useEffect(() => {
-    getService();
-  }, [getService, servicesId]);
+    getTeam();
+  }, [getTeam, teamsId]);
 
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:4000/api/service/${servicesId}`, {
-        ...service,
+      await axios.put(`http://localhost:4000/api/team/${teamsId}`, {
+        ...team,
       });
-      navigate("/services");
+      navigate("/teams");
     } catch (error) {
-      console.error("Error occured updating services: ", error);
+      console.error("Error updating team:", error);
     }
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setService((prevState) => ({
+    setTeam((prevState) => ({
       ...prevState,
       [name]: value,
     }));
@@ -82,7 +82,7 @@ export default function ServicesEdit() {
                             type="text"
                             name="mainTitle"
                             id="mainTitle"
-                            value={service.mainTitle}
+                            value={team.mainTitle}
                             onChange={handleChange}
                             className="mt-1 p-2 rounded-sm"
                           />
@@ -98,7 +98,7 @@ export default function ServicesEdit() {
                             type="text"
                             name="mainTitle_en"
                             id="mainTitle_en"
-                            value={service.mainTitle_en}
+                            value={team.mainTitle_en}
                             onChange={handleChange}
                             className="mt-1 p-2 rounded-sm"
                           />
@@ -116,33 +116,32 @@ export default function ServicesEdit() {
                             type="text"
                             name="mainText"
                             id="mainText"
-                            value={service.mainText}
+                            value={team.mainText}
                             onChange={handleChange}
                             className="mt-1 p-2 rounded-sm"
                           />
                         </div>
                         <div className="mt-4">
                           <label
-                            htmlFor="mainText_en"
+                            htmlFor="mainTitle_en"
                             className="block text-sm font-medium text-gray-200"
                           >
-                            Alt Baslik_en
+                            Ana Baslik_en
                           </label>
                           <input
                             type="text"
-                            name="mainText_en"
-                            id="mainText_en"
-                            value={service.mainText_en}
+                            name="mainTitle_en"
+                            id="mainTitle_en"
+                            value={team.mainTitle_en}
                             onChange={handleChange}
                             className="mt-1 p-2 rounded-sm"
                           />
                         </div>
                       </div>
                     </div>
-
                     <div className="flex justify-center flex-row flex-wrap items-center gap-x-4">
                       <div className="border p-4 mb-4 border-gray-600 rounded bg-zinc-700">
-                        {/* <div className="mb-4">
+                        <div className="mb-4">
                           <div>
                             <label
                               className="block text-sm font-medium text-gray-200"
@@ -154,25 +153,7 @@ export default function ServicesEdit() {
                               type="text"
                               name="cardIcon"
                               id="cardIcon"
-                              value={service.cardIcon}
-                              onChange={handleChange}
-                              className="mt-1 p-2 rounded-sm"
-                            />
-                          </div>
-                        </div> */}
-                        <div className="mb-4">
-                          <div>
-                            <label
-                              className="block text-sm font-medium text-gray-200"
-                              htmlFor="cardTitle"
-                            >
-                              Hizmet Adi
-                            </label>
-                            <input
-                              type="text"
-                              name="cardTitle"
-                              id="cardTitle"
-                              value={service.cardTitle}
+                              value={team.cardIcon}
                               onChange={handleChange}
                               className="mt-1 p-2 rounded-sm"
                             />
@@ -182,15 +163,15 @@ export default function ServicesEdit() {
                           <div>
                             <label
                               className="block text-sm font-medium text-gray-200"
-                              htmlFor="cardTitle_en"
+                              htmlFor="cardTitle"
                             >
-                              Hizmet Adi_en
+                              Ekip Üyesi Adi
                             </label>
                             <input
                               type="text"
-                              name="cardTitle_en"
-                              id="cardTitle_en"
-                              value={service.cardTitle_en}
+                              name="cardTitle"
+                              id="cardTitle"
+                              value={team.cardTitle}
                               onChange={handleChange}
                               className="mt-1 p-2 rounded-sm"
                             />
@@ -202,31 +183,31 @@ export default function ServicesEdit() {
                               className="block text-sm font-medium text-gray-200"
                               htmlFor="cardText"
                             >
-                              Hizmet Aciklamasi
+                              Ekip Üyesi Rolu
                             </label>
                             <input
                               type="text"
                               name="cardText"
                               id="cardText"
-                              value={service.cardText}
+                              value={team.cardText}
                               onChange={handleChange}
                               className="mt-1 p-2 rounded-sm"
                             />
                           </div>
                         </div>
-                        <div className="mb-4">
+                        <div className="">
                           <div>
                             <label
                               className="block text-sm font-medium text-gray-200"
                               htmlFor="cardText_en"
                             >
-                              Hizmet Aciklamasi_en
+                              Ekip Üyesi Rolu_en
                             </label>
                             <input
                               type="text"
                               name="cardText_en"
                               id="cardText_en"
-                              value={service.cardText_en}
+                              value={team.cardText_en}
                               onChange={handleChange}
                               className="mt-1 p-2 rounded-sm"
                             />
@@ -234,37 +215,19 @@ export default function ServicesEdit() {
                         </div>
                       </div>
                       <div className="border p-4 mb-4 border-gray-600 rounded bg-zinc-700">
-                        {/* <div className="mb-4">
-                          <div>
-                            <label
-                              className="block text-sm font-medium text-gray-200"
-                              htmlFor="cardIcon"
-                            >
-                              Card Fotografi
-                            </label>
-                            <input
-                              type="text"
-                              name="cardIcon"
-                              id="cardIcon"
-                              value={service.cardIcon}
-                              onChange={handleChange}
-                              className="mt-1 p-2 rounded-sm"
-                            />
-                          </div>
-                        </div> */}
                         <div className="mb-4">
                           <div>
                             <label
                               className="block text-sm font-medium text-gray-200"
-                              htmlFor="cardTitle1"
+                              htmlFor="cardIcon1"
                             >
-                              Hizmet Adi 1
+                              Ekip Uyesi 1 Fotografi
                             </label>
                             <input
                               type="text"
-                              name="cardTitle1"
-                              id="cardTitle1"
-                              value={service.cardTitle1}
+                              name="cardIcon1"
+                              id="cardIcon1"
+                              value={team.cardIcon1}
                               onChange={handleChange}
                               className="mt-1 p-2 rounded-sm"
                             />
@@ -274,15 +237,15 @@ export default function ServicesEdit() {
                           <div>
                             <label
                               className="block text-sm font-medium text-gray-200"
-                              htmlFor="cardTitle1_en"
+                              htmlFor="cardTitle"
                             >
-                              Hizmet Adi 1_en
+                              Ekip Üyesi 1 Adi
                             </label>
                             <input
                               type="text"
-                              name="cardTitle1_en"
-                              id="cardTitle1_en"
-                              value={service.cardTitle1_en}
+                              name="cardTitle1"
+                              id="cardTitle1"
+                              value={team.cardTitle1}
                               onChange={handleChange}
                               className="mt-1 p-2 rounded-sm"
                             />
@@ -294,31 +257,31 @@ export default function ServicesEdit() {
                               className="block text-sm font-medium text-gray-200"
                               htmlFor="cardText1"
                             >
-                              Hizmet Aciklamasi 1
+                              Ekip Üyesi 1 Rolu
                             </label>
                             <input
                               type="text"
                               name="cardText1"
                               id="cardText1"
-                              value={service.cardText1}
+                              value={team.cardText1}
                               onChange={handleChange}
                               className="mt-1 p-2 rounded-sm"
                             />
                           </div>
                         </div>
-                        <div className="mb-4">
+                        <div className="">
                           <div>
                             <label
                               className="block text-sm font-medium text-gray-200"
                               htmlFor="cardText1_en"
                             >
-                              Hizmet Aciklamasi 1_en
+                              Ekip Üyesi Rolu 1_en
                             </label>
                             <input
                               type="text"
                               name="cardText1_en"
                               id="cardText1_en"
-                              value={service.cardText1_en}
+                              value={team.cardText1_en}
                               onChange={handleChange}
                               className="mt-1 p-2 rounded-sm"
                             />
@@ -326,37 +289,19 @@ export default function ServicesEdit() {
                         </div>
                       </div>
                       <div className="border p-4 mb-4 border-gray-600 rounded bg-zinc-700">
-                        {/* <div className="mb-4">
-                          <div>
-                            <label
-                              className="block text-sm font-medium text-gray-200"
-                              htmlFor="cardIcon"
-                            >
-                              Card Fotografi
-                            </label>
-                            <input
-                              type="text"
-                              name="cardIcon"
-                              id="cardIcon"
-                              value={service.cardIcon}
-                              onChange={handleChange}
-                              className="mt-1 p-2 rounded-sm"
-                            />
-                          </div>
-                        </div> */}
                         <div className="mb-4">
                           <div>
                             <label
                               className="block text-sm font-medium text-gray-200"
-                              htmlFor="cardTitle2"
+                              htmlFor="cardIcon2"
                             >
-                              Hizmet Adi 2
+                              Ekip Üyesi 2 Fotografi
                             </label>
                             <input
                               type="text"
-                              name="cardTitle2"
-                              id="cardTitle2"
-                              value={service.cardTitle2}
+                              name="cardIcon2"
+                              id="cardIcon2"
+                              value={team.cardIcon2}
                               onChange={handleChange}
                               className="mt-1 p-2 rounded-sm"
                             />
@@ -366,15 +311,15 @@ export default function ServicesEdit() {
                           <div>
                             <label
                               className="block text-sm font-medium text-gray-200"
-                              htmlFor="cardTitle2_en"
+                              htmlFor="cardTitle2"
                             >
-                              Hizmet Adi 2_en
+                              Ekip Üyesi 2 Adi
                             </label>
                             <input
                               type="text"
-                              name="cardTitle2_en"
-                              id="cardTitle2_en"
-                              value={service.cardTitle2_en}
+                              name="cardTitle2"
+                              id="cardTitle2"
+                              value={team.cardTitle2}
                               onChange={handleChange}
                               className="mt-1 p-2 rounded-sm"
                             />
@@ -386,31 +331,32 @@ export default function ServicesEdit() {
                               className="block text-sm font-medium text-gray-200"
                               htmlFor="cardText2"
                             >
-                              Hizmet Aciklamasi 2
+                              Ekip Üyesi 2 Rolu
                             </label>
                             <input
                               type="text"
                               name="cardText2"
                               id="cardText2"
-                              value={service.cardText2}
+                              value={team.cardText2}
                               onChange={handleChange}
                               className="mt-1 p-2 rounded-sm"
                             />
                           </div>
+                          
                         </div>
-                        <div className="mb-4">
+                        <div className="">
                           <div>
                             <label
                               className="block text-sm font-medium text-gray-200"
                               htmlFor="cardText2_en"
                             >
-                              Hizmet Aciklamasi 2_en
+                              Ekip Üyesi Rolu 2_en
                             </label>
                             <input
                               type="text"
                               name="cardText2_en"
                               id="cardText2_en"
-                              value={service.cardText2_en}
+                              value={team.cardText2_en}
                               onChange={handleChange}
                               className="mt-1 p-2 rounded-sm"
                             />
@@ -418,37 +364,37 @@ export default function ServicesEdit() {
                         </div>
                       </div>
                       <div className="border p-4 mb-4 border-gray-600 rounded bg-zinc-700">
-                        {/* <div className="mb-4">
+                        <div className="mb-4">
                           <div>
                             <label
                               className="block text-sm font-medium text-gray-200"
-                              htmlFor="cardIcon"
+                              htmlFor="cardIcon3"
                             >
-                              Card Fotografi
+                              Ekip Üyesi 3 Fotografi
                             </label>
                             <input
                               type="text"
-                              name="cardIcon"
-                              id="cardIcon"
-                              value={service.cardIcon}
+                              name="cardIcon3"
+                              id="cardIcon3"
+                              value={team.cardIcon3}
                               onChange={handleChange}
                               className="mt-1 p-2 rounded-sm"
                             />
                           </div>
-                        </div> */}
+                        </div>
                         <div className="mb-4">
                           <div>
                             <label
                               className="block text-sm font-medium text-gray-200"
                               htmlFor="cardTitle3"
                             >
-                              Hizmet Adi 3
+                              Ekip Üyesi 3 Adi
                             </label>
                             <input
                               type="text"
                               name="cardTitle3"
                               id="cardTitle3"
-                              value={service.cardTitle3}
+                              value={team.cardTitle3}
                               onChange={handleChange}
                               className="mt-1 p-2 rounded-sm"
                             />
@@ -458,51 +404,34 @@ export default function ServicesEdit() {
                           <div>
                             <label
                               className="block text-sm font-medium text-gray-200"
-                              htmlFor="cardTitle3_en"
+                              htmlFor="cardText3"
                             >
-                              Hizmet Adi 3_en
-                            </label>
-                            <input
-                              type="text"
-                              name="cardTitle3_en"
-                              id="cardTitle3_en"
-                              value={service.cardTitle3_en}
-                              onChange={handleChange}
-                              className="mt-1 p-2 rounded-sm"
-                            />
-                          </div>
-                        </div>
-                        <div className="mb-4">
-                          <div>
-                            <label
-                              className="block text-sm font-medium text-gray-200"
-                              htmlFor="cardText"
-                            >
-                              Hizmet Aciklamasi 3
+                              Ekip Üyesi 3 Rolu
                             </label>
                             <input
                               type="text"
                               name="cardText3"
                               id="cardText3"
-                              value={service.cardText3}
+                              value={team.cardText3}
                               onChange={handleChange}
                               className="mt-1 p-2 rounded-sm"
                             />
                           </div>
+                          
                         </div>
-                        <div className="mb-4">
+                        <div className="">
                           <div>
                             <label
                               className="block text-sm font-medium text-gray-200"
                               htmlFor="cardText3_en"
                             >
-                              Hizmet Aciklamasi 3_en
+                              Ekip Üyesi Rolu 3_en
                             </label>
                             <input
                               type="text"
                               name="cardText3_en"
                               id="cardText3_en"
-                              value={service.cardText3_en}
+                              value={team.cardText3_en}
                               onChange={handleChange}
                               className="mt-1 p-2 rounded-sm"
                             />
@@ -510,37 +439,19 @@ export default function ServicesEdit() {
                         </div>
                       </div>
                       <div className="border p-4 mb-4 border-gray-600 rounded bg-zinc-700">
-                        {/* <div className="mb-4">
-                          <div>
-                            <label
-                              className="block text-sm font-medium text-gray-200"
-                              htmlFor="cardIcon"
-                            >
-                              Card Fotografi
-                            </label>
-                            <input
-                              type="text"
-                              name="cardIcon"
-                              id="cardIcon"
-                              value={service.cardIcon}
-                              onChange={handleChange}
-                              className="mt-1 p-2 rounded-sm"
-                            />
-                          </div>
-                        </div> */}
                         <div className="mb-4">
                           <div>
                             <label
                               className="block text-sm font-medium text-gray-200"
-                              htmlFor="cardTitle4"
+                              htmlFor="cardIcon4"
                             >
-                              Hizmet Adi 4
+                              Ekip Üyesi 4 Fotografi
                             </label>
                             <input
                               type="text"
-                              name="cardTitle4"
-                              id="cardTitle4"
-                              value={service.cardTitle4}
+                              name="cardIcon4"
+                              id="cardIcon4"
+                              value={team.cardIcon4}
                               onChange={handleChange}
                               className="mt-1 p-2 rounded-sm"
                             />
@@ -550,15 +461,15 @@ export default function ServicesEdit() {
                           <div>
                             <label
                               className="block text-sm font-medium text-gray-200"
-                              htmlFor="cardTitle4_en"
+                              htmlFor="cardTitle"
                             >
-                              Hizmet Adi 4_en
+                              Ekip Üyesi 4 Adi
                             </label>
                             <input
                               type="text"
-                              name="cardTitle4_en"
-                              id="cardTitle4_en"
-                              value={service.cardTitle4_en}
+                              name="cardTitle4"
+                              id="cardTitle4"
+                              value={team.cardTitle4}
                               onChange={handleChange}
                               className="mt-1 p-2 rounded-sm"
                             />
@@ -570,31 +481,31 @@ export default function ServicesEdit() {
                               className="block text-sm font-medium text-gray-200"
                               htmlFor="cardText4"
                             >
-                              Hizmet Aciklamasi 4
+                              Ekip Üyesi 4 Rolu
                             </label>
                             <input
                               type="text"
                               name="cardText4"
                               id="cardText4"
-                              value={service.cardText4}
+                              value={team.cardText4}
                               onChange={handleChange}
                               className="mt-1 p-2 rounded-sm"
                             />
                           </div>
                         </div>
-                        <div className="mb-4">
+                        <div className="">
                           <div>
                             <label
                               className="block text-sm font-medium text-gray-200"
                               htmlFor="cardText4_en"
                             >
-                              Hizmet Aciklamasi 4_en
+                              Ekip Üyesi Rolu 4_en
                             </label>
                             <input
                               type="text"
                               name="cardText4_en"
                               id="cardText4_en"
-                              value={service.cardText4_en}
+                              value={team.cardText4_en}
                               onChange={handleChange}
                               className="mt-1 p-2 rounded-sm"
                             />
@@ -602,37 +513,19 @@ export default function ServicesEdit() {
                         </div>
                       </div>
                       <div className="border p-4 mb-4 border-gray-600 rounded bg-zinc-700">
-                        {/* <div className="mb-4">
-                          <div>
-                            <label
-                              className="block text-sm font-medium text-gray-200"
-                              htmlFor="cardIcon"
-                            >
-                              Card Fotografi
-                            </label>
-                            <input
-                              type="text"
-                              name="cardIcon"
-                              id="cardIcon"
-                              value={service.cardIcon}
-                              onChange={handleChange}
-                              className="mt-1 p-2 rounded-sm"
-                            />
-                          </div>
-                        </div> */}
                         <div className="mb-4">
                           <div>
                             <label
                               className="block text-sm font-medium text-gray-200"
-                              htmlFor="cardTitle5"
+                              htmlFor="cardIcon5"
                             >
-                              Hizmet Adi 5
+                              Ekip Üyesi 5 Fotografi
                             </label>
                             <input
                               type="text"
-                              name="cardTitle5"
-                              id="cardTitle5"
-                              value={service.cardTitle5}
+                              name="cardIcon5"
+                              id="cardIcon5"
+                              value={team.cardIcon5}
                               onChange={handleChange}
                               className="mt-1 p-2 rounded-sm"
                             />
@@ -642,15 +535,15 @@ export default function ServicesEdit() {
                           <div>
                             <label
                               className="block text-sm font-medium text-gray-200"
-                              htmlFor="cardTitle5_en"
+                              htmlFor="cardTitle5"
                             >
-                              Hizmet Adi 5_en
+                              Ekip Üyesi 5 Adi
                             </label>
                             <input
                               type="text"
-                              name="cardTitle5_en"
-                              id="cardTitle5_en"
-                              value={service.cardTitle5_en}
+                              name="cardTitle5"
+                              id="cardTitle5"
+                              value={team.cardTitle5}
                               onChange={handleChange}
                               className="mt-1 p-2 rounded-sm"
                             />
@@ -662,31 +555,31 @@ export default function ServicesEdit() {
                               className="block text-sm font-medium text-gray-200"
                               htmlFor="cardText5"
                             >
-                              Hizmet Aciklamasi 5
+                              Ekip Üyesi 5 Rolu
                             </label>
                             <input
                               type="text"
                               name="cardText5"
                               id="cardText5"
-                              value={service.cardText5}
+                              value={team.cardText5}
                               onChange={handleChange}
                               className="mt-1 p-2 rounded-sm"
                             />
                           </div>
                         </div>
-                        <div className="mb-4">
+                        <div className="">
                           <div>
                             <label
                               className="block text-sm font-medium text-gray-200"
                               htmlFor="cardText5_en"
                             >
-                              Hizmet Aciklamasi 5_en
+                              Ekip Üyesi Rolu 5_en
                             </label>
                             <input
                               type="text"
                               name="cardText5_en"
                               id="cardText5_en"
-                              value={service.cardText5_en}
+                              value={team.cardText5_en}
                               onChange={handleChange}
                               className="mt-1 p-2 rounded-sm"
                             />
@@ -694,7 +587,6 @@ export default function ServicesEdit() {
                         </div>
                       </div>
                     </div>
-
                     <div className="flex justify-center mt-4">
                       <button
                         type="button"

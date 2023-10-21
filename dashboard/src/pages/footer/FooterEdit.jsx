@@ -1,8 +1,8 @@
 import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
-import Sidebar from "../components/Sidebar";
+import Sidebar from "../../components/Sidebar";
 import { useParams, useNavigate } from "react-router-dom";
-import Breadcrumb from "../components/Breadcrumbs";
+import Breadcrumb from "../../components/Breadcrumbs";
 
 export default function FooterEdit() {
   const [footer, setFooter] = useState([]);

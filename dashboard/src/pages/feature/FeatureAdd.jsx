@@ -1,8 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
-import Sidebar from "../components/Sidebar";
+import Sidebar from "../../components/Sidebar";
 import { useNavigate } from "react-router-dom";
-import Breadcrumb from "../components/Breadcrumbs";
+import Breadcrumb from "../../components/Breadcrumbs";
 
 const FeatureAdd = () => {
   const navigate = useNavigate();

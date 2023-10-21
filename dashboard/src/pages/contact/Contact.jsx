@@ -1,46 +1,46 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Sidebar from "../components/Sidebar";
-import Breadcrumb from "../components/Breadcrumbs";
+import Sidebar from "../../components/Sidebar";
+import Breadcrumb from "../../components/Breadcrumbs";
 import { HiOutlineTrash } from "react-icons/hi";
+import ContactModel from "./ContactModel";
+import ContactEditModal from "./ContactEditModal";
 import { TbEdit } from "react-icons/tb";
-import HeaderModal from "./HeaderModal";
-import HeaderEditModal from "./HeaderEditModal";
 
-export default function Header() {
-  const [headers, setHeaders] = useState([]);
+export default function Contact() {
+  const [contacts, setContacts] = useState([]);
   const [showModal, setShowModal] = useState(false);
-  const [headerId, setHeaderId] = useState();
+  const [contactId, setContactId] = useState();
 
   const breadcrumbPaths = [
     { url: "/", label: "Ana Sayfa" },
-    { url: "/header", label: "Header" },
+    { url: "/contact", label: "Iletisim" },
   ];
 
-  const getHeaders = async () => {
+  const getContacts = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/api/headers");
-      setHeaders(response.data.data);
+      const response = await axios.get("http://localhost:4000/api/contacts");
+      setContacts(response.data.data);
     } catch (error) {
-      console.error("Error fetching headers:", error);
+      console.error("Error fetching contacts:", error);
     }
   };
 
   useEffect(() => {
-    getHeaders();
+    getContacts();
   }, []);
 
-  const handleDelete = async (headerId) => {
+  const handleDelete = async (contactId) => {
     try {
-      await axios.delete(`http://localhost:4000/api/header/${headerId}`);
-      getHeaders();
+      await axios.delete(`http://localhost:4000/api/contact/${contactId}`);
+      getContacts();
     } catch (error) {
-      console.error("Error deleting header:", error);
+      console.error("Error deleting contact:", error);
     }
   };
 
-  const handleClick = (headerId) => {
-    setHeaderId(headerId);
+  const handleClick = (contactId) => {
+    setContactId(contactId);
     setShowModal(true);
   };
 
@@ -51,7 +51,7 @@ export default function Header() {
         <div className="ml-14 mb-10 md:ml-64">
           <div className="pt-4 pb-4 px-4">
             <div className="w-2/12">
-              <div>
+              <div className="">
                 <Breadcrumb paths={breadcrumbPaths} />
               </div>
             </div>
@@ -62,13 +62,13 @@ export default function Header() {
                 <div className="flex justify-center items-center">
                   <div className="w-full flex justify-center">
                     <div className="w-full px-4 relative space-x-2">
-                      <HeaderModal />
+                      <ContactModel />
                     </div>
                   </div>
                 </div>
               </div>
-              <div>
-                <div className="max-w-6xl mx-auto px-4 pt-4">
+              <div className="">
+                <div className="max-w-5xl mx-auto px-4 pt-4">
                   <div className="overflow-x-auto shadow-md sm:rounded-lg">
                     <div className="inline-block min-w-full align-middle">
                       <div className="overflow-hidden">
@@ -79,68 +79,56 @@ export default function Header() {
                                 scope="col"
                                 className="py-3 pl-6 text-xs font-medium tracking-wider text-left  uppercase w-[400px]"
                               >
-                                Başlık
+                                Iletisim Başlığı
                               </th>
                               <th
                                 scope="col"
                                 className="py-3 text-xs font-medium tracking-wider text-left  uppercase w-[400px]"
                               >
-                                Dropdownlar
+                                Iletisim Bilgisi
                               </th>
                               <th
                                 scope="col"
                                 className="py-3 flex justify-end pr-6 text-xs font-medium tracking-wider uppercase"
                               >
-                                Duzenle/Sil
+                                Islemler
                               </th>
                             </tr>
                           </thead>
-                          {headers.map((header, index) => (
-                            <tbody key={index} className="bg-[#474E68]">
+                          {contacts.map((contact, index) => (
+                            <tbody key={index} className="bg-[#474E68] ">
                               <tr className="hover:bg-[#6B728E]">
                                 <td className="max-w-[320px] w-[320px]">
                                   <div className="py-4 max-w-xs px-6 text-sm font-medium text-gray-200 truncate">
                                     <p className="truncate">
-                                      {header.headerText}
+                                      {contact.cardText}
                                     </p>
                                   </div>
                                 </td>
-                                <td className="max-w-[450px] w-[400px]">
-                                  <div className="py-4 max-w-xs pr-6 flex flex-row space-x-1 text-sm font-medium text-gray-200 truncate">
+                                <td className="max-w-[320px] w-[320px]">
+                                  <div className="py-4 text-sm pr-6 max-w-xs font-medium text-gray-200 truncate">
                                     <p className="truncate">
-                                      {header.headerTextDropdown}
-                                    </p>
-                                    <p>/</p>
-                                    <p className="truncate">
-                                      {header.headerTextDropdown1}
-                                    </p>
-                                    <p>/</p>
-                                    <p className="truncate">
-                                      {header.headerTextDropdown2}
-                                    </p>
-                                    <p>/</p>
-                                    <p className="truncate">
-                                      {header.headerTextDropdown3}
+                                      {contact.cardValue}
                                     </p>
                                   </div>
                                 </td>
                                 <td className="py-4 flex justify-end pr-10 text-sm font-medium text-gray-200 whitespace-nowrap space-x-2">
                                   <button
-                                    onClick={() => handleClick(header._id)}
+                                    onClick={() => handleClick(contact._id)}
                                   >
                                     <div className="font-medium mt-1 text-cyan-500 hover:underline">
                                       <TbEdit size={19} />
                                     </div>
                                   </button>
                                   {showModal && (
-                                    <HeaderEditModal
-                                      showModal={showModal}
-                                      setShowModal={setShowModal}
-                                      headerId={headerId}
-                                    />
+                                    <ContactEditModal
+                                    showModal={showModal}
+                                    setShowModal={setShowModal}
+                                    contactId={contactId}
+                                  />
                                   )}
                                   <button
-                                    onClick={() => handleDelete(header._id)}
+                                    onClick={() => handleDelete(contact._id)}
                                   >
                                     <div className="font-medium mt-1 text-red-600 dark:text-red-500 hover:underline">
                                       <HiOutlineTrash size={20} />
