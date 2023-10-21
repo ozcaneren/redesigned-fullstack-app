@@ -7,6 +7,7 @@ import { TbEdit } from "react-icons/tb";
 import HeaderAddTitleModal from "./HeaderAddTitleModal";
 import HeaderEditTitleModal from "./HeaderEditTitleModal";
 import HeaderAddLinkModal from "./HeaderAddLinkModal";
+import HeaderEditLinkModal from "./HeaderEditLinkModal";
 
 export default function Header() {
   const [headerLinks, setHeaderLinks] = useState([]);
@@ -233,7 +234,13 @@ export default function Header() {
                                       <TbEdit size={19} />
                                     </div>
                                   </button>
-                                  
+                                  {showLinkModal && (
+                                    <HeaderEditLinkModal
+                                      showLinkModal={showLinkModal}
+                                      setShowLinkModal={setShowLinkModal}
+                                      headerId={headerId}
+                                    />
+                                  )}
                                   <button
                                     onClick={() => handleLinkDelete(header._id)}
                                   >

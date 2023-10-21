@@ -14,11 +14,11 @@ export default function HeaderAddTitleModal() {
       };
       await axios.post("http://localhost:4000/api/header/links", newHeader);
       setHeaderText("");
-      setHeaderTextDropdown("");
+      setHeaderTextDropdown([]); // Reset the array after sending it to the server
     } catch (error) {
       console.error(error);
     }
-  }
+  };
 
   const [showModal, setShowModal] = React.useState(false);
 
@@ -37,7 +37,9 @@ export default function HeaderAddTitleModal() {
             <div className="relative w-[600px] my-6 mx-auto max-w-3xl">
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 <div className="flex items-start justify-between p-5 border-b border-solid border-gray-300 rounded-t">
-                  <h3 className="text-2xl text-modalMainText font-semibold">Header Ekle</h3>
+                  <h3 className="text-2xl text-modalMainText font-semibold">
+                    Header Ekle
+                  </h3>
                   <button
                     className="p-1 ml-auto bg-transparent border-0 text-modalMainText float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
                     onClick={() => setShowModal(false)}
@@ -78,7 +80,9 @@ export default function HeaderAddTitleModal() {
                         type="text"
                         placeholder="Header Dropdown Başlık"
                         value={headerTextDropdown}
-                        onChange={(e) => setHeaderTextDropdown(e.target.value)}
+                        onChange={(e) =>
+                          setHeaderTextDropdown(e.target.value.split(","))
+                        } // Split input into an array
                       />
                     </div>
                   </div>
