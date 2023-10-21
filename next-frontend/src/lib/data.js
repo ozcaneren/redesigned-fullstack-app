@@ -74,7 +74,7 @@ export async function FooterContent() {
                           ? "https://www.google.com"
                           : ""
                       }
-                      className="text-gray-700 transition hover:opacity-75"
+                      className="text-modalLabelText transition hover:opacity-75"
                     >
                       <span className="sr-only">{footer.footerIcon}</span>
 
@@ -109,7 +109,7 @@ export async function FooterContent() {
                           ? "https://www.google.com"
                           : ""
                       }
-                      className="text-gray-700 transition hover:opacity-75"
+                      className="text-modalLabelText transition hover:opacity-75"
                     >
                       <span className="sr-only">{footer.footerIcon1}</span>
 
@@ -144,7 +144,7 @@ export async function FooterContent() {
                           ? "https://www.google.com"
                           : ""
                       }
-                      className="text-gray-700 transition hover:opacity-75"
+                      className="text-modalLabelText transition hover:opacity-75"
                     >
                       <span className="sr-only">{footer.footerIcon2}</span>
 
@@ -179,7 +179,7 @@ export async function FooterContent() {
                           ? "https://www.google.com"
                           : ""
                       }
-                      className="text-gray-700 transition hover:opacity-75"
+                      className="text-modalLabelText transition hover:opacity-75"
                     >
                       <span className="sr-only">{footer.footerIcon3}</span>
 
@@ -214,7 +214,7 @@ export async function FooterContent() {
                           ? "https://www.google.com"
                           : ""
                       }
-                      className="text-gray-700 transition hover:opacity-75"
+                      className="text-modalLabelText transition hover:opacity-75"
                     >
                       <span className="sr-only">{footer.footerIcon4}</span>
 
@@ -260,7 +260,7 @@ export async function FooterContent() {
                             ? "/gallery"
                             : "/"
                         }
-                        className="text-gray-700 transition hover:opacity-75"
+                        className="text-modalLabelText transition hover:opacity-75"
                       >
                         {footer.footerTitle1Link}
                       </Link>
@@ -285,7 +285,7 @@ export async function FooterContent() {
                             ? "/gallery"
                             : "/"
                         }
-                        className="text-gray-700 transition hover:opacity-75"
+                        className="text-modalLabelText transition hover:opacity-75"
                       >
                         {footer.footerTitle1Link1}
                       </Link>
@@ -310,7 +310,7 @@ export async function FooterContent() {
                             ? "/gallery"
                             : "/"
                         }
-                        className="text-gray-700 transition hover:opacity-75"
+                        className="text-modalLabelText transition hover:opacity-75"
                       >
                         {footer.footerTitle1Link2}
                       </Link>
@@ -334,7 +334,7 @@ export async function FooterContent() {
                             ? "/gallery"
                             : "/"
                         }
-                        className="text-gray-700 transition hover:opacity-75"
+                        className="text-modalLabelText transition hover:opacity-75"
                       >
                         {footer.footerTitle1Link3}
                       </a>
@@ -358,7 +358,7 @@ export async function FooterContent() {
                             ? "/gallery"
                             : "/"
                         }
-                        className="text-gray-700 transition hover:opacity-75"
+                        className="text-modalLabelText transition hover:opacity-75"
                       >
                         {footer.footerTitle1Link4}
                       </Link>
@@ -389,7 +389,7 @@ export async function FooterContent() {
                             ? "/gallery"
                             : "/"
                         }
-                        className="text-gray-700 transition hover:opacity-75"
+                        className="text-modalLabelText transition hover:opacity-75"
                       >
                         {footer.footerTitle1Link}
                       </Link>
@@ -414,7 +414,7 @@ export async function FooterContent() {
                             ? "/gallery"
                             : "/"
                         }
-                        className="text-gray-700 transition hover:opacity-75"
+                        className="text-modalLabelText transition hover:opacity-75"
                       >
                         {footer.footerTitle1Link1}
                       </Link>
@@ -439,7 +439,7 @@ export async function FooterContent() {
                             ? "/gallery"
                             : "/"
                         }
-                        className="text-gray-700 transition hover:opacity-75"
+                        className="text-modalLabelText transition hover:opacity-75"
                       >
                         {footer.footerTitle1Link2}
                       </Link>
@@ -463,7 +463,7 @@ export async function FooterContent() {
                             ? "/gallery"
                             : "/"
                         }
-                        className="text-gray-700 transition hover:opacity-75"
+                        className="text-modalLabelText transition hover:opacity-75"
                       >
                         {footer.footerTitle1Link3}
                       </a>
@@ -487,7 +487,7 @@ export async function FooterContent() {
                             ? "/gallery"
                             : "/"
                         }
-                        className="text-gray-700 transition hover:opacity-75"
+                        className="text-modalLabelText transition hover:opacity-75"
                       >
                         {footer.footerTitle1Link4}
                       </Link>
@@ -518,7 +518,7 @@ export async function FooterContent() {
                             ? "/gallery"
                             : "/"
                         }
-                        className="text-gray-700 transition hover:opacity-75"
+                        className="text-modalLabelText transition hover:opacity-75"
                       >
                         {footer.footerTitle1Link}
                       </Link>
@@ -543,7 +543,7 @@ export async function FooterContent() {
                             ? "/gallery"
                             : "/"
                         }
-                        className="text-gray-700 transition hover:opacity-75"
+                        className="text-modalLabelText transition hover:opacity-75"
                       >
                         {footer.footerTitle1Link1}
                       </Link>
@@ -568,7 +568,7 @@ export async function FooterContent() {
                             ? "/gallery"
                             : "/"
                         }
-                        className="text-gray-700 transition hover:opacity-75"
+                        className="text-modalLabelText transition hover:opacity-75"
                       >
                         {footer.footerTitle1Link2}
                       </Link>
@@ -592,7 +592,7 @@ export async function FooterContent() {
                             ? "/gallery"
                             : "/"
                         }
-                        className="text-gray-700 transition hover:opacity-75"
+                        className="text-modalLabelText transition hover:opacity-75"
                       >
                         {footer.footerTitle1Link3}
                       </a>
@@ -616,7 +616,7 @@ export async function FooterContent() {
                             ? "/gallery"
                             : "/"
                         }
-                        className="text-gray-700 transition hover:opacity-75"
+                        className="text-modalLabelText transition hover:opacity-75"
                       >
                         {footer.footerTitle1Link4}
                       </Link>
@@ -647,7 +647,7 @@ export async function FooterContent() {
                             ? "/gallery"
                             : "/"
                         }
-                        className="text-gray-700 transition hover:opacity-75"
+                        className="text-modalLabelText transition hover:opacity-75"
                       >
                         {footer.footerTitle1Link}
                       </Link>
@@ -672,7 +672,7 @@ export async function FooterContent() {
                             ? "/gallery"
                             : "/"
                         }
-                        className="text-gray-700 transition hover:opacity-75"
+                        className="text-modalLabelText transition hover:opacity-75"
                       >
                         {footer.footerTitle1Link1}
                       </Link>
@@ -697,7 +697,7 @@ export async function FooterContent() {
                             ? "/gallery"
                             : "/"
                         }
-                        className="text-gray-700 transition hover:opacity-75"
+                        className="text-modalLabelText transition hover:opacity-75"
                       >
                         {footer.footerTitle1Link2}
                       </Link>
@@ -721,7 +721,7 @@ export async function FooterContent() {
                             ? "/gallery"
                             : "/"
                         }
-                        className="text-gray-700 transition hover:opacity-75"
+                        className="text-modalLabelText transition hover:opacity-75"
                       >
                         {footer.footerTitle1Link3}
                       </a>
@@ -745,7 +745,7 @@ export async function FooterContent() {
                             ? "/gallery"
                             : "/"
                         }
-                        className="text-gray-700 transition hover:opacity-75"
+                        className="text-modalLabelText transition hover:opacity-75"
                       >
                         {footer.footerTitle1Link4}
                       </Link>

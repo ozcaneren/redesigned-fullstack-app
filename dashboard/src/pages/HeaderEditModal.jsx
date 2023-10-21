@@ -52,14 +52,14 @@ const HeaderEditModal = ({ headerId, showModal, setShowModal }) => {
             <div className="relative w-[600px] my-6 mx-auto max-w-3xl">
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 <div className="flex items-start justify-between p-5 border-b border-solid border-gray-300 rounded-t">
-                  <h3 className="text-2xl text-[#65647C] font-semibold">
+                  <h3 className="text-2xl text-modalMainText font-semibold">
                     Iletisim Duzenle
                   </h3>
                   <button
-                    className="p-1 ml-auto bg-transparent border-0 text-black float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
+                    className="p-1 ml-auto bg-transparent border-0 text-modalMainText float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
                     onClick={() => setShowModal(false)}
                   >
-                    <span className="bg-transparent flex  justify-center items-center text-[#65647C]  h-6 w-6 text-2xl outline-none focus:outline-none">
+                    <span className="bg-transparent flex justify-center items-center text-modalMainText h-6 w-6 text-2xl outline-none focus:outline-none">
                       ×
                     </span>
                   </button>
@@ -69,7 +69,7 @@ const HeaderEditModal = ({ headerId, showModal, setShowModal }) => {
                     <div className="mb-4">
                       <label
                         htmlFor="headerText"
-                        className="block text-sm font-medium text-gray-700"
+                        className="block text-sm font-medium text-modalLabelText"
                       >
                         Header Text
                       </label>
@@ -79,13 +79,13 @@ const HeaderEditModal = ({ headerId, showModal, setShowModal }) => {
                         id="headerText"
                         value={header.headerText}
                         onChange={handleChange}
-                        className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md py-2"
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
                       />
                     </div>
                     <div className="mb-4">
                       <label
                         htmlFor="headerTextDropdown"
-                        className="block text-sm font-medium text-gray-700"
+                        className="block text-sm font-medium text-modalLabelText"
                       >
                         Header Text Dropdown
                       </label>
@@ -95,13 +95,13 @@ const HeaderEditModal = ({ headerId, showModal, setShowModal }) => {
                         id="headerTextDropdown"
                         value={header.headerTextDropdown}
                         onChange={handleChange}
-                        className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md py-2"
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
                       />
                     </div>
                     <div className="mb-4">
                       <label
                         htmlFor="headerTextDropdown1"
-                        className="block text-sm font-medium text-gray-700"
+                        className="block text-sm font-medium text-modalLabelText"
                       >
                         Header Text Dropdown 1
                       </label>
@@ -111,13 +111,13 @@ const HeaderEditModal = ({ headerId, showModal, setShowModal }) => {
                         id="headerTextDropdown1"
                         value={header.headerTextDropdown1}
                         onChange={handleChange}
-                        className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md py-2"
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
                       />
                     </div>
                     <div className="mb-4">
                       <label
                         htmlFor="headerTextDropdown2"
-                        className="block text-sm font-medium text-gray-700"
+                        className="block text-sm font-medium text-modalLabelText"
                       >
                         Header Text Dropdown 2
                       </label>
@@ -127,7 +127,23 @@ const HeaderEditModal = ({ headerId, showModal, setShowModal }) => {
                         id="headerTextDropdown2"
                         value={header.headerTextDropdown2}
                         onChange={handleChange}
-                        className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md py-2"
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
+                      />
+                    </div>
+                    <div className="mb-4">
+                      <label
+                        htmlFor="headerTextDropdown3"
+                        className="block text-sm font-medium text-modalLabelText"
+                      >
+                        Header Text Dropdown 3
+                      </label>
+                      <input
+                        type="text"
+                        name="headerTextDropdown3"
+                        id="headerTextDropdown3"
+                        value={header.headerTextDropdown3}
+                        onChange={handleChange}
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
                       />
                     </div>
                   </div>

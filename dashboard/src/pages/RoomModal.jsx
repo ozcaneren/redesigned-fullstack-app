@@ -101,15 +101,15 @@ export default function Modal() {
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
             <div className="relative my-6 mx-auto w-[1000px]">
               {/*content*/}
-              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-[#f7f9fa] outline-none focus:outline-none">
+              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-modalBackground outline-none focus:outline-none">
                 {/*header*/}
                 <div className="flex items-start justify-between p-5 border-b border-solid border-blue-200 rounded-t">
-                  <h3 className="text-3xl text-[#65647C] font-semibold">Oda Ekle</h3>
+                  <h3 className="text-3xl text-modalMainText font-semibold">Oda Ekle</h3>
                   <button
                     className="p-1 ml-auto  border-0 text-white float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
                     onClick={() => setShowModal(false)}
                   >
-                    <span className=" text-[#65647C] h-6 w-6 text-2xl block outline-none focus:outline-none">
+                    <span className="text-modalMainText h-6 w-6 text-2xl block outline-none focus:outline-none">
                       ×
                     </span>
                   </button>
@@ -120,7 +120,7 @@ export default function Modal() {
                     <div className="mb-4">
                       <label
                         htmlFor="type"
-                        className="block text-sm font-medium text-[#3d3d4d] mb-2"
+                        className="block text-sm font-medium text-modalLabelText mb-2"
                       >
                         Oda Tipi
                       </label>
@@ -139,7 +139,7 @@ export default function Modal() {
                     <div className="mb-4">
                       <label
                         htmlFor="title"
-                        className="block text-sm font-medium text-[#3d3d4d] mb-2"
+                        className="block text-sm font-medium text-modalLabelText mb-2"
                       >
                         Oda Adı
                       </label>
@@ -154,7 +154,7 @@ export default function Modal() {
                     <div className="mb-4">
                       <label
                         htmlFor="description"
-                        className="block text-sm font-medium text-[#3d3d4d] mb-2"
+                        className="block text-sm font-medium text-modalLabelText mb-2"
                       >
                         Açıklama
                       </label>
@@ -169,7 +169,7 @@ export default function Modal() {
                     <div className="mb-4">
                       <label
                         htmlFor="shortDescription"
-                        className="block text-sm font-medium text-[#3d3d4d] mb-2"
+                        className="block text-sm font-medium text-modalLabelText mb-2"
                       >
                         Kısa Açıklama
                       </label>
@@ -186,7 +186,7 @@ export default function Modal() {
                     <div className="mb-4">
                       <label
                         htmlFor="features"
-                        className="block text-sm font-medium text-[#3d3d4d] mb-2"
+                        className="block text-sm font-medium text-modalLabelText mb-2"
                       >
                         Özellikler
                       </label>
@@ -213,7 +213,7 @@ export default function Modal() {
                     <div className="mb-4">
                       <label
                         htmlFor="visibility"
-                        className="block text-sm font-medium text-[#3d3d4d] mb-2"
+                        className="block text-sm font-medium text-modalLabelText mb-2"
                       >
                         Durum
                       </label>

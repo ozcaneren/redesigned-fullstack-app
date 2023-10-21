@@ -52,14 +52,14 @@ const ContactEditModal = ({ contactId, showModal, setShowModal }) => {
             <div className="relative w-[600px] my-6 mx-auto max-w-3xl">
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 <div className="flex items-start justify-between p-5 border-b border-solid border-gray-300 rounded-t">
-                  <h3 className="text-2xl text-[#65647C] font-semibold">
+                  <h3 className="text-2xl text-modalMainText font-semibold">
                     Iletisim Duzenle
                   </h3>
                   <button
                     className="p-1 ml-auto bg-transparent border-0 text-black float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
                     onClick={() => setShowModal(false)}
                   >
-                    <span className="bg-transparent flex  justify-center items-center text-[#65647C]  h-6 w-6 text-2xl outline-none focus:outline-none">
+                    <span className="bg-transparent flex justify-center items-center text-modalMainText h-6 w-6 text-2xl outline-none focus:outline-none">
                       ×
                     </span>
                   </button>
@@ -68,13 +68,13 @@ const ContactEditModal = ({ contactId, showModal, setShowModal }) => {
                   <div className="relative p-6 flex-auto">
                     <div className="mb-4">
                       <label
-                        className="block text-gray-700 text-sm text-left font-bold mb-2"
+                        className="block text-modalLabelText text-sm text-left font-bold mb-2"
                         htmlFor="cardTitle"
                       >
                         Iletisim Basligi
                       </label>
                       <input
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
                         id="cardText"
                         type="text"
                         placeholder="Iletisim Basligi"
@@ -85,13 +85,13 @@ const ContactEditModal = ({ contactId, showModal, setShowModal }) => {
                     </div>
                     <div className="mb-4">
                       <label
-                        className="block text-gray-700 text-sm text-left font-bold mb-2"
+                        className="block text-modalLabelText text-sm text-left font-bold mb-2"
                         htmlFor="cardValue"
                       >
                         Iletisim Degeri
                       </label>
                       <input
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
                         id="cardValue"
                         type="text"
                         placeholder="Iletisim Degeri"

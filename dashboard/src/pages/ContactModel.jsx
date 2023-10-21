@@ -37,12 +37,12 @@ export default function ContactModel() {
             <div className="relative w-[600px] my-6 mx-auto max-w-3xl">
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 <div className="flex items-start justify-between p-5 border-b border-solid border-gray-300 rounded-t">
-                  <h3 className="text-2xl text-[#65647C] font-semibold">Iletisim Ekle</h3>
+                  <h3 className="text-2xl text-modalMainText font-semibold">Iletisim Ekle</h3>
                   <button
                     className="p-1 ml-auto bg-transparent border-0 text-black float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
                     onClick={() => setShowModal(false)}
                   >
-                    <span className="bg-transparent flex  justify-center items-center text-[#65647C]  h-6 w-6 text-2xl outline-none focus:outline-none">
+                    <span className="bg-transparent flex justify-center items-center text-modalMainText h-6 w-6 text-2xl outline-none focus:outline-none">
                       ×
                     </span>
                   </button>
@@ -51,13 +51,13 @@ export default function ContactModel() {
                   <div className="relative p-6 flex-auto">
                     <div className="mb-4">
                       <label
-                        className="block text-gray-700 text-sm font-bold mb-2"
+                        className="block text-modalLabelText text-sm font-bold mb-2"
                         htmlFor="cardTitle"
                       >
                         Iletisim Basligi
                       </label>
                       <input
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
                         id="cardText"
                         type="text"
                         value={cardText}
@@ -66,13 +66,13 @@ export default function ContactModel() {
                     </div>
                     <div className="mb-4">
                       <label
-                        className="block text-gray-700 text-sm font-bold mb-2"
+                        className="block text-modalLabelText text-sm font-bold mb-2"
                         htmlFor="cardValue"
                       >
                         Iletisim Bilgisi
                       </label>
                       <input
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
                         id="cardValue"
                         type="text"
                         value={cardValue}

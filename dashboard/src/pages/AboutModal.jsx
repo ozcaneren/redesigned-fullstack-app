@@ -56,13 +56,13 @@ export default function AboutModal() {
                   <div className="relative p-6 flex-auto">
                     <div className="mb-4">
                       <label
-                        className="block text-gray-700 text-sm font-bold mb-2"
+                        className="block text-modalLabelText text-sm font-bold mb-2"
                         htmlFor="cardTitle"
                       >
                         Hakkimizda Basligi
                       </label>
                       <input
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-modalLabelText leading-tight focus:outline-none focus:shadow-outline"
                         id="cardTitle"
                         type="text"
                         value={cardTitle}
@@ -71,13 +71,13 @@ export default function AboutModal() {
                     </div>
                     <div className="mb-4">
                       <label
-                        className="block text-gray-700 text-sm font-bold mb-2"
+                        className="block text-modalLabelText text-sm font-bold mb-2"
                         htmlFor="cardValue"
                       >
                         Hakkimizda Metni
                       </label>
                       <input
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-modalLabelText leading-tight focus:outline-none focus:shadow-outline"
                         id="cardText"
                         type="text"
                         value={cardText}
@@ -86,13 +86,13 @@ export default function AboutModal() {
                     </div>
                     <div className="mb-4">
                       <label
-                        className="block text-gray-700 text-sm font-bold mb-2"
+                        className="block text-modalLabelText text-sm font-bold mb-2"
                         htmlFor="cardButton"
                       >
                         Hakkimizda Butonu
                       </label>
                       <input
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-modalLabelText leading-tight focus:outline-none focus:shadow-outline"
                         id="cardButton"
                         type="text"
                         value={cardButton}

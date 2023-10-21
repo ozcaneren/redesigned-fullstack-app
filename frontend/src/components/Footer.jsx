@@ -59,7 +59,7 @@ export default function Footer() {
                           ? "https://www.google.com"
                           : ""
                       }
-                      className="text-gray-700 transition hover:opacity-75"
+                      className="text-modalLabelText transition hover:opacity-75"
                     >
                       <span className="sr-only">{footer.footerIcon}</span>
 
@@ -94,7 +94,7 @@ export default function Footer() {
                           ? "https://www.google.com"
                           : ""
                       }
-                      className="text-gray-700 transition hover:opacity-75"
+                      className="text-modalLabelText transition hover:opacity-75"
                     >
                       <span className="sr-only">{footer.footerIcon1}</span>
 
@@ -129,7 +129,7 @@ export default function Footer() {
                           ? "https://www.google.com"
                           : ""
                       }
-                      className="text-gray-700 transition hover:opacity-75"
+                      className="text-modalLabelText transition hover:opacity-75"
                     >
                       <span className="sr-only">{footer.footerIcon2}</span>
 
@@ -164,7 +164,7 @@ export default function Footer() {
                           ? "https://www.google.com"
                           : ""
                       }
-                      className="text-gray-700 transition hover:opacity-75"
+                      className="text-modalLabelText transition hover:opacity-75"
                     >
                       <span className="sr-only">{footer.footerIcon3}</span>
 
@@ -199,7 +199,7 @@ export default function Footer() {
                           ? "https://www.google.com"
                           : ""
                       }
-                      className="text-gray-700 transition hover:opacity-75"
+                      className="text-modalLabelText transition hover:opacity-75"
                     >
                       <span className="sr-only">{footer.footerIcon4}</span>
 
@@ -248,7 +248,7 @@ export default function Footer() {
                             ? "/gallery"
                             : "/"
                         }
-                        className="text-gray-700 transition hover:opacity-75"
+                        className="text-modalLabelText transition hover:opacity-75"
                       >
                         {language === "tr"
                           ? footer.footerTitleLink
@@ -276,7 +276,7 @@ export default function Footer() {
                             ? "/gallery"
                             : "/"
                         }
-                        className="text-gray-700 transition hover:opacity-75"
+                        className="text-modalLabelText transition hover:opacity-75"
                       >
                         {language === "tr"
                           ? footer.footerTitleLink1
@@ -304,7 +304,7 @@ export default function Footer() {
                             ? "/gallery"
                             : "/"
                         }
-                        className="text-gray-700 transition hover:opacity-75"
+                        className="text-modalLabelText transition hover:opacity-75"
                       >
                         {language === "tr"
                           ? footer.footerTitleLink2
@@ -332,7 +332,7 @@ export default function Footer() {
                             ? "/gallery"
                             : "/"
                         }
-                        className="text-gray-700 transition hover:opacity-75"
+                        className="text-modalLabelText transition hover:opacity-75"
                       >
                         {language === "tr"
                           ? footer.footerTitleLink3
@@ -360,7 +360,7 @@ export default function Footer() {
                             ? "/gallery"
                             : "/"
                         }
-                        className="text-gray-700 transition hover:opacity-75"
+                        className="text-modalLabelText transition hover:opacity-75"
                       >
                         {language === "tr"
                           ? footer.footerTitleLink4
@@ -396,7 +396,7 @@ export default function Footer() {
                             ? "/gallery"
                             : "/"
                         }
-                        className="text-gray-700 transition hover:opacity-75"
+                        className="text-modalLabelText transition hover:opacity-75"
                       >
                         {language === "tr"
                           ? footer.footerTitle1Link
@@ -423,7 +423,7 @@ export default function Footer() {
                             ? "/gallery"
                             : "/"
                         }
-                        className="text-gray-700 transition hover:opacity-75"
+                        className="text-modalLabelText transition hover:opacity-75"
                       >
                         {language === "tr"
                           ? footer.footerTitle1Link1
@@ -450,7 +450,7 @@ export default function Footer() {
                             ? "/gallery"
                             : "/"
                         }
-                        className="text-gray-700 transition hover:opacity-75"
+                        className="text-modalLabelText transition hover:opacity-75"
                       >
                         {language === "tr"
                           ? footer.footerTitle1Link2
@@ -476,7 +476,7 @@ export default function Footer() {
                             ? "/gallery"
                             : "/"
                         }
-                        className="text-gray-700 transition hover:opacity-75"
+                        className="text-modalLabelText transition hover:opacity-75"
                       >
                         {language === "tr"
                           ? footer.footerTitle1Link3
@@ -502,7 +502,7 @@ export default function Footer() {
                             ? "/gallery"
                             : "/"
                         }
-                        className="text-gray-700 transition hover:opacity-75"
+                        className="text-modalLabelText transition hover:opacity-75"
                       >
                         {language === "tr"
                           ? footer.footerTitle1Link4
@@ -547,7 +547,7 @@ export default function Footer() {
                             ? "/gallery"
                             : "/"
                         }
-                        className="text-gray-700  transition hover:opacity-75"
+                        className="text-modalLabelText  transition hover:opacity-75"
                       >
                         {language === "tr"
                           ? footer.footerTitle2Link.substring(0, 17)
@@ -584,7 +584,7 @@ export default function Footer() {
                             ? "/gallery"
                             : "/"
                         }
-                        className="text-gray-700 transition hover:opacity-75"
+                        className="text-modalLabelText transition hover:opacity-75"
                       >
                         {language === "tr"
                           ? footer.footerTitle2Link1.substring(0, 17)
@@ -621,7 +621,7 @@ export default function Footer() {
                             ? "/gallery"
                             : "/"
                         }
-                        className="text-gray-700 transition hover:opacity-75"
+                        className="text-modalLabelText transition hover:opacity-75"
                       >
                         {language === "tr"
                           ? footer.footerTitle2Link2.substring(0, 17)
@@ -656,7 +656,7 @@ export default function Footer() {
                             ? "/gallery"
                             : "/documents"
                         }
-                        className="text-gray-700 transition hover:opacity-75"
+                        className="text-modalLabelText transition hover:opacity-75"
                       >
                         {language === "tr"
                           ? footer.footerTitle2Link3.substring(0, 17)
@@ -691,7 +691,7 @@ export default function Footer() {
                             ? "/gallery"
                             : "/"
                         }
-                        className="text-gray-700 transition hover:opacity-75"
+                        className="text-modalLabelText transition hover:opacity-75"
                       >
                         {language === "tr"
                           ? footer.footerTitle2Link4.substring(0, 17)
@@ -736,7 +736,7 @@ export default function Footer() {
                             ? "/gallery"
                             : "/"
                         }
-                        className="text-gray-700 transition hover:opacity-75"
+                        className="text-modalLabelText transition hover:opacity-75"
                       >
                         {language === "tr"
                           ? footer.footerTitle3Link
@@ -772,7 +772,7 @@ export default function Footer() {
                             ? "/gallery"
                             : "/"
                         }
-                        className="text-gray-700 transition hover:opacity-75"
+                        className="text-modalLabelText transition hover:opacity-75"
                       >
                         {language === "tr"
                           ? footer.footerTitle3Link1
@@ -808,7 +808,7 @@ export default function Footer() {
                             ? "/gallery"
                             : "/"
                         }
-                        className="text-gray-700 transition hover:opacity-75"
+                        className="text-modalLabelText transition hover:opacity-75"
                       >
                         {language === "tr"
                           ? footer.footerTitle3Link2
@@ -844,7 +844,7 @@ export default function Footer() {
                             ? "/gallery"
                             : "/"
                         }
-                        className="text-gray-700 transition hover:opacity-75"
+                        className="text-modalLabelText transition hover:opacity-75"
                       >
                         {language === "tr"
                           ? footer.footerTitle3Link3
@@ -880,7 +880,7 @@ export default function Footer() {
                             ? "/gallery"
                             : "/"
                         }
-                        className="text-gray-700 transition hover:opacity-75"
+                        className="text-modalLabelText transition hover:opacity-75"
                       >
                         {language === "tr"
                           ? footer.footerTitle3Link4

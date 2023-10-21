@@ -69,7 +69,7 @@ const AboutEditModal = ({ aboutId, showModal, setShowModal }) => {
                   <div className="relative p-6 flex-auto">
                     <div>
                       <label
-                        className="block text-gray-700 text-base font-bold mb-2"
+                        className="block text-modalLabelText text-base font-bold mb-2"
                         htmlFor=""
                       >
                         Başlık
@@ -77,7 +77,7 @@ const AboutEditModal = ({ aboutId, showModal, setShowModal }) => {
                       <div className="flex justify-center items-center space-x-3">
                         <div className="mb-4">
                           <label
-                            className="block text-gray-700 text-sm font-bold mb-2"
+                            className="block text-modalLabelText text-sm font-bold mb-2"
                             htmlFor="cardTitle"
                           >
                             Türkçe
@@ -88,12 +88,12 @@ const AboutEditModal = ({ aboutId, showModal, setShowModal }) => {
                             name="cardTitle"
                             value={about.cardTitle}
                             onChange={handleChange}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-modalLabelText leading-tight focus:outline-none focus:shadow-outline"
                           />
                         </div>
                         <div className="mb-4">
                           <label
-                            className="block text-gray-700 text-sm font-bold mb-2"
+                            className="block text-modalLabelText text-sm font-bold mb-2"
                             htmlFor="cardTitle_en"
                           >
                             İngilizce
@@ -104,14 +104,14 @@ const AboutEditModal = ({ aboutId, showModal, setShowModal }) => {
                             name="cardTitle_en"
                             value={about.cardTitle_en}
                             onChange={handleChange}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-modalLabelText leading-tight focus:outline-none focus:shadow-outline"
                           />
                         </div>
                       </div>
                     </div>
                     <div>
                       <label
-                        className="block text-gray-700 text-base font-bold mb-2"
+                        className="block text-modalLabelText text-base font-bold mb-2"
                         htmlFor=""
                       >
                         Metin
@@ -119,7 +119,7 @@ const AboutEditModal = ({ aboutId, showModal, setShowModal }) => {
                       <div className="flex justify-center items-center space-x-3">
                         <div className="mb-4">
                           <label
-                            className="block text-gray-700 text-sm font-bold mb-2"
+                            className="block text-modalLabelText text-sm font-bold mb-2"
                             htmlFor="cardText"
                           >
                             Türkçe
@@ -129,12 +129,12 @@ const AboutEditModal = ({ aboutId, showModal, setShowModal }) => {
                             name="cardText"
                             value={about.cardText}
                             onChange={handleChange}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-32 resize-none"
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-modalLabelText leading-tight focus:outline-none focus:shadow-outline h-32 resize-none"
                           ></textarea>
                         </div>
                         <div className="mb-4">
                           <label
-                            className="block text-gray-700 text-sm font-bold mb-2"
+                            className="block text-modalLabelText text-sm font-bold mb-2"
                             htmlFor="cardText_en"
                           >
                             İngilizce
@@ -144,14 +144,14 @@ const AboutEditModal = ({ aboutId, showModal, setShowModal }) => {
                             name="cardText_en"
                             value={about.cardText_en}
                             onChange={handleChange}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-32 resize-none"
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-modalLabelText leading-tight focus:outline-none focus:shadow-outline h-32 resize-none"
                           ></textarea>
                         </div>
                       </div>
                     </div>
                     <div>
                       <label
-                        className="block text-gray-700 text-base font-bold mb-2"
+                        className="block text-modalLabelText text-base font-bold mb-2"
                         htmlFor=""
                       >
                         Buton
@@ -159,7 +159,7 @@ const AboutEditModal = ({ aboutId, showModal, setShowModal }) => {
                       <div className="flex justify-center items-center space-x-3">
                         <div className="mb-4">
                           <label
-                            className="block text-gray-700 text-sm font-bold mb-2"
+                            className="block text-modalLabelText text-sm font-bold mb-2"
                             htmlFor="cardButton"
                           >
                             Türkçe
@@ -170,12 +170,12 @@ const AboutEditModal = ({ aboutId, showModal, setShowModal }) => {
                             name="cardButton"
                             value={about.cardButton}
                             onChange={handleChange}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-modalLabelText leading-tight focus:outline-none focus:shadow-outline"
                           />
                         </div>
                         <div className="mb-4">
                           <label
-                            className="block text-gray-700 text-sm font-bold mb-2"
+                            className="block text-modalLabelText text-sm font-bold mb-2"
                             htmlFor="cardButton_en"
                           >
                             İngilizce
@@ -186,7 +186,7 @@ const AboutEditModal = ({ aboutId, showModal, setShowModal }) => {
                             name="cardButton_en"
                             value={about.cardButton_en}
                             onChange={handleChange}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-modalLabelText leading-tight focus:outline-none focus:shadow-outline"
                           />
                         </div>
                       </div>

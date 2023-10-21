@@ -1,13 +1,12 @@
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useLanguage } from "../LanguageContext";
+// import { useLanguage } from "../LanguageContext";
 
 export default function Header() {
   const [data, setData] = useState([]);
-  const { language, toggleLanguage } = useLanguage();
+  // const { language, toggleLanguage } = useLanguage();
 
-  // Her dropdown için ayrı state değerleri ve açma/kapama fonksiyonları oluşturulur
   const [isDropdownOpen1, setDropdownOpen1] = useState(false);
   const [isDropdownOpen2, setDropdownOpen2] = useState(false);
   const [isDropdownOpen3, setDropdownOpen3] = useState(false);
@@ -59,10 +58,8 @@ export default function Header() {
                               <path d="M6 9l6 6 6-6" />
                             </svg>
                           </span>
-                          <span className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:p-0">
-                            {language === "tr"
-                              ? header.headerText
-                              : header.headerText_en}
+                          <span className="block py-2 pr-4 pl-3 text-modalLabelText border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:p-0">                            
+                            {header.headerText}
                           </span>
                         </span>
                         {getDropdownState(index) && (
@@ -83,9 +80,7 @@ export default function Header() {
                                   }
                                 >
                                   <span className="ml-1 text-md tracking-wide truncate">
-                                    {language === "tr"
-                                      ? header.headerTextDropdown
-                                      : header.headerTextDropdown_en}
+                                    {header.headerTextDropdown}
                                   </span>
                                 </Link>
                               </li>
@@ -107,10 +102,8 @@ export default function Header() {
                           }
                         >
                           <span className="relative flex cursor-pointer flex-row items-center focus:outline-none text-white-600 hover:text-white-800 border-l-4 border-transparent">
-                            <span className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:p-0">
-                              {language === "tr"
-                                ? header.headerText
-                                : header.headerText_en}
+                            <span className="block py-2 pr-4 pl-3 text-modalLabelText border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:p-0">
+                                {header.headerText}
                             </span>
                           </span>
                         </Link>
