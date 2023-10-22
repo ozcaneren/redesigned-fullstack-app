@@ -77,7 +77,7 @@ export default function Header() {
   const handleLinkClick = (headerId) => {
     setHeaderId(headerId);
     setShowLinkModal(true);
-  }
+  };
 
   return (
     <div>
@@ -222,7 +222,7 @@ export default function Header() {
                                 <td className="max-w-[450px] w-[400px]">
                                   <div className="py-4 max-w-xs pr-6 flex flex-row space-x-1 text-sm font-medium text-gray-200 truncate">
                                     <p className="truncate">
-                                      {header.headerTextDropdown}
+                                      {header.headerTextDropdown.join(", ")}{" "}
                                     </p>
                                   </div>
                                 </td>

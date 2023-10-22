@@ -2,19 +2,19 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 
-export default function HeaderAddTitleModal() {
-  const [headerText, setHeaderText] = useState("");
-  const [headerTextDropdown, setHeaderTextDropdown] = useState([]);
+export default function FooterAddTextModal() {
+  const [footerTitle, setFooterTitle] = useState("");
+  const [footerText, setFooterText] = useState("");
 
   const handleSubmit = async () => {
     try {
-      const newHeader = {
-        headerText: headerText,
-        headerTextDropdown: headerTextDropdown,
+      const newFooter = {
+        footerTitle: footerTitle,
+        footerText: footerText,
       };
-      await axios.post("http://localhost:4000/api/header/links", newHeader);
-      setHeaderText("");
-      setHeaderTextDropdown([]); // Reset the array after sending it to the server
+      await axios.post("http://localhost:4000/api/footer/texts", newFooter);
+      setFooterTitle("");
+      setFooterText("");
     } catch (error) {
       console.error(error);
     }
@@ -29,7 +29,7 @@ export default function HeaderAddTitleModal() {
         type="button"
         onClick={() => setShowModal(true)}
       >
-        Yeni Header Ekle
+        Yeni Ana Baslik Ekle
       </button>
       {showModal ? (
         <>
@@ -38,7 +38,7 @@ export default function HeaderAddTitleModal() {
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 <div className="flex items-start justify-between p-5 border-b border-solid border-gray-300 rounded-t">
                   <h3 className="text-2xl text-modalMainText font-semibold">
-                    Header Ekle
+                    Footer Ekle
                   </h3>
                   <button
                     className="p-1 ml-auto bg-transparent border-0 text-modalMainText float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
@@ -54,35 +54,33 @@ export default function HeaderAddTitleModal() {
                     <div className="mb-4">
                       <label
                         className="block text-modalLabelText text-sm font-bold mb-2"
-                        htmlFor="headerText"
+                        htmlFor="headerTitle"
                       >
-                        Header Başlık
+                        Footer Başlık
                       </label>
                       <input
-                        className="w-full px-3 py-2 text-modalMainText border-[1px] border-[#707070] rounded-md outline-none focus:ring-[1px] focus:ring-[#707070]"
-                        id="headerText"
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-modalMainText leading-tight focus:outline-none focus:shadow-outline"
+                        id="footerTitle"
                         type="text"
-                        placeholder="Header Başlık"
-                        value={headerText}
-                        onChange={(e) => setHeaderText(e.target.value)}
+                        placeholder="Footer Başlık"
+                        value={footerTitle}
+                        onChange={(e) => setFooterTitle(e.target.value)}
                       />
                     </div>
                     <div className="mb-4">
                       <label
                         className="block text-modalLabelText text-sm font-bold mb-2"
-                        htmlFor="headerTextDropdown"
+                        htmlFor="headerTitle"
                       >
-                        Header Dropdown Başlık
+                        Footer Metin
                       </label>
                       <input
-                        className="w-full px-3 py-2 text-modalMainText border-[1px] border-[#707070] rounded-md outline-none focus:ring-[1px] focus:ring-[#707070]"
-                        id="headerTextDropdown"
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-modalMainText leading-tight focus:outline-none focus:shadow-outline"
+                        id="footerText"
                         type="text"
-                        placeholder="Header Dropdown Başlık"
-                        value={headerTextDropdown}
-                        onChange={(e) =>
-                          setHeaderTextDropdown(e.target.value.split(","))
-                        } // Split input into an array
+                        placeholder="Footer Metin"
+                        value={footerText}
+                        onChange={(e) => setFooterText(e.target.value)}
                       />
                     </div>
                   </div>

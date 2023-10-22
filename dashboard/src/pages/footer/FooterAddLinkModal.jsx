@@ -2,19 +2,19 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 
-export default function HeaderAddTitleModal() {
-  const [headerText, setHeaderText] = useState("");
-  const [headerTextDropdown, setHeaderTextDropdown] = useState([]);
+export default function FooterAddLinkModal() {
+  const [footerLinkTitle, setFooterLinkTitle] = useState("");
+  const [footerLinkText, setFooterLinkText] = useState([]);
 
   const handleSubmit = async () => {
     try {
-      const newHeader = {
-        headerText: headerText,
-        headerTextDropdown: headerTextDropdown,
+      const newFooter = {
+        footerLinkTitle: footerLinkTitle,
+        footerLinkText: footerLinkText,
       };
-      await axios.post("http://localhost:4000/api/header/links", newHeader);
-      setHeaderText("");
-      setHeaderTextDropdown([]); // Reset the array after sending it to the server
+      await axios.post("http://localhost:4000/api/footer/links", newFooter);
+      setFooterLinkTitle("");
+      setFooterLinkText([]); // Reset the array after sending it to the server
     } catch (error) {
       console.error(error);
     }
@@ -29,7 +29,7 @@ export default function HeaderAddTitleModal() {
         type="button"
         onClick={() => setShowModal(true)}
       >
-        Yeni Header Ekle
+        Yeni Baslik Ekle
       </button>
       {showModal ? (
         <>
@@ -53,36 +53,36 @@ export default function HeaderAddTitleModal() {
                   <div className="relative p-6 flex-auto">
                     <div className="mb-4">
                       <label
+                        htmlFor=""
                         className="block text-modalLabelText text-sm font-bold mb-2"
-                        htmlFor="headerText"
                       >
-                        Header Başlık
+                        Footer Başlık
                       </label>
                       <input
-                        className="w-full px-3 py-2 text-modalMainText border-[1px] border-[#707070] rounded-md outline-none focus:ring-[1px] focus:ring-[#707070]"
-                        id="headerText"
                         type="text"
-                        placeholder="Header Başlık"
-                        value={headerText}
-                        onChange={(e) => setHeaderText(e.target.value)}
+                        name="footerLinkTitle"
+                        value={footerLinkTitle}
+                        onChange={(e) => setFooterLinkTitle(e.target.value)}
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-modalMainText leading-tight focus:outline-none focus:shadow-outline"
+                        placeholder="Footer Başlık"
                       />
                     </div>
                     <div className="mb-4">
                       <label
+                        htmlFor=""
                         className="block text-modalLabelText text-sm font-bold mb-2"
-                        htmlFor="headerTextDropdown"
                       >
-                        Header Dropdown Başlık
+                        Footer Text
                       </label>
                       <input
-                        className="w-full px-3 py-2 text-modalMainText border-[1px] border-[#707070] rounded-md outline-none focus:ring-[1px] focus:ring-[#707070]"
-                        id="headerTextDropdown"
                         type="text"
-                        placeholder="Header Dropdown Başlık"
-                        value={headerTextDropdown}
+                        name="footerLinkText"
+                        value={footerLinkText}
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-modalMainText leading-tight focus:outline-none focus:shadow-outline"
+                        placeholder="Footer Text"
                         onChange={(e) =>
-                          setHeaderTextDropdown(e.target.value.split(","))
-                        } // Split input into an array
+                          setFooterLinkText(e.target.value.split(","))
+                        }
                       />
                     </div>
                   </div>
