@@ -3,11 +3,15 @@ import axios from "axios";
 import Sidebar from "../../components/Sidebar";
 import Breadcrumb from "../../components/Breadcrumbs";
 import { useNavigate } from "react-router-dom";
+import { TbEdit } from "react-icons/tb";
+import HeroEditModal from "./HeroEditModal";
+
 
 export default function Hero() {
   const [heroes, setHeroes] = useState([]);
-
   const navigate = useNavigate();
+  const [showModal, setShowModal] = useState(false);
+  const [heroId, setHeroId] = useState();
 
   const breadcrumbPaths = [
     { url: "/", label: "Ana Sayfa" },
@@ -27,15 +31,16 @@ export default function Hero() {
     getHeroes();
   }, []);
 
-  const handleClick = (id) => {
-    navigate(`/hero/${id}/edit`);
-  };
+  const handleClick = (heroId) => {
+    setHeroId(heroId);
+    setShowModal(true);
+  }
 
   return (
     <div>
-      <div className="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-zinc-900 text-white">
+      <div className="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-background text-white">
         <Sidebar />
-        <div className="ml-14   mb-10 md:ml-64">
+        <div className="ml-14 mb-10 md:ml-64">
           <div className="pt-4 pb-4 px-4">
             <div className="w-2/12">
               <div className="">
@@ -44,7 +49,7 @@ export default function Hero() {
             </div>
           </div>
           <div className="p-4">
-            <div className="bg-zinc-800 rounded pt-4 pb-4">
+            <div className="bg-[#FEFEFE] border border-gray-200/70 rounded pt-4 pb-4">
               <div>
                 <div>
                   {heroes.map((hero, index) => (
@@ -58,6 +63,13 @@ export default function Hero() {
                             >
                               Kartlari Duzenle
                             </button>
+                            {showModal ? (
+                              <HeroEditModal
+                                showModal={showModal}
+                                setShowModal={setShowModal}
+                                heroId={heroId}
+                              />
+                            ) : null}
                           </div>
                         </div>
                       </div>
