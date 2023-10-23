@@ -195,6 +195,13 @@ export default function Footer() {
                                   footerId={footerId}
                                 />
                               )}
+                              <button
+                                onClick={() => handleIconDelete(footerIcon._id)}
+                              >
+                                <div className="font-medium mt-1 text-red-600 dark:text-red-500 hover:underline">
+                                  <HiOutlineTrash size={12} />
+                                </div>
+                              </button>
                             </p>
                             <h2 className="font-semibold text-gray-600">
                               {footerIcon.footerIcon}
@@ -260,7 +267,7 @@ export default function Footer() {
                                       }
                                     >
                                       <div className="font-medium mt-1 text-cyan-500 hover:underline">
-                                        <TbEdit size={12} />
+                                        <TbEdit size={20} />
                                       </div>
                                     </button>
                                     {showTextModal && (
@@ -271,7 +278,9 @@ export default function Footer() {
                                       />
                                     )}
 
-                                    <button>
+                                    <button onClick={
+                                      () => handleTextDelete(footerText._id)
+                                    }>
                                       <div className="font-medium mt-1 text-red-600 dark:text-red-500 hover:underline">
                                         <HiOutlineTrash size={20} />
                                       </div>
@@ -341,7 +350,7 @@ export default function Footer() {
                                       }
                                     >
                                       <div className="font-medium mt-1 text-cyan-500 hover:underline">
-                                        <TbEdit size={12} />
+                                        <TbEdit size={20} />
                                       </div>
                                     </button>
                                     {showLinkModal && (
@@ -351,7 +360,9 @@ export default function Footer() {
                                         footerId={footerId}
                                       />
                                     )}
-                                    <button>
+                                    <button onClick={
+                                      () => handleLinkDelete(footerTitle._id)
+                                    }>
                                       <div className="font-medium mt-1 text-red-600 dark:text-red-500 hover:underline">
                                         <HiOutlineTrash size={20} />
                                       </div>

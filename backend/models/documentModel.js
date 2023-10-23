@@ -1,41 +1,26 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const DocumentSchema = new Schema({
-  title: { type: String },
-  title_en: { type: String },
-  text: { type: String },
-  text_en: { type: String },
+const DocumentCardSchema = new Schema({
   cardTitle: { type: String },
   cardTitle_en: { type: String },
   cardText: { type: String },
   cardText_en: { type: String },
   cardLink: { type: String },
-  cardTitle1: { type: String },
-  cardTitle1_en: { type: String },
-  cardText1: { type: String },
-  cardText1_en: { type: String },
-  cardLink1: { type: String },
-  cardTitle2: { type: String },
-  cardTitle2_en: { type: String },
-  cardText2: { type: String },
-  cardText2_en: { type: String },
-  cardLink2: { type: String },
-  cardTitle3: { type: String },
-  cardTitle3_en: { type: String },
-  cardText3: { type: String },
-  cardText3_en: { type: String },
-  cardLink3: { type: String },
-  cardTitle4: { type: String },
-  cardTitle4_en: { type: String },
-  cardText4: { type: String },
-  cardText4_en: { type: String },
-  cardLink4: { type: String },
-  cardTitle5: { type: String },
-  cardTitle5_en: { type: String },
-  cardText5: { type: String },
-  cardText5_en: { type: String },
-  cardLink5: { type: String },
 });
 
-module.exports = mongoose.model("Document", DocumentSchema);
+const DocumentTitleSchema = new Schema({
+  title: { type: String },
+  title_en: { type: String },
+  text: { type: String },
+  text_en: { type: String },
+});
+
+
+const DocumentCard = mongoose.model("DocumentCard", DocumentCardSchema);
+const DocumentTitle = mongoose.model("DocumentTitle", DocumentTitleSchema);
+
+module.exports = {
+  DocumentCard,
+  DocumentTitle,
+};
