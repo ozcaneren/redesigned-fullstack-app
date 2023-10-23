@@ -2,11 +2,22 @@ const FooterIcon = require("../models/footerModel").model("FooterIcon");
 const FooterText = require("../models/footerModel").model("FooterText");
 const FooterLink = require("../models/footerModel").model("FooterLink");
 
-
 exports.getFooterIcons = async (req, res) => {
   try {
     const icons = await FooterIcon.find({});
     res.status(200).json(icons);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+exports.getFooterIconsById = async (req, res) => {
+  try {
+    const icon = await FooterIcon.findById(req.params.id);
+    if (!icon) {
+      return res.status(404).json({ error: "FooterIcon not found" });
+    }
+    res.status(200).json(icon);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -26,7 +37,9 @@ exports.createFooterIcon = async (req, res) => {
 // Footer Icon güncelle
 exports.updateFooterIcon = async (req, res) => {
   try {
-    const icon = await FooterIcon.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    const icon = await FooterIcon.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
     res.status(200).json(icon);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -53,6 +66,18 @@ exports.getFooterTexts = async (req, res) => {
   }
 };
 
+exports.getFooterTextById = async (req, res) => {
+  try {
+    const text = await FooterText.findById(req.params.id);
+    if (!text) {
+      return res.status(404).json({ error: "FooterText not found" });
+    }
+    res.status(200).json(text);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
 exports.createFooterText = async (req, res) => {
   try {
     const newText = new FooterText(req.body);
@@ -65,7 +90,9 @@ exports.createFooterText = async (req, res) => {
 
 exports.updateFooterText = async (req, res) => {
   try {
-    const text = await FooterText.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    const text = await FooterText.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
     res.status(200).json(text);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -91,6 +118,18 @@ exports.getFooterLinks = async (req, res) => {
   }
 };
 
+exports.getFooterLinkById = async (req, res) => {
+  try {
+    const link = await FooterLink.findById(req.params.id);
+    if (!link) {
+      return res.status(404).json({ error: "FooterLink not found" });
+    }
+    res.status(200).json(link);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
 exports.createFooterLink = async (req, res) => {
   try {
     const newLink = new FooterLink(req.body);
@@ -103,7 +142,9 @@ exports.createFooterLink = async (req, res) => {
 
 exports.updateFooterLink = async (req, res) => {
   try {
-    const link = await FooterLink.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    const link = await FooterLink.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
     res.status(200).json(link);
   } catch (err) {
     res.status(500).json({ error: err.message });

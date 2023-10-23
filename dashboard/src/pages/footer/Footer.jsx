@@ -4,9 +4,14 @@ import Sidebar from "../../components/Sidebar";
 import Breadcrumb from "../../components/Breadcrumbs";
 import { HiOutlineTrash } from "react-icons/hi";
 import { TbEdit } from "react-icons/tb";
+import { BsFacebook, BsInstagram, BsTwitter, BsGithub } from "react-icons/bs";
+import { BiLogoGooglePlus } from "react-icons/bi";
 import FooterAddTextModal from "./FooterAddTextModal";
 import FooterAddLinkModal from "./FooterAddLinkModal";
 import FooterAddIconModal from "./FooterAddIconModal";
+import FooterEditIconModel from "./FooterEditIconModel";
+import FooterEditLinkModal from "./FooterEditLinkModal";
+import FooterEditTextModal from "./FooterEditTextModal";
 
 export default function Footer() {
   const [footerIcon, setFooterIcon] = useState([]);
@@ -148,60 +153,218 @@ export default function Footer() {
               </div>
               <div>
                 <div className="flex justify-center items-center flex-col">
-                  <h1 className="text-xl">Simgeler</h1>
+                  <h1 className="block text-xl text-modalLabelText pt-4">
+                    Simgeler
+                  </h1>
                   <div className="flex justify-center items-center flex-row space-x-4">
                     {footerIcon.map((footerIcon, index) => (
                       <div
                         key={index}
                         className="justify-center items-center my-4"
                       >
-                        <div className="p-4 flex justify-center items-center flex-col space-y-2 bg-zinc-700 border shadow-lg rounded-lg w-[200px] h-[100px]">
-                          <label htmlFor="">Icon</label>
-                          <h1 className="text-lg">{footerIcon.footerIcon}</h1>
+                        <div className="flex items-start rounded-xl bg-white p-4 border ">
+                          <div className="flex h-12 w-12 items-center justify-center rounded-full border text-slate-700 border-blue-100 bg-blue-50">
+                            {footerIcon.footerIcon === "facebook" ? (
+                              <BsFacebook size={20} />
+                            ) : footerIcon.footerIcon === "instagram" ? (
+                              <BsInstagram size={20} />
+                            ) : footerIcon.footerIcon === "twitter" ? (
+                              <BsTwitter size={20} />
+                            ) : footerIcon.footerIcon === "github" ? (
+                              <BsGithub size={20} />
+                            ) : footerIcon.footerIcon === "google" ? (
+                              <BiLogoGooglePlus size={20} />
+                            ) : (
+                              ""
+                            )}
+                          </div>
+                          <div className="ml-4">
+                            <p className="text-gray-700 text-center text-sm">
+                              Icon
+                              <button
+                                onClick={() => handleIconClick(footerIcon._id)}
+                              >
+                                <div className="font-medium mt-1 text-cyan-500 hover:underline">
+                                  <TbEdit size={12} />
+                                </div>
+                              </button>
+                              {showIconModal && (
+                                <FooterEditIconModel
+                                  showIconModal={showIconModal}
+                                  setShowIconModal={setShowIconModal}
+                                  footerId={footerId}
+                                />
+                              )}
+                            </p>
+                            <h2 className="font-semibold text-gray-600">
+                              {footerIcon.footerIcon}
+                            </h2>
+                          </div>
                         </div>
                       </div>
                     ))}
                   </div>
                 </div>
                 <div className="flex justify-center items-center flex-col">
-                  <h1 className="block text-xl">Başlık ve Metin</h1>
-                  {footerText.map((footerText, index) => (
-                    <div
-                      key={index}
-                      className="justify-center items-center my-4 flex flex-row space-x-4"
-                    >
-                      <div className="p-4 flex justify-center items-center flex-col space-y-2 bg-zinc-700 border shadow-lg rounded-lg w-[200px] h-[100px]">
-                        <label htmlFor="">Title</label>
-                        <h1 className="text-lg">{footerText.footerTitle}</h1>
-                      </div>
-                      <div className="p-4 flex justify-center items-center flex-col space-y-2 bg-zinc-700 border shadow-lg rounded-lg w-[200px] h-[100px]">
-                        <label htmlFor="">Text</label>
-                        <h1 className="text-lg">{footerText.footerText}</h1>
+                  <h1 className="block text-xl text-modalLabelText pt-4">
+                    Başlık ve Metin
+                  </h1>
+                  <div className="max-w-2xl mx-auto px-4 pt-2">
+                    <div className="overflow-x-auto shadow-md sm:rounded-lg">
+                      <div className="inline-block min-w-full align-middle">
+                        <div className="overflow-hidden">
+                          <table className="min-w-full table-fixed">
+                            <thead className="bg-[#9BA4B5] text-white">
+                              <tr>
+                                <th
+                                  scope="col"
+                                  className="py-3 pl-6 text-xs font-medium tracking-wider text-left  uppercase"
+                                >
+                                  Ana Başlık
+                                </th>
+                                <th
+                                  scope="col"
+                                  className="py-3 pl-6 text-xs font-medium tracking-wider text-left  uppercase"
+                                >
+                                  Alt Başlık
+                                </th>
+                                <th
+                                  scope="col"
+                                  className="py-3 flex justify-end pr-6 text-xs font-medium tracking-wider uppercase"
+                                >
+                                  Duzenle/Sil
+                                </th>
+                              </tr>
+                            </thead>
+                            {footerText.map((footerText, index) => (
+                              <tbody key={index} className="bg-[#474E68]">
+                                <tr className="hover:bg-[#6B728E]">
+                                  <td className="max-w-[320px] w-[320px]">
+                                    <div className="py-4 max-w-xs px-6 text-sm font-medium text-gray-200 truncate">
+                                      <p className="truncate">
+                                        {footerText.footerTitle}
+                                      </p>
+                                    </div>
+                                  </td>
+                                  <td className="max-w-[320px] w-[320px]">
+                                    <div className="py-4 max-w-xs px-6 text-sm font-medium text-gray-200 truncate">
+                                      <p className="truncate">
+                                        {footerText.footerText}
+                                      </p>
+                                    </div>
+                                  </td>
+                                  <td className="py-4 flex justify-end pr-10 text-sm font-medium text-gray-200 whitespace-nowrap space-x-2">
+                                  <button
+                                      onClick={() =>
+                                        handleTextClick(footerText._id)
+                                      }
+                                    >
+                                      <div className="font-medium mt-1 text-cyan-500 hover:underline">
+                                        <TbEdit size={12} />
+                                      </div>
+                                    </button>
+                                    {showTextModal && (
+                                      <FooterEditTextModal
+                                        showTextModal={showTextModal}
+                                        setShowTextModal={setShowTextModal}
+                                        footerId={footerId}
+                                      />
+                                    )}
+
+                                    <button>
+                                      <div className="font-medium mt-1 text-red-600 dark:text-red-500 hover:underline">
+                                        <HiOutlineTrash size={20} />
+                                      </div>
+                                    </button>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            ))}
+                          </table>
+                        </div>
                       </div>
                     </div>
-                  ))}
+                  </div>
                 </div>
                 <div className="flex justify-center items-center flex-col">
-                  <h1 className="block text-xl">Başlık ve Metin</h1>
-                  {footerLink.map((footerTitle, index) => (
-                    <div
-                      key={index}
-                      className="justify-center items-center my-4 flex flex-row space-x-4"
-                    >
-                      <div className="p-4 flex justify-center items-center flex-col space-y-2 bg-zinc-700 border shadow-lg rounded-lg w-[200px] h-[100px]">
-                        <label htmlFor="">Title</label>
-                        <h1 className="text-lg">
-                          {footerTitle.footerLinkTitle}
-                        </h1>
-                      </div>
-                      <div className="p-4 flex justify-center items-center flex-col space-y-2 bg-zinc-700 border shadow-lg rounded-lg w-[200px] h-[100px]">
-                        <label htmlFor="">Text</label>
-                        <h1 className="text-lg">
-                          {footerTitle.footerLinkText}
-                        </h1>
+                  <h1 className="block text-xl text-modalLabelText pt-4">
+                    Başlık ve Metin
+                  </h1>
+                  <div className="max-w-2xl mx-auto px-4 pt-2">
+                    <div className="overflow-x-auto shadow-md sm:rounded-lg">
+                      <div className="inline-block min-w-full align-middle">
+                        <div className="overflow-hidden">
+                          <table className="min-w-full table-fixed">
+                            <thead className="bg-[#9BA4B5] text-white">
+                              <tr>
+                                <th
+                                  scope="col"
+                                  className="py-3 pl-6 text-xs font-medium tracking-wider text-left  uppercase"
+                                >
+                                  Ana Başlık
+                                </th>
+                                <th
+                                  scope="col"
+                                  className="py-3 pl-6 text-xs font-medium tracking-wider text-left  uppercase"
+                                >
+                                  Dropdownlar
+                                </th>
+                                <th
+                                  scope="col"
+                                  className="py-3 flex justify-end pr-6 text-xs font-medium tracking-wider uppercase"
+                                >
+                                  Duzenle/Sil
+                                </th>
+                              </tr>
+                            </thead>
+                            {footerLink.map((footerTitle, index) => (
+                              <tbody key={index} className="bg-[#474E68]">
+                                <tr className="hover:bg-[#6B728E]">
+                                  <td className="max-w-[320px] w-[320px]">
+                                    <div className="py-4 max-w-xs px-6 text-sm font-medium text-gray-200 truncate">
+                                      <p className="truncate">
+                                        {footerTitle.footerLinkTitle}
+                                      </p>
+                                    </div>
+                                  </td>
+                                  <td className="max-w-[320px] w-[320px]">
+                                    <div className="py-4 max-w-xs px-6 text-sm font-medium text-gray-200 truncate">
+                                      <p className="truncate">
+                                        {footerTitle.footerLinkText}
+                                      </p>
+                                    </div>
+                                  </td>
+                                  <td className="py-4 flex justify-end pr-10 text-sm font-medium text-gray-200 whitespace-nowrap space-x-2">
+                                    <button
+                                      onClick={() =>
+                                        handleLinkClick(footerTitle._id)
+                                      }
+                                    >
+                                      <div className="font-medium mt-1 text-cyan-500 hover:underline">
+                                        <TbEdit size={12} />
+                                      </div>
+                                    </button>
+                                    {showLinkModal && (
+                                      <FooterEditLinkModal
+                                        showLinkModal={showLinkModal}
+                                        setShowLinkModal={setShowLinkModal}
+                                        footerId={footerId}
+                                      />
+                                    )}
+                                    <button>
+                                      <div className="font-medium mt-1 text-red-600 dark:text-red-500 hover:underline">
+                                        <HiOutlineTrash size={20} />
+                                      </div>
+                                    </button>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            ))}
+                          </table>
+                        </div>
                       </div>
                     </div>
-                  ))}
+                  </div>
                 </div>
               </div>
             </div>
