@@ -2,14 +2,12 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Sidebar from "../../components/Sidebar";
 import Breadcrumb from "../../components/Breadcrumbs";
-import { useNavigate } from "react-router-dom";
-import { TbEdit } from "react-icons/tb";
+// import { TbEdit } from "react-icons/tb";
 import HeroEditModal from "./HeroEditModal";
 
 
 export default function Hero() {
   const [heroes, setHeroes] = useState([]);
-  const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
   const [heroId, setHeroId] = useState();
 
