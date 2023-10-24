@@ -94,6 +94,20 @@ export default function Teams() {
                                 {desc.mainText}
                               </h1>
                             </div>
+                            <button
+                              onClick={() => handleTitleEdit(desc._id)}
+                            >
+                              <div className="font-medium mt-1 text-cyan-500 hover:underline">
+                                <TbEdit/>
+                              </div>
+                            </button>
+                            {showTitleModal && (
+                              <TeamsEditTitleModal
+                                showTitleModal={showTitleModal}
+                                setShowTitleModal={setShowTitleModal}
+                                teamsId={teamsId}
+                              />
+                            )}
                           </div>
                           <div className="flex justify-center w-full mb-4">
                             <div
@@ -106,56 +120,74 @@ export default function Teams() {
                               </h1>
                             </div>
                           </div>
-                          <button
-                            onClick={() => handleTitleEdit(desc._id)}
-                          >
-                            <div className="font-medium mt-1 text-cyan-500 hover:underline">
-                              <TbEdit/>
-                            </div>
-                          </button>
-                          {showTitleModal && (
-                            <TeamsEditTitleModal
-                              showTitleModal={showTitleModal}
-                              setShowTitleModal={setShowTitleModal}
-                              teamsId={teamsId}
-                            />
-                          )}
+
                         </div>
                       ))}
-
-                      {teamMember.map((member, index) => (
-                        <div key={index} className="container xl:max-w-6xl mx-auto px-4">
-                          <div className="max-w-full px-4 w-2/3 sm:w-1/2 md:w-5/12 lg:w-1/4 xl:px-6">
-                            <h1 className="text-center bg-zinc-700 rounded border border-gray-500 mb-2">
-                              Ekip Uyesi
-                            </h1>
-                            <div
-                              className="relative py-2 w-[240px] h-[258px] overflow-hidden bg-zinc-700 rounded-lg border border-gray-500 mb-12 hover-grayscale-0">
-                              <div className="relative overflow-hidden px-6">
-                                {member.cardIcon} image url
+                      <div className="">
+                        <div className="max-w-2xl mx-auto px-4 pt-2">
+                          <div className="overflow-x-auto shadow-md sm:rounded-lg">
+                            <div className="inline-block min-w-full align-middle">
+                              <div className="overflow-hidden">
+                                <table className="min-w-full table-fixed">
+                                  <thead className="bg-[#9BA4B5] text-white">
+                                  <tr>
+                                    <th
+                                      scope="col"
+                                      className="py-3 px-6 text-xs font-medium tracking-wider text-left  uppercase"
+                                    >
+                                      Calisan
+                                    </th>
+                                    <th
+                                      scope="col"
+                                      className="py-3 flex justify-end pr-6 text-xs font-medium tracking-wider uppercase"
+                                    >
+                                      Duzenle/Sil
+                                    </th>
+                                  </tr>
+                                  </thead>
+                                  {teamMember.map((member, index) => (
+                                    <tbody key={index} className="bg-[#474E68]">
+                                    <tr className="hover:bg-[#6B728E]">
+                                      <td className="max-w-[320px] w-[320px]">
+                                        <div className="py-4 max-w-xs flex items-center px-6 text-sm font-medium text-gray-200 truncate">
+                                          <img className="w-10 h-10 rounded-full"
+                                               src={member.cardIcon} alt=""/>
+                                          <div className="pl-3">
+                                            <div className="text-base font-semibold">{member.cardTitle}</div>
+                                            <div className="font-normal text-gray-400">
+                                              <p className="truncate">
+                                                {member.cardText}
+                                              </p>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <td
+                                        className="h-[80px] flex justify-end items-center pr-10 font-medium text-gray-200">
+                                        <button
+                                          onClick={() => handleMemberEdit(member._id)}
+                                        >
+                                          <a href="#"
+                                             className="font-medium text-blue-300 hover:underline">Edit
+                                            user</a>
+                                        </button>
+                                        {showMemberModal && (
+                                          <TeamsEditMemberModal
+                                            showMemberModal={showMemberModal}
+                                            setShowMemberModal={setShowMemberModal}
+                                            teamsId={teamsId}
+                                          />
+                                        )}
+                                      </td>
+                                    </tr>
+                                    </tbody>
+                                  ))}
+                                </table>
                               </div>
-                              <div className="pt-6 text-center">
-                                <h5 className="text-lg font-bold">{member.cardTitle} uye adi</h5>
-                                <p className="text-base text-gray-200">{member.cardText} uye rolu</p>
-                              </div>
-                              <button
-                                onClick={() => handleMemberEdit(member._id)}
-                              >
-                                <div className="font-medium mt-1 text-cyan-500 hover:underline">
-                                  <TbEdit/>
-                                </div>
-                              </button>
-                              {showMemberModal && (
-                                <TeamsEditMemberModal
-                                  showMemberModal={showMemberModal}
-                                  setShowMemberModal={setShowMemberModal}
-                                  teamsId={teamsId}
-                                />
-                              )}
                             </div>
                           </div>
                         </div>
-                      ))}
+                      </div>
                     </div>
                   </div>
                 </div>

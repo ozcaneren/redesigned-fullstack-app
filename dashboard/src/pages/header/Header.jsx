@@ -222,7 +222,27 @@ export default function Header() {
                                 <td className="max-w-[450px] w-[400px]">
                                   <div className="py-4 max-w-xs pr-6 flex flex-row space-x-1 text-sm font-medium text-gray-200 truncate">
                                     <p className="truncate">
-                                      {header.headerTextDropdown.join(", ")}{" "}
+                                      {header.headerTextDropdown ? (
+                                        header.headerTextDropdown.map(
+                                          (item, index) => (
+                                            <span key={index}>
+                                              {item}
+                                              {index !==
+                                                header.headerTextDropdown
+                                                  .length -
+                                                  1 && (
+                                                <span className="text-gray-200">
+                                                  ,
+                                                </span>
+                                              )}
+                                            </span>
+                                          )
+                                        )
+                                      ) : (
+                                        <span className="text-gray-200">
+                                          -
+                                        </span>
+                                      )}
                                     </p>
                                   </div>
                                 </td>

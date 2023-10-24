@@ -111,7 +111,7 @@ export default function About() {
                                   <button
                                     onClick={() => handleClick(about._id)}
                                   >
-                                    <div className="font-medium mt-2.5 text-cyan-500 hover:underline">
+                                    <div className="font-medium mt-1 text-cyan-500 hover:underline">
                                       <TbEdit size={20} />
                                     </div>
                                   </button>

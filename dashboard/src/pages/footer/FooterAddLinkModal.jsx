@@ -29,7 +29,7 @@ export default function FooterAddLinkModal() {
         type="button"
         onClick={() => setShowModal(true)}
       >
-        Yeni Baslik Ekle
+        Yeni Link ve Dropdown Ekle
       </button>
       {showModal ? (
         <>
@@ -38,7 +38,7 @@ export default function FooterAddLinkModal() {
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 <div className="flex items-start justify-between p-5 border-b border-solid border-gray-300 rounded-t">
                   <h3 className="text-2xl text-modalMainText font-semibold">
-                    Header Ekle
+                    Yeni Footer Link ve Dropdown Ekle
                   </h3>
                   <button
                     className="p-1 ml-auto bg-transparent border-0 text-modalMainText float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
@@ -73,6 +73,9 @@ export default function FooterAddLinkModal() {
                         className="block text-modalLabelText text-sm font-bold mb-2"
                       >
                         Footer Text
+                        <span className="text-red-500 ml-1">
+                          (Virgülle Ayırarak Yazınız)
+                        </span>
                       </label>
                       <input
                         type="text"

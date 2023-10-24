@@ -10,11 +10,13 @@ export default function HeaderAddTitleModal() {
     try {
       const newHeader = {
         headerText: headerText,
-        headerTextDropdown: headerTextDropdown,
+        headerTextDropdown: headerTextDropdown.length > 0 ? headerTextDropdown : null,
       };
-      await axios.post("http://localhost:4000/api/header/links", newHeader);
-      setHeaderText("");
-      setHeaderTextDropdown([]); // Reset the array after sending it to the server
+      if (headerText.trim() !== "") { // Check if headerText is not empty
+        await axios.post("http://localhost:4000/api/header/links", newHeader);
+        setHeaderText("");
+        setHeaderTextDropdown([]);
+      }
     } catch (error) {
       console.error(error);
     }
@@ -59,10 +61,9 @@ export default function HeaderAddTitleModal() {
                         Header Başlık
                       </label>
                       <input
-                        className="w-full px-3 py-2 text-modalMainText border-[1px] border-[#707070] rounded-md outline-none focus:ring-[1px] focus:ring-[#707070]"
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
                         id="headerText"
                         type="text"
-                        placeholder="Header Başlık"
                         value={headerText}
                         onChange={(e) => setHeaderText(e.target.value)}
                       />
@@ -75,14 +76,11 @@ export default function HeaderAddTitleModal() {
                         Header Dropdown Başlık
                       </label>
                       <input
-                        className="w-full px-3 py-2 text-modalMainText border-[1px] border-[#707070] rounded-md outline-none focus:ring-[1px] focus:ring-[#707070]"
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
                         id="headerTextDropdown"
                         type="text"
-                        placeholder="Header Dropdown Başlık"
-                        value={headerTextDropdown}
-                        onChange={(e) =>
-                          setHeaderTextDropdown(e.target.value.split(","))
-                        } // Split input into an array
+                        value={headerTextDropdown.length > 0 ? headerTextDropdown.join(",") : ""}
+                        onChange={(e) => setHeaderTextDropdown(e.target.value.split(","))}
                       />
                     </div>
                   </div>

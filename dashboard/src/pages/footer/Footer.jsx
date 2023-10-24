@@ -131,22 +131,22 @@ export default function Footer() {
               <div className="flex flex-row">
                 <div className="flex justify-center items-center">
                   <div className="w-full flex justify-center">
-                    <div className="w-full px-4 relative space-x-2">
+                    <div className="w-full px-2 relative space-x-2">
+                      <FooterAddIconModal />
+                    </div>
+                  </div>
+                </div>
+                <div className="flex justify-center items-center">
+                  <div className="w-full flex justify-center">
+                    <div className="w-full px-2 relative space-x-2">
                       <FooterAddTextModal />
                     </div>
                   </div>
                 </div>
                 <div className="flex justify-center items-center">
                   <div className="w-full flex justify-center">
-                    <div className="w-full px-4 relative space-x-2">
+                    <div className="w-full px-2 relative space-x-2">
                       <FooterAddLinkModal />
-                    </div>
-                  </div>
-                </div>
-                <div className="flex justify-center items-center">
-                  <div className="w-full flex justify-center">
-                    <div className="w-full px-4 relative space-x-2">
-                      <FooterAddIconModal />
                     </div>
                   </div>
                 </div>
@@ -183,6 +183,7 @@ export default function Footer() {
                               Icon
                               <button
                                 onClick={() => handleIconClick(footerIcon._id)}
+                                className="ml-4"
                               >
                                 <div className="font-medium mt-1 text-cyan-500 hover:underline">
                                   <TbEdit size={12} />
@@ -206,6 +207,7 @@ export default function Footer() {
                             <h2 className="font-semibold text-gray-600">
                               {footerIcon.footerIcon}
                             </h2>
+
                           </div>
                         </div>
                       </div>
@@ -297,7 +299,7 @@ export default function Footer() {
                 </div>
                 <div className="flex justify-center items-center flex-col">
                   <h1 className="block text-xl text-modalLabelText pt-4">
-                    Başlık ve Metin
+                    Link ve Dropdownlar
                   </h1>
                   <div className="max-w-2xl mx-auto px-4 pt-2">
                     <div className="overflow-x-auto shadow-md sm:rounded-lg">
@@ -343,7 +345,7 @@ export default function Footer() {
                                       </p>
                                     </div>
                                   </td>
-                                  <td className="py-4 flex justify-end pr-10 text-sm font-medium text-gray-200 whitespace-nowrap space-x-2">
+                                  <td className="py-4 top-0 right-0 flex justify-end pr-10 text-sm font-medium text-gray-200 whitespace-nowrap space-x-2">
                                     <button
                                       onClick={() =>
                                         handleLinkClick(footerTitle._id)

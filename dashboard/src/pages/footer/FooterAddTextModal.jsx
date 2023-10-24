@@ -29,7 +29,7 @@ export default function FooterAddTextModal() {
         type="button"
         onClick={() => setShowModal(true)}
       >
-        Yeni Ana Baslik Ekle
+        Yeni Baslik ve Metin Ekle
       </button>
       {showModal ? (
         <>
