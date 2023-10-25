@@ -90,11 +90,11 @@ export default function Modal() {
   return (
     <>
       <button
-        className="bg-[#474E68] p-2 text-white text-sm rounded-[6px]"
+        className="bg-slate-600 p-2 text-white text-sm rounded-[6px]"
         type="button"
         onClick={() => setShowModal(true)}
       >
-        Yeni Oda Ekle
+        Ekle
       </button>
       {showModal ? (
         <>
@@ -129,7 +129,7 @@ export default function Modal() {
                         name="type"
                         value={roomType}
                         onChange={(e) => setRoomType(e.target.value)}
-                        className="mt-1 p-2 w-full bg-white border-gray-300 border rounded-sm"
+                        className="shadow bg-white border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
                       >
                         <option value="">Seç</option>
                         <option value="standart">Standart</option>
@@ -148,7 +148,7 @@ export default function Modal() {
                         name="title"
                         value={roomTitle}
                         onChange={(e) => setRoomTitle(e.target.value)}
-                        className="mt-1 p-2 w-full bg-white border-gray-300 border rounded-sm"
+                        className="shadow bg-white border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
                       />
                     </div>
                     <div className="mb-4">
@@ -163,7 +163,7 @@ export default function Modal() {
                         name="description"
                         value={roomDescription}
                         onChange={(e) => setRoomDescription(e.target.value)}
-                        className="mt-1 p-2 w-full bg-white border-gray-300 border rounded-sm"
+                        className="shadow bg-white border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
                       />
                     </div>
                     <div className="mb-4">
@@ -180,7 +180,7 @@ export default function Modal() {
                         onChange={(e) =>
                           setRoomShortDescription(e.target.value)
                         }
-                        className="mt-1 p-2 w-full bg-white border-gray-300 border rounded-sm"
+                        className="shadow bg-white border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
                       />
                     </div>
                     <div className="mb-4">
@@ -223,7 +223,7 @@ export default function Modal() {
                         onChange={(e) =>
                           setRoomVisibility(e.target.value === "true")
                         }
-                        className="mt-1 p-2 w-full bg-white border-gray-300 border rounded-sm"
+                        className="shadow bg-white border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
                       >
                         <option value="">Seç</option>
                         <option value="true">Aktif</option>
@@ -233,16 +233,16 @@ export default function Modal() {
                   </form>
                 </div>
                 {/*footer*/}
-                <div className="flex items-center justify-end p-6 border-t border-solid border-blue-200 rounded-b">
+                <div className="flex items-center justify-end p-6 border-t border-solid space-x-2 border-blue-200 rounded-b">
                   <button
-                    className="bg-[#353A4E] text-white background-transparent font-bold uppercase px-6 py-3 rounded text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    className="bg-slate-600 text-white background-transparent font-bold uppercase px-6 py-3 rounded text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
                     onClick={() => setShowModal(false)}
                   >
                     Kapat
                   </button>
                   <button
-                    className="bg-[#353A4E] text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    className="bg-slate-600 text-white font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
                     onClick={() => {
                       submitForm();

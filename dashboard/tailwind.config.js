@@ -8,10 +8,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "#f3f6f8",
+        background: "#EFF1F3",
         labelText: "#3d3d4d",
         modalBackground: "#ffffff",
-        modalMainText: "#65647C",
+        modalMainText: "#374151",
         modalLabelText: "#3d3d4d"
       },
     },

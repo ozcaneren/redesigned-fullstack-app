@@ -98,7 +98,9 @@ export default function Services() {
                                     {service.mainTitle}
                                   </h1>
                                   <button
-                                    onClick={() => handleTitleClick(service._id)}
+                                    onClick={() =>
+                                      handleTitleClick(service._id)
+                                    }
                                   >
                                     <div className="font-medium mt-1 text-cyan-500 hover:underline">
                                       <TbEdit />
@@ -135,29 +137,26 @@ export default function Services() {
                               key={index}
                               className="flex-shrink max-w-full px-4 w-2/3 sm:w-1/2 md:w-5/12 lg:w-1/4 xl:px-6"
                             >
-                              <div className="relative py-2 w-[240px] h-[208px] overflow-hidden bg-zinc-700 rounded-lg border border-gray-500 mb-12 hover-grayscale-0">
-                                <div className="relative overflow-hidden px-6">
-                                  {service.cardIcon}
-                                </div>
-                                <div className="pt-6 text-center">
+                              <div className="relative py-2 px-4 w-[240px] h-[208px] overflow-y-auto bg-zinc-700 rounded-lg border border-gray-500 mb-12 hover-grayscale-0">
+                                <div className="text-center">
                                   <h1>{service.cardTitle}</h1>
-                                  <p>{service.cardText}</p>
+                                  <p className="">{service.cardText}</p>
+                                  <button
+                                    className="flex justify-center items-center absolute top-0 right-0 w-6 h-6 bg-gray-500 rounded-full mr-4 mt-2 hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
+                                    onClick={() => handleCardClick(service._id)}
+                                  >
+                                    <div className="font-medium text-cyan-500 hover:underline">
+                                      <TbEdit />
+                                    </div>
+                                  </button>
+                                  {showCardModal && (
+                                    <ServicesEditCardModal
+                                      servicesId={servicesId}
+                                      showCardModal={showCardModal}
+                                      setShowCardModal={setShowCardModal}
+                                    />
+                                  )}
                                 </div>
-                                <button
-                                  className="flex justify-center items-center absolute top-0 right-0 w-8 h-8 bg-gray-500 rounded-full mr-4 mt-4 hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
-                                  onClick={() => handleCardClick(service._id)}
-                                >
-                                  <div className="font-medium mt-1 text-cyan-500 hover:underline">
-                                    <TbEdit />
-                                  </div>
-                                </button>
-                                {showCardModal && (
-                                  <ServicesEditCardModal
-                                    servicesId={servicesId}
-                                    showCardModal={showCardModal}
-                                    setShowCardModal={setShowCardModal}
-                                  />
-                                )}
                               </div>
                             </div>
                           ))}

@@ -59,10 +59,10 @@ export default function Header() {
                       <div>
                         <span
                           onClick={() => toggleDropdown(index)}
-                          className="relative flex cursor-pointer flex-row items-center h-11 focus:outline-none border-l-4 border-transparent"
+                          className="relative flex cursor-pointer px-2 py-2 flex-row items-center h-11 focus:outline-none"
                         >
                           <span
-                            className={`ml-2 ${
+                            className={` ${
                               index === openDropdown ? "rotate-180" : "rotate-0"
                             } transition-transform`}
                           >
@@ -76,7 +76,7 @@ export default function Header() {
                               <path d="M6 9l6 6 6-6" />
                             </svg>
                           </span>
-                          <span className="block py-2 pr-4 pl-3 border-b lg:border-0  lg:p-0">
+                          <span className="block py-2 border-b lg:border-0  lg:p-0">
                             {header.headerText}
                           </span>
                         </span>
@@ -123,7 +123,7 @@ export default function Header() {
                               : "/"
                           }
                         >
-                          <span className="relative flex cursor-pointer flex-row items-center focus:outline-none border-l-4 border-transparent">
+                          <span className="relative flex cursor-pointer flex-row items-center focus:outline-none">
                             <span className="block py-2 px-2 lg:hover-bg-transparent lg-border-0 lg-p-0">
                               {header.headerText}
                             </span>

@@ -179,13 +179,15 @@ export default function Footer() {
                             )}
                           </div>
                           <div className="ml-4">
-                            <p className="text-gray-700 text-center text-sm">
-                              Icon
+                            <div className="flex flex-row justify-center items-center">
+                              <p className="text-gray-700 text-center text-sm">
+                                Icon
+                              </p>
                               <button
                                 onClick={() => handleIconClick(footerIcon._id)}
-                                className="ml-4"
+                                className="ml-2 flex justify-center items-center"
                               >
-                                <div className="font-medium mt-1 text-cyan-500 hover:underline">
+                                <div className="font-medium text-cyan-500 bg-gray-200 p-1 rounded-full hover:underline">
                                   <TbEdit size={12} />
                                 </div>
                               </button>
@@ -197,14 +199,15 @@ export default function Footer() {
                                 />
                               )}
                               <button
+                                className="ml-1 flex justify-center items-center"
                                 onClick={() => handleIconDelete(footerIcon._id)}
                               >
-                                <div className="font-medium mt-1 text-red-600 dark:text-red-500 hover:underline">
+                                <div className="font-medium bg-gray-200 p-1 rounded-full text-red-600 dark:text-red-500 hover:underline">
                                   <HiOutlineTrash size={12} />
                                 </div>
                               </button>
-                            </p>
-                            <h2 className="font-semibold text-gray-600">
+                            </div>
+                            <h2 className="font-semibold text-gray-600 ">
                               {footerIcon.footerIcon}
                             </h2>
 

@@ -122,8 +122,8 @@ const RoomEditModal = ({ roomId, showModal, setShowModal }) => {
                           name="roomType"
                           value={room.roomType || ""}
                           onChange={handleChange}
-                          className="mt-1 p-2 w-full bg-white border-gray-300 border rounded-sm"
-                        >
+                          className="shadow bg-white border rounded w-full py-2 px-3 text-modalMainText leading-tight focus:outline-none focus:shadow-outline"
+                          >
                           <option value="">Seç</option>
                           <option value="standart">Standart</option>
                           <option value="family">Family</option>
@@ -142,8 +142,8 @@ const RoomEditModal = ({ roomId, showModal, setShowModal }) => {
                           name="roomType_en"
                           value={room.roomType_en || ""}
                           onChange={handleChange}
-                          className="mt-1 p-2 w-full bg-white border-gray-300 border rounded-sm"
-                        >
+                          className="shadow bg-white border rounded w-full py-2 px-3 text-modalMainText leading-tight focus:outline-none focus:shadow-outline"
+                          >
                           <option value="">Seç</option>
                           <option value="standart">Standart</option>
                           <option value="family">Family</option>
@@ -164,8 +164,8 @@ const RoomEditModal = ({ roomId, showModal, setShowModal }) => {
                           name="roomTitle"
                           value={room.roomTitle || ""}
                           onChange={handleChange}
-                          className="mt-1 p-2 w-full bg-white border-gray-300 border rounded-sm"
-                        />
+                          className="shadow bg-white border rounded w-full py-2 px-3 text-modalMainText leading-tight focus:outline-none focus:shadow-outline"
+                          />
                       </div>
                       <div className="mb-4">
                         <label
@@ -180,8 +180,8 @@ const RoomEditModal = ({ roomId, showModal, setShowModal }) => {
                           name="roomTitle_en"
                           value={room.roomTitle_en}
                           onChange={handleChange}
-                          className="mt-1 p-2 w-full bg-white border-gray-300 border rounded-sm"
-                        />
+                          className="shadow bg-white border rounded w-full py-2 px-3 text-modalMainText leading-tight focus:outline-none focus:shadow-outline"
+                          />
                       </div>
                     </div>
                     <div className="grid grid-cols-2 gap-x-4 border-b border-solid border-[#dbdbf1] mb-4">
@@ -197,8 +197,8 @@ const RoomEditModal = ({ roomId, showModal, setShowModal }) => {
                           name="roomDescription"
                           value={room.roomDescription || ""}
                           onChange={handleChange}
-                          className="mt-1 p-2 w-full bg-white border-gray-300 border rounded-sm"
-                        />
+                          className="shadow bg-white border rounded w-full py-2 px-3 text-modalMainText leading-tight focus:outline-none focus:shadow-outline"
+                          />
                       </div>
                       <div className="mb-4">
                         <label
@@ -212,8 +212,8 @@ const RoomEditModal = ({ roomId, showModal, setShowModal }) => {
                           name="roomDescription_en"
                           value={room.roomDescription_en}
                           onChange={handleChange}
-                          className="mt-1 p-2 w-full bg-white border-gray-300 border rounded-sm"
-                        />
+                          className="shadow bg-white border rounded w-full py-2 px-3 text-modalMainText leading-tight focus:outline-none focus:shadow-outline"
+                          />
                       </div>
                     </div>
                     <div className="grid grid-cols-2 gap-x-4">
@@ -230,8 +230,8 @@ const RoomEditModal = ({ roomId, showModal, setShowModal }) => {
                           name="roomShortDescription"
                           value={room.roomShortDescription || ""}
                           onChange={handleChange}
-                          className="mt-1 p-2 w-full bg-white border-gray-300 border rounded-sm"
-                        />
+                          className="shadow bg-white border rounded w-full py-2 px-3 text-modalMainText leading-tight focus:outline-none focus:shadow-outline"
+                          />
                       </div>
                       <div className="mb-4">
                         <label
@@ -246,8 +246,8 @@ const RoomEditModal = ({ roomId, showModal, setShowModal }) => {
                           name="roomShortDescription_en"
                           value={room.roomShortDescription_en}
                           onChange={handleChange}
-                          className="mt-1 p-2 w-full bg-white border-gray-300 border rounded-sm"
-                        />
+                          className="shadow bg-white border rounded w-full py-2 px-3 text-modalMainText leading-tight focus:outline-none focus:shadow-outline"
+                          />
                       </div>
                     </div>
                     <div className="flex flex-col justify-center items-center mb-4">
@@ -295,7 +295,7 @@ const RoomEditModal = ({ roomId, showModal, setShowModal }) => {
                         value={room.roomVisibility ? "true" : "false"}
                         onChange={handleChange}
                         required
-                        className="mt-1 p-2 w-full bg-white border-gray-300 border rounded-sm"
+                        className="shadow bg-white border rounded w-full py-2 px-3 text-modalMainText leading-tight focus:outline-none focus:shadow-outline"
                       >
                         <option value="true">Aktif</option>
                         <option value="false">Gizli</option>

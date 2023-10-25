@@ -6,7 +6,9 @@ export default function FooterAddLinkModal() {
   const [footerLinkTitle, setFooterLinkTitle] = useState("");
   const [footerLinkText, setFooterLinkText] = useState([]);
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // Form submitini engelle
+
     try {
       const newFooter = {
         footerLinkTitle: footerLinkTitle,
@@ -14,7 +16,7 @@ export default function FooterAddLinkModal() {
       };
       await axios.post("http://localhost:4000/api/footer/links", newFooter);
       setFooterLinkTitle("");
-      setFooterLinkText([]); // Reset the array after sending it to the server
+      setFooterLinkText([]); // Sunucuya gönderdikten sonra verileri sıfırla
     } catch (error) {
       console.error(error);
     }
@@ -99,11 +101,11 @@ export default function FooterAddLinkModal() {
                     </button>
                     <button
                       className="bg-[#474E68] text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                      type="button"
-                      onClick={() => {
-                        handleSubmit();
-                        setShowModal(false);
-                      }}
+                      type="submit"
+                      onClick={
+                        () => setShowModal(false)
+                        // handleUpdate();
+                      }
                     >
                       Kaydet
                     </button>

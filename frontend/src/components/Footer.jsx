@@ -97,7 +97,6 @@ export default function Footer() {
                       className="text-modalLabelText transition hover:opacity-75"
                     >
                       <span className="sr-only">{footer.footerIcon}</span>
-
                       {footer.footerIcon === "facebook" ? (
                         <BsFacebook size={20} />
                       ) : footer.footerIcon === "instagram" ? (
@@ -124,7 +123,6 @@ export default function Footer() {
                       ? footer.footerLinkTitle
                       : footer.footerLinkTitle_en}
                   </p>
-
                   <ul className="mt-6 space-y-4 text-sm">
                     <li className="flex flex-col">
                       {footer.footerLinkText.map((text) => (
@@ -133,8 +131,7 @@ export default function Footer() {
                             to={
                               text === "deneme"
                                 ? "/documents"
-                                : text ===
-                                  "Sıkça Sorulan Sorular"
+                                : text === "Sıkça Sorulan Sorular"
                                 ? "/faq"
                                 : text === "Hakkımızda"
                                 ? "/about"

@@ -48,7 +48,7 @@ export default function Room() {
 
   return (
     <div className="">
-      <div className="bg-background text-white min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased ">
+      <div className= "bg-background text-white min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased ">
         <Sidebar />
         <div className="ml-14 mb-10 md:ml-64">
           <div className="pt-4 pb-4 px-4 ">
@@ -59,7 +59,7 @@ export default function Room() {
             </div>
           </div>
           <div className="p-4">
-            <div className="bg-[#FEFEFE] rounded border border-gray-200/70 pt-4 pb-4">
+            <div className="bg-white rounded border border-gray-200/70 pt-4 pb-4">
               <div className="flex flex-row">
                 <div className="flex justify-center items-center">
                   <div className="w-full flex justify-center">
@@ -78,7 +78,7 @@ export default function Room() {
                       <div className="inline-block min-w-full align-middle">
                         <div className="overflow-hidden">
                           <table className="min-w-full table-fixed">
-                            <thead className="bg-[#9BA4B5] text-white">
+                            <thead className="bg-gray-400 text-white">
                               <tr>
                                 <th
                                   scope="col"
@@ -113,8 +113,8 @@ export default function Room() {
                               </tr>
                             </thead>
                             {rooms.map((room, index) => (
-                              <tbody key={index} className="bg-[#474E68] ">
-                                <tr className="hover:bg-[#6B728E]">
+                              <tbody key={index} className="bg-slate-600 ">
+                                <tr className="hover:bg-gray-500">
                                   <td className="max-w-[320px] w-[320px]">
                                     <div className="py-4 max-w-xs px-6 text-sm font-medium text-gray-200 truncate">
                                       <p className="truncate">
@@ -161,11 +161,11 @@ export default function Room() {
                                       {room.roomVisibility ? "Aktif" : "Gizli"}
                                     </div>
                                   </td>
-                                  <td className="py-4 flex justify-end pr-10 text-sm font-medium text-gray-200 whitespace-nowrap space-x-2">
+                                  <td className="py-4 flex justify-end pr-8 text-sm font-medium text-gray-200 whitespace-nowrap space-x-2">
                                     <button
                                       onClick={() => handleCardClick(room._id)}
                                     >
-                                      <div className="font-medium mt-1 text-cyan-500 hover:underline">
+                                      <div className="font-medium mt-1 text-blue-400 hover:underline">
                                         <TbEdit size={20} />
                                       </div>
                                     </button>
@@ -179,7 +179,7 @@ export default function Room() {
                                     <button
                                       onClick={() => handleDelete(room._id)}
                                     >
-                                      <div className="font-medium mt-1 text-red-600 dark:text-red-500 hover:underline">
+                                      <div className="font-medium mt-1 text-red-600 hover:underline">
                                         <HiOutlineTrash size={20} />
                                       </div>
                                     </button>

@@ -27,11 +27,11 @@ export default function TeamsAddMemberModal() {
   return (
     <>
       <button
-        className="bg-[#474E68] p-2 text-white text-sm rounded-[6px]"
+        className="bg-slate-600 p-2 text-white text-sm rounded-[6px]"
         type="button"
         onClick={() => setShowModal(true)}
       >
-        Yeni Baslik Ekle
+        Ekip Uyesi Ekle
       </button>
       {showModal ? (
         <>
@@ -42,7 +42,7 @@ export default function TeamsAddMemberModal() {
                 className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 <div className="flex items-start justify-between p-5 border-b border-solid border-gray-300 rounded-t">
                   <h3 className="text-2xl text-modalMainText font-semibold">
-                    Header Ekle
+                    Ekip Uyesi Ekle
                   </h3>
                   <button
                     className="p-1 ml-auto bg-transparent border-0 text-modalMainText float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
@@ -56,27 +56,12 @@ export default function TeamsAddMemberModal() {
                 </div>
                 <form onSubmit={handleSubmit}>
                   <div className="relative p-6 flex-auto">
-                    <div className="mb-4">
+                  <div className="mb-4">
                       <label
                         htmlFor=""
                         className="block text-modalLabelText text-sm font-bold mb-2"
                       >
-                        Footer Başlık
-                      </label>
-                      <input
-                        type="text"
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-modalMainText leading-tight focus:outline-none focus:shadow-outline"
-                        name="cardIcon"
-                        value={cardIcon}
-                        onChange={(e) => setCardIcon(e.target.value)}
-                      />
-                    </div>
-                    <div className="mb-4">
-                      <label
-                        htmlFor=""
-                        className="block text-modalLabelText text-sm font-bold mb-2"
-                      >
-                        Footer Text
+                        Ad Soyad
                       </label>
                       <input
                         type="text"
@@ -91,7 +76,7 @@ export default function TeamsAddMemberModal() {
                         htmlFor=""
                         className="block text-modalLabelText text-sm font-bold mb-2"
                       >
-                        Footer Text
+                        Rol
                       </label>
                       <input
                         type="text"
@@ -101,17 +86,32 @@ export default function TeamsAddMemberModal() {
                         onChange={(e) => setCardText(e.target.value)}
                       />
                     </div>
+                    <div className="mb-4">
+                      <label
+                        htmlFor=""
+                        className="block text-modalLabelText text-sm font-bold mb-2"
+                      >
+                        Resim
+                      </label>
+                      <input
+                        type="text"
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-modalMainText leading-tight focus:outline-none focus:shadow-outline"
+                        name="cardIcon"
+                        value={cardIcon}
+                        onChange={(e) => setCardIcon(e.target.value)}
+                      />
+                    </div>
                   </div>
                   <div className="flex items-center justify-end p-6 border-t border-solid border-blue-200 rounded-b">
                     <button
-                      className="bg-[#474E68] text-white background-transparent font-bold uppercase px-6 py-3 rounded text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                      className="bg-slate-600 text-white background-transparent font-bold uppercase px-6 py-3 rounded text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                       type="button"
                       onClick={() => setShowModal(false)}
                     >
                       Kapat
                     </button>
                     <button
-                      className="bg-[#474E68] text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                      className="bg-slate-600 text-white font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                       type="button"
                       onClick={() => {
                         handleSubmit();

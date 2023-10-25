@@ -90,7 +90,7 @@ const ServicesEditCardModal = ({
                         htmlFor=""
                         className="block text-modalLabelText text-sm font-bold mb-2"
                       >
-                        cardTitle
+                        cardText
                       </label>
                       <input
                         type="text"
@@ -105,7 +105,7 @@ const ServicesEditCardModal = ({
                         htmlFor=""
                         className="block text-modalLabelText text-sm font-bold mb-2"
                       >
-                        cardTitle
+                        cardIcon
                       </label>
                       <input
                         type="text"
