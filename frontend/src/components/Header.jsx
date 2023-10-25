@@ -31,7 +31,7 @@ export default function Header() {
     } catch (error) {
       console.error("Error fetching headers:", error);
     }
-  }
+  };
 
   useEffect(() => {
     getHeadData();
@@ -39,23 +39,24 @@ export default function Header() {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 w-full z-50 bg-gray-200 border-gray-200">
-        <div className="h-14 flex flex-wrap justify-between items-center mx-auto z-20 max-w-screen-xl">
-          <div>
-            {dataHead.map((header, index) => (
-              <div key={index} className="flex justify-start items-center">
-                {header.headerTitle}
-              </div>
-            ))}
-          </div>
-          <div>
+      <header className="w-full text-gray-700 bg-white shadow-sm body-font">
+        <div className="container flex flex-col items-start p-6 mx-auto md:flex-row">
+          <a className="flex items-center mb-4 font-medium text-gray-900 title-font md:mb-0">
+            <div>
+              {dataHead.map((header, index) => (
+                <div key={index} className="flex justify-start items-center">
+                  {header.headerTitle}
+                </div>
+              ))}
+            </div>
+          </a>
+          <nav className="flex items-center justify-center text-base md:ml-auto">
             {data.map((header, index) => (
               <div key={index} className="flex justify-center items-center">
-                <ul className="mt-4 font-medium ">
-                  {header.headerText ? (
-                    <div>
-                      {header.headerTextDropdown ? (
-                        <li>
+                {header.headerText ? (
+                  <div>
+                    {header.headerTextDropdown ? (
+                      <li>
                         <span
                           onClick={() => toggleDropdown(index)}
                           className="relative flex cursor-pointer flex-row items-center h-11 focus:outline-none border-l-4 border-transparent"
@@ -79,65 +80,64 @@ export default function Header() {
                             {header.headerText}
                           </span>
                         </span>
-                          {index === openDropdown && (
-                            <ul className="absolute bg-gray-400 mt-2 p-1 px-5 ml-4 rounded-b space-y-2">
-                              {header.headerTextDropdown &&
-                                header.headerTextDropdown.map(
-                                  (item, itemIndex) => (
-                                    <li
-                                      key={itemIndex}
-                                      className="block py-2 pr-4 pl-3 text-gray-100 border-b border-gray-100 hover-bg-gray-50 lg:hover-bg-transparent lg-border-0 lg-hover-text-blue-700 lg-p-0"
+                        {index === openDropdown && (
+                          <ul className="absolute bg-gray-400 mt-2 p-1 px-5 ml-4 rounded-b space-y-2">
+                            {header.headerTextDropdown &&
+                              header.headerTextDropdown.map(
+                                (item, itemIndex) => (
+                                  <li
+                                    key={itemIndex}
+                                    className="block py-2 pr-4 pl-3 text-gray-100 border-b border-gray-100 hover-bg-gray-50 lg:hover-bg-transparent lg-border-0 lg-hover-text-blue-700 lg-p-0"
+                                  >
+                                    <Link
+                                      to={
+                                        item === "deneme"
+                                          ? "/deneme"
+                                          : item === "selam"
+                                          ? "/faq"
+                                          : item === "Hakkimizda"
+                                          ? "/about"
+                                          : "/"
+                                      }
                                     >
-                                      <Link
-                                        to={
-                                          item === "deneme"
-                                            ? "/deneme"
-                                            : item === "selam"
-                                              ? "/faq"
-                                              : item === "Hakkimizda"
-                                                ? "/about"
-                                                : "/"
-                                        }
-                                      >
                                       <span className="ml-1 text-md tracking-wide truncate">
                                         {item}
                                       </span>
-                                      </Link>
-                                    </li>
-                                  )
-                                )}
-                            </ul>
-                          )}
-                        </li>
-                      ) : (
-                        <div className="flex justify-center items-center">
-                          <Link
-                            to={
-                              header.headerText === "Odalar"
-                                ? "/contact"
-                                : header.headerText === "Odalarimiz"
-                                  ? "/rooms"
-                                  : header.headerText === "Hakkimizda"
-                                    ? "/about"
-                                    : "/"
-                            }
-                          >
+                                    </Link>
+                                  </li>
+                                )
+                              )}
+                          </ul>
+                        )}
+                      </li>
+                    ) : (
+                      <div className="flex justify-center items-center">
+                        <Link
+                          to={
+                            header.headerText === "Odalar"
+                              ? "/contact"
+                              : header.headerText === "Odalarimiz"
+                              ? "/rooms"
+                              : header.headerText === "Hakkimizda"
+                              ? "/about"
+                              : "/"
+                          }
+                        >
                           <span className="relative flex cursor-pointer flex-row items-center focus:outline-none border-l-4 border-transparent">
                             <span className="block py-2 pr-4 pl-3 border-b border-gray-100 lg:hover-bg-transparent lg-border-0 lg-p-0">
                               {header.headerText}
                             </span>
                           </span>
-                          </Link>
-                        </div>
-                      )}
-                    </div>
-                  ) : null}
-                </ul>
+                        </Link>
+                      </div>
+                    )}
+                  </div>
+                ) : null}
               </div>
             ))}
-          </div>
+          </nav>
         </div>
-      </nav>
+      </header>
     </>
   );
 
