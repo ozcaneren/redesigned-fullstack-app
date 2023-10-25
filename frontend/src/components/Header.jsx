@@ -39,8 +39,8 @@ export default function Header() {
 
   return (
     <>
-      <header className="w-full text-gray-700 bg-white shadow-sm body-font">
-        <div className="container flex flex-col items-start p-6 mx-auto md:flex-row">
+      <header className="w-full text-gray-700 z-50 bg-white shadow-sm body-font">
+        <div className="container flex flex-col items-center z-20 p-6 mx-auto md:flex-row">
           <a className="flex items-center mb-4 font-medium text-gray-900 title-font md:mb-0">
             <div>
               {dataHead.map((header, index) => (
@@ -56,7 +56,7 @@ export default function Header() {
                 {header.headerText ? (
                   <div>
                     {header.headerTextDropdown ? (
-                      <li>
+                      <div>
                         <span
                           onClick={() => toggleDropdown(index)}
                           className="relative flex cursor-pointer flex-row items-center h-11 focus:outline-none border-l-4 border-transparent"
@@ -81,13 +81,13 @@ export default function Header() {
                           </span>
                         </span>
                         {index === openDropdown && (
-                          <ul className="absolute bg-gray-400 mt-2 p-1 px-5 ml-4 rounded-b space-y-2">
+                          <ul className="absolute z-10 bg-white mt-2 rounded-b space-y-2">
                             {header.headerTextDropdown &&
                               header.headerTextDropdown.map(
                                 (item, itemIndex) => (
                                   <li
                                     key={itemIndex}
-                                    className="block py-2 pr-4 pl-3 text-gray-100 border-b border-gray-100 hover-bg-gray-50 lg:hover-bg-transparent lg-border-0 lg-hover-text-blue-700 lg-p-0"
+                                    className="block py-2 text-black border-b border-gray-500 hover-bg-gray-50 lg:hover-bg-transparent lg-border-0 lg-hover-text-blue-700 lg-p-0"
                                   >
                                     <Link
                                       to={
@@ -109,7 +109,7 @@ export default function Header() {
                               )}
                           </ul>
                         )}
-                      </li>
+                      </div>
                     ) : (
                       <div className="flex justify-center items-center">
                         <Link
@@ -124,7 +124,7 @@ export default function Header() {
                           }
                         >
                           <span className="relative flex cursor-pointer flex-row items-center focus:outline-none border-l-4 border-transparent">
-                            <span className="block py-2 pr-4 pl-3 border-b border-gray-100 lg:hover-bg-transparent lg-border-0 lg-p-0">
+                            <span className="block py-2 px-2 lg:hover-bg-transparent lg-border-0 lg-p-0">
                               {header.headerText}
                             </span>
                           </span>

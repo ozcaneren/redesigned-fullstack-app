@@ -9,6 +9,7 @@ const FooterEditLinkModal = ({ footerId, showLinkModal, setShowLinkModal }) => {
     setShowLinkModal: PropTypes.func,
   };
   const [footer, setFooter] = useState({});
+  const [footerLinkText, setFooterLinkText] = useState(""); // Dize olarak saklamak için
 
   const fetchFooterById = useCallback(async () => {
     try {
@@ -16,6 +17,8 @@ const FooterEditLinkModal = ({ footerId, showLinkModal, setShowLinkModal }) => {
         `http://localhost:4000/api/footer/link/${footerId}`
       );
       setFooter(response.data);
+      // Dizeyi virgülle ayırarak ayarla
+      setFooterLinkText(response.data.footerLinkText.join(","));
     } catch (error) {
       console.error("Footer getirilirken hata oluştu:", error);
     }
@@ -29,6 +32,7 @@ const FooterEditLinkModal = ({ footerId, showLinkModal, setShowLinkModal }) => {
     try {
       await axios.put(`http://localhost:4000/api/footer/link/${footerId}`, {
         ...footer,
+        footerLinkText: footerLinkText.split(","), // Diziyi güncelle
       });
       setShowLinkModal(false);
     } catch (error) {
@@ -38,10 +42,15 @@ const FooterEditLinkModal = ({ footerId, showLinkModal, setShowLinkModal }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFooter((prevFooter) => ({
-      ...prevFooter,
-      [name]: value,
-    }));
+    if (name === "footerLinkText") {
+      // Dizeyi güncelle
+      setFooterLinkText(value);
+    } else {
+      setFooter((prevFooter) => ({
+        ...prevFooter,
+        [name]: value,
+      }));
+    }
   };
 
   return (
@@ -95,7 +104,7 @@ const FooterEditLinkModal = ({ footerId, showLinkModal, setShowLinkModal }) => {
                       <input
                         type="text"
                         name="footerLinkText"
-                        value={footer.footerLinkText}
+                        value={footerLinkText}
                         onChange={handleChange}
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-modalMainText leading-tight focus:outline-none focus:shadow-outline"
                         placeholder="Link"

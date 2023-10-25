@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLanguage } from "../LanguageContext";
 import { BsFacebook, BsInstagram, BsTwitter, BsGithub } from "react-icons/bs";
 import { BiLogoGooglePlus } from "react-icons/bi";
@@ -118,42 +118,45 @@ export default function Footer() {
             </div>
             <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:col-span-2 lg:grid-cols-4">
               {footerTitle.map((footer, index) => (
-              <div key={index}>
-                <p className="font-medium text-gray-900">
-                  {language === "tr"
-                    ? footer.footerLinkTitle
-                    : footer.footerLinkTitle_en}
-                </p>
+                <div key={index}>
+                  <p className="font-medium text-gray-900">
+                    {language === "tr"
+                      ? footer.footerLinkTitle
+                      : footer.footerLinkTitle_en}
+                  </p>
 
-                <ul className="mt-6 space-y-4 text-sm">
-                  <li>
-                    <Link
-                      to={
-                        footer.footerLinkText === "Belgeler"
-                          ? "/documents"
-                          : footer.footerLinkText === "Sıkça Sorulan Sorular"
-                          ? "/faq"
-                          : footer.footerLinkText === "Hakkımızda"
-                          ? "/about"
-                          : footer.footerLinkText === "İletişim"
-                          ? "/contact"
-                          : footer.footerLinkText === "Hizmetlerimiz"
-                          ? "/services"
-                          : footer.footerLinkText === "Etkinliklerimiz"
-                          ? "/events"
-                          : footer.footerLinkText === "Foto Galeri"
-                          ? "/gallery"
-                          : "/"
-                      }
-                      className="text-modalLabelText transition hover:opacity-75"
-                    >
-                      {language === "tr"
-                        ? footer.footerLinkText
-                        : footer.footerLinkText_en}
-                    </Link>
-                  </li>
-                </ul>
-              </div>
+                  <ul className="mt-6 space-y-4 text-sm">
+                    <li className="flex flex-col">
+                      {footer.footerLinkText.map((text) => (
+                        <React.Fragment key={text}>
+                          <Link
+                            to={
+                              text === "deneme"
+                                ? "/documents"
+                                : text ===
+                                  "Sıkça Sorulan Sorular"
+                                ? "/faq"
+                                : text === "Hakkımızda"
+                                ? "/about"
+                                : text === "İletişim"
+                                ? "/contact"
+                                : text === "Hizmetlerimiz"
+                                ? "/services"
+                                : text === "Etkinliklerimiz"
+                                ? "/events"
+                                : text === "Foto Galeri"
+                                ? "/gallery"
+                                : "/"
+                            }
+                            className="text-modalLabelText transition hover:opacity-75"
+                          >
+                            {text}
+                          </Link>
+                        </React.Fragment>
+                      ))}
+                    </li>
+                  </ul>
+                </div>
               ))}
             </div>
           </div>
