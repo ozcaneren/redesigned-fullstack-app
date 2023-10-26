@@ -23,9 +23,9 @@ export default function HeroSection() {
     <div>
       <header className="bg-center bg-fixed bg-no-repeat bg-cover h-screen relative">
           <div className="h-screen bg-black flex items-center justify-center bg-[url('http://www.clubaida.com.tr//tema/genel/uploads/slider/1.jpg')]">
-            <div className="absolute inset-0 bg-indigo-600/20"></div>
+            <div className="absolute inset-0 bg-slate-800/50"></div>
             {hero.map((hero, index) => (
-            <div key={index} className="mx-2 text-center z-10">
+            <div key={index} className="mx-2 text-center z-10 font-tilt space-y-12">
               <h1 className="text-white font-extrabold text-4xl xs:text-5xl md:text-6xl">
                 <span className="">
                   {language === "tr"

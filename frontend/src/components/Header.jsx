@@ -45,12 +45,15 @@ export default function Header() {
             <div>
               {dataHead.map((header, index) => (
                 <div key={index} className="flex justify-start items-center">
-                  {header.headerTitle}
+                  {/* <img src="https://assets-global.website-files.com/646d198164f9c7efcdcdbd29/64972c0ed50cd97a8f523a48_logo.svg" alt="" /> */}
+                  <h1 className="font-tilt text-2xl font-medium">
+                    Marmaris Otel
+                  </h1>
                 </div>
               ))}
             </div>
           </a>
-          <nav className="flex items-center justify-center text-base md:ml-auto">
+          <nav className="flex items-center font-tilt justify-center text-lg font-medium md:ml-auto">
             {data.map((header, index) => (
               <div key={index} className="flex justify-center items-center">
                 {header.headerText ? (
