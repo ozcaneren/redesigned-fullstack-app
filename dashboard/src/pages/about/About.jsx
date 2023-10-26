@@ -57,7 +57,7 @@ export default function About() {
             </div>
           </div>
           <div className="p-4">
-            <div className="bg-[#FEFEFE] border border-gray-200/70 rounded pt-4 pb-4">
+            <div className="bg-white border border-gray-200/70 rounded pt-4 pb-4">
               <div className="flex flex-row">
                 <div className="flex justify-center items-center">
                   <div className="w-full flex justify-center">
@@ -73,7 +73,7 @@ export default function About() {
                     <div className="inline-block min-w-full align-middle">
                       <div className="overflow-hidden">
                         <table className="min-w-full table-fixed">
-                          <thead className="bg-[#9BA4B5] text-white">
+                          <thead className="bg-gray-400 text-white">
                             <tr>
                               <th
                                 scope="col"
@@ -98,9 +98,9 @@ export default function About() {
                           {abouts.map((about, index) => (
                             <tbody
                               key={index}
-                              className="bg-[#474E68] divide-y divide-gray-200"
+                              className="bg-slate-600 divide-y divide-gray-200"
                             >
-                              <tr className="hover:bg-[#6B728E] text-gray-200">
+                              <tr className="hover:bg-slate-500 text-gray-200">
                                 <td className="py-4 pl-6 whitespace-nowrap text-sm font-medium">
                                   {about.cardTitle}
                                 </td>

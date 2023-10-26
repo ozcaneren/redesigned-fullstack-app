@@ -46,9 +46,11 @@ export default function Header() {
               {dataHead.map((header, index) => (
                 <div key={index} className="flex justify-start items-center">
                   {/* <img src="https://assets-global.website-files.com/646d198164f9c7efcdcdbd29/64972c0ed50cd97a8f523a48_logo.svg" alt="" /> */}
-                  <h1 className="font-tilt text-2xl font-medium">
-                    Marmaris Otel
-                  </h1>
+                  <Link to="/">
+                    <h1 className="font-tilt text-2xl font-medium">
+                      Marmaris Otel
+                    </h1>
+                  </Link>
                 </div>
               ))}
             </div>

@@ -96,35 +96,35 @@ export default function Teams() {
                       </div>
                       {teamDescription.map((desc, index) => (
                         <div key={index}>
-                          <div className="flex justify-center w-full mb-4">
-                            <div className="flex justify-center flex-col py-2 px-8 rounded border border-gray-600 items-center bg-zinc-700">
-                              <h1 className="text-center text-gray-300">
+                          <div className="flex justify-center w-full mb-6">
+                            <div className="flex justify-center flex-col items-center bg-zinc-700">
+                              <h1 className="text-center flex flex-row justify-center items-center text-gray-100 bg-gray-400 w-full">
                                 Ana Başlık
+                                <div className="ml-4">
+                                  <button
+                                    onClick={() => handleTitleEdit(desc._id)}
+                                  >
+                                    <div className="font-medium text-cyan-100 mt-1 hover:underline">
+                                      <TbEdit />
+                                    </div>
+                                  </button>
+                                  {showTitleModal && (
+                                    <TeamsEditTitleModal
+                                      showTitleModal={showTitleModal}
+                                      setShowTitleModal={setShowTitleModal}
+                                      teamsId={teamsId}
+                                    />
+                                  )}
+                                </div>
                               </h1>
-                              <h1 className="text-center text-lg">
-                                {desc.mainText}
+                              <h1 className="text-center bg-slate-600 w-full text-lg pb-2">
+                                {desc.mainTitle}
                               </h1>
-                            </div>
-                            <button onClick={() => handleTitleEdit(desc._id)}>
-                              <div className="font-medium mt-1 text-cyan-500 hover:underline">
-                                <TbEdit />
-                              </div>
-                            </button>
-                            {showTitleModal && (
-                              <TeamsEditTitleModal
-                                showTitleModal={showTitleModal}
-                                setShowTitleModal={setShowTitleModal}
-                                teamsId={teamsId}
-                              />
-                            )}
-                          </div>
-                          <div className="flex justify-center w-full mb-4">
-                            <div className="flex justify-center flex-col py-2 px-8 rounded border border-gray-600 items-center bg-zinc-700">
-                              <h1 className="text-center text-gray-300">
+                              <h1 className="text-center text-gray-100 bg-gray-400 w-full">
                                 Alt Başlık
                               </h1>
-                              <h1 className="text-center text-lg">
-                                {desc.mainTitle}
+                              <h1 className="text-center text-lg bg-slate-600 rounded w-full pb-2">
+                                {desc.mainText}
                               </h1>
                             </div>
                           </div>

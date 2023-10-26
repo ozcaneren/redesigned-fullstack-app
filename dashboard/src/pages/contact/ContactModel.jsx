@@ -25,7 +25,7 @@ export default function ContactModel() {
   return (
     <>
       <button
-        className="bg-[#474E68] p-2 text-white text-sm rounded-[6px]"
+        className="bg-slate-600 p-2 text-white text-sm rounded-[6px]"
         type="button"
         onClick={() => setShowModal(true)}
       >

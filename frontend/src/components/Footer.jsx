@@ -61,16 +61,16 @@ export default function Footer() {
     <>
       <footer className="bg-gray-200">
         <div className="mx-auto max-w-screen-xl space-y-8 px-4 py-16 sm:px-6 lg:space-y-16 lg:px-8">
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+          <div className="flex flex-row justify-between">
             <div>
               {footerText.map((footer, index) => (
                 <div key={index}>
-                  <div className="text-teal-600 font-semibold text-2xl">
+                  <div className="text-teal-600 font-tilt font-semibold text-2xl">
                     {language === "tr"
                       ? footer.footerTitle
                       : footer.footerTitle_en}
                   </div>
-                  <p className="mt-4 max-w-xs text-gray-500">
+                  <p className="mt-4 max-w-xs text-gray-500 font-space">
                     {language === "tr"
                       ? footer.footerText
                       : footer.footerText_en}
@@ -115,15 +115,15 @@ export default function Footer() {
                 ))}
               </ul>
             </div>
-            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:col-span-2 lg:grid-cols-4">
+            <div className="flex flex-row space-x-12 justify-center">
               {footerTitle.map((footer, index) => (
-                <div key={index}>
-                  <p className="font-medium text-gray-900">
-                    {language === "tr"
-                      ? footer.footerLinkTitle
-                      : footer.footerLinkTitle_en}
-                  </p>
-                  <ul className="mt-6 space-y-4 text-sm">
+                <div key={index} className="">
+                  <ul className="mt-2 space-y-4 w-[120px] text-base font-tilt">
+                    <li className="font-tilt text-xl">
+                      {language === "tr"
+                        ? footer.footerLinkTitle
+                        : footer.footerLinkTitle_en}
+                    </li>
                     <li className="flex flex-col">
                       {footer.footerLinkText.map((text) => (
                         <React.Fragment key={text}>
@@ -145,7 +145,7 @@ export default function Footer() {
                                 ? "/gallery"
                                 : "/"
                             }
-                            className="text-modalLabelText transition hover:opacity-75"
+                            className="text-gray-800 transition hover:opacity-75"
                           >
                             {text}
                           </Link>

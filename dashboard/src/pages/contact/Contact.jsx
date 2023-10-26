@@ -57,7 +57,7 @@ export default function Contact() {
             </div>
           </div>
           <div className="p-4">
-            <div className="bg-[#FEFEFE] border border-gray-200/70 rounded pt-4 pb-4">
+            <div className="bg-white border border-gray-200/70 rounded pt-4 pb-4">
               <div className="flex flex-row">
                 <div className="flex justify-center items-center">
                   <div className="w-full flex justify-center">
@@ -73,7 +73,7 @@ export default function Contact() {
                     <div className="inline-block min-w-full align-middle">
                       <div className="overflow-hidden">
                         <table className="min-w-full table-fixed">
-                          <thead className="bg-[#9BA4B5] text-white">
+                          <thead className="bg-gray-400 text-white">
                             <tr>
                               <th
                                 scope="col"
@@ -96,8 +96,8 @@ export default function Contact() {
                             </tr>
                           </thead>
                           {contacts.map((contact, index) => (
-                            <tbody key={index} className="bg-[#474E68] ">
-                              <tr className="hover:bg-[#6B728E]">
+                            <tbody key={index} className="bg-slate-600 ">
+                              <tr className="hover:bg-slate-500">
                                 <td className="max-w-[320px] w-[320px]">
                                   <div className="py-4 max-w-xs px-6 text-sm font-medium text-gray-200 truncate">
                                     <p className="truncate">
