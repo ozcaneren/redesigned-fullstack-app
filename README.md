@@ -17,21 +17,12 @@
 **Server:** Node, Express, MongoDB
 
 **Frontend**
-![Screenshot_20231013_211626](https://github.com/ozcaneren/redesigned-fullstack-app/assets/100240225/abe872e3-dd7b-4b38-8fcc-1c6e2aafb0d4)
-![Screenshot_20231013_211714](https://github.com/ozcaneren/redesigned-fullstack-app/assets/100240225/94791e42-afba-444f-ac98-51672f54bc43)
-![Screenshot_20231013_211801](https://github.com/ozcaneren/redesigned-fullstack-app/assets/100240225/60329261-0e70-4091-a682-9b222bdb37a2)
-![Screenshot_20231013_212929](https://github.com/ozcaneren/redesigned-fullstack-app/assets/100240225/aab26825-1e90-4c39-b287-1f99b3221eb7)
-![Screenshot_20231013_211818](https://github.com/ozcaneren/redesigned-fullstack-app/assets/100240225/08717f95-91fa-4017-b79f-4b1cb457b58b)
-![Screenshot_20231013_211801](https://github.com/ozcaneren/redesigned-fullstack-app/assets/100240225/f23acd52-7c40-471e-8bb4-eddbb6f69b13)
-![Screenshot_20231013_211828](https://github.com/ozcaneren/redesigned-fullstack-app/assets/100240225/3bdc3b9e-101a-437e-921b-93fe17f5c97a)
+![Screenshot_20231027_010044](https://github.com/ozcaneren/redesigned-fullstack-app/assets/100240225/a5648310-034e-46ce-ba49-86f0cb7cf100)
+![Screenshot_20231027_010118](https://github.com/ozcaneren/redesigned-fullstack-app/assets/100240225/997ec05b-2965-4571-a665-d03ac288b8c0)
+![Screenshot_20231027_010135](https://github.com/ozcaneren/redesigned-fullstack-app/assets/100240225/629150d0-e96d-409d-a618-5873a1c4592f)
 
 **Dashboard**
-![Screenshot_20231013_212011](https://github.com/ozcaneren/redesigned-fullstack-app/assets/100240225/ccf8d6b2-8634-4aec-931d-2c73b4f33779)
-![Screenshot_20231013_212032](https://github.com/ozcaneren/redesigned-fullstack-app/assets/100240225/8007cf8d-0f52-47d4-9bdb-e2ca9416975f)
-![Screenshot_20231013_212043](https://github.com/ozcaneren/redesigned-fullstack-app/assets/100240225/49e3ad96-4700-42be-b9e0-098bd50078a1)
-![Screenshot_20231013_212052](https://github.com/ozcaneren/redesigned-fullstack-app/assets/100240225/6efb6788-2a19-4d93-80e0-be7fd0a62bed)
-![Screenshot_20231013_212105](https://github.com/ozcaneren/redesigned-fullstack-app/assets/100240225/2be4ece5-f117-4d83-a962-b76df3ae23fd)
-![Screenshot_20231013_212121](https://github.com/ozcaneren/redesigned-fullstack-app/assets/100240225/0c3b8c0e-1c5f-4725-9f02-cafad8dd631d)
-![Screenshot_20231013_212135](https://github.com/ozcaneren/redesigned-fullstack-app/assets/100240225/23a3e517-26a7-4910-a12a-e9b51e815723)
-![Screenshot_20231013_212322](https://github.com/ozcaneren/redesigned-fullstack-app/assets/100240225/33b2bc08-004d-4750-907d-9e6d5c520ccd)
-![Screenshot_20231013_212333](https://github.com/ozcaneren/redesigned-fullstack-app/assets/100240225/e9609598-c6e5-4e1b-aa1b-d83269b7d95b)
+![Screenshot_20231027_010204](https://github.com/ozcaneren/redesigned-fullstack-app/assets/100240225/0d5aede4-3091-4d3b-9003-7e58176c16e0)
+![Screenshot_20231027_010212](https://github.com/ozcaneren/redesigned-fullstack-app/assets/100240225/81adb62a-9cbf-4144-9373-4418cc5b06bf)
+![Screenshot_20231027_010224](https://github.com/ozcaneren/redesigned-fullstack-app/assets/100240225/fe3159d7-9661-41c1-897b-ae57feb4029b)
+
