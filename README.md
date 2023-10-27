@@ -19,7 +19,6 @@
 **Frontend**
 ![Screenshot_20231027_010044](https://github.com/ozcaneren/redesigned-fullstack-app/assets/100240225/a5648310-034e-46ce-ba49-86f0cb7cf100)
 ![Screenshot_20231027_010118](https://github.com/ozcaneren/redesigned-fullstack-app/assets/100240225/997ec05b-2965-4571-a665-d03ac288b8c0)
-![Screenshot_20231027_010135](https://github.com/ozcaneren/redesigned-fullstack-app/assets/100240225/629150d0-e96d-409d-a618-5873a1c4592f)
 
 **Dashboard**
 ![Screenshot_20231027_010204](https://github.com/ozcaneren/redesigned-fullstack-app/assets/100240225/0d5aede4-3091-4d3b-9003-7e58176c16e0)
