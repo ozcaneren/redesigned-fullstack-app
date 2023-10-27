@@ -32,7 +32,7 @@ export default function About() {
 
   const handleDelete = async (aboutId) => {
     try {
-      await axios.delete(`http://localhost:4000/api/contact/${aboutId}`);
+      await axios.delete(`http://localhost:4000/api/about/${aboutId}`);
       getAbouts();
     } catch (error) {
       console.error("Error deleting contact:", error);

@@ -14,6 +14,7 @@ const HeaderLinkSchema = new Schema({
   headerText_en: { type: String },
   headerTextDropdown: [{ type: String }],
   headerTextDropdown_en: [{ type: String }],
+  headerTextDropdownLink: [{ type: String }],
 })
 
 module.exports = mongoose.model("HeaderLink", HeaderLinkSchema);

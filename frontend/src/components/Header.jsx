@@ -94,13 +94,9 @@ export default function Header() {
                                     <li className="block px-4 py-2 mb-1 text-base text-gray-700 rounded-md bg-white hover:bg-gray-300">
                                       <Link
                                         to={
-                                          item === "deneme"
-                                            ? "/deneme"
-                                            : item === "selam"
-                                            ? "/faq"
-                                            : item === "Hakkimizda"
-                                            ? "/about"
-                                            : "/"
+                                          header.headerTextDropdownLink[
+                                            itemIndex
+                                          ]
                                         }
                                       >
                                         <span className="ml-1 text-md tracking-wide truncate">
@@ -118,12 +114,16 @@ export default function Header() {
                       <div className="flex justify-center items-center">
                         <Link
                           to={
-                            header.headerText === "Odalar"
+                            header.headerText === "Ileti"
                               ? "/contact"
                               : header.headerText === "Odalarimiz"
                               ? "/rooms"
                               : header.headerText === "Hakkimizda"
                               ? "/about"
+                              : header.headerText === "Sikca Sorulan Sorular"
+                              ? "/faq"
+                              : header.headerText === "Dokumanlar"
+                              ? "/documents"
                               : "/"
                           }
                         >

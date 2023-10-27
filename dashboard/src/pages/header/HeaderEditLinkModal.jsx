@@ -8,11 +8,7 @@ const HeaderEditLinkModal = ({ headerId, showLinkModal, setShowLinkModal }) => {
     showLinkModal: PropTypes.bool,
     setShowLinkModal: PropTypes.func,
   };
-  const [header, setHeader] = useState({
-    headerText: "",
-    headerText_en: "",
-    headerTextDropdown: "",
-  });
+  const [header, setHeader] = useState({});
 
   const fetchHeaderById = useCallback(async () => {
     try {
@@ -31,31 +27,29 @@ const HeaderEditLinkModal = ({ headerId, showLinkModal, setShowLinkModal }) => {
 
   const handleUpdate = async () => {
     try {
-      const headerTextDropdownArray = header.headerTextDropdown
-        ? header.headerTextDropdown.split(",")
-        : null;
-
-      const updatedHeader = {
-        ...header,
-        headerTextDropdown: headerTextDropdownArray,
-      };
-
-      // Eğer herhangi bir alan güncellendi ve headerTextDropdown null ise,
-      // headerTextDropdown'u güncelleme işlemi yapma
-      const isAnyFieldChanged =
-        header.order !== updatedHeader.order ||
-        header.headerText !== updatedHeader.headerText ||
-        header.headerText_en !== updatedHeader.headerText_en;
-
-      if (isAnyFieldChanged && headerTextDropdownArray === null) {
-        updatedHeader.headerTextDropdown = null;
+      // Eğer headerText alanı boş ise null olarak güncelle
+      if (header.headerText === "") {
+        header.headerText = null;
       }
-
-      await axios.put(
-        `http://localhost:4000/api/header/link/${headerId}`,
-        updatedHeader
-      );
-
+  
+      // Eğer headerText_en alanı boş ise null olarak güncelle
+      if (header.headerText_en === "") {
+        header.headerText_en = null;
+      }
+  
+      // Eğer headerTextDropdown alanı boş ise null olarak güncelle
+      if (header.headerTextDropdown === "") {
+        header.headerTextDropdown = null;
+      }
+  
+      // Eğer headerTextDropdownLink alanı boş ise null olarak güncelle
+      if (header.headerTextDropdownLink === "") {
+        header.headerTextDropdownLink = null;
+      }
+  
+      await axios.put(`http://localhost:4000/api/header/link/${headerId}`, {
+        ...header,
+      });
       setShowLinkModal(false);
     } catch (error) {
       console.error("Header güncellenirken hata oluştu:", error);
@@ -64,9 +58,18 @@ const HeaderEditLinkModal = ({ headerId, showLinkModal, setShowLinkModal }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    let updatedValue;
+  
+    // Eğer değer boşsa veya sadece bir elemandan oluşuyorsa virgülle ayırmaya gerek yok
+    if (value === "" || value.split(",").length === 1) {
+      updatedValue = value;
+    } else {
+      updatedValue = value.split(",");
+    }
+  
     setHeader((prevHeader) => ({
       ...prevHeader,
-      [name]: value,
+      [name]: updatedValue,
     }));
   };
 
@@ -150,6 +153,21 @@ const HeaderEditLinkModal = ({ headerId, showLinkModal, setShowLinkModal }) => {
                         value={header.headerTextDropdown}
                         onChange={handleChange}
                         name="headerTextDropdown"
+                      />
+                    </div>
+                    <div className="mb-4">
+                      <label
+                        className="block text-modalLabelText text-sm font-bold mb-2"
+                        htmlFor="headerTextDropdownLink"
+                      >
+                        Header Text Dropdown Link
+                      </label>
+                      <input
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
+                        type="text"
+                        value={header.headerTextDropdownLink}
+                        onChange={handleChange}
+                        name="headerTextDropdownLink"
                       />
                     </div>
                   </div>

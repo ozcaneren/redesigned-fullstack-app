@@ -5,12 +5,15 @@ import axios from "axios";
 export default function HeaderAddTitleModal() {
   const [headerText, setHeaderText] = useState("");
   const [headerTextDropdown, setHeaderTextDropdown] = useState([]);
+  const [headerTextDropdownLink, setHeaderTextDropdownLink] = useState([]); // [link1, link2, link3]
   const [order, setOrder] = useState(0);
 
   const handleSubmit = async () => {
     try {
       const newHeader = {
         headerText: headerText,
+        headerTextDropdownLink:
+          headerTextDropdownLink.length > 0 ? headerTextDropdownLink : null,
         headerTextDropdown:
           headerTextDropdown.length > 0 ? headerTextDropdown : null,
         order: order, // Sıra numarasını ekleyin
@@ -20,6 +23,7 @@ export default function HeaderAddTitleModal() {
         await axios.post("http://localhost:4000/api/header/links", newHeader);
         setHeaderText("");
         setHeaderTextDropdown([]);
+        setHeaderTextDropdownLink([]);
       }
     } catch (error) {
       console.error(error);
@@ -105,6 +109,27 @@ export default function HeaderAddTitleModal() {
                         }
                         onChange={(e) =>
                           setHeaderTextDropdown(e.target.value.split(","))
+                        }
+                      />
+                    </div>
+                    <div className="mb-4">
+                      <label
+                        className="block text-modalLabelText text-sm font-bold mb-2"
+                        htmlFor="headerTextDropdownLink"
+                      >
+                        Header Dropdown Link
+                      </label>
+                      <input
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
+                        id="headerTextDropdownLink"
+                        type="text"
+                        value={
+                          headerTextDropdownLink.length > 0
+                            ? headerTextDropdownLink.join(",")
+                            : ""
+                        }
+                        onChange={(e) =>
+                          setHeaderTextDropdownLink(e.target.value.split(","))
                         }
                       />
                     </div>
