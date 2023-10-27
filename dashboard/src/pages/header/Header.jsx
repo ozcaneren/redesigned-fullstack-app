@@ -96,17 +96,17 @@ export default function Header() {
           <div className="p-4">
             <div className="bg-[#FEFEFE] border border-gray-200/70 rounded pt-4 pb-4">
               <div>
-                <h1>
-                  <div className="text-xl text-modalLabelText font-semibold text-center">
-                    Başlık
-                  </div>
-                </h1>
                 <div className="max-w-2xl mx-auto px-4 pt-2">
                   <div className="flex justify-center items-center">
-                    <div className="w-full flex justify-center">
-                      <div className="w-full relative py-1">
+                    <div className="w-full flex items-center">
+                      <div className="relative py-1">
                         <HeaderAddTitleModal />
                       </div>
+                      <h1 className="ml-44">
+                        <div className="text-xl text-modalLabelText font-semibold text-center">
+                          Başlık
+                        </div>
+                      </h1>
                     </div>
                   </div>
                   <div className="overflow-x-auto shadow-md sm:rounded-lg">
@@ -139,11 +139,11 @@ export default function Header() {
                                     </p>
                                   </div>
                                 </td>
-                                <td className="py-4 flex justify-end pr-10 text-sm font-medium text-gray-200 whitespace-nowrap space-x-2">
+                                <td className="py-4 flex justify-end pr-10 text-sm font-medium text-gray-200 whitespace-nowrap">
                                   <button
                                     onClick={() => handleTitleClick(header._id)}
                                   >
-                                    <div className="font-medium mt-1 text-cyan-500 hover:underline">
+                                    <div className="font-medium mr-2 mt-1 text-cyan-500 hover:underline">
                                       <TbEdit size={19} />
                                     </div>
                                   </button>
@@ -172,17 +172,17 @@ export default function Header() {
                 </div>
               </div>
               <div>
-                <h1 className="pt-6">
-                  <div className="text-xl text-modalLabelText font-semibold text-center">
-                    Başlık ve Dropdownlar
-                  </div>
-                </h1>
-                <div className="max-w-6xl mx-auto px-4 pt-2">
+                <div className="max-w-6xl mx-auto px-4 pt-12">
                   <div className="flex justify-center items-center">
-                    <div className="w-full flex justify-center">
-                      <div className="w-full relative py-1">
+                    <div className="w-full flex items-center">
+                      <div className="relative py-1">
                         <HeaderAddLinkModal />
                       </div>
+                      <h1 className="ml-[350px]">
+                        <div className="text-xl text-modalLabelText font-semibold text-center">
+                          Link ve Dropdownlar
+                        </div>
+                      </h1>
                     </div>
                   </div>
                   <div className="overflow-x-auto shadow-md sm:rounded-lg">
@@ -246,11 +246,11 @@ export default function Header() {
                                     </p>
                                   </div>
                                 </td>
-                                <td className="py-4 flex justify-end pr-10 text-sm font-medium text-gray-200 whitespace-nowrap space-x-2">
+                                <td className="py-4 flex justify-end pr-10 text-sm font-medium text-gray-200 whitespace-nowrap">
                                   <button
                                     onClick={() => handleLinkClick(header._id)}
                                   >
-                                    <div className="font-medium mt-1 text-cyan-500 hover:underline">
+                                    <div className="font-medium mt-1 mr-2 text-cyan-500 hover:underline">
                                       <TbEdit size={19} />
                                     </div>
                                   </button>

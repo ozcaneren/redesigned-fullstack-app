@@ -61,7 +61,7 @@ export default function About() {
               <div className="flex flex-row">
                 <div className="flex justify-center items-center">
                   <div className="w-full flex justify-center">
-                    <div className="w-full px-4 relative space-x-2">
+                    <div className="w-full px-4 relative">
                       <AboutModal />
                     </div>
                   </div>
@@ -107,11 +107,11 @@ export default function About() {
                                 <td className="py-4 max-w-xs whitespace-nowrap text-sm truncate">
                                   {about.cardText}
                                 </td>
-                                <td className="py-4 flex justify-end pr-10 text-sm font-medium text-gray-200 whitespace-nowrap space-x-2">
+                                <td className="py-4 flex justify-end pr-10 text-sm font-medium text-gray-200 whitespace-nowrap">
                                   <button
                                     onClick={() => handleClick(about._id)}
                                   >
-                                    <div className="font-medium mt-1 text-cyan-500 hover:underline">
+                                    <div className="font-medium mt-1 mr-2 text-cyan-500 hover:underline">
                                       <TbEdit size={20} />
                                     </div>
                                   </button>

@@ -1,12 +1,12 @@
-import {useState, useEffect, useCallback} from "react";
+import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import PropTypes from "prop-types";
 
 const TeamsEditTitleModal = ({
-                               teamsId,
-                               showTitleModal,
-                               setShowTitleModal,
-                             }) => {
+  teamsId,
+  showTitleModal,
+  setShowTitleModal,
+}) => {
   TeamsEditTitleModal.propTypes = {
     teamsId: PropTypes.string,
     showTitleModal: PropTypes.bool,
@@ -31,49 +31,51 @@ const TeamsEditTitleModal = ({
 
   const handleUpdate = async () => {
     try {
-      await axios.put(`http://localhost:4000/api/teams/descriptions/${teamsId}`, {
-        ...teams,
-      });
+      await axios.put(
+        `http://localhost:4000/api/teams/descriptions/${teamsId}`,
+        {
+          ...teams,
+        }
+      );
       setShowTitleModal(false);
     } catch (error) {
       console.error("Teams güncellenirken hata oluştu:", error);
     }
-  }
+  };
 
   const handleChange = (e) => {
-    const {name, value} = e.target;
+    const { name, value } = e.target;
     setTeams((prevTeams) => ({
       ...prevTeams,
       [name]: value,
     }));
-  }
+  };
 
   return (
     <>
       {showTitleModal ? (
         <>
-          <div
-            className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+          <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
             <div className="relative w-[600px] my-6 mx-auto max-w-3xl">
-              <div
-                className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 <div className="flex items-start justify-between p-5 border-b border-solid border-gray-300 rounded-t">
                   <h3 className="text-2xl text-modalMainText font-semibold">
-                    Header Link Duzenle
+                    Basligi Duzenle
                   </h3>
                   <button
-                    className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
+                    className="p-1 ml-auto bg-transparent border-0  float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
                     onClick={() => setShowTitleModal(false)}
                   >
-                    <span
-                      className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
+                    <span className="bg-transparent text-modalMainText h-6 w-6 text-2xl block outline-none focus:outline-none">
                       ×
                     </span>
                   </button>
                 </div>
                 <div className="relative p-6 flex-auto">
                   <div className="mb-4">
-                    <label className="block text-modalLabelText text-sm font-bold mb-2">Başlık</label>
+                    <label className="block text-modalLabelText text-sm font-bold mb-2">
+                      Başlık
+                    </label>
                     <input
                       type="text"
                       name="mainTitle"
@@ -83,7 +85,9 @@ const TeamsEditTitleModal = ({
                     />
                   </div>
                   <div className="mb-4">
-                    <label className="block text-modalLabelText text-sm font-bold mb-2">Başlık</label>
+                    <label className="block text-modalLabelText text-sm font-bold mb-2">
+                      Başlık
+                    </label>
                     <input
                       type="text"
                       name="mainText"

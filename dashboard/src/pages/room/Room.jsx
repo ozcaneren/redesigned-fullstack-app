@@ -161,11 +161,11 @@ export default function Room() {
                                       {room.roomVisibility ? "Aktif" : "Gizli"}
                                     </div>
                                   </td>
-                                  <td className="py-4 flex justify-end pr-8 text-sm font-medium text-gray-200 whitespace-nowrap space-x-2">
+                                  <td className="py-4 flex justify-end pr-8 text-sm font-medium text-gray-200 whitespace-nowrap">
                                     <button
                                       onClick={() => handleCardClick(room._id)}
                                     >
-                                      <div className="font-medium mt-1 text-blue-400 hover:underline">
+                                      <div className="font-medium mt-1 mr-1 text-blue-400 hover:underline">
                                         <TbEdit size={20} />
                                       </div>
                                     </button>

@@ -80,7 +80,7 @@ export default function Services() {
                     <div>
                       <div className="flex justify-center items-center">
                         <div className="w-full flex justify-center">
-                          <div className="w-full px-4 relative space-x-2">
+                          <div className="w-full px-4 relative">
                             <ServicesAddModal />
                           </div>
                         </div>

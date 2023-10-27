@@ -94,42 +94,76 @@ export default function Teams() {
                           </div>
                         </div>
                       </div>
-                      {teamDescription.map((desc, index) => (
-                        <div key={index}>
-                          <div className="flex justify-center w-full mb-6">
-                            <div className="flex justify-center flex-col items-center bg-zinc-700">
-                              <h1 className="text-center flex flex-row justify-center items-center text-gray-100 bg-gray-400 w-full">
-                                Ana Başlık
-                                <div className="ml-4">
-                                  <button
-                                    onClick={() => handleTitleEdit(desc._id)}
-                                  >
-                                    <div className="font-medium text-cyan-100 mt-1 hover:underline">
-                                      <TbEdit />
-                                    </div>
-                                  </button>
-                                  {showTitleModal && (
-                                    <TeamsEditTitleModal
-                                      showTitleModal={showTitleModal}
-                                      setShowTitleModal={setShowTitleModal}
-                                      teamsId={teamsId}
-                                    />
-                                  )}
-                                </div>
-                              </h1>
-                              <h1 className="text-center bg-slate-600 w-full text-lg pb-2">
-                                {desc.mainTitle}
-                              </h1>
-                              <h1 className="text-center text-gray-100 bg-gray-400 w-full">
-                                Alt Başlık
-                              </h1>
-                              <h1 className="text-center text-lg bg-slate-600 rounded w-full pb-2">
-                                {desc.mainText}
-                              </h1>
+                      <div className="">
+                        <div className="max-w-5xl mx-auto px-4 pt-2">
+                          <div className="overflow-x-auto shadow-md sm:rounded-lg">
+                            <div className="inline-block min-w-full align-middle">
+                              <div className="overflow-hidden">
+                                <table className="min-w-full table-fixed">
+                                  <thead className="bg-gray-400 text-white">
+                                    <tr>
+                                      <th
+                                        scope="col"
+                                        className="py-3 px-6 text-xs font-medium tracking-wider text-left  uppercase"
+                                      >
+                                        Ana Baslik
+                                      </th>
+                                      <th
+                                        scope="col"
+                                        className="py-3 px-6 text-xs font-medium tracking-wider text-left uppercase"
+                                      >
+                                        Alt Baslik
+                                      </th>
+                                      <th
+                                        scope="col"
+                                        className="py-3 flex justify-end pr-6 text-xs font-medium tracking-wider uppercase"
+                                      >
+                                        Duzenle
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                  {teamDescription.map((desc, index) => (
+                                    <tbody key={index} className="bg-slate-600">
+                                      <tr className="hover:bg-gray-500">
+                                        <td className="py-3">
+                                          <div className="max-w-xs flex items-center px-6 text-sm font-medium text-gray-200 truncate">
+                                            {desc.mainTitle}
+                                          </div>
+                                        </td>
+                                        <td className="py-3">
+                                          <div className="max-w-xs flex items-center px-6 text-sm font-medium text-gray-200 truncate">
+                                            {desc.mainText}
+                                          </div>
+                                        </td>
+                                        <td className="flex justify-end py-4 items-center pr-10 font-medium text-gray-200">
+                                          <button
+                                            onClick={() =>
+                                              handleTitleEdit(desc._id)
+                                            }
+                                          >
+                                            <div className="font-medium mt-1 text-blue-400 hover:underline">
+                                              <TbEdit size={20} />
+                                            </div>
+                                          </button>
+                                          {showTitleModal && (
+                                            <TeamsEditTitleModal
+                                              showTitleModal={showTitleModal}
+                                              setShowTitleModal={
+                                                setShowTitleModal
+                                              }
+                                              teamsId={teamsId}
+                                            />
+                                          )}
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  ))}
+                                </table>
+                              </div>
                             </div>
                           </div>
                         </div>
-                      ))}
+                      </div>
                       <div className="">
                         <div className="max-w-5xl mx-auto px-4 pt-2">
                           <div className="overflow-x-auto shadow-md sm:rounded-lg">
@@ -170,7 +204,7 @@ export default function Teams() {
                                         <td className="py-3">
                                           <div className="max-w-xs flex items-center px-6 text-sm font-medium text-gray-200 truncate">
                                             <img
-                                              className="w-10 h-10 rounded-full"
+                                              className="w-10 h-10 object-cover rounded-full"
                                               src={member.cardIcon}
                                               alt=""
                                             />
@@ -186,13 +220,13 @@ export default function Teams() {
                                             {member.cardText}
                                           </div>
                                         </td>
-                                        <td className="flex justify-end py-4 items-center pr-10 space-x-2 font-medium text-gray-200">
+                                        <td className="flex justify-end py-4 items-center pr-10 font-medium text-gray-200">
                                           <button
                                             onClick={() =>
                                               handleMemberEdit(member._id)
                                             }
                                           >
-                                            <div className="font-medium mt-1 text-blue-400 hover:underline">
+                                            <div className="font-medium mt-1 mr-2 text-blue-400 hover:underline">
                                               <TbEdit size={20} />
                                             </div>
                                           </button>

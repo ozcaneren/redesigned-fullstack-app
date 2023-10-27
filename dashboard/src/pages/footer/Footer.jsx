@@ -131,21 +131,21 @@ export default function Footer() {
               <div className="flex flex-row">
                 <div className="flex justify-center items-center">
                   <div className="w-full flex justify-center">
-                    <div className="w-full px-2 relative space-x-2">
+                    <div className="w-full px-2 relative">
                       <FooterAddIconModal />
                     </div>
                   </div>
                 </div>
                 <div className="flex justify-center items-center">
                   <div className="w-full flex justify-center">
-                    <div className="w-full px-2 relative space-x-2">
+                    <div className="w-full px-2 relative">
                       <FooterAddTextModal />
                     </div>
                   </div>
                 </div>
                 <div className="flex justify-center items-center">
                   <div className="w-full flex justify-center">
-                    <div className="w-full px-2 relative space-x-2">
+                    <div className="w-full px-2 relative">
                       <FooterAddLinkModal />
                     </div>
                   </div>
@@ -210,7 +210,6 @@ export default function Footer() {
                             <h2 className="font-semibold text-gray-600 ">
                               {footerIcon.footerIcon}
                             </h2>
-
                           </div>
                         </div>
                       </div>
@@ -265,13 +264,13 @@ export default function Footer() {
                                       </p>
                                     </div>
                                   </td>
-                                  <td className="py-4 flex justify-end pr-10 text-sm font-medium text-gray-200 whitespace-nowrap space-x-2">
+                                  <td className="py-4 flex justify-end pr-10 text-sm font-medium text-gray-200 whitespace-nowrap">
                                   <button
                                       onClick={() =>
                                         handleTextClick(footerText._id)
                                       }
                                     >
-                                      <div className="font-medium mt-1 text-cyan-500 hover:underline">
+                                      <div className="font-medium mt-1 mr-1 text-cyan-500 hover:underline">
                                         <TbEdit size={20} />
                                       </div>
                                     </button>
@@ -282,7 +281,6 @@ export default function Footer() {
                                         footerId={footerId}
                                       />
                                     )}
-
                                     <button onClick={
                                       () => handleTextDelete(footerText._id)
                                     }>
@@ -348,13 +346,13 @@ export default function Footer() {
                                       </p>
                                     </div>
                                   </td>
-                                  <td className="py-4 top-0 right-0 flex justify-end pr-10 text-sm font-medium text-gray-200 whitespace-nowrap space-x-2">
+                                  <td className="py-4 top-0 right-0 flex justify-end pr-10 text-sm font-medium text-gray-200 whitespace-nowrap">
                                     <button
                                       onClick={() =>
                                         handleLinkClick(footerTitle._id)
                                       }
                                     >
-                                      <div className="font-medium mt-1 text-cyan-500 hover:underline">
+                                      <div className="font-medium mt-1 mr-1 text-cyan-500 hover:underline">
                                         <TbEdit size={20} />
                                       </div>
                                     </button>

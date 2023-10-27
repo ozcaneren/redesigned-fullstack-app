@@ -54,12 +54,12 @@ export default function Hero() {
                     <div key={index}>
                       <div className="flex justify-center items-center">
                         <div className="w-full flex justify-center">
-                          <div className="w-full px-4 relative space-x-2">
+                          <div className="w-full px-4 relative">
                             <button
                               onClick={() => handleClick(hero._id)}
                               className="bg-zinc-700 p-2 text-white text-sm border border-gray-600 rounded-[6px]"
                             >
-                              Kartlari Duzenle
+                              Hero Duzenle
                             </button>
                             {showModal ? (
                               <HeroEditModal

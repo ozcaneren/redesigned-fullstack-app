@@ -35,7 +35,7 @@ export default function ServicesAddModal() {
         type="button"
         onClick={() => setShowModal(true)}
       >
-        Yeni Icon Ekle
+        Yeni Servis Ekle
       </button>
       {showModal ? (
         <>
@@ -44,7 +44,7 @@ export default function ServicesAddModal() {
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 <div className="flex items-start justify-between p-5 border-b border-solid border-gray-300 rounded-t">
                   <h3 className="text-2xl text-modalMainText font-semibold">
-                    Footer Ekle
+                    Servis Ekle
                   </h3>
                   <button
                     className="p-1 ml-auto bg-transparent border-0 text-modalMainText float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
