@@ -8,7 +8,11 @@ const HeaderEditLinkModal = ({ headerId, showLinkModal, setShowLinkModal }) => {
     showLinkModal: PropTypes.bool,
     setShowLinkModal: PropTypes.func,
   };
-  const [header, setHeader] = useState({ headerText: "", headerText_en: "", headerTextDropdown: "" });
+  const [header, setHeader] = useState({
+    headerText: "",
+    headerText_en: "",
+    headerTextDropdown: "",
+  });
 
   const fetchHeaderById = useCallback(async () => {
     try {
@@ -27,14 +31,31 @@ const HeaderEditLinkModal = ({ headerId, showLinkModal, setShowLinkModal }) => {
 
   const handleUpdate = async () => {
     try {
-      // Virgülle ayrılmış dropdown metinlerini diziye dönüştür
-      const headerTextDropdownArray = header.headerTextDropdown.split(",");
+      const headerTextDropdownArray = header.headerTextDropdown
+        ? header.headerTextDropdown.split(",")
+        : null;
+
       const updatedHeader = {
         ...header,
         headerTextDropdown: headerTextDropdownArray,
       };
 
-      await axios.put(`http://localhost:4000/api/header/link/${headerId}`, updatedHeader);
+      // Eğer herhangi bir alan güncellendi ve headerTextDropdown null ise,
+      // headerTextDropdown'u güncelleme işlemi yapma
+      const isAnyFieldChanged =
+        header.order !== updatedHeader.order ||
+        header.headerText !== updatedHeader.headerText ||
+        header.headerText_en !== updatedHeader.headerText_en;
+
+      if (isAnyFieldChanged && headerTextDropdownArray === null) {
+        updatedHeader.headerTextDropdown = null;
+      }
+
+      await axios.put(
+        `http://localhost:4000/api/header/link/${headerId}`,
+        updatedHeader
+      );
+
       setShowLinkModal(false);
     } catch (error) {
       console.error("Header güncellenirken hata oluştu:", error);
@@ -74,6 +95,21 @@ const HeaderEditLinkModal = ({ headerId, showLinkModal, setShowLinkModal }) => {
                     <div className="mb-4">
                       <label
                         className="block text-modalLabelText text-sm font-bold mb-2"
+                        htmlFor="order"
+                      >
+                        Sıra Numarası
+                      </label>
+                      <input
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
+                        type="number"
+                        value={header.order}
+                        onChange={handleChange}
+                        name="order"
+                      />
+                    </div>
+                    <div className="mb-4">
+                      <label
+                        className="block text-modalLabelText text-sm font-bold mb-2"
                         htmlFor="headerText"
                       >
                         Header Text
@@ -103,48 +139,48 @@ const HeaderEditLinkModal = ({ headerId, showLinkModal, setShowLinkModal }) => {
                     </div>
                     <div className="mb-4">
                       <label
-                      className="block text-modalLabelText text-sm font-bold mb-2"
-                      htmlFor="headerTextDropdown"
-                    >
-                      Header Text Dropdown
-                    </label>
-                    <input
-                      className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
-                      type="text"
-                      value={header.headerTextDropdown}
-                      onChange={handleChange}
-                      name="headerTextDropdown"
-                    />
+                        className="block text-modalLabelText text-sm font-bold mb-2"
+                        htmlFor="headerTextDropdown"
+                      >
+                        Header Text Dropdown
+                      </label>
+                      <input
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
+                        type="text"
+                        value={header.headerTextDropdown}
+                        onChange={handleChange}
+                        name="headerTextDropdown"
+                      />
+                    </div>
                   </div>
-                </div>
-                <div className="flex items-center justify-end p-6 border-t border-solid border-gray-300 rounded-b">
-                  <button
-                    className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                    type="button"
-                    onClick={() => setShowLinkModal(false)}
-                  >
-                    İptal
-                  </button>
-                  <button
-                    className="bg-green-500 text-white active:bg-green-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                    type="submit"
-                    onClick={() => {
-                      handleUpdate();
-                      setShowLinkModal(false);
-                    }}
-                  >
-                    Kaydet
-                  </button>
-                </div>
-              </form>
+                  <div className="flex items-center justify-end p-6 border-t border-solid border-gray-300 rounded-b">
+                    <button
+                      className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                      type="button"
+                      onClick={() => setShowLinkModal(false)}
+                    >
+                      İptal
+                    </button>
+                    <button
+                      className="bg-green-500 text-white active:bg-green-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                      type="submit"
+                      onClick={() => {
+                        handleUpdate();
+                        setShowLinkModal(false);
+                      }}
+                    >
+                      Kaydet
+                    </button>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="backdrop-blur-[1px] backdrop-opacity-80 backdrop-brightness-90 fixed inset-0 z-40"></div>
-      </>
-    ) : null}
-  </>
-);
-}
+          <div className="backdrop-blur-[1px] backdrop-opacity-80 backdrop-brightness-90 fixed inset-0 z-40"></div>
+        </>
+      ) : null}
+    </>
+  );
+};
 
 export default HeaderEditLinkModal;

@@ -5,14 +5,18 @@ import axios from "axios";
 export default function HeaderAddTitleModal() {
   const [headerText, setHeaderText] = useState("");
   const [headerTextDropdown, setHeaderTextDropdown] = useState([]);
+  const [order, setOrder] = useState(0);
 
   const handleSubmit = async () => {
     try {
       const newHeader = {
         headerText: headerText,
-        headerTextDropdown: headerTextDropdown.length > 0 ? headerTextDropdown : null,
+        headerTextDropdown:
+          headerTextDropdown.length > 0 ? headerTextDropdown : null,
+        order: order, // Sıra numarasını ekleyin
       };
-      if (headerText.trim() !== "") { // Check if headerText is not empty
+      if (headerText.trim() !== "") {
+        // Check if headerText is not empty
         await axios.post("http://localhost:4000/api/header/links", newHeader);
         setHeaderText("");
         setHeaderTextDropdown([]);
@@ -56,6 +60,21 @@ export default function HeaderAddTitleModal() {
                     <div className="mb-4">
                       <label
                         className="block text-modalLabelText text-sm font-bold mb-2"
+                        htmlFor="order"
+                      >
+                        Sıra Numarası
+                      </label>
+                      <input
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
+                        id="order"
+                        type="number"
+                        value={order}
+                        onChange={(e) => setOrder(e.target.value)}
+                      />
+                    </div>
+                    <div className="mb-4">
+                      <label
+                        className="block text-modalLabelText text-sm font-bold mb-2"
                         htmlFor="headerText"
                       >
                         Header Başlık
@@ -79,8 +98,14 @@ export default function HeaderAddTitleModal() {
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
                         id="headerTextDropdown"
                         type="text"
-                        value={headerTextDropdown.length > 0 ? headerTextDropdown.join(",") : ""}
-                        onChange={(e) => setHeaderTextDropdown(e.target.value.split(","))}
+                        value={
+                          headerTextDropdown.length > 0
+                            ? headerTextDropdown.join(",")
+                            : ""
+                        }
+                        onChange={(e) =>
+                          setHeaderTextDropdown(e.target.value.split(","))
+                        }
                       />
                     </div>
                   </div>

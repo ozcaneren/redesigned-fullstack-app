@@ -86,30 +86,29 @@ export default function Header() {
                           </span>
                         </span>
                         {index === openDropdown && (
-                          <ul className="absolute z-10 bg-white mt-2 rounded-b space-y-2">
+                          <ul className="absolute z-10 origin-top-right mt-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
                             {header.headerTextDropdown &&
                               header.headerTextDropdown.map(
                                 (item, itemIndex) => (
-                                  <li
-                                    key={itemIndex}
-                                    className="block py-2 text-black border-b border-gray-500 hover-bg-gray-50 lg:hover-bg-transparent lg-border-0 lg-hover-text-blue-700 lg-p-0"
-                                  >
-                                    <Link
-                                      to={
-                                        item === "deneme"
-                                          ? "/deneme"
-                                          : item === "selam"
-                                          ? "/faq"
-                                          : item === "Hakkimizda"
-                                          ? "/about"
-                                          : "/"
-                                      }
-                                    >
-                                      <span className="ml-1 text-md tracking-wide truncate">
-                                        {item}
-                                      </span>
-                                    </Link>
-                                  </li>
+                                  <div className="py-2 p-2" key={itemIndex}>
+                                    <li className="block px-4 py-2 mb-1 text-base text-gray-700 rounded-md bg-white hover:bg-gray-300">
+                                      <Link
+                                        to={
+                                          item === "deneme"
+                                            ? "/deneme"
+                                            : item === "selam"
+                                            ? "/faq"
+                                            : item === "Hakkimizda"
+                                            ? "/about"
+                                            : "/"
+                                        }
+                                      >
+                                        <span className="ml-1 text-md tracking-wide truncate">
+                                          {item}
+                                        </span>
+                                      </Link>
+                                    </li>
+                                  </div>
                                 )
                               )}
                           </ul>

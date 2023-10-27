@@ -79,6 +79,8 @@ export default function Header() {
     setShowLinkModal(true);
   };
 
+  const sortedHeaderLinks = headerLinks.sort((a, b) => a.order - b.order);
+
   return (
     <div>
       <div className="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-background text-white">
@@ -191,13 +193,13 @@ export default function Header() {
                             <tr>
                               <th
                                 scope="col"
-                                className="py-3 pl-6 text-xs font-medium tracking-wider text-left  uppercase w-[400px]"
+                                className="py-3 pl-6 text-xs font-medium tracking-wider text-left uppercase w-[400px]"
                               >
                                 Başlık
                               </th>
                               <th
                                 scope="col"
-                                className="py-3 text-xs font-medium tracking-wider text-left  uppercase w-[400px]"
+                                className="py-3 text-xs font-medium tracking-wider text-left uppercase w-[400px]"
                               >
                                 Dropdownlar
                               </th>
@@ -209,7 +211,7 @@ export default function Header() {
                               </th>
                             </tr>
                           </thead>
-                          {headerLinks.map((header, index) => (
+                          {sortedHeaderLinks.map((header, index) => (
                             <tbody key={index} className="bg-slate-600">
                               <tr className="hover:bg-slate-500">
                                 <td className="max-w-[320px] w-[320px]">
@@ -239,9 +241,7 @@ export default function Header() {
                                           )
                                         )
                                       ) : (
-                                        <span className="text-gray-200">
-                                          -
-                                        </span>
+                                        <span className="text-gray-200">-</span>
                                       )}
                                     </p>
                                   </div>
