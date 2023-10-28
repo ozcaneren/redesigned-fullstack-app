@@ -134,13 +134,13 @@ export default function Contact() {
                               </th>
                               <th
                                 scope="col"
-                                className="py-3 pl-6 font-medium tracking-wider text-left w-[400px]"
+                                className="py-3 pl-6 font-medium tracking-wider text-left"
                               >
                                 İletişim Başlığı
                               </th>
                               <th
                                 scope="col"
-                                className="py-3 font-medium tracking-wider text-left w-[400px]"
+                                className="py-3 font-medium tracking-wider text-left"
                               >
                                 İletişim Bilgisi
                               </th>
@@ -162,14 +162,14 @@ export default function Contact() {
                                     className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                                   />
                                 </td>
-                                <td className="max-w-[320px] w-[320px]">
+                                <td className="w-[360px]">
                                   <div className="py-4 max-w-xs px-6 font-medium text-gray-200 truncate">
                                     <p className="truncate">
                                       {contact.cardText}
                                     </p>
                                   </div>
                                 </td>
-                                <td className="max-w-[320px] w-[320px]">
+                                <td className="">
                                   <div className="py-4 pr-6 max-w-xs font-medium text-gray-200 truncate">
                                     <p className="truncate">
                                       {contact.cardValue}

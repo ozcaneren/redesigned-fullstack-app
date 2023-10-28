@@ -197,13 +197,13 @@ export default function Document() {
                                   className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                                 />
                               </td>
-                              <td className="">
-                                <div className="py-4 max-w-xs px-6 font-medium text-gray-200 truncate">
+                              <td className="w-[360px]">
+                                <div className="py-4 max-w-xs pl-6 font-medium text-gray-200 truncate">
                                   <p className="truncate">{document.title}</p>
                                 </div>
                               </td>
                               <td className="">
-                                <div className="py-4 max-w-xs px-6 font-medium text-gray-200 truncate">
+                                <div className="py-4 max-w-xs pr-6 font-medium text-gray-200 truncate">
                                   <p className="truncate">{document.text}</p>
                                 </div>
                               </td>
@@ -272,13 +272,13 @@ export default function Document() {
                               </th>
                               <th
                                 scope="col"
-                                className="py-3 pl-6 font-medium tracking-wider text-left"
+                                className="py-3 pl-6 w-[360px] font-medium tracking-wider text-left"
                               >
                                 Iletisim Başlığı
                               </th>
                               <th
                                 scope="col"
-                                className="py-3 font-medium tracking-wider text-left"
+                                className="py-3 w-[360px] font-medium tracking-wider text-left"
                               >
                                 Iletisim Bilgisi
                               </th>
@@ -306,14 +306,14 @@ export default function Document() {
                                     className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                                   />
                                 </td>
-                                <td className="">
-                                  <div className="py-4 max-w-xs px-6 font-medium text-gray-200 truncate">
+                                <td className="w-[360px]">
+                                  <div className="py-4 max-w-xs px-6 font-medium text-gray-200 truncate w-[560px]">
                                     <p className="truncate">
                                       {document.cardTitle}
                                     </p>
                                   </div>
                                 </td>
-                                <td className="">
+                                <td className="w-[360px]">
                                   <div className="py-4 max-w-xs pr-6 font-medium text-gray-200 truncate">
                                     <p className="truncate">
                                       {document.cardText}
