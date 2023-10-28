@@ -9,7 +9,8 @@ import Footer from './pages/footer/Footer';
 import Hero from './pages/hero/Hero';
 import Services from './pages/services/Services';
 import Teams from './pages/teams/Teams';
-import Document from './pages/document/Document';
+import DocumentTitle from './pages/document/DocumentTitle';
+import DocumentCard from './pages/document/DocumentCard';
 
 function App() {
   return (
@@ -25,7 +26,8 @@ function App() {
         <Route path='/hero' element={<Hero/>} />
         <Route path='/services' element={<Services/>} />
         <Route path='/teams' element={<Teams/>} />
-        <Route path='/document' element={<Document/>} />
+        <Route path='/document/title' element={<DocumentTitle/>} />
+        <Route path='/document/card' element={<DocumentCard/>} />
       </Routes>
     </>
   );

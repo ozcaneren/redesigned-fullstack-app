@@ -5,6 +5,7 @@ import {
   MdOutlineRoomService,
 } from "react-icons/md";
 import { RiContactsLine, RiTeamLine } from "react-icons/ri";
+import { useState } from "react";
 import { BiHomeAlt2 } from "react-icons/bi";
 import { LuSettings2, LuPanelBottomClose } from "react-icons/lu";
 import { TbLayoutNavbarCollapse } from "react-icons/tb";
@@ -12,6 +13,9 @@ import { FaPager } from "react-icons/fa";
 import { HiOutlineDocumentText } from "react-icons/hi";
 
 function Sidebar() {
+  const [openDropdown, setOpenDropdown] = useState(false);
+  
+
   return (
     <div>
       <div className="fixed flex flex-col top-0 left-0 w-14 hover:w-64 md:w-64 bg-white h-full font-medium transition-all duration-300 z-10">
@@ -132,20 +136,46 @@ function Sidebar() {
             </li>
             <li>
               <NavLink
-                to="/document"
-                className={({ isActive }) =>
-                  isActive
-                    ? "relative flex flex-row items-center h-11 bg-slate-600 mx-2 rounded-lg text-white focus:outline-none"
-                    : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
-                }
+                onClick={() => setOpenDropdown(!openDropdown)}
+                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
               >
-                <span className="inline-flex justify-center items-center ml-4  ">
+                <span className="inline-flex justify-center items-center ml-4">
                   <HiOutlineDocumentText size={20} />
                 </span>
-                <span className="ml-2 text-md tracking-wide truncate  ">
+                <span className="ml-2 text-md tracking-wide truncate">
                   Belgeler
                 </span>
               </NavLink>
+              {openDropdown ? (
+                <ul className="py-2 px-2 space-y-2">
+                  <li>
+                    <NavLink
+                      to="/document/title"
+                      className="flex items-center w-full p-2 text-base focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 transition duration-75 rounded-lg"
+                    >
+                      <span className="inline-flex justify-center items-center ml-6">
+                        <HiOutlineDocumentText size={20} />
+                      </span>
+                      <span className="ml-2 text-md tracking-wide truncate">
+                        Title
+                      </span>
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/document/card"
+                      className="flex items-center w-full p-2 text-base focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 transition duration-75 rounded-lg"
+                    >
+                      <span className="inline-flex justify-center items-center ml-6">
+                        <HiOutlineDocumentText size={20} />
+                      </span>
+                      <span className="ml-2 text-md tracking-wide truncate">
+                        Card
+                      </span>
+                    </NavLink>
+                  </li>
+                </ul>
+              ) : null}
             </li>
 
             {/* ana sayfa kismi */}
