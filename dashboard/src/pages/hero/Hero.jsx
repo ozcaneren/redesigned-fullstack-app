@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Sidebar from "../../components/Sidebar";
 import Breadcrumb from "../../components/Breadcrumbs";
-// import { TbEdit } from "react-icons/tb";
 import HeroEditModal from "./HeroEditModal";
 
 export default function Hero() {
@@ -27,11 +26,6 @@ export default function Hero() {
   useEffect(() => {
     getHeroes();
   }, []);
-
-  const handleClick = (heroId) => {
-    setHeroId(heroId);
-    setShowModal(true);
-  };
 
   const handleCheckboxChange = (heroId) => {
     if (selectedHero.includes(heroId)) {
