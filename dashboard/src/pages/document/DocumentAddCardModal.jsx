@@ -28,11 +28,11 @@ export default function DocumentAddCardModal() {
   return (
     <>
       <button
-        className="bg-slate-600 p-2 text-white text-sm rounded-[6px]"
+        className="bg-green-600 px-4 py-2 mr-2 text-white rounded"
         type="button"
         onClick={() => setShowModal(true)}
       >
-        Yeni Belge Ekle
+        Belge Ekle
       </button>
       {showModal ? (
         <>

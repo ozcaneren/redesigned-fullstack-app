@@ -172,65 +172,63 @@ export default function Header() {
                   </div>
                 </div>
               </div>
-              <div>
-                <div className="max-w-full mx-auto px-4 pt-2">
-                  <div className="overflow-x-auto shadow-md sm:rounded-lg">
-                    <div className="inline-block min-w-full align-middle">
-                      <div className="overflow-hidden">
-                        <table className="min-w-full table-fixed">
-                          <thead className="bg-gray-400 text-white">
-                            <tr>
-                              <th scope="col" className="p-4 w-[10px]">
-                                <div className="flex items-center">
-                                  <input
-                                    id="headerTextCheckbox-all"
-                                    type="checkbox"
-                                    onChange={handleTextMasterCheckboxChange}
-                                    checked={
-                                      selectedHeaderTexts.length ===
-                                      headerTexts.length
-                                    }
-                                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                                  />
-                                  <label className="sr-only">checkbox</label>
+              <div className="max-w-full mx-auto px-4 pt-2">
+                <div className="overflow-x-auto shadow-md sm:rounded-lg">
+                  <div className="inline-block min-w-full align-middle">
+                    <div className="overflow-hidden">
+                      <table className="min-w-full table-fixed">
+                        <thead className="bg-gray-400 text-white">
+                          <tr>
+                            <th scope="col" className="p-4 w-[10px]">
+                              <div className="flex items-center">
+                                <input
+                                  id="headerTextCheckbox-all"
+                                  type="checkbox"
+                                  onChange={handleTextMasterCheckboxChange}
+                                  checked={
+                                    selectedHeaderTexts.length ===
+                                    headerTexts.length
+                                  }
+                                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                />
+                                <label className="sr-only">checkbox</label>
+                              </div>
+                            </th>
+                            <th
+                              scope="col"
+                              className="py-3 pl-6 font-medium tracking-wider text-left "
+                            >
+                              Ana Başlık
+                            </th>
+                          </tr>
+                        </thead>
+                        {headerTexts.map((header, index) => (
+                          <tbody key={index} className="bg-slate-600">
+                            <tr className="hover:bg-slate-500">
+                              <td className="py-5 px-4 flex items-center max-w-[320px] w-[10px]">
+                                <input
+                                  type="checkbox"
+                                  id={`headerTextCheckbox-${header._id}`}
+                                  onChange={() =>
+                                    handleTextCheckboxChange(header._id)
+                                  }
+                                  checked={selectedHeaderTexts.includes(
+                                    header._id
+                                  )}
+                                  className="w-4 h-4 flex justify-center items-center text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                />
+                              </td>
+                              <td className="">
+                                <div className="py-4 max-w-xs px-6 font-medium text-gray-200 truncate">
+                                  <p className="truncate">
+                                    {header.headerTitle}
+                                  </p>
                                 </div>
-                              </th>
-                              <th
-                                scope="col"
-                                className="py-3 pl-6 font-medium tracking-wider text-left "
-                              >
-                                Ana Başlık
-                              </th>
+                              </td>
                             </tr>
-                          </thead>
-                          {headerTexts.map((header, index) => (
-                            <tbody key={index} className="bg-slate-600">
-                              <tr className="hover:bg-slate-500">
-                                <td className="py-5 px-4 flex items-center max-w-[320px] w-[10px]">
-                                  <input
-                                    type="checkbox"
-                                    id={`headerTextCheckbox-${header._id}`}
-                                    onChange={() =>
-                                      handleTextCheckboxChange(header._id)
-                                    }
-                                    checked={selectedHeaderTexts.includes(
-                                      header._id
-                                    )}
-                                    className="w-4 h-4 flex justify-center items-center text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                                  />
-                                </td>
-                                <td className="">
-                                  <div className="py-4 max-w-xs px-6 font-medium text-gray-200 truncate">
-                                    <p className="truncate">
-                                      {header.headerTitle}
-                                    </p>
-                                  </div>
-                                </td>
-                              </tr>
-                            </tbody>
-                          ))}
-                        </table>
-                      </div>
+                          </tbody>
+                        ))}
+                      </table>
                     </div>
                   </div>
                 </div>
@@ -292,13 +290,13 @@ export default function Header() {
                               </th>
                               <th
                                 scope="col"
-                                className="py-3 pl-6 font-medium tracking-wider text-left w-[400px]"
+                                className="py-3 pl-6 font-medium tracking-wider text-left"
                               >
                                 Başlık
                               </th>
                               <th
                                 scope="col"
-                                className="py-3 font-medium tracking-wider text-left w-[400px]"
+                                className="py-3 font-medium tracking-wider text-left"
                               >
                                 Dropdownlar
                               </th>
@@ -327,7 +325,7 @@ export default function Header() {
                                     </p>
                                   </div>
                                 </td>
-                                <td className="max-w-[450px] w-[400px]">
+                                <td className="">
                                   <div className="py-4 max-w-xs pr-6 flex flex-row space-x-1 font-medium text-gray-200 truncate">
                                     <p className="truncate">
                                       {header.headerTextDropdown ? (
