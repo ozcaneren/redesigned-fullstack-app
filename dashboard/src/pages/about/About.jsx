@@ -2,15 +2,13 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Sidebar from "../../components/Sidebar";
 import Breadcrumb from "../../components/Breadcrumbs";
-import { HiOutlineTrash } from "react-icons/hi";
 import AboutModal from "./AboutModal";
 import AboutEditModal from "./AboutEditModal";
-import { TbEdit } from "react-icons/tb";
 
 export default function About() {
   const [abouts, setAbouts] = useState([]);
-  const [aboutId, setAboutId] = useState();
   const [showModal, setShowModal] = useState(false);
+  const [selectedAbouts, setselectedAbouts] = useState([]);
 
   const breadcrumbPaths = [
     { url: "/", label: "Ana Sayfa" },
@@ -39,9 +37,30 @@ export default function About() {
     }
   };
 
-  const handleClick = (aboutId) => {
-    setAboutId(aboutId);
+  const handleCheckboxChange = (aboutId) => {
+    if (selectedAbouts.includes(aboutId)) {
+      setselectedAbouts(selectedAbouts.filter((id) => id !== aboutId));
+    } else {
+      setselectedAbouts([...selectedAbouts, aboutId]);
+    }
+  };
+
+  const handleEditSelected = () => {
     setShowModal(true);
+  };
+
+  const handleDeleteSelected = () => {
+    selectedAbouts.map((aboutId) => handleDelete(aboutId));
+  };
+
+  const handleMasterCheckboxChange = () => {
+    if (selectedAbouts.length === abouts.length) {
+      // Eğer tüm iletişimler zaten seçili ise, seçimleri kaldır.
+      setselectedAbouts([]);
+    } else {
+      // Tüm iletişimleri seç.
+      setselectedAbouts(abouts.map((about) => about._id));
+    }
   };
 
   return (
@@ -64,34 +83,71 @@ export default function About() {
                     <div className="w-full px-4 relative">
                       <AboutModal />
                     </div>
+                    <div className="ml-auto mr-4">
+                      <button
+                        onClick={handleEditSelected}
+                        className="px-5 py-2 mr-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                      >
+                        Düzenle
+                      </button>
+                      {showModal && (
+                        <AboutEditModal
+                          showModal={showModal}
+                          setShowModal={setShowModal}
+                          aboutId={selectedAbouts}
+                        />
+                      )}
+                    </div>
+                    <div className="ml-auto">
+                      <button
+                        onClick={handleDeleteSelected}
+                        className="px-6 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+                      >
+                        Sil
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
               <div>
-                <div className="max-w-7xl mx-auto px-4 pt-4">
+                <div className="max-w-full mx-auto px-4 pt-4">
                   <div className="overflow-x-auto shadow-md sm:rounded-lg">
                     <div className="inline-block min-w-full align-middle">
                       <div className="overflow-hidden">
                         <table className="min-w-full table-fixed">
                           <thead className="bg-gray-400 text-white">
                             <tr>
+                              <th scope="col" className="p-4 w-[10px]">
+                                <div className="flex items-center">
+                                  <input
+                                    id="checkbox-all"
+                                    type="checkbox"
+                                    onChange={handleMasterCheckboxChange}
+                                    checked={
+                                      selectedAbouts.length === abouts.length
+                                    }
+                                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                  />
+                                  <label className="sr-only">checkbox</label>
+                                </div>
+                              </th>
                               <th
                                 scope="col"
-                                className="py-3 pl-6 text-xs font-medium tracking-wider text-left  uppercase w-[400px]"
+                                className="py-3 pl-6 font-medium tracking-wider text-left w-[400px]"
                               >
                                 Başlık
                               </th>
                               <th
                                 scope="col"
-                                className="py-3 text-xs font-medium tracking-wider text-left  uppercase w-[400px]"
+                                className="py-3 pl-6 font-medium tracking-wider text-left w-[400px]"
                               >
                                 Metin
                               </th>
                               <th
                                 scope="col"
-                                className="py-3 flex justify-end pr-6 text-xs font-medium tracking-wider uppercase"
+                                className="py-3 font-medium tracking-wider text-left  w-[400px]"
                               >
-                                Duzenle/Sil
+                                Buton
                               </th>
                             </tr>
                           </thead>
@@ -101,34 +157,35 @@ export default function About() {
                               className="bg-slate-600 divide-y divide-gray-200"
                             >
                               <tr className="hover:bg-slate-500 text-gray-200">
-                                <td className="py-4 pl-6 whitespace-nowrap text-sm font-medium">
-                                  {about.cardTitle}
+                                <td className="px-4 py-5 flex items-center max-w-[320px] w-[10px]">
+                                  <input
+                                    type="checkbox"
+                                    id={`aboutCheckbox-${about._id}`}
+                                    onChange={() =>
+                                      handleCheckboxChange(about._id)
+                                    }
+                                    checked={selectedAbouts.includes(about._id)}
+                                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                  />
                                 </td>
-                                <td className="py-4 max-w-xs whitespace-nowrap text-sm truncate">
-                                  {about.cardText}
+                                <td className="max-w-[320px] w-[320px]">
+                                  <div className="py-4 max-w-xs px-6 font-medium text-gray-200 truncate">
+                                    <p className="truncate">
+                                      {about.cardTitle}
+                                    </p>
+                                  </div>
                                 </td>
-                                <td className="py-4 flex justify-end pr-10 text-sm font-medium text-gray-200 whitespace-nowrap">
-                                  <button
-                                    onClick={() => handleClick(about._id)}
-                                  >
-                                    <div className="font-medium mt-1 mr-2 text-cyan-500 hover:underline">
-                                      <TbEdit size={20} />
-                                    </div>
-                                  </button>
-                                  {showModal ? (
-                                    <AboutEditModal
-                                      showModal={showModal}
-                                      setShowModal={setShowModal}
-                                      aboutId={aboutId}
-                                    />
-                                  ) : null}
-                                  <button
-                                    onClick={() => handleDelete(about._id)}
-                                  >
-                                    <div className="font-medium mt-1 text-red-600 dark:text-red-500 hover:underline">
-                                      <HiOutlineTrash size={20} />
-                                    </div>
-                                  </button>
+                                <td className="max-w-[320px] w-[320px">
+                                  <div className="py-4 max-w-xs px-6 font-medium text-gray-200 truncate">
+                                    <p className="truncate">{about.cardText}</p>
+                                  </div>
+                                </td>
+                                <td className="max-w-[320px] w-[320px]">
+                                  <div className="py-4 max-w-xs pr-6 font-medium text-gray-200 truncate">
+                                    <p className="truncate">
+                                      {about.cardButton}
+                                    </p>
+                                  </div>
                                 </td>
                               </tr>
                             </tbody>

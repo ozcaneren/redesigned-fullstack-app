@@ -83,59 +83,151 @@ export default function Document() {
                         </div>
                       </div>
                     </div>
-                    <div className="mx-6 sm:mx-48 gap-x-5 gap-y-5 pb-6">
-                      <div className="flex justify-center items-center">
-                        {documentTitle.map((document, index) => (
-                          <div
-                            key={index}
-                            className="p-4 flex items-center justify-center flex-col w-[400px] h-[200px] bg-white text-modalLabelText border shadow-lg rounded-lg space-y-4"
-                          >
-                            <button
-                              onClick={() => handleTitleClick(document._id)}
-                            >
-                              <div className="font-medium mt-1 text-cyan-500 hover:underline">
-                                <TbEdit size={12} />
-                              </div>
-                            </button>
-                            {showTitleModal && (
-                              <DocumentEditTitleModal
-                                documentId={documenId}
-                                showTitleModal={showTitleModal}
-                                setShowTitleModal={setShowTitleModal}
-                              />
-                            )}
-                            <h1 className="text-lg">Title: {document.title}</h1>
-                            <p>Text: {document.text}</p>
+                    <div className="max-w-full mx-auto px-4 pt-4">
+                      <div className="overflow-x-auto shadow-md sm:rounded-lg">
+                        <div className="inline-block min-w-full align-middle">
+                          <div className="overflow-hidden">
+                            <table className="min-w-full table-fixed">
+                              <thead className="bg-gray-400 text-white">
+                                <tr>
+                                  <th
+                                    scope="col"
+                                    className="py-3 pl-6 font-medium tracking-wider text-left  w-[400px]"
+                                  >
+                                    Iletisim Başlığı
+                                  </th>
+                                  <th
+                                    scope="col"
+                                    className="py-3 font-medium tracking-wider text-left w-[400px]"
+                                  >
+                                    Iletisim Bilgisi
+                                  </th>
+                                </tr>
+                              </thead>
+                              {documentTitle.map((document, index) => (
+                                <tbody key={index} className="bg-slate-600">
+                                  <tr className="hover:bg-slate-500">
+                                    <td className="max-w-[320px] w-[320px]">
+                                      <div className="py-4 max-w-xs px-6 font-medium text-gray-200 truncate">
+                                        <p className="truncate">
+                                          {document.title}
+                                        </p>
+                                      </div>
+                                    </td>
+                                    <td className="max-w-[320px] w-[320px]">
+                                      <div className="py-4 max-w-xs px-6 font-medium text-gray-200 truncate">
+                                        <p className="truncate">
+                                          {document.text}
+                                        </p>
+                                      </div>
+                                    </td>
+                                    <td className="py-4 flex justify-end pr-10 font-medium text-gray-200 whitespace-nowrap">
+                                      <button
+                                        onClick={() =>
+                                          handleTitleClick(document._id)
+                                        }
+                                      >
+                                        <div className="font-medium mt-1 text-cyan-500 hover:underline">
+                                          <TbEdit size={20} />
+                                        </div>
+                                      </button>
+                                      {showTitleModal && (
+                                        <DocumentEditTitleModal
+                                          documentId={documenId}
+                                          showTitleModal={showTitleModal}
+                                          setShowTitleModal={setShowTitleModal}
+                                        />
+                                      )}
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              ))}
+                            </table>
                           </div>
-                        ))}
+                        </div>
                       </div>
                     </div>
-                    <div className="mx-6 sm:mx-48 gap-x-5 gap-y-5">
-                      <div className="grid grid-cols-3 gap-6">
-                        {documentCard.map((document, index) => (
-                          <div
-                            key={index}
-                            className="p-4 flex items-center justify-center flex-col w-[400px] h-[200px] bg-white text-modalLabelText border shadow-lg rounded-lg space-y-4"
-                          >
-                            <button
-                              onClick={() => handleCardClick(document._id)}
-                            >
-                              <div className="font-medium mt-1 text-cyan-500 hover:underline">
-                                <TbEdit size={12} />
-                              </div>
-                            </button>
-                            {showCardModal && (
-                              <DocumentEditCardModal
-                                documentId={documenId}
-                                showCardModal={showCardModal}
-                                setShowCardModal={setShowCardModal}
-                              />
-                            )}
-                            <h1 className="text-lg">{document.cardTitle}</h1>
-                            <p>{document.cardText}</p>
-                            <a href="">{document.cardLink}</a>
+                    <div className="max-w-full mx-auto px-4 pt-4">
+                      <div className="overflow-x-auto shadow-md sm:rounded-lg">
+                        <div className="inline-block min-w-full align-middle">
+                          <div className="overflow-hidden">
+                            <table className="min-w-full table-fixed">
+                              <thead className="bg-gray-400 text-white">
+                                <tr>
+                                  <th
+                                    scope="col"
+                                    className="py-3 pl-6 font-medium tracking-wider text-left w-[400px]"
+                                  >
+                                    Iletisim Başlığı
+                                  </th>
+                                  <th
+                                    scope="col"
+                                    className="py-3 font-medium tracking-wider text-left w-[400px]"
+                                  >
+                                    Iletisim Bilgisi
+                                  </th>
+                                  <th
+                                    scope="col"
+                                    className="py-3 font-medium tracking-wider text-left w-[400px]"
+                                  >
+                                    Iletisim Bilgisi
+                                  </th>
+                                  <th
+                                    scope="col"
+                                    className="py-3 flex justify-end pr-6 font-medium tracking-wider"
+                                  >
+                                    Islemler
+                                  </th>
+                                </tr>
+                              </thead>
+                              {documentCard.map((document, index) => (
+                                <tbody key={index} className="bg-slate-600">
+                                  <tr className="hover:bg-slate-500">
+                                    <td className="max-w-[320px] w-[320px]">
+                                      <div className="py-4 max-w-xs px-6 font-medium text-gray-200 truncate">
+                                        <p className="truncate">
+                                          {document.cardTitle}
+                                        </p>
+                                      </div>
+                                    </td>
+                                    <td className="max-w-[320px] w-[320px]">
+                                      <div className="py-4 max-w-xs px-6 font-medium text-gray-200 truncate">
+                                        <p className="truncate">
+                                          {document.cardText}
+                                        </p>
+                                      </div>
+                                    </td>
+                                    <td className="max-w-[320px] w-[320px]">
+                                      <div className="py-4 max-w-xs px-6 font-medium text-gray-200 truncate">
+                                        <p className="truncate">
+                                          {document.cardLink}
+                                        </p>
+                                      </div>
+                                    </td>
+                                    <td className="py-4 flex justify-end pr-10 font-medium text-gray-200 whitespace-nowrap">
+                                      <button
+                                        onClick={() =>
+                                          handleCardClick(document._id)
+                                        }
+                                      >
+                                        <div className="font-medium mt-1 text-cyan-500 hover:underline">
+                                          <TbEdit size={20} />
+                                        </div>
+                                      </button>
+                                      {showCardModal && (
+                                        <DocumentEditCardModal
+                                          documentId={documenId}
+                                          showCardModal={showCardModal}
+                                          setShowCardModal={setShowCardModal}
+                                        />
+                                      )}
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              ))}
+                            </table>
                           </div>
-                        ))}
+                        </div>
                       </div>
                     </div>
                   </div>

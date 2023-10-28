@@ -20,7 +20,8 @@ export default function Footer() {
   const [showIconModal, setShowIconModal] = useState(false);
   const [showTextModal, setShowTextModal] = useState(false);
   const [showLinkModal, setShowLinkModal] = useState(false);
-  const [footerId, setFooterId] = useState();
+  const [selectedFooterText, setSelectedFooterText] = useState([]);
+  const [selectedFooterLink, setSelectedFooterLink] = useState([]);
 
   const breadcrumbPaths = [
     { url: "/", label: "Ana Sayfa" },
@@ -99,20 +100,57 @@ export default function Footer() {
     }
   };
 
-  const handleIconClick = (footerId) => {
-    setFooterId(footerId);
-    setShowIconModal(true);
+  const handleTextCheckboxChange = (footerId) => {
+    if (selectedFooterText.includes(footerId)) {
+      setSelectedFooterText(selectedFooterText.filter((id) => id !== footerId));
+    } else {
+      setSelectedFooterText([...selectedFooterText, footerId]);
+    }
   };
 
-  const handleTextClick = (footerId) => {
-    setFooterId(footerId);
+  const handleLinkCheckboxChange = (footerId) => {
+    if (selectedFooterLink.includes(footerId)) {
+      setSelectedFooterLink(selectedFooterLink.filter((id) => id !== footerId));
+    } else {
+      setSelectedFooterLink([...selectedFooterLink, footerId]);
+    }
+  };
+
+  const handleTextEditSelected = () => {
     setShowTextModal(true);
   };
 
-  const handleLinkClick = (footerId) => {
-    setFooterId(footerId);
+  const handleLinkEditSelected = () => {
     setShowLinkModal(true);
   };
+
+  const handleLinkDeleteSelected = () => {
+    selectedFooterLink.map((footerId) => handleLinkDelete(footerId));
+  };
+
+  const handleTextDeleteSelected = () => {
+    selectedFooterText.map((footerId) => handleTextDelete(footerId));
+  };
+
+  const handleLinkMasterCheckboxChange = () => {
+    if (selectedFooterLink.length === footerLink.length) {
+      setSelectedFooterLink([]);
+    } else {
+      setSelectedFooterLink(footerLink.map((footer) => footer._id));
+    }
+  };
+
+  const handleTextMasterCheckboxChange = () => {
+    if (selectedFooterText.length === footerText.length) {
+      setSelectedFooterText([]);
+    } else {
+      setSelectedFooterText(footerText.map((footer) => footer._id));
+    }
+  };
+
+
+  console.log(selectedFooterLink);
+  console.log(selectedFooterText);
 
   return (
     <div>
@@ -128,31 +166,17 @@ export default function Footer() {
           </div>
           <div className="p-4">
             <div className="bg-[#FEFEFE] border border-gray-200/70 rounded pt-4 pb-4">
-              <div className="flex flex-row">
-                <div className="flex justify-center items-center">
-                  <div className="w-full flex justify-center">
-                    <div className="w-full px-2 relative">
-                      <FooterAddIconModal />
-                    </div>
-                  </div>
-                </div>
-                <div className="flex justify-center items-center">
-                  <div className="w-full flex justify-center">
-                    <div className="w-full px-2 relative">
-                      <FooterAddTextModal />
-                    </div>
-                  </div>
-                </div>
-                <div className="flex justify-center items-center">
-                  <div className="w-full flex justify-center">
-                    <div className="w-full px-2 relative">
-                      <FooterAddLinkModal />
-                    </div>
-                  </div>
-                </div>
-              </div>
               <div>
                 <div className="flex justify-center items-center flex-col">
+                  <div className="flex flex-row">
+                    <div className="flex justify-center items-center">
+                      <div className="w-full flex justify-center">
+                        <div className="w-full px-2 relative">
+                          <FooterAddIconModal />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                   <h1 className="block text-xl text-modalLabelText pt-4">
                     Simgeler
                   </h1>
@@ -184,7 +208,6 @@ export default function Footer() {
                                 Icon
                               </p>
                               <button
-                                onClick={() => handleIconClick(footerIcon._id)}
                                 className="ml-2 flex justify-center items-center"
                               >
                                 <div className="font-medium text-cyan-500 bg-gray-200 p-1 rounded-full hover:underline">
@@ -195,7 +218,7 @@ export default function Footer() {
                                 <FooterEditIconModel
                                   showIconModal={showIconModal}
                                   setShowIconModal={setShowIconModal}
-                                  footerId={footerId}
+                                  footerId={footerIcon._id}
                                 />
                               )}
                               <button
@@ -216,165 +239,234 @@ export default function Footer() {
                     ))}
                   </div>
                 </div>
-                <div className="flex justify-center items-center flex-col">
-                  <h1 className="block text-xl text-modalLabelText pt-4">
+                <div className="">
+                  <h1 className="block text-xl text-center text-modalLabelText pt-4">
                     Başlık ve Metin
                   </h1>
-                  <div className="max-w-2xl mx-auto px-4 pt-2">
-                    <div className="overflow-x-auto shadow-md sm:rounded-lg">
-                      <div className="inline-block min-w-full align-middle">
-                        <div className="overflow-hidden">
-                          <table className="min-w-full table-fixed">
-                            <thead className="bg-gray-400 text-white">
-                              <tr>
-                                <th
-                                  scope="col"
-                                  className="py-3 pl-6 text-xs font-medium tracking-wider text-left  uppercase"
-                                >
-                                  Ana Başlık
-                                </th>
-                                <th
-                                  scope="col"
-                                  className="py-3 pl-6 text-xs font-medium tracking-wider text-left  uppercase"
-                                >
-                                  Alt Başlık
-                                </th>
-                                <th
-                                  scope="col"
-                                  className="py-3 flex justify-end pr-6 text-xs font-medium tracking-wider uppercase"
-                                >
-                                  Duzenle/Sil
-                                </th>
-                              </tr>
-                            </thead>
-                            {footerText.map((footerText, index) => (
-                              <tbody key={index} className="bg-slate-600">
-                                <tr className="hover:bg-slate-500">
-                                  <td className="max-w-[320px] w-[320px]">
-                                    <div className="py-4 max-w-xs px-6 text-sm font-medium text-gray-200 truncate">
-                                      <p className="truncate">
-                                        {footerText.footerTitle}
-                                      </p>
-                                    </div>
-                                  </td>
-                                  <td className="max-w-[320px] w-[320px]">
-                                    <div className="py-4 max-w-xs px-6 text-sm font-medium text-gray-200 truncate">
-                                      <p className="truncate">
-                                        {footerText.footerText}
-                                      </p>
-                                    </div>
-                                  </td>
-                                  <td className="py-4 flex justify-end pr-10 text-sm font-medium text-gray-200 whitespace-nowrap">
-                                  <button
-                                      onClick={() =>
-                                        handleTextClick(footerText._id)
-                                      }
-                                    >
-                                      <div className="font-medium mt-1 mr-1 text-cyan-500 hover:underline">
-                                        <TbEdit size={20} />
-                                      </div>
-                                    </button>
-                                    {showTextModal && (
-                                      <FooterEditTextModal
-                                        showTextModal={showTextModal}
-                                        setShowTextModal={setShowTextModal}
-                                        footerId={footerId}
+                  <div className="">
+                    <div className="flex flex-row">
+                      <div className="flex justify-center items-center">
+                        <div className="w-full flex justify-center">
+                          <div className="w-full px-4 relative">
+                            <FooterAddTextModal />
+                          </div>
+                          <div className="ml-auto mr-4">
+                            <button
+                              onClick={handleTextEditSelected}
+                              className="px-5 py-2 mr-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                            >
+                              Düzenle
+                            </button>
+                            {showTextModal && (
+                              <FooterEditTextModal
+                                showTextModal={showTextModal}
+                                setShowTextModal={setShowTextModal}
+                                footerId={selectedFooterText}
+                              />
+                            )}
+                          </div>
+                          <div className="ml-auto">
+                            <button
+                              onClick={handleTextDeleteSelected}
+                              className="px-6 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+                            >
+                              Sil
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="max-w-full mx-auto px-4 pt-4">
+                      <div className="overflow-x-auto shadow-md sm:rounded-lg">
+                        <div className="inline-block min-w-full align-middle">
+                          <div className="overflow-hidden">
+                            <table className="min-w-full table-fixed">
+                              <thead className="bg-gray-400 text-white">
+                                <tr>
+                                  <th scope="col" className="p-4 w-[10px]">
+                                    <div className="flex items-center">
+                                      <input
+                                        type="checkbox"
+                                        className="h-4 w-4 text-cyan-600 focus:ring-cyan-500 border-gray-300 rounded"
+                                        checked={
+                                          selectedFooterText.length ===
+                                          footerText.length
+                                        }
+                                        onChange={
+                                          handleTextMasterCheckboxChange
+                                        }
                                       />
-                                    )}
-                                    <button onClick={
-                                      () => handleTextDelete(footerText._id)
-                                    }>
-                                      <div className="font-medium mt-1 text-red-600 dark:text-red-500 hover:underline">
-                                        <HiOutlineTrash size={20} />
-                                      </div>
-                                    </button>
-                                  </td>
+                                    </div>
+                                  </th>
+                                  <th
+                                    scope="col"
+                                    className="py-3 pl-6 font-medium tracking-wider text-left"
+                                  >
+                                    Ana Başlık
+                                  </th>
+                                  <th
+                                    scope="col"
+                                    className="py-3 pl-6 font-medium tracking-wider text-left"
+                                  >
+                                    Alt Başlık
+                                  </th>
                                 </tr>
-                              </tbody>
-                            ))}
-                          </table>
+                              </thead>
+                              {footerText.map((footerText, index) => (
+                                <tbody key={index} className="bg-slate-600">
+                                  <tr className="hover:bg-slate-500">
+                                    <td className="py-5 px-4 flex items-center max-w-[320px] w-[10px]">
+                                      <input
+                                        type="checkbox"
+                                        className="w-4 h-4 flex justify-center items-center text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                        checked={selectedFooterText.includes(
+                                          footerText._id
+                                        )}
+                                        onChange={() =>
+                                          handleTextCheckboxChange(
+                                            footerText._id
+                                          )
+                                        }
+                                      />
+                                    </td>
+                                    <td className="">
+                                      <div className="py-4 max-w-xs px-6 font-medium text-gray-200 truncate">
+                                        <p className="truncate">
+                                          {footerText.footerTitle}
+                                        </p>
+                                      </div>
+                                    </td>
+                                    <td className="">
+                                      <div className="py-4 max-w-xs px-6 font-medium text-gray-200 truncate">
+                                        <p className="truncate">
+                                          {footerText.footerText}
+                                        </p>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              ))}
+                            </table>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div className="flex justify-center items-center flex-col">
-                  <h1 className="block text-xl text-modalLabelText pt-4">
+                <div className="">
+                  <h1 className="block text-xl text-center text-modalLabelText pt-4">
                     Link ve Dropdownlar
                   </h1>
-                  <div className="max-w-2xl mx-auto px-4 pt-2">
-                    <div className="overflow-x-auto shadow-md sm:rounded-lg">
-                      <div className="inline-block min-w-full align-middle">
-                        <div className="overflow-hidden">
-                          <table className="min-w-full table-fixed">
-                            <thead className="bg-gray-400 text-white">
-                              <tr>
-                                <th
-                                  scope="col"
-                                  className="py-3 pl-6 text-xs font-medium tracking-wider text-left  uppercase"
-                                >
-                                  Ana Başlık
-                                </th>
-                                <th
-                                  scope="col"
-                                  className="py-3 pl-6 text-xs font-medium tracking-wider text-left  uppercase"
-                                >
-                                  Dropdownlar
-                                </th>
-                                <th
-                                  scope="col"
-                                  className="py-3 flex justify-end pr-6 text-xs font-medium tracking-wider uppercase"
-                                >
-                                  Duzenle/Sil
-                                </th>
-                              </tr>
-                            </thead>
-                            {footerLink.map((footerTitle, index) => (
-                              <tbody key={index} className="bg-slate-600">
-                                <tr className="hover:bg-slate-500">
-                                  <td className="max-w-[320px] w-[320px]">
-                                    <div className="py-4 max-w-xs px-6 text-sm font-medium text-gray-200 truncate">
-                                      <p className="truncate">
-                                        {footerTitle.footerLinkTitle}
-                                      </p>
-                                    </div>
-                                  </td>
-                                  <td className="max-w-[320px] w-[320px]">
-                                    <div className="py-4 max-w-xs px-6 text-sm font-medium text-gray-200 truncate">
-                                      <p className="truncate">
-                                        {footerTitle.footerLinkText}
-                                      </p>
-                                    </div>
-                                  </td>
-                                  <td className="py-4 top-0 right-0 flex justify-end pr-10 text-sm font-medium text-gray-200 whitespace-nowrap">
-                                    <button
-                                      onClick={() =>
-                                        handleLinkClick(footerTitle._id)
-                                      }
-                                    >
-                                      <div className="font-medium mt-1 mr-1 text-cyan-500 hover:underline">
-                                        <TbEdit size={20} />
-                                      </div>
-                                    </button>
-                                    {showLinkModal && (
-                                      <FooterEditLinkModal
-                                        showLinkModal={showLinkModal}
-                                        setShowLinkModal={setShowLinkModal}
-                                        footerId={footerId}
+                  <div>
+                    <div className="flex flex-row">
+                      <div className="flex justify-center items-center">
+                        <div className="w-full flex justify-center">
+                          <div className="w-full px-4 relative">
+                            <FooterAddLinkModal />
+                          </div>
+                          <div className="ml-auto mr-4">
+                            <button
+                              onClick={handleLinkEditSelected}
+                              className="px-5 py-2 mr-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                            >
+                              Düzenle
+                            </button>
+                            {showLinkModal && (
+                              <FooterEditLinkModal
+                                showLinkModal={showLinkModal}
+                                setShowLinkModal={setShowLinkModal}
+                                footerId={selectedFooterLink}
+                              />
+                            )}
+                          </div>
+                          <div className="ml-auto">
+                            <button
+                              onClick={handleLinkDeleteSelected}
+                              className="px-6 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+                            >
+                              Sil
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="max-w-full mx-auto px-4 pt-4">
+                      <div className="overflow-x-auto shadow-md sm:rounded-lg">
+                        <div className="inline-block min-w-full align-middle">
+                          <div className="overflow-hidden">
+                            <table className="min-w-full table-fixed">
+                              <thead className="bg-gray-400 text-white">
+                                <tr>
+                                  <th scope="col" className="p-4 w-[10px]">
+                                    <div className="flex items-center">
+                                      <input
+                                        id="footerLinkCheckbox-all"
+                                        type="checkbox"
+                                        className="h-4 w-4 text-cyan-600 focus:ring-cyan-500 border-gray-300 rounded"
+                                        checked={
+                                          selectedFooterLink.length ===
+                                          footerLink.length
+                                        }
+                                        onChange={
+                                          handleLinkMasterCheckboxChange
+                                        }
                                       />
-                                    )}
-                                    <button onClick={
-                                      () => handleLinkDelete(footerTitle._id)
-                                    }>
-                                      <div className="font-medium mt-1 text-red-600 dark:text-red-500 hover:underline">
-                                        <HiOutlineTrash size={20} />
-                                      </div>
-                                    </button>
-                                  </td>
+                                      <label className="sr-only">
+                                        checkbox
+                                      </label>
+                                    </div>
+                                  </th>
+                                  <th
+                                    scope="col"
+                                    className="py-3 pl-6 font-medium tracking-wider text-left"
+                                  >
+                                    Ana Başlık
+                                  </th>
+                                  <th
+                                    scope="col"
+                                    className="py-3 pl-6 font-medium tracking-wider text-left"
+                                  >
+                                    Dropdownlar
+                                  </th>
                                 </tr>
-                              </tbody>
-                            ))}
-                          </table>
+                              </thead>
+                              {footerLink.map((footerTitle, index) => (
+                                <tbody key={index} className="bg-slate-600">
+                                  <tr className="hover:bg-slate-500">
+                                    <td className="py-5 px-4 flex items-center max-w-[320px] w-[10px]">
+                                      <input
+                                        type="checkbox"
+                                        id={`footerLinkCheckbox-${footerLink._id}`}
+                                        className="w-4 h-4 flex justify-center items-center text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                        checked={selectedFooterLink.includes(
+                                          footerTitle._id
+                                        )}
+                                        onChange={() =>
+                                          handleLinkCheckboxChange(
+                                            footerTitle._id
+                                          )
+                                        }
+                                      />
+                                    </td>
+                                    <td className="">
+                                      <div className="py-4 max-w-xs px-6 font-medium text-gray-200 truncate">
+                                        <p className="truncate">
+                                          {footerTitle.footerLinkTitle}
+                                        </p>
+                                      </div>
+                                    </td>
+                                    <td className="">
+                                      <div className="py-4 max-w-xs px-6 font-medium text-gray-200 truncate">
+                                        <p className="truncate">
+                                          {footerTitle.footerLinkText}
+                                        </p>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              ))}
+                            </table>
+                          </div>
                         </div>
                       </div>
                     </div>

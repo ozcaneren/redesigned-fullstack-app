@@ -95,7 +95,7 @@ export default function Teams() {
                         </div>
                       </div>
                       <div className="">
-                        <div className="max-w-5xl mx-auto px-4 pt-2">
+                        <div className="max-w-full mx-auto px-4 pt-2">
                           <div className="overflow-x-auto shadow-md sm:rounded-lg">
                             <div className="inline-block min-w-full align-middle">
                               <div className="overflow-hidden">
@@ -165,7 +165,7 @@ export default function Teams() {
                         </div>
                       </div>
                       <div className="">
-                        <div className="max-w-5xl mx-auto px-4 pt-2">
+                        <div className="max-w-full mx-auto px-4 pt-2">
                           <div className="overflow-x-auto shadow-md sm:rounded-lg">
                             <div className="inline-block min-w-full align-middle">
                               <div className="overflow-hidden">

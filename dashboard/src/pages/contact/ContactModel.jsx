@@ -25,11 +25,11 @@ export default function ContactModel() {
   return (
     <>
       <button
-        className="bg-slate-600 p-2 text-white text-sm rounded-[6px]"
+        className="bg-green-600 px-4 py-2 mr-2 text-white rounded"
         type="button"
         onClick={() => setShowModal(true)}
       >
-        Yeni Iletisim Ekle
+        Ekle
       </button>
       {showModal ? (
         <>
@@ -37,7 +37,9 @@ export default function ContactModel() {
             <div className="relative w-[600px] my-6 mx-auto max-w-3xl">
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 <div className="flex items-start justify-between p-5 border-b border-solid border-gray-300 rounded-t">
-                  <h3 className="text-2xl text-modalMainText font-semibold">Iletisim Ekle</h3>
+                  <h3 className="text-2xl text-modalMainText font-semibold">
+                    Iletisim Ekle
+                  </h3>
                   <button
                     className="p-1 ml-auto bg-transparent border-0 text-black float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
                     onClick={() => setShowModal(false)}

@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Sidebar from "../../components/Sidebar";
 import Breadcrumb from "../../components/Breadcrumbs";
-import { HiOutlineTrash } from "react-icons/hi";
-import { TbEdit } from "react-icons/tb";
 import HeaderAddTitleModal from "./HeaderAddTitleModal";
 import HeaderEditTitleModal from "./HeaderEditTitleModal";
 import HeaderAddLinkModal from "./HeaderAddLinkModal";
@@ -14,7 +12,8 @@ export default function Header() {
   const [headerTexts, setHeaderTexts] = useState([]);
   const [showTitleModal, setShowTitleModal] = useState(false);
   const [showLinkModal, setShowLinkModal] = useState(false);
-  const [headerId, setHeaderId] = useState();
+  const [selectedHeaderLinks, setselectedHeaderLinks] = useState([]);
+  const [selectedHeaderTexts, setselectedHeaderTexts] = useState([]);
 
   const breadcrumbPaths = [
     { url: "/", label: "Ana Sayfa" },
@@ -51,6 +50,62 @@ export default function Header() {
     getHeaderTexts();
   }, []);
 
+  const handleLinkCheckboxChange = (headerId) => {
+    if (selectedHeaderLinks.includes(headerId)) {
+      setselectedHeaderLinks(
+        selectedHeaderLinks.filter((id) => id !== headerId)
+      );
+    } else {
+      setselectedHeaderLinks([...selectedHeaderLinks, headerId]);
+    }
+  };
+
+  const handleLinkEditSelected = () => {
+    setShowLinkModal(true);
+  };
+
+  const handleLinkDeleteSelected = () => {
+    selectedHeaderLinks.map((headerId) => handleLinkDelete(headerId));
+  };
+
+  const handleMasterCheckboxChange = () => {
+    if (selectedHeaderLinks.length === headerLinks.length) {
+      // Eğer tüm iletişimler zaten seçili ise, seçimleri kaldır.
+      setselectedHeaderLinks([]);
+    } else {
+      // Tüm iletişimleri seç.
+      setselectedHeaderLinks(headerLinks.map((header) => header._id));
+    }
+  };
+
+  const handleTextCheckboxChange = (headerId) => {
+    if (selectedHeaderTexts.includes(headerId)) {
+      setselectedHeaderTexts(
+        selectedHeaderTexts.filter((id) => id !== headerId)
+      );
+    } else {
+      setselectedHeaderTexts([...selectedHeaderTexts, headerId]);
+    }
+  };
+
+  const handleTextEditSelected = () => {
+    setShowTitleModal(true);
+  };
+
+  const handleTextDeleteSelected = () => {
+    selectedHeaderTexts.map((headerId) => handleTextDelete(headerId));
+  };
+
+  const handleTextMasterCheckboxChange = () => {
+    if (selectedHeaderTexts.length === headerTexts.length) {
+      // Eğer tüm iletişimler zaten seçili ise, seçimleri kaldır.
+      setselectedHeaderTexts([]);
+    } else {
+      // Tüm iletişimleri seç.
+      setselectedHeaderTexts(headerTexts.map((header) => header._id));
+    }
+  };
+
   const handleLinkDelete = async (headerId) => {
     try {
       await axios.delete(`http://localhost:4000/api/header/link/${headerId}`);
@@ -69,16 +124,6 @@ export default function Header() {
     }
   };
 
-  const handleTitleClick = (headerId) => {
-    setHeaderId(headerId);
-    setShowTitleModal(true);
-  };
-
-  const handleLinkClick = (headerId) => {
-    setHeaderId(headerId);
-    setShowLinkModal(true);
-  };
-
   const sortedHeaderLinks = headerLinks.sort((a, b) => a.order - b.order);
 
   return (
@@ -94,73 +139,92 @@ export default function Header() {
             </div>
           </div>
           <div className="p-4">
-            <div className="bg-[#FEFEFE] border border-gray-200/70 rounded pt-4 pb-4">
-              <div>
-                <div className="max-w-2xl mx-auto px-4 pt-2">
-                  <div className="flex justify-center items-center">
-                    <div className="w-full flex items-center">
-                      <div className="relative py-1">
-                        <HeaderAddTitleModal />
-                      </div>
-                      <h1 className="ml-44">
-                        <div className="text-xl text-modalLabelText font-semibold text-center">
-                          Başlık
-                        </div>
-                      </h1>
+            <div className="bg-white border border-gray-200/70 rounded pt-4 pb-4">
+              <div className="flex flex-row">
+                <div className="flex justify-center items-center">
+                  <div className="w-full flex justify-center">
+                    <div className="w-full px-4 relative">
+                      <HeaderAddTitleModal />
+                    </div>
+                    <div className="ml-auto mr-4">
+                      <button
+                        onClick={handleTextEditSelected}
+                        className="px-5 py-2 mr-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                      >
+                        Düzenle
+                      </button>
+                      {showTitleModal && (
+                        <HeaderEditTitleModal
+                          showTitleModal={showTitleModal}
+                          setShowTitleModal={setShowTitleModal}
+                          headerId={selectedHeaderTexts}
+                        />
+                      )}
+                    </div>
+                    <div className="ml-auto">
+                      <button
+                        onClick={handleTextDeleteSelected}
+                        className="px-6 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+                      >
+                        Sil
+                      </button>
                     </div>
                   </div>
+                </div>
+              </div>
+              <div>
+                <div className="max-w-full mx-auto px-4 pt-2">
                   <div className="overflow-x-auto shadow-md sm:rounded-lg">
                     <div className="inline-block min-w-full align-middle">
                       <div className="overflow-hidden">
                         <table className="min-w-full table-fixed">
                           <thead className="bg-gray-400 text-white">
                             <tr>
-                              <th
-                                scope="col"
-                                className="py-3 pl-6 text-xs font-medium tracking-wider text-left  uppercase"
-                              >
-                                Ana Başlık
+                              <th scope="col" className="p-4 w-[10px]">
+                                <div className="flex items-center">
+                                  <input
+                                    id="headerTextCheckbox-all"
+                                    type="checkbox"
+                                    onChange={handleTextMasterCheckboxChange}
+                                    checked={
+                                      selectedHeaderTexts.length ===
+                                      headerTexts.length
+                                    }
+                                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                  />
+                                  <label className="sr-only">checkbox</label>
+                                </div>
                               </th>
                               <th
                                 scope="col"
-                                className="py-3 flex justify-end pr-6 text-xs font-medium tracking-wider uppercase"
+                                className="py-3 pl-6 font-medium tracking-wider text-left "
                               >
-                                Duzenle/Sil
+                                Ana Başlık
                               </th>
                             </tr>
                           </thead>
                           {headerTexts.map((header, index) => (
                             <tbody key={index} className="bg-slate-600">
                               <tr className="hover:bg-slate-500">
-                                <td className="max-w-[320px] w-[320px]">
-                                  <div className="py-4 max-w-xs px-6 text-sm font-medium text-gray-200 truncate">
+                                <td className="py-5 px-4 flex items-center max-w-[320px] w-[10px]">
+                                  <input
+                                    type="checkbox"
+                                    id={`headerTextCheckbox-${header._id}`}
+                                    onChange={() =>
+                                      handleTextCheckboxChange(header._id)
+                                    }
+                                    checked={selectedHeaderTexts.includes(
+                                      header._id
+                                    )}
+                                    className="w-4 h-4 flex justify-center items-center text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                  />
+                                </td>
+                                <td className="">
+                                  <div className="py-4 max-w-xs px-6 font-medium text-gray-200 truncate">
                                     <p className="truncate">
                                       {header.headerTitle}
                                     </p>
                                   </div>
-                                </td>
-                                <td className="py-4 flex justify-end pr-10 text-sm font-medium text-gray-200 whitespace-nowrap">
-                                  <button
-                                    onClick={() => handleTitleClick(header._id)}
-                                  >
-                                    <div className="font-medium mr-2 mt-1 text-cyan-500 hover:underline">
-                                      <TbEdit size={19} />
-                                    </div>
-                                  </button>
-                                  {showTitleModal && (
-                                    <HeaderEditTitleModal
-                                      showTitleModal={showTitleModal}
-                                      setShowTitleModal={setShowTitleModal}
-                                      headerId={headerId}
-                                    />
-                                  )}
-                                  <button
-                                    onClick={() => handleTextDelete(header._id)}
-                                  >
-                                    <div className="font-medium mt-1 text-red-600 dark:text-red-500 hover:underline">
-                                      <HiOutlineTrash size={20} />
-                                    </div>
-                                  </button>
                                 </td>
                               </tr>
                             </tbody>
@@ -171,58 +235,100 @@ export default function Header() {
                   </div>
                 </div>
               </div>
-              <div>
-                <div className="max-w-6xl mx-auto px-4 pt-12">
+              <div className="pt-12">
+                <div className="flex flex-row">
                   <div className="flex justify-center items-center">
-                    <div className="w-full flex items-center">
-                      <div className="relative py-1">
+                    <div className="w-full flex justify-center">
+                      <div className="w-full px-4 relative">
                         <HeaderAddLinkModal />
                       </div>
-                      <h1 className="ml-[350px]">
-                        <div className="text-xl text-modalLabelText font-semibold text-center">
-                          Link ve Dropdownlar
-                        </div>
-                      </h1>
+                      <div className="ml-auto mr-4">
+                        <button
+                          onClick={handleLinkEditSelected}
+                          className="px-5 py-2 mr-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                        >
+                          Düzenle
+                        </button>
+                        {showLinkModal && (
+                          <HeaderEditLinkModal
+                            showLinkModal={showLinkModal}
+                            setShowLinkModal={setShowLinkModal}
+                            headerId={selectedHeaderLinks}
+                          />
+                        )}
+                      </div>
+                      <div className="ml-auto">
+                        <button
+                          onClick={handleLinkDeleteSelected}
+                          className="px-6 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+                        >
+                          Sil
+                        </button>
+                      </div>
                     </div>
                   </div>
+                </div>
+                <div className="max-w-full mx-auto px-4 pt-2">
                   <div className="overflow-x-auto shadow-md sm:rounded-lg">
                     <div className="inline-block min-w-full align-middle">
                       <div className="overflow-hidden">
                         <table className="min-w-full table-fixed">
                           <thead className="bg-gray-400 text-white">
                             <tr>
+                              <th scope="col" className="p-4 w-[10px]">
+                                <div className="flex items-center">
+                                  <input
+                                    id="headerLinkCheckbox-all"
+                                    type="checkbox"
+                                    onChange={handleMasterCheckboxChange}
+                                    checked={
+                                      selectedHeaderLinks.length ===
+                                      headerLinks.length
+                                    }
+                                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                  />
+                                  <label className="sr-only">checkbox</label>
+                                </div>
+                              </th>
                               <th
                                 scope="col"
-                                className="py-3 pl-6 text-xs font-medium tracking-wider text-left uppercase w-[400px]"
+                                className="py-3 pl-6 font-medium tracking-wider text-left w-[400px]"
                               >
                                 Başlık
                               </th>
                               <th
                                 scope="col"
-                                className="py-3 text-xs font-medium tracking-wider text-left uppercase w-[400px]"
+                                className="py-3 font-medium tracking-wider text-left w-[400px]"
                               >
                                 Dropdownlar
-                              </th>
-                              <th
-                                scope="col"
-                                className="py-3 flex justify-end pr-6 text-xs font-medium tracking-wider uppercase"
-                              >
-                                Duzenle/Sil
                               </th>
                             </tr>
                           </thead>
                           {sortedHeaderLinks.map((header, index) => (
                             <tbody key={index} className="bg-slate-600">
                               <tr className="hover:bg-slate-500">
+                                <td className="py-5 px-4 flex items-center max-w-[320px] w-[10px]">
+                                  <input
+                                    type="checkbox"
+                                    id={`headerLinkCheckbox-${header._id}`}
+                                    onChange={() =>
+                                      handleLinkCheckboxChange(header._id)
+                                    }
+                                    checked={selectedHeaderLinks.includes(
+                                      header._id
+                                    )}
+                                    className="w-4 h-4 flex justify-center items-center text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                  />
+                                </td>
                                 <td className="max-w-[320px] w-[320px]">
-                                  <div className="py-4 max-w-xs px-6 text-sm font-medium text-gray-200 truncate">
+                                  <div className="py-4 max-w-xs px-6 font-medium text-gray-200 truncate">
                                     <p className="truncate">
                                       {header.headerText}
                                     </p>
                                   </div>
                                 </td>
                                 <td className="max-w-[450px] w-[400px]">
-                                  <div className="py-4 max-w-xs pr-6 flex flex-row space-x-1 text-sm font-medium text-gray-200 truncate">
+                                  <div className="py-4 max-w-xs pr-6 flex flex-row space-x-1 font-medium text-gray-200 truncate">
                                     <p className="truncate">
                                       {header.headerTextDropdown ? (
                                         header.headerTextDropdown.map(
@@ -245,29 +351,6 @@ export default function Header() {
                                       )}
                                     </p>
                                   </div>
-                                </td>
-                                <td className="py-4 flex justify-end pr-10 text-sm font-medium text-gray-200 whitespace-nowrap">
-                                  <button
-                                    onClick={() => handleLinkClick(header._id)}
-                                  >
-                                    <div className="font-medium mt-1 mr-2 text-cyan-500 hover:underline">
-                                      <TbEdit size={19} />
-                                    </div>
-                                  </button>
-                                  {showLinkModal && (
-                                    <HeaderEditLinkModal
-                                      showLinkModal={showLinkModal}
-                                      setShowLinkModal={setShowLinkModal}
-                                      headerId={headerId}
-                                    />
-                                  )}
-                                  <button
-                                    onClick={() => handleLinkDelete(header._id)}
-                                  >
-                                    <div className="font-medium mt-1 text-red-600 dark:text-red-500 hover:underline">
-                                      <HiOutlineTrash size={20} />
-                                    </div>
-                                  </button>
                                 </td>
                               </tr>
                             </tbody>

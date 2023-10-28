@@ -61,7 +61,7 @@ const Feature = () => {
                     </div>
                   </div>
                 </div>
-                <div className="max-w-2xl mx-auto px-4 pt-2">
+                <div className="max-w-full mx-auto px-4 pt-2">
                   <div className="overflow-x-auto shadow-md sm:rounded-lg">
                     <div className="inline-block min-w-full align-middle">
                       <div className="overflow-hidden">

@@ -28,7 +28,7 @@ export default function About() {
         {data.map((about, index) => (
           <div key={index} className="">
             <div className="px-4 bg-white mb-8 py-8 rounded-3xl mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 ">
-              <div className="flex flex-col items-center justify-between w-full lg:flex-row">
+              <div className="flex font-tilt flex-col items-center justify-between w-full lg:flex-row">
                 <div className="mb-16 lg:mb-0 lg:max-w-lg lg:pr-5">
                   <div className="max-w-xl mb-6">
                     <h2 className="font-sans text-3xl sm:mt-0 mt-6 font-medium tracking-tight text-black sm:text-4xl sm:leading-none max-w-lg mb-6">

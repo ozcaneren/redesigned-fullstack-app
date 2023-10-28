@@ -2,15 +2,13 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Sidebar from "../../components/Sidebar";
 import Breadcrumb from "../../components/Breadcrumbs";
-import { HiOutlineTrash } from "react-icons/hi";
 import ContactModel from "./ContactModel";
 import ContactEditModal from "./ContactEditModal";
-import { TbEdit } from "react-icons/tb";
 
 export default function Contact() {
   const [contacts, setContacts] = useState([]);
   const [showModal, setShowModal] = useState(false);
-  const [contactId, setContactId] = useState();
+  const [selectedContacts, setSelectedContacts] = useState([]);
 
   const breadcrumbPaths = [
     { url: "/", label: "Ana Sayfa" },
@@ -39,9 +37,30 @@ export default function Contact() {
     }
   };
 
-  const handleClick = (contactId) => {
-    setContactId(contactId);
+  const handleCheckboxChange = (contactId) => {
+    if (selectedContacts.includes(contactId)) {
+      setSelectedContacts(selectedContacts.filter((id) => id !== contactId));
+    } else {
+      setSelectedContacts([...selectedContacts, contactId]);
+    }
+  };
+
+  const handleEditSelected = () => {
     setShowModal(true);
+  };
+
+  const handleDeleteSelected = () => {
+    selectedContacts.map((contactId) => handleDelete(contactId));
+  };
+
+  const handleMasterCheckboxChange = () => {
+    if (selectedContacts.length === contacts.length) {
+      // Eğer tüm iletişimler zaten seçili ise, seçimleri kaldır.
+      setSelectedContacts([]);
+    } else {
+      // Tüm iletişimleri seç.
+      setSelectedContacts(contacts.map((contact) => contact._id));
+    }
   };
 
   return (
@@ -64,76 +83,98 @@ export default function Contact() {
                     <div className="w-full px-4 relative">
                       <ContactModel />
                     </div>
+                    <div className="ml-auto mr-4">
+                      <button
+                        onClick={handleEditSelected}
+                        className="px-5 py-2 mr-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                      >
+                        Düzenle
+                      </button>
+                      {showModal && (
+                        <ContactEditModal
+                          showModal={showModal}
+                          setShowModal={setShowModal}
+                          contactId={selectedContacts}
+                        />
+                      )}
+                    </div>
+                    <div className="ml-auto">
+                      <button
+                        onClick={handleDeleteSelected}
+                        className="px-6 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+                      >
+                        Sil
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
               <div className="">
-                <div className="max-w-5xl mx-auto px-4 pt-4">
+                <div className="max-w-full mx-auto px-4 pt-4">
                   <div className="overflow-x-auto shadow-md sm:rounded-lg">
                     <div className="inline-block min-w-full align-middle">
                       <div className="overflow-hidden">
                         <table className="min-w-full table-fixed">
                           <thead className="bg-gray-400 text-white">
                             <tr>
-                              <th
-                                scope="col"
-                                className="py-3 pl-6 text-xs font-medium tracking-wider text-left  uppercase w-[400px]"
-                              >
-                                Iletisim Başlığı
+                              <th scope="col" className="p-4 w-[10px]">
+                                <div className="flex items-center">
+                                  <input
+                                    id="checkbox-all"
+                                    type="checkbox"
+                                    onChange={handleMasterCheckboxChange}
+                                    checked={
+                                      selectedContacts.length ===
+                                      contacts.length
+                                    }
+                                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                  />
+                                  <label className="sr-only">checkbox</label>
+                                </div>
                               </th>
                               <th
                                 scope="col"
-                                className="py-3 text-xs font-medium tracking-wider text-left  uppercase w-[400px]"
+                                className="py-3 pl-6 font-medium tracking-wider text-left w-[400px]"
                               >
-                                Iletisim Bilgisi
+                                İletişim Başlığı
                               </th>
                               <th
                                 scope="col"
-                                className="py-3 flex justify-end pr-6 text-xs font-medium tracking-wider uppercase"
+                                className="py-3 font-medium tracking-wider text-left w-[400px]"
                               >
-                                Islemler
+                                İletişim Bilgisi
                               </th>
                             </tr>
                           </thead>
                           {contacts.map((contact, index) => (
                             <tbody key={index} className="bg-slate-600 ">
                               <tr className="hover:bg-slate-500">
+                                <td className="px-4 py-5 flex items-center max-w-[320px] w-[10px]">
+                                  <input
+                                    type="checkbox"
+                                    id={`contactCheckbox-${contact._id}`}
+                                    onChange={() =>
+                                      handleCheckboxChange(contact._id)
+                                    }
+                                    checked={selectedContacts.includes(
+                                      contact._id
+                                    )}
+                                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                  />
+                                </td>
                                 <td className="max-w-[320px] w-[320px]">
-                                  <div className="py-4 max-w-xs px-6 text-sm font-medium text-gray-200 truncate">
+                                  <div className="py-4 max-w-xs px-6 font-medium text-gray-200 truncate">
                                     <p className="truncate">
                                       {contact.cardText}
                                     </p>
                                   </div>
                                 </td>
                                 <td className="max-w-[320px] w-[320px]">
-                                  <div className="py-4 text-sm pr-6 max-w-xs font-medium text-gray-200 truncate">
+                                  <div className="py-4 pr-6 max-w-xs font-medium text-gray-200 truncate">
                                     <p className="truncate">
                                       {contact.cardValue}
                                     </p>
                                   </div>
-                                </td>
-                                <td className="py-4 flex justify-end pr-10 text-sm font-medium text-gray-200 whitespace-nowrap">
-                                  <button
-                                    onClick={() => handleClick(contact._id)}
-                                  >
-                                    <div className="font-medium mr-1 mt-1 text-cyan-500 hover:underline">
-                                      <TbEdit size={19} />
-                                    </div>
-                                  </button>
-                                  {showModal && (
-                                    <ContactEditModal
-                                    showModal={showModal}
-                                    setShowModal={setShowModal}
-                                    contactId={contactId}
-                                  />
-                                  )}
-                                  <button
-                                    onClick={() => handleDelete(contact._id)}
-                                  >
-                                    <div className="font-medium mt-1 text-red-600 dark:text-red-500 hover:underline">
-                                      <HiOutlineTrash size={20} />
-                                    </div>
-                                  </button>
                                 </td>
                               </tr>
                             </tbody>
