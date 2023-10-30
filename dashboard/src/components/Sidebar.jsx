@@ -128,6 +128,7 @@ function Sidebar() {
   const headerDropdownKey = "headerDropdownState";
   const documentDropdownKey = "documentDropdownState";
   const footerDropdownKey = "footerDropdownState";
+  const servicesDropdownKey = "servicesDropdownState";
 
   const [openHeaderDropdown, setOpenHeaderDropdown] = useState(() => {
     const storedValue = localStorage.getItem(headerDropdownKey);
@@ -141,6 +142,11 @@ function Sidebar() {
 
   const [openFooterDropdown, setOpenFooterDropdown] = useState(() => {
     const storedValue = localStorage.getItem(footerDropdownKey);
+    return storedValue ? JSON.parse(storedValue) : false;
+  });
+
+  const [openServicesDropdown, setOpenServicesDropdown] = useState(() => {
+    const storedValue = localStorage.getItem(servicesDropdownKey);
     return storedValue ? JSON.parse(storedValue) : false;
   });
 
@@ -161,6 +167,12 @@ function Sidebar() {
     setOpenFooterDropdown(updatedValue);
     localStorage.setItem(footerDropdownKey, JSON.stringify(updatedValue));
   };
+
+  const toggleServicesDropdown = () => {
+    const updatedValue = !openServicesDropdown;
+    setOpenServicesDropdown(updatedValue);
+    localStorage.setItem(servicesDropdownKey, JSON.stringify(updatedValue));
+  }
 
   return (
     <div>
@@ -444,20 +456,54 @@ function Sidebar() {
             </li>
             <li>
               <NavLink
-                to="/services"
-                className={({ isActive }) =>
-                  isActive
-                    ? "relative flex flex-row items-center h-11 bg-slate-600 mx-2 rounded-lg text-white focus:outline-none"
-                    : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
-                }
+                onClick={toggleServicesDropdown}
+                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
               >
                 <span className="inline-flex justify-center items-center ml-4">
-                  <MdOutlineRoomService className="" size={20} />
+                  <MdOutlineRoomService size={20} />
                 </span>
                 <span className="ml-2 text-md tracking-wide truncate">
                   Servisler
                 </span>
               </NavLink>
+              {openServicesDropdown ? (
+                <ul className="py-2 px-2 space-y-2">
+                  <li>
+                    <NavLink
+                      to="/services/title"
+                      className={({ isActive }) =>
+                        isActive
+                          ? "relative flex flex-row items-center h-11 bg-slate-600 mx-2 rounded-lg text-white focus:outline-none"
+                          : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
+                      }
+                    >
+                      <span className="inline-flex justify-center items-center ml-6">
+                        <MdOutlineRoomService size={20} />
+                      </span>
+                      <span className="ml-2 text-md tracking-wide truncate">
+                        Başlık
+                      </span>
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/services/card"
+                      className={({ isActive }) =>
+                        isActive
+                          ? "relative flex flex-row items-center h-11 bg-slate-600 mx-2 rounded-lg text-white focus:outline-none"
+                          : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
+                      }
+                    >
+                      <span className="inline-flex justify-center items-center ml-6">
+                        <MdOutlineRoomService size={20} />
+                      </span>
+                      <span className="ml-2 text-md tracking-wide truncate">
+                        Servis
+                      </span>
+                    </NavLink>
+                  </li>
+                </ul>
+              ) : null}
             </li>
             <li>
               <NavLink
