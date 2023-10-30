@@ -12,9 +12,155 @@ import { TbLayoutNavbarCollapse } from "react-icons/tb";
 import { FaPager } from "react-icons/fa";
 import { HiOutlineDocumentText } from "react-icons/hi";
 
+// const menuData = [
+//   {
+//     id: 1,
+//     title: "Ana Sayfa",
+//     path: "/",
+//     icon: <BiHomeAlt2 size={20} />,
+//     cName: "nav-text",
+//   },
+//   {
+//     id: 2,
+//     title: "Iletisim",
+//     path: "/contact",
+//     icon: <RiContactsLine size={20} />,
+//     cName: "nav-text",
+//   },
+//   {
+//     id: 3,
+//     title: "Hakkimizda",
+//     path: "/about",
+//     icon: <MdOutlineRoundaboutRight size={20} />,
+//     cName: "nav-text",
+//   },
+//   {
+//     id: 4,
+//     title: "Header",
+//     path: "/header",
+//     icon: <TbLayoutNavbarCollapse size={20} />,
+//     cName: "nav-text",
+//     dropdown: [
+//       {
+//         id: 1,
+//         title: "Title",
+//         path: "/header/title",
+//         icon: <HiOutlineDocumentText size={20} />,
+//         cName: "nav-text",
+//       },
+//       {
+//         id: 2,
+//         title: "Link",
+//         path: "/header/link",
+//         icon: <HiOutlineDocumentText size={20} />,
+//         cName: "nav-text",
+//       },
+//     ],
+//   },
+//   {
+//     id: 5,
+//     title: "Footer",
+//     path: "/footer",
+//     icon: <LuPanelBottomClose size={20} />,
+//     cName: "nav-text",
+//   },
+//   {
+//     id: 6,
+//     title: "Belgeler",
+//     path: "/document",
+//     icon: <HiOutlineDocumentText size={20} />,
+//     cName: "nav-text",
+//     dropdown: [
+//       {
+//         id: 1,
+//         title: "Title",
+//         path: "/document/title",
+//         icon: <HiOutlineDocumentText size={20} />,
+//         cName: "nav-text",
+//       },
+//       {
+//         id: 2,
+//         title: "Card",
+//         path: "/document/card",
+//         icon: <HiOutlineDocumentText size={20} />,
+//         cName: "nav-text",
+//       },
+//     ],
+//   },
+//   {
+//     id: 7,
+//     title: "Hero Section",
+//     path: "/hero",
+//     icon: <FaPager size={20} />,
+//     cName: "nav-text",
+//   },
+//   {
+//     id: 8,
+//     title: "Servisler",
+//     path: "/services",
+//     icon: <MdOutlineRoomService size={20} />,
+//     cName: "nav-text",
+//   },
+//   {
+//     id: 9,
+//     title: "Ekip",
+//     path: "/teams",
+//     icon: <RiTeamLine size={20} />,
+//     cName: "nav-text",
+//   },
+//   {
+//     id: 10,
+//     title: "Oda Ayarlari",
+//     path: "/room",
+//     icon: <MdMeetingRoom size={20} />,
+//     cName: "nav-text",
+//   },
+//   {
+//     id: 11,
+//     title: "Ozellik Ayarlari",
+//     path: "/room/feature",
+//     icon: <LuSettings2 size={20} />,
+//     cName: "nav-text",
+//   },
+// ];
+
 function Sidebar() {
-  const [openDropdown, setOpenDropdown] = useState(false);
-  
+  const headerDropdownKey = "headerDropdownState";
+  const documentDropdownKey = "documentDropdownState";
+  const footerDropdownKey = "footerDropdownState";
+
+  const [openHeaderDropdown, setOpenHeaderDropdown] = useState(() => {
+    const storedValue = localStorage.getItem(headerDropdownKey);
+    return storedValue ? JSON.parse(storedValue) : false;
+  });
+
+  const [openDocumentDropdown, setOpenDocumentDropdown] = useState(() => {
+    const storedValue = localStorage.getItem(documentDropdownKey);
+    return storedValue ? JSON.parse(storedValue) : false;
+  });
+
+  const [openFooterDropdown, setOpenFooterDropdown] = useState(() => {
+    const storedValue = localStorage.getItem(footerDropdownKey);
+    return storedValue ? JSON.parse(storedValue) : false;
+  });
+
+  const toggleHeaderDropdown = () => {
+    const updatedValue = !openHeaderDropdown;
+    setOpenHeaderDropdown(updatedValue);
+    localStorage.setItem(headerDropdownKey, JSON.stringify(updatedValue));
+  };
+
+  const toggleDocumentDropdown = () => {
+    const updatedValue = !openDocumentDropdown;
+    setOpenDocumentDropdown(updatedValue);
+    localStorage.setItem(documentDropdownKey, JSON.stringify(updatedValue));
+  };
+
+  const toggleFooterDropdown = () => {
+    const updatedValue = !openFooterDropdown;
+    setOpenFooterDropdown(updatedValue);
+    localStorage.setItem(footerDropdownKey, JSON.stringify(updatedValue));
+  };
 
   return (
     <div>
@@ -102,12 +248,8 @@ function Sidebar() {
             </li>
             <li>
               <NavLink
-                to="/header"
-                className={({ isActive }) =>
-                  isActive
-                    ? "relative flex flex-row items-center h-11 bg-slate-600 mx-2 rounded-lg text-white focus:outline-none"
-                    : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
-                }
+                onClick={toggleHeaderDropdown} // Header dropdown için tıklama işlevi
+                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
               >
                 <span className="inline-flex justify-center items-center ml-4  ">
                   <TbLayoutNavbarCollapse size={20} />
@@ -116,42 +258,16 @@ function Sidebar() {
                   Header
                 </span>
               </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/footer"
-                className={({ isActive }) =>
-                  isActive
-                    ? "relative flex flex-row items-center h-11 bg-slate-600 mx-2 rounded-lg text-white focus:outline-none"
-                    : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
-                }
-              >
-                <span className="inline-flex justify-center items-center ml-4  ">
-                  <LuPanelBottomClose size={20} />
-                </span>
-                <span className="ml-2 text-md tracking-wide truncate  ">
-                  Footer
-                </span>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                onClick={() => setOpenDropdown(!openDropdown)}
-                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
-              >
-                <span className="inline-flex justify-center items-center ml-4">
-                  <HiOutlineDocumentText size={20} />
-                </span>
-                <span className="ml-2 text-md tracking-wide truncate">
-                  Belgeler
-                </span>
-              </NavLink>
-              {openDropdown ? (
+              {openHeaderDropdown ? (
                 <ul className="py-2 px-2 space-y-2">
                   <li>
                     <NavLink
-                      to="/document/title"
-                      className="flex items-center w-full p-2 text-base focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 transition duration-75 rounded-lg"
+                      to="/header/title"
+                      className={({ isActive }) =>
+                        isActive
+                          ? "relative flex flex-row items-center h-11 bg-slate-600 mx-2 rounded-lg text-white focus:outline-none"
+                          : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
+                      }
                     >
                       <span className="inline-flex justify-center items-center ml-6">
                         <HiOutlineDocumentText size={20} />
@@ -163,14 +279,137 @@ function Sidebar() {
                   </li>
                   <li>
                     <NavLink
-                      to="/document/card"
-                      className="flex items-center w-full p-2 text-base focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 transition duration-75 rounded-lg"
+                      to="/header/link"
+                      className={({ isActive }) =>
+                        isActive
+                          ? "relative flex flex-row items-center h-11 bg-slate-600 mx-2 rounded-lg text-white focus:outline-none"
+                          : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
+                      }
                     >
                       <span className="inline-flex justify-center items-center ml-6">
                         <HiOutlineDocumentText size={20} />
                       </span>
                       <span className="ml-2 text-md tracking-wide truncate">
-                        Card
+                        Link
+                      </span>
+                    </NavLink>
+                  </li>
+                </ul>
+              ) : null}
+            </li>
+            <li>
+              <NavLink
+                onClick={toggleFooterDropdown}
+                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
+              >
+                <span className="inline-flex justify-center items-center ml-4  ">
+                  <LuPanelBottomClose size={20} />
+                </span>
+                <span className="ml-2 text-md tracking-wide truncate  ">
+                  Footer
+                </span>
+              </NavLink>
+              {openFooterDropdown ? (
+                <ul className="py-2 px-2 space-y-2">
+                  <li>
+                    <NavLink
+                      to="/footer/icon"
+                      className={({ isActive }) =>
+                        isActive
+                          ? "relative flex flex-row items-center h-11 bg-slate-600 mx-2 rounded-lg text-white focus:outline-none"
+                          : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
+                      }
+                    >
+                      <span className="inline-flex justify-center items-center ml-6">
+                        <LuPanelBottomClose size={20} />
+                      </span>
+                      <span className="ml-2 text-md tracking-wide truncate">
+                        Icon
+                      </span>
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/footer/title"
+                      className={({ isActive }) =>
+                        isActive
+                          ? "relative flex flex-row items-center h-11 bg-slate-600 mx-2 rounded-lg text-white focus:outline-none"
+                          : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
+                      }
+                    >
+                      <span className="inline-flex justify-center items-center ml-6">
+                        <LuPanelBottomClose size={20} />
+                      </span>
+                      <span className="ml-2 text-md tracking-wide truncate">
+                        Başlik
+                      </span>
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/footer/link"
+                      className={({ isActive }) =>
+                        isActive
+                          ? "relative flex flex-row items-center h-11 bg-slate-600 mx-2 rounded-lg text-white focus:outline-none"
+                          : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
+                      }
+                    >
+                      <span className="inline-flex justify-center items-center ml-6">
+                        <LuPanelBottomClose size={20} />
+                      </span>
+                      <span className="ml-2 text-md tracking-wide truncate">
+                        Linkler
+                      </span>
+                    </NavLink>
+                  </li>
+                </ul>
+              ) : null}
+            </li>
+            <li>
+              <NavLink
+                onClick={toggleDocumentDropdown}
+                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
+              >
+                <span className="inline-flex justify-center items-center ml-4">
+                  <HiOutlineDocumentText size={20} />
+                </span>
+                <span className="ml-2 text-md tracking-wide truncate">
+                  Belgeler
+                </span>
+              </NavLink>
+              {openDocumentDropdown ? (
+                <ul className="py-2 px-2 space-y-2">
+                  <li>
+                    <NavLink
+                      to="/document/title"
+                      className={({ isActive }) =>
+                        isActive
+                          ? "relative flex flex-row items-center h-11 bg-slate-600 mx-2 rounded-lg text-white focus:outline-none"
+                          : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
+                      }
+                    >
+                      <span className="inline-flex justify-center items-center ml-6">
+                        <HiOutlineDocumentText size={20} />
+                      </span>
+                      <span className="ml-2 text-md tracking-wide truncate">
+                        Başlık
+                      </span>
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/document/card"
+                      className={({ isActive }) =>
+                        isActive
+                          ? "relative flex flex-row items-center h-11 bg-slate-600 mx-2 rounded-lg text-white focus:outline-none"
+                          : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
+                      }
+                    >
+                      <span className="inline-flex justify-center items-center ml-6">
+                        <HiOutlineDocumentText size={20} />
+                      </span>
+                      <span className="ml-2 text-md tracking-wide truncate">
+                        Belge
                       </span>
                     </NavLink>
                   </li>
@@ -281,6 +520,7 @@ function Sidebar() {
               </NavLink>
             </li>
           </ul>
+
           <p className="px-5 py-3 hidden md:block text-center text-xs">
             Copyright @2023
           </p>
