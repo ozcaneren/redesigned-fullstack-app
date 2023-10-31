@@ -250,18 +250,22 @@ function General() {
 
                 {/* seo section */}
                 <div className="pt-6">
-                  <label
-                    htmlFor=""
-                    className="block text-black text-sm font-medium mb-2"
-                  >
-                    SEO Keywords
-                  </label>
-                  <input
-                    type="text"
-                    name="seoKeywords"
-                    value={general.seoKeywords}
-                    className="appearance-none border rounded w-full py-2 px-3 text-modalMainText leading-tight focus:outline-none focus:shadow-outline"
-                  />
+                  <div>
+                    <label
+                      htmlFor=""
+                      className="block text-black text-sm font-medium mb-2"
+                    >
+                      SEO Keywords
+                    </label>
+                    <div className="">
+                      <input
+                        type="text"
+                        name="seoKeywords"
+                        value={general.seoKeywords}
+                        className="appearance-none border rounded w-full py-2 px-3 text-modalMainText leading-tight focus:outline-none focus:shadow-outline"
+                      />
+                    </div>
+                  </div>
                 </div>
                 <div className="pt-6">
                   <label
@@ -278,7 +282,6 @@ function General() {
                   />
                 </div>
 
-
                 {/* copyright section */}
                 <div className="pt-6">
                   <label
@@ -293,6 +296,12 @@ function General() {
                     value={general.copyright}
                     className="appearance-none border rounded w-full py-2 px-3 text-modalMainText leading-tight focus:outline-none focus:shadow-outline"
                   />
+                </div>
+
+                <div className="pt-6">
+                  <button className="">
+                    <span className="bg-cyan-600 py-2 px-3 rounded-lg text-white">Kaydet</span>
+                  </button>
                 </div>
               </div>
             ))}
