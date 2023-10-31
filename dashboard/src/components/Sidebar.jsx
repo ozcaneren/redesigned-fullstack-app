@@ -6,129 +6,18 @@ import {
 } from "react-icons/md";
 import { RiContactsLine, RiTeamLine } from "react-icons/ri";
 import { useState } from "react";
-import { BiHomeAlt2 } from "react-icons/bi";
+import { BiAccessibility, BiHomeAlt2 } from "react-icons/bi";
 import { LuSettings2, LuPanelBottomClose } from "react-icons/lu";
 import { TbLayoutNavbarCollapse } from "react-icons/tb";
 import { FaPager } from "react-icons/fa";
 import { HiOutlineDocumentText } from "react-icons/hi";
-
-// const menuData = [
-//   {
-//     id: 1,
-//     title: "Ana Sayfa",
-//     path: "/",
-//     icon: <BiHomeAlt2 size={20} />,
-//     cName: "nav-text",
-//   },
-//   {
-//     id: 2,
-//     title: "Iletisim",
-//     path: "/contact",
-//     icon: <RiContactsLine size={20} />,
-//     cName: "nav-text",
-//   },
-//   {
-//     id: 3,
-//     title: "Hakkimizda",
-//     path: "/about",
-//     icon: <MdOutlineRoundaboutRight size={20} />,
-//     cName: "nav-text",
-//   },
-//   {
-//     id: 4,
-//     title: "Header",
-//     path: "/header",
-//     icon: <TbLayoutNavbarCollapse size={20} />,
-//     cName: "nav-text",
-//     dropdown: [
-//       {
-//         id: 1,
-//         title: "Title",
-//         path: "/header/title",
-//         icon: <HiOutlineDocumentText size={20} />,
-//         cName: "nav-text",
-//       },
-//       {
-//         id: 2,
-//         title: "Link",
-//         path: "/header/link",
-//         icon: <HiOutlineDocumentText size={20} />,
-//         cName: "nav-text",
-//       },
-//     ],
-//   },
-//   {
-//     id: 5,
-//     title: "Footer",
-//     path: "/footer",
-//     icon: <LuPanelBottomClose size={20} />,
-//     cName: "nav-text",
-//   },
-//   {
-//     id: 6,
-//     title: "Belgeler",
-//     path: "/document",
-//     icon: <HiOutlineDocumentText size={20} />,
-//     cName: "nav-text",
-//     dropdown: [
-//       {
-//         id: 1,
-//         title: "Title",
-//         path: "/document/title",
-//         icon: <HiOutlineDocumentText size={20} />,
-//         cName: "nav-text",
-//       },
-//       {
-//         id: 2,
-//         title: "Card",
-//         path: "/document/card",
-//         icon: <HiOutlineDocumentText size={20} />,
-//         cName: "nav-text",
-//       },
-//     ],
-//   },
-//   {
-//     id: 7,
-//     title: "Hero Section",
-//     path: "/hero",
-//     icon: <FaPager size={20} />,
-//     cName: "nav-text",
-//   },
-//   {
-//     id: 8,
-//     title: "Servisler",
-//     path: "/services",
-//     icon: <MdOutlineRoomService size={20} />,
-//     cName: "nav-text",
-//   },
-//   {
-//     id: 9,
-//     title: "Ekip",
-//     path: "/teams",
-//     icon: <RiTeamLine size={20} />,
-//     cName: "nav-text",
-//   },
-//   {
-//     id: 10,
-//     title: "Oda Ayarlari",
-//     path: "/room",
-//     icon: <MdMeetingRoom size={20} />,
-//     cName: "nav-text",
-//   },
-//   {
-//     id: 11,
-//     title: "Ozellik Ayarlari",
-//     path: "/room/feature",
-//     icon: <LuSettings2 size={20} />,
-//     cName: "nav-text",
-//   },
-// ];
 
 function Sidebar() {
   const headerDropdownKey = "headerDropdownState";
   const documentDropdownKey = "documentDropdownState";
   const footerDropdownKey = "footerDropdownState";
   const servicesDropdownKey = "servicesDropdownState";
+  const teamsDropdownKey = "teamsDropdownState";
 
   const [openHeaderDropdown, setOpenHeaderDropdown] = useState(() => {
     const storedValue = localStorage.getItem(headerDropdownKey);
@@ -147,6 +36,11 @@ function Sidebar() {
 
   const [openServicesDropdown, setOpenServicesDropdown] = useState(() => {
     const storedValue = localStorage.getItem(servicesDropdownKey);
+    return storedValue ? JSON.parse(storedValue) : false;
+  });
+
+  const [openTeamsDropdown, setOpenTeamsDropdown] = useState(() => {
+    const storedValue = localStorage.getItem(teamsDropdownKey);
     return storedValue ? JSON.parse(storedValue) : false;
   });
 
@@ -172,7 +66,13 @@ function Sidebar() {
     const updatedValue = !openServicesDropdown;
     setOpenServicesDropdown(updatedValue);
     localStorage.setItem(servicesDropdownKey, JSON.stringify(updatedValue));
-  }
+  };
+
+  const toggleTeamsDropdown = () => {
+    const updatedValue = !openTeamsDropdown;
+    setOpenTeamsDropdown(updatedValue);
+    localStorage.setItem(teamsDropdownKey, JSON.stringify(updatedValue));
+  };
 
   return (
     <div>
@@ -213,6 +113,23 @@ function Sidebar() {
                 </span>
                 <span className="ml-2 text-md tracking-wide truncate  ">
                   Ana Sayfa
+                </span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/general"
+                className={({ isActive }) =>
+                  isActive
+                    ? "relative flex flex-row items-center h-11 bg-slate-600 mx-2 rounded-lg text-white focus:outline-none"
+                    : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
+                }
+              >
+                <span className="inline-flex justify-center items-center ml-4  ">
+                  <BiAccessibility size={20} />
+                </span>
+                <span className="ml-2 text-md tracking-wide truncate  ">
+                  Genel Ayarlar
                 </span>
               </NavLink>
             </li>
@@ -507,20 +424,54 @@ function Sidebar() {
             </li>
             <li>
               <NavLink
-                to="/teams"
-                className={({ isActive }) =>
-                  isActive
-                    ? "relative flex flex-row items-center h-11 bg-slate-600 mx-2 rounded-lg text-white focus:outline-none"
-                    : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
-                }
+                onClick={toggleTeamsDropdown}
+                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
               >
                 <span className="inline-flex justify-center items-center ml-4">
-                  <RiTeamLine className="" size={20} />
+                  <RiTeamLine size={20} />
                 </span>
                 <span className="ml-2 text-md tracking-wide truncate">
                   Ekip
                 </span>
               </NavLink>
+              {openTeamsDropdown ? (
+                <ul className="py-2 px-2 space-y-2">
+                  <li>
+                    <NavLink
+                      to="/teams/title"
+                      className={({ isActive }) =>
+                        isActive
+                          ? "relative flex flex-row items-center h-11 bg-slate-600 mx-2 rounded-lg text-white focus:outline-none"
+                          : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
+                      }
+                    >
+                      <span className="inline-flex justify-center items-center ml-6">
+                        <RiTeamLine size={20} />
+                      </span>
+                      <span className="ml-2 text-md tracking-wide truncate">
+                        Başlık
+                      </span>
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/teams/card"
+                      className={({ isActive }) =>
+                        isActive
+                          ? "relative flex flex-row items-center h-11 bg-slate-600 mx-2 rounded-lg text-white focus:outline-none"
+                          : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
+                      }
+                    >
+                      <span className="inline-flex justify-center items-center ml-6">
+                        <RiTeamLine size={20} />
+                      </span>
+                      <span className="ml-2 text-md tracking-wide truncate">
+                        Çalışanlar
+                      </span>
+                    </NavLink>
+                  </li>
+                </ul>
+              ) : null}
             </li>
 
             {/* icerik kismi */}

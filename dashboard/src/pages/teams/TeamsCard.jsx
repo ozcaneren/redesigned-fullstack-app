@@ -1,66 +1,66 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Breadcrumb from "../../components/Breadcrumbs";
-import ServicesAddModal from "./ServicesAddModal";
-import ServicesEditCardModal from "./ServicesEditCardModal";
+import TeamsAddMemberModal from "./TeamsAddMemberModal.jsx";
+import TeamsEditMemberModal from "./TeamsEditMemberModal.jsx";
 import Layout from "../layout";
 
-export default function ServicesCard() {
-  const [serviceCard, setServiceCard] = useState([]);
-  const [showCardModal, setShowCardModal] = useState(false);
-  const [selectedCards, setSelectedCards] = useState([]);
+export default function TeamsCard() {
+  const [teamMember, setTeamMember] = useState([]);
+  const [showMemberModal, setShowMemberModal] = useState(false);
+  const [selectedMembers, setSelectedMembers] = useState([]);
 
   const breadcrumbPaths = [
     { url: "/", label: "Ana Sayfa" },
-    { url: "/services", label: "Hizmetler" },
-    { url: "/services/card", label: "Kartlar" },
+    { url: "/teams", label: "Ekip" },
+    { url: "/teams/card", label: "Calisanlar" },
   ];
 
-  const getCardServices = async () => {
+  const getTeamMembers = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:4000/api/service/cards"
+        "http://localhost:4000/api/teams/members"
       );
-      setServiceCard(response.data);
+      setTeamMember(response.data);
     } catch (error) {
-      console.log("Error fetching services", error);
+      console.error("Error fetching teams:", error);
     }
   };
 
   useEffect(() => {
-    getCardServices();
+    getTeamMembers();
   }, []);
 
-  const handleCardCheckboxChange = (cardId) => {
-    if (selectedCards.includes(cardId)) {
-      setSelectedCards(selectedCards.filter((id) => id !== cardId));
-    } else {
-      setSelectedCards([...selectedCards, cardId]);
-    }
-  };
-
-  const handleCardDelete = async (cardId) => {
+  const handleDeleteMember = async (teamsId) => {
     try {
-      await axios.delete(`http://localhost:4000/api/service/cards/${cardId}`);
-      getCardServices();
+      await axios.delete(`http://localhost:4000/api/teams/members/${teamsId}`);
+      getTeamMembers();
     } catch (error) {
-      console.error("Error deleting contact:", error);
+      console.error("Error deleting teams:", error);
     }
   };
 
-  const handleCardEditSelected = () => {
-    setShowCardModal(true);
+  const handleDeleteMemberSelected = () => {
+    selectedMembers.map((teamsId) => handleDeleteMember(teamsId));
   };
 
-  const handleCardDeleteSelected = () => {
-    selectedCards.map((cardId) => handleCardDelete(cardId));
-  };
-
-  const handleCardMasterCheckboxChange = () => {
-    if (selectedCards.length === serviceCard.length) {
-      setSelectedCards([]);
+  const handleMemberCheckboxChange = (teamsId) => {
+    if (selectedMembers.includes(teamsId)) {
+      setSelectedMembers(selectedMembers.filter((id) => id !== teamsId));
     } else {
-      setSelectedCards(serviceCard.map((card) => card._id));
+      setSelectedMembers([...selectedMembers, teamsId]);
+    }
+  };
+
+  const handleMemberEditSelected = () => {
+    setShowMemberModal(true);
+  };
+
+  const handleMemberMasterCheckboxChange = () => {
+    if (selectedMembers.length === teamMember.length) {
+      setSelectedMembers([]);
+    } else {
+      setSelectedMembers(teamMember.map((member) => member._id));
     }
   };
 
@@ -75,32 +75,32 @@ export default function ServicesCard() {
           </div>
         </div>
         <div className="p-4">
-          <div className="bg-[#FEFEFE] border border-gray-200/70 rounded pt-4 pb-4">
+          <div className="bg-white rounded border border-gray-200/70 pt-4 pb-4">
             <div className="">
               <div className="flex flex-row">
                 <div className="flex justify-center items-center">
                   <div className="w-full flex justify-center">
                     <div className="w-full px-4 relative">
-                      <ServicesAddModal />
+                      <TeamsAddMemberModal />
                     </div>
                     <div className="ml-auto mr-4">
                       <button
-                        onClick={handleCardEditSelected}
+                        onClick={handleMemberEditSelected}
                         className="px-5 py-2 mr-2 bg-blue-500 text-white rounded hover:bg-blue-600"
                       >
                         Düzenle
                       </button>
-                      {showCardModal && (
-                        <ServicesEditCardModal
-                          servicesId={selectedCards}
-                          showCardModal={showCardModal}
-                          setShowCardModal={setShowCardModal}
+                      {showMemberModal && (
+                        <TeamsEditMemberModal
+                          showMemberModal={showMemberModal}
+                          setShowMemberModal={setShowMemberModal}
+                          teamsId={selectedMembers}
                         />
                       )}
                     </div>
                     <div className="ml-auto">
                       <button
-                        onClick={handleCardDeleteSelected}
+                        onClick={handleDeleteMemberSelected}
                         className="px-5 py-2 mr-2 bg-red-500 text-white rounded hover:bg-red-600"
                       >
                         Sil
@@ -110,7 +110,7 @@ export default function ServicesCard() {
                 </div>
               </div>
               <div>
-                <div className="max-w-full mx-auto px-4 pt-4">
+                <div className="max-w-full mx-auto px-4 pt-2">
                   <div className="overflow-x-auto shadow-md sm:rounded-lg">
                     <div className="inline-block min-w-full align-middle">
                       <div className="overflow-hidden">
@@ -122,10 +122,10 @@ export default function ServicesCard() {
                                   <input
                                     id="checkbox-all"
                                     type="checkbox"
-                                    onChange={handleCardMasterCheckboxChange}
+                                    onChange={handleMemberMasterCheckboxChange}
                                     checked={
-                                      selectedCards.length ===
-                                      serviceCard.length
+                                      selectedMembers.length ===
+                                      teamMember.length
                                     }
                                     className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                                   />
@@ -134,43 +134,57 @@ export default function ServicesCard() {
                               </th>
                               <th
                                 scope="col"
-                                className="py-3 pl-6 font-medium tracking-wider text-left"
+                                className="py-3 px-6 font-medium tracking-wider text-left"
                               >
-                                Başlık
+                                Resim
                               </th>
                               <th
                                 scope="col"
-                                className="py-3 pl-6 font-medium tracking-wider text-left"
+                                className="py-3 px-6 font-medium tracking-wider text-left"
                               >
-                                Alt Başlık
+                                Ad Soyad
+                              </th>
+                              <th
+                                scope="col"
+                                className="py-3 px-6 font-medium tracking-wider text-left"
+                              >
+                                Rol
                               </th>
                             </tr>
                           </thead>
-                          {serviceCard.map((card, index) => (
-                            <tbody
-                              key={index}
-                              className="bg-slate-600 divide-y divide-gray-200"
-                            >
-                              <tr className="hover:bg-slate-500 text-gray-200">
+                          {teamMember.map((member, index) => (
+                            <tbody key={index} className="bg-slate-600">
+                              <tr className="hover:bg-gray-500">
                                 <td className="px-4 py-5 flex items-center max-w-[320px] w-[10px]">
                                   <input
                                     type="checkbox"
-                                    id={`serviceCardCheckbox-${card._id}`}
+                                    id={`teamMemberCheckbox-${member._id}`}
                                     onChange={() =>
-                                      handleCardCheckboxChange(card._id)
+                                      handleMemberCheckboxChange(member._id)
                                     }
-                                    checked={selectedCards.includes(card._id)}
+                                    checked={selectedMembers.includes(
+                                      member._id
+                                    )}
                                     className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                                   />
                                 </td>
-                                <td className="">
-                                  <div className="py-4 max-w-xs px-6 font-medium text-gray-200 truncate">
-                                    <p className="truncate">{card.cardTitle}</p>
+                                <td className="py-3 w-[140px]">
+                                  <div className="max-w-xs flex items-center px-6 font-medium text-gray-200 truncate">
+                                    <img
+                                      className="w-10 h-10 object-cover rounded-full"
+                                      src={member.cardIcon}
+                                      alt=""
+                                    />
                                   </div>
                                 </td>
-                                <td className="w-[1300px]">
-                                  <div className="py-4 max-w-xs px-6 font-medium text-gray-200 truncate">
-                                    <p className="truncate">{card.cardText}</p>
+                                <td className="w-[330px]">
+                                  <div className="max-w-xs flex items-center px-6 font-medium text-gray-200 truncate">
+                                    {member.cardTitle}
+                                  </div>
+                                </td>
+                                <td className="">
+                                  <div className="max-w-xs flex items-center px-6 font-medium text-gray-200 truncate">
+                                    {member.cardText}
                                   </div>
                                 </td>
                               </tr>

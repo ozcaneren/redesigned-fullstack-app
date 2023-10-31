@@ -13,6 +13,7 @@ const heroRouter = require('./routes/heroRouter');
 const servicesRouter = require('./routes/servicesRouter');
 const teamsRouter = require('./routes/teamsRouter');
 const documentRouter = require('./routes/documentRouter');
+const generalRouter = require('./routes/generalRouter');
 
 dotenv.config();
 
@@ -37,6 +38,7 @@ app.use('/api', heroRouter);
 app.use('/api', servicesRouter);
 app.use('/api', teamsRouter);
 app.use('/api', documentRouter);
+app.use('/api', generalRouter);
 
 
 app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`));

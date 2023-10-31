@@ -16,7 +16,7 @@ export default function FooterAddLinkModal() {
       };
       await axios.post("http://localhost:4000/api/footer/links", newFooter);
       setFooterLinkTitle("");
-      setFooterLinkText([]); // Sunucuya gönderdikten sonra verileri sıfırla
+      setFooterLinkText([]);
     } catch (error) {
       console.error(error);
     }

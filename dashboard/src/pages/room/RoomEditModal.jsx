@@ -50,7 +50,7 @@ const RoomEditModal = ({ roomId, showModal, setShowModal }) => {
         ...room,
         roomFeatures: selectedRoomFeatures,
       });
-      setShowModal(false); // İşlem başarılı olduğunda modalı kapat
+      setShowModal(false);
     } catch (error) {
       console.error("Oda güncellenirken hata oluştu:", error);
     }

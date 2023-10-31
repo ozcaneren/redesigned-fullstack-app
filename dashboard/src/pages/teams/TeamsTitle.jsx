@@ -1,40 +1,40 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Breadcrumb from "../../components/Breadcrumbs";
-import ServicesEditTitleModal from "./ServicesEditTitleModal";
+import TeamsEditTitleModal from "./TeamsEditTitleModal.jsx";
 import Layout from "../layout";
 
-export default function ServicesTitle() {
-  const [service, setService] = useState([]);
+export default function TeamsTitle() {
+  const [teamDescription, setTeamDescription] = useState([]);
   const [showTitleModal, setShowTitleModal] = useState(false);
   const [selectedTitles, setSelectedTitles] = useState([]);
 
   const breadcrumbPaths = [
     { url: "/", label: "Ana Sayfa" },
-    { url: "/services", label: "Hizmetler" },
-    { url: "/services/title", label: "Başlık" },
+    { url: "/teams", label: "Ekip" },
+    { url: "/teams/title", label: "Başlık" },
   ];
 
-  const getTitleServices = async () => {
+  const getTeamDescription = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:4000/api/service/titles"
+        "http://localhost:4000/api/teams/descriptions"
       );
-      setService(response.data);
+      setTeamDescription(response.data);
     } catch (error) {
-      console.log("Error fetching services", error);
+      console.error("Error fetching teams:", error);
     }
   };
 
   useEffect(() => {
-    getTitleServices();
+    getTeamDescription();
   }, []);
 
-  const handleTitleCheckboxChange = (titleId) => {
-    if (selectedTitles.includes(titleId)) {
-      setSelectedTitles(selectedTitles.filter((id) => id !== titleId));
+  const handleTitleCheckboxChange = (teamsId) => {
+    if (selectedTitles.includes(teamsId)) {
+      setSelectedTitles(selectedTitles.filter((id) => id !== teamsId));
     } else {
-      setSelectedTitles([...selectedTitles, titleId]);
+      setSelectedTitles([...selectedTitles, teamsId]);
     }
   };
 
@@ -43,10 +43,10 @@ export default function ServicesTitle() {
   };
 
   const handleTitleMasterCheckboxChange = () => {
-    if (selectedTitles.length === service.length) {
+    if (selectedTitles.length === teamDescription.length) {
       setSelectedTitles([]);
     } else {
-      setSelectedTitles(service.map((title) => title._id));
+      setSelectedTitles(teamDescription.map((desc) => desc._id));
     }
   };
 
@@ -61,44 +61,47 @@ export default function ServicesTitle() {
             </div>
           </div>
           <div className="p-4">
-            <div className="bg-[#FEFEFE] border border-gray-200/70 rounded pt-4 pb-4">
+            <div className="bg-white rounded border border-gray-200/70 pt-4 pb-4">
               <div className="flex flex-row">
                 <div className="flex justify-center items-center">
                   <div className="w-full flex justify-center">
-                    <div className="ml-auto px-4 mr-4">
-                      <button
-                        onClick={handleTitleEditSelected}
-                        className="px-5 py-2 mr-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-                      >
-                        Düzenle
-                      </button>
-                      {showTitleModal && (
-                        <ServicesEditTitleModal
-                          servicesId={selectedTitles}
-                          showTitleModal={showTitleModal}
-                          setShowTitleModal={setShowTitleModal}
-                        />
-                      )}
+                    <div className="w-full px-4 relative">
+                      <div className="ml-auto mr-4">
+                        <button
+                          onClick={handleTitleEditSelected}
+                          className="px-5 py-2 mr-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                        >
+                          Düzenle
+                        </button>
+                        {showTitleModal && (
+                          <TeamsEditTitleModal
+                            showTitleModal={showTitleModal}
+                            setShowTitleModal={setShowTitleModal}
+                            teamsId={selectedTitles}
+                          />
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div>
-                <div className="max-w-full mx-auto px-4 pt-4">
+              <div className="">
+                <div className="max-w-full mx-auto px-4 pt-2">
                   <div className="overflow-x-auto shadow-md sm:rounded-lg">
                     <div className="inline-block min-w-full align-middle">
                       <div className="overflow-hidden">
                         <table className="min-w-full table-fixed">
                           <thead className="bg-gray-400 text-white">
                             <tr>
-                              <th scope="col" className="p-4 w-[10px]">
+                              <th scope="col" className="p-4 w-[48px]">
                                 <div className="flex items-center">
                                   <input
                                     id="checkbox-all"
                                     type="checkbox"
                                     onChange={handleTitleMasterCheckboxChange}
                                     checked={
-                                      selectedTitles.length === service.length
+                                      selectedTitles.length ===
+                                      teamDescription.length
                                     }
                                     className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                                   />
@@ -107,45 +110,40 @@ export default function ServicesTitle() {
                               </th>
                               <th
                                 scope="col"
-                                className="py-3 pl-6 font-medium tracking-wider text-left"
+                                className="py-3 px-6 font-medium tracking-wider text-left"
                               >
-                                Başlık
+                                Ana Baslik
                               </th>
                               <th
                                 scope="col"
-                                className="py-3 pl-6 font-medium tracking-wider text-left"
+                                className="py-3 px-6 font-medium tracking-wider text-left"
                               >
-                                Alt Başlık
+                                Alt Baslik
                               </th>
                             </tr>
                           </thead>
-                          {service.map((title, index) => (
-                            <tbody
-                              key={index}
-                              className="bg-slate-600 divide-y divide-gray-200"
-                            >
-                              <tr className="hover:bg-slate-500 text-gray-200">
-                                <td className="px-4 py-5 flex items-center max-w-[320px] w-[10px]">
+                          {teamDescription.map((desc, index) => (
+                            <tbody key={index} className="bg-slate-600">
+                              <tr className="hover:bg-gray-500">
+                                <td className="px-4 py-5 flex items-center w-[48px] h-[48px]">
                                   <input
                                     type="checkbox"
-                                    id={`serviceTitleCheckbox-${title._id}`}
+                                    id={`teamDescCheckbox-${desc._id}`}
                                     onChange={() =>
-                                      handleTitleCheckboxChange(title._id)
+                                      handleTitleCheckboxChange(desc._id)
                                     }
-                                    checked={selectedTitles.includes(title._id)}
+                                    checked={selectedTitles.includes(desc._id)}
                                     className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                                   />
                                 </td>
-                                <td className="">
-                                  <div className="py-4 max-w-xs px-6 font-medium text-gray-200 truncate">
-                                    <p className="truncate">
-                                      {title.mainTitle}
-                                    </p>
+                                <td className="py-3 w-[140px]">
+                                  <div className="max-w-xs flex items-center px-6 font-medium text-gray-200 truncate">
+                                    {desc.mainTitle}
                                   </div>
                                 </td>
-                                <td className="w-[1300px]">
-                                  <div className="py-4 max-w-xs px-6 font-medium text-gray-200 truncate">
-                                    <p className="truncate">{title.mainText}</p>
+                                <td className="py-3">
+                                  <div className="max-w-xs flex items-center px-6 font-medium text-gray-200 truncate">
+                                    {desc.mainText}
                                   </div>
                                 </td>
                               </tr>
