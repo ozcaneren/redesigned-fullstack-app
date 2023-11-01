@@ -11,6 +11,8 @@ import { LuSettings2, LuPanelBottomClose } from "react-icons/lu";
 import { TbLayoutNavbarCollapse } from "react-icons/tb";
 import { FaPager } from "react-icons/fa";
 import { HiOutlineDocumentText } from "react-icons/hi";
+import { AiOutlineArrowUp, AiOutlineArrowDown } from "react-icons/ai";
+import { motion } from "framer-motion";
 
 function Sidebar() {
   const headerDropdownKey = "headerDropdownState";
@@ -18,6 +20,28 @@ function Sidebar() {
   const footerDropdownKey = "footerDropdownState";
   const servicesDropdownKey = "servicesDropdownState";
   const teamsDropdownKey = "teamsDropdownState";
+  const [shown, setShown] = useState(false);
+
+  const showMenu = {
+    enter: {
+      opacity: 1,
+      y: 0,
+      display: "block",
+      transition: {
+        duration: 0.3,
+      },
+    },
+    exit: {
+      y: -5,
+      opacity: 0,
+      transition: {
+        duration: 0.3,
+      },
+      transitionEnd: {
+        display: "none",
+      },
+    },
+  };
 
   const [openHeaderDropdown, setOpenHeaderDropdown] = useState(() => {
     const storedValue = localStorage.getItem(headerDropdownKey);
@@ -79,24 +103,9 @@ function Sidebar() {
       <div className="fixed flex flex-col top-0 left-0 w-64 pb-24 bg-white font-medium transition-all duration-300 z-10">
         <div className="overflow-y-auto overflow-x-auto flex flex-col justify-between flex-grow">
           <ul className="flex flex-col py-4 space-y-1">
-            <li className="block mb-2">
-              <div className="text-center">
-                <img
-                  src="https://picsum.photos/200"
-                  alt=""
-                  className="m-auto rounded-full object-cover w-28 h-28"
-                />
-                <h5 className="mt-4 text-xl font-semibold text-gray-600">
-                  Admin Adminoglu
-                </h5>
-                <span className="text-gray-400 block">Admin</span>
-              </div>
-            </li>
             <li className="px-5 block">
               <div className="flex flex-row items-center h-8">
-                <div className="text-md font-medium tracking-wide text-gray-600">
-                  Menü
-                </div>
+                <div className="tracking-wide text-gray-500">Menü</div>
               </div>
             </li>
             <li>
@@ -105,15 +114,13 @@ function Sidebar() {
                 className={({ isActive }) =>
                   isActive
                     ? "relative flex flex-row items-center h-11 bg-slate-600 mx-2 rounded-lg text-white focus:outline-none"
-                    : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
+                    : "relative flex flex-row items-center h-11 text-md focus:outline-none hover:bg-slate-500 text-gray-600 hover:text-gray-100 mx-2 rounded-lg"
                 }
               >
                 <span className="inline-flex justify-center items-center ml-4  ">
-                  <BiHomeAlt2 size={20} />
+                  <BiHomeAlt2 size={16} />
                 </span>
-                <span className="ml-2 text-md tracking-wide truncate  ">
-                  Ana Sayfa
-                </span>
+                <span className="ml-2 tracking-wide truncate  ">Anasayfa</span>
               </NavLink>
             </li>
             <li>
@@ -122,13 +129,13 @@ function Sidebar() {
                 className={({ isActive }) =>
                   isActive
                     ? "relative flex flex-row items-center h-11 bg-slate-600 mx-2 rounded-lg text-white focus:outline-none"
-                    : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
+                    : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-600 hover:text-gray-100 mx-2 rounded-lg"
                 }
               >
                 <span className="inline-flex justify-center items-center ml-4  ">
-                  <BiAccessibility size={20} />
+                  <BiAccessibility size={16} />
                 </span>
-                <span className="ml-2 text-md tracking-wide truncate  ">
+                <span className="ml-2 tracking-wide truncate  ">
                   Genel Ayarlar
                 </span>
               </NavLink>
@@ -136,41 +143,108 @@ function Sidebar() {
 
             <li className="px-5 block">
               <div className="flex pb-4 flex-row items-center pt-5 h-8">
-                <div className="text-md font-medium tracking-wide text-gray-600">
+                <div className="text-md font-medium tracking-wide text-gray-500">
                   Sayfa Yonetimi
                 </div>
               </div>
             </li>
             <li>
-              <NavLink
-                to="/contact"
-                className={({ isActive }) =>
-                  isActive
-                    ? "relative flex flex-row items-center h-11 bg-slate-600 mx-2 rounded-lg text-white focus:outline-none"
-                    : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
-                }
+              <motion.div
+                onClick={() => setShown(!shown)}
+                className="relative flex cursor-pointer flex-row items-center px-4 justify-between h-11 focus:outline-none hover:bg-slate-500 text-gray-600 hover:text-gray-100 mx-2 rounded-lg"
               >
-                <span className="inline-flex justify-center items-center ml-4">
-                  <RiContactsLine className="" size={20} />
-                </span>
-                <span className="ml-2 text-md tracking-wide truncate">
-                  Iletisim
-                </span>
-              </NavLink>
+                <div className="flex items-center">
+                  <span className="inline-flex justify-center items-center">
+                    <TbLayoutNavbarCollapse size={16} />
+                  </span>
+                  <span className="ml-2 text-md tracking-wide truncate  ">
+                    Header
+                  </span>
+                </div>
+              </motion.div>
+              <motion.ul
+                variants={showMenu}
+                initial="exit"
+                animate={shown ? "enter" : "exit"}
+                className="py-2 px-2 space-y-2 cursor-pointer"
+              >
+                <div href="/introduction">
+                  <motion.li
+                    whileHover={{
+                      color: "#FFFFFF",
+                    }}
+                    className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-600 hover:text-gray-100 mx-2 rounded-lg"
+                  >
+                    <span className="inline-flex justify-center items-center pl-6">
+                      <HiOutlineDocumentText size={16} />
+                    </span>
+                    <span className="pl-2 text-md tracking-wide truncate">
+                      Title
+                    </span>
+                  </motion.li>
+                </div>
+                <div href="/introduction">
+                  <motion.li
+                    whileHover={{
+                      color: "#FFFFFF",
+                    }}
+                    className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-600 hover:text-gray-100 mx-2 rounded-lg"
+                  >
+                    <span className="inline-flex justify-center items-center pl-6">
+                      <HiOutlineDocumentText size={16} />
+                    </span>
+                    <span className="pl-2 text-md tracking-wide truncate">
+                      Title
+                    </span>
+                  </motion.li>
+                </div>
+                <div href="/introduction">
+                  <motion.li
+                    whileHover={{
+                      color: "#FFFFFF",
+                    }}
+                    className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-600 hover:text-gray-100 mx-2 rounded-lg"
+                  >
+                    <span className="inline-flex justify-center items-center pl-6">
+                      <HiOutlineDocumentText size={16} />
+                    </span>
+                    <span className="pl-2 text-md tracking-wide truncate">
+                      Title
+                    </span>
+                  </motion.li>
+                </div>
+                <div href="/introduction">
+                  <motion.li
+                    whileHover={{
+                      color: "#FFFFFF",
+                    }}
+                    className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-600 hover:text-gray-100 mx-2 rounded-lg"
+                  >
+                    <span className="inline-flex justify-center items-center pl-6">
+                      <HiOutlineDocumentText size={16} />
+                    </span>
+                    <span className="pl-2 text-md tracking-wide truncate">
+                      Title
+                    </span>
+                  </motion.li>
+                </div>
+
+              </motion.ul>
             </li>
+
             <li>
               <NavLink
                 to="/about"
                 className={({ isActive }) =>
                   isActive
                     ? "relative flex flex-row items-center h-11 bg-slate-600 mx-2 rounded-lg text-white focus:outline-none"
-                    : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
+                    : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-600 hover:text-gray-100 mx-2 rounded-lg"
                 }
               >
                 <span className="inline-flex justify-center items-center ml-4  ">
-                  <MdOutlineRoundaboutRight size={20} />
+                  <MdOutlineRoundaboutRight size={16} />
                 </span>
-                <span className="ml-2 text-md tracking-wide truncate  ">
+                <span className="ml-2 tracking-wide truncate  ">
                   Hakkimizda
                 </span>
               </NavLink>
@@ -178,14 +252,23 @@ function Sidebar() {
             <li>
               <NavLink
                 onClick={toggleHeaderDropdown}
-                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
+                className="relative flex flex-row items-center px-4 justify-between h-11 focus:outline-none hover:bg-slate-500 text-gray-600 hover:text-gray-100 mx-2 rounded-lg"
               >
-                <span className="inline-flex justify-center items-center ml-4  ">
-                  <TbLayoutNavbarCollapse size={20} />
-                </span>
-                <span className="ml-2 text-md tracking-wide truncate  ">
-                  Header
-                </span>
+                <div className="flex items-center">
+                  <span className="inline-flex justify-center items-center">
+                    <TbLayoutNavbarCollapse size={16} />
+                  </span>
+                  <span className="ml-2 text-md tracking-wide truncate  ">
+                    Header
+                  </span>
+                </div>
+                <div className="flex items-center">
+                  {openHeaderDropdown ? (
+                    <AiOutlineArrowUp size={14} />
+                  ) : (
+                    <AiOutlineArrowDown size={14} />
+                  )}
+                </div>
               </NavLink>
               {openHeaderDropdown ? (
                 <ul className="py-2 px-2 space-y-2">
@@ -195,11 +278,11 @@ function Sidebar() {
                       className={({ isActive }) =>
                         isActive
                           ? "relative flex flex-row items-center h-11 bg-slate-600 mx-2 rounded-lg text-white focus:outline-none"
-                          : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
+                          : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-600 hover:text-gray-100 mx-2 rounded-lg"
                       }
                     >
                       <span className="inline-flex justify-center items-center pl-6">
-                        <HiOutlineDocumentText size={20} />
+                        <HiOutlineDocumentText size={16} />
                       </span>
                       <span className="pl-2 text-md tracking-wide truncate">
                         Title
@@ -212,11 +295,11 @@ function Sidebar() {
                       className={({ isActive }) =>
                         isActive
                           ? "relative flex flex-row items-center h-11 bg-slate-600 mx-2 rounded-lg text-white focus:outline-none"
-                          : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
+                          : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-600 hover:text-gray-100 mx-2 rounded-lg"
                       }
                     >
                       <span className="inline-flex justify-center items-center pl-6">
-                        <HiOutlineDocumentText size={20} />
+                        <HiOutlineDocumentText size={16} />
                       </span>
                       <span className="pl-2 text-md tracking-wide truncate">
                         Link
@@ -229,10 +312,10 @@ function Sidebar() {
             <li>
               <NavLink
                 onClick={toggleFooterDropdown}
-                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
+                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-600 hover:text-gray-100 mx-2 rounded-lg"
               >
                 <span className="inline-flex justify-center items-center ml-4  ">
-                  <LuPanelBottomClose size={20} />
+                  <LuPanelBottomClose size={16} />
                 </span>
                 <span className="ml-2 text-md tracking-wide truncate  ">
                   Footer
@@ -246,11 +329,11 @@ function Sidebar() {
                       className={({ isActive }) =>
                         isActive
                           ? "relative flex flex-row items-center h-11 bg-slate-600 mx-2 rounded-lg text-white focus:outline-none"
-                          : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
+                          : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-600 hover:text-gray-100 mx-2 rounded-lg"
                       }
                     >
                       <span className="inline-flex justify-center items-center pl-6">
-                        <LuPanelBottomClose size={20} />
+                        <LuPanelBottomClose size={16} />
                       </span>
                       <span className="pl-2 text-md tracking-wide truncate">
                         Icon
@@ -263,11 +346,11 @@ function Sidebar() {
                       className={({ isActive }) =>
                         isActive
                           ? "relative flex flex-row items-center h-11 bg-slate-600 mx-2 rounded-lg text-white focus:outline-none"
-                          : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
+                          : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-600 hover:text-gray-100 mx-2 rounded-lg"
                       }
                     >
                       <span className="inline-flex justify-center items-center pl-6">
-                        <LuPanelBottomClose size={20} />
+                        <LuPanelBottomClose size={16} />
                       </span>
                       <span className="pl-2 text-md tracking-wide truncate">
                         Başlik
@@ -280,11 +363,11 @@ function Sidebar() {
                       className={({ isActive }) =>
                         isActive
                           ? "relative flex flex-row items-center h-11 bg-slate-600 mx-2 rounded-lg text-white focus:outline-none"
-                          : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
+                          : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-600 hover:text-gray-100 mx-2 rounded-lg"
                       }
                     >
                       <span className="inline-flex justify-center items-center pl-6">
-                        <LuPanelBottomClose size={20} />
+                        <LuPanelBottomClose size={16} />
                       </span>
                       <span className="pl-2 text-md tracking-wide truncate">
                         Linkler
@@ -297,10 +380,10 @@ function Sidebar() {
             <li>
               <NavLink
                 onClick={toggleDocumentDropdown}
-                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
+                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-600 hover:text-gray-100 mx-2 rounded-lg"
               >
                 <span className="inline-flex justify-center items-center ml-4">
-                  <HiOutlineDocumentText size={20} />
+                  <HiOutlineDocumentText size={16} />
                 </span>
                 <span className="ml-2 text-md tracking-wide truncate">
                   Belgeler
@@ -314,11 +397,11 @@ function Sidebar() {
                       className={({ isActive }) =>
                         isActive
                           ? "relative flex flex-row items-center h-11 bg-slate-600 mx-2 rounded-lg text-white focus:outline-none"
-                          : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
+                          : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-600 hover:text-gray-100 mx-2 rounded-lg"
                       }
                     >
                       <span className="inline-flex justify-center items-center pl-6">
-                        <HiOutlineDocumentText size={20} />
+                        <HiOutlineDocumentText size={16} />
                       </span>
                       <span className="pl-2 text-md tracking-wide truncate">
                         Başlık
@@ -331,11 +414,11 @@ function Sidebar() {
                       className={({ isActive }) =>
                         isActive
                           ? "relative flex flex-row items-center h-11 bg-slate-600 mx-2 rounded-lg text-white focus:outline-none"
-                          : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
+                          : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-600 hover:text-gray-100 mx-2 rounded-lg"
                       }
                     >
                       <span className="inline-flex justify-center items-center pl-6">
-                        <HiOutlineDocumentText size={20} />
+                        <HiOutlineDocumentText size={16} />
                       </span>
                       <span className="pl-2 text-md tracking-wide truncate">
                         Belge
@@ -360,11 +443,11 @@ function Sidebar() {
                 className={({ isActive }) =>
                   isActive
                     ? "relative flex flex-row items-center h-11 bg-slate-600 mx-2 rounded-lg text-white focus:outline-none"
-                    : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
+                    : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-600 hover:text-gray-100 mx-2 rounded-lg"
                 }
               >
                 <span className="inline-flex justify-center items-center ml-4  ">
-                  <FaPager className="" size={20} />
+                  <FaPager className="" size={16} />
                 </span>
                 <span className="ml-2 text-md tracking-wide truncate  ">
                   Hero Section
@@ -374,10 +457,10 @@ function Sidebar() {
             <li>
               <NavLink
                 onClick={toggleServicesDropdown}
-                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
+                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-600 hover:text-gray-100 mx-2 rounded-lg"
               >
                 <span className="inline-flex justify-center items-center ml-4">
-                  <MdOutlineRoomService size={20} />
+                  <MdOutlineRoomService size={16} />
                 </span>
                 <span className="ml-2 text-md tracking-wide truncate">
                   Servisler
@@ -391,11 +474,11 @@ function Sidebar() {
                       className={({ isActive }) =>
                         isActive
                           ? "relative flex flex-row items-center h-11 bg-slate-600 mx-2 rounded-lg text-white focus:outline-none"
-                          : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
+                          : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-600 hover:text-gray-100 mx-2 rounded-lg"
                       }
                     >
                       <span className="inline-flex justify-center items-center ml-6">
-                        <MdOutlineRoomService size={20} />
+                        <MdOutlineRoomService size={16} />
                       </span>
                       <span className="ml-2 text-md tracking-wide truncate">
                         Başlık
@@ -408,11 +491,11 @@ function Sidebar() {
                       className={({ isActive }) =>
                         isActive
                           ? "relative flex flex-row items-center h-11 bg-slate-600 mx-2 rounded-lg text-white focus:outline-none"
-                          : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
+                          : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-600 hover:text-gray-100 mx-2 rounded-lg"
                       }
                     >
                       <span className="inline-flex justify-center items-center ml-6">
-                        <MdOutlineRoomService size={20} />
+                        <MdOutlineRoomService size={16} />
                       </span>
                       <span className="ml-2 text-md tracking-wide truncate">
                         Servis
@@ -425,14 +508,23 @@ function Sidebar() {
             <li>
               <NavLink
                 onClick={toggleTeamsDropdown}
-                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
+                className="relative flex flex-row px-4 justify-between items-center w-[240px] h-11 focus:outline-none hover:bg-slate-500 text-gray-600 hover:text-gray-100 mx-2 rounded-lg"
               >
-                <span className="inline-flex justify-center items-center ml-4">
-                  <RiTeamLine size={20} />
-                </span>
-                <span className="ml-2 text-md tracking-wide truncate">
-                  Ekip
-                </span>
+                <div className="flex items-center">
+                  <span className="inline-flex justify-center items-center">
+                    <RiTeamLine size={16} />
+                  </span>
+                  <span className="ml-2 text-md tracking-wide truncate">
+                    Ekip
+                  </span>
+                </div>
+                <div className="flex items-center">
+                  {openTeamsDropdown ? (
+                    <AiOutlineArrowUp size={14} />
+                  ) : (
+                    <AiOutlineArrowDown size={14} />
+                  )}
+                </div>
               </NavLink>
               {openTeamsDropdown ? (
                 <ul className="py-2 px-2 space-y-2">
@@ -442,11 +534,11 @@ function Sidebar() {
                       className={({ isActive }) =>
                         isActive
                           ? "relative flex flex-row items-center h-11 bg-slate-600 mx-2 rounded-lg text-white focus:outline-none"
-                          : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
+                          : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-600 hover:text-gray-100 mx-2 rounded-lg"
                       }
                     >
                       <span className="inline-flex justify-center items-center ml-6">
-                        <RiTeamLine size={20} />
+                        <RiTeamLine size={16} />
                       </span>
                       <span className="ml-2 text-md tracking-wide truncate">
                         Başlık
@@ -459,11 +551,11 @@ function Sidebar() {
                       className={({ isActive }) =>
                         isActive
                           ? "relative flex flex-row items-center h-11 bg-slate-600 mx-2 rounded-lg text-white focus:outline-none"
-                          : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
+                          : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-600 hover:text-gray-100 mx-2 rounded-lg"
                       }
                     >
                       <span className="inline-flex justify-center items-center ml-6">
-                        <RiTeamLine size={20} />
+                        <RiTeamLine size={16} />
                       </span>
                       <span className="ml-2 text-md tracking-wide truncate">
                         Çalışanlar
@@ -488,11 +580,11 @@ function Sidebar() {
                 className={({ isActive }) =>
                   isActive
                     ? "relative flex flex-row items-center h-11 bg-slate-600 mx-2 rounded-lg text-white focus:outline-none"
-                    : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
+                    : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-600 hover:text-gray-100 mx-2 rounded-lg"
                 }
               >
                 <span className="inline-flex justify-center items-center ml-4">
-                  <MdMeetingRoom size={20} />
+                  <MdMeetingRoom size={16} />
                 </span>
                 <span className="ml-2 text-md tracking-wide truncate">
                   Oda Ayarlari
@@ -505,11 +597,11 @@ function Sidebar() {
                 className={({ isActive }) =>
                   isActive
                     ? "relative flex flex-row items-center h-11 bg-slate-600 mx-2 rounded-lg text-white focus:outline-none"
-                    : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
+                    : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-600 hover:text-gray-100 mx-2 rounded-lg"
                 }
               >
                 <span className="inline-flex justify-center items-center ml-4">
-                  <LuSettings2 size={20} />
+                  <LuSettings2 size={16} />
                 </span>
                 <span className="ml-2 text-md tracking-wide truncate">
                   Ozellik Ayarlari
