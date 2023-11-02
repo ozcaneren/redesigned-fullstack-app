@@ -157,7 +157,7 @@ function Sidebar() {
                   <span className="inline-flex justify-center items-center">
                     <TbLayoutNavbarCollapse size={16} />
                   </span>
-                  <span className="ml-2 text-md tracking-wide truncate  ">
+                  <span className="ml-2 text-md tracking-wide truncate">
                     Header
                   </span>
                 </div>
