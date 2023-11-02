@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { LuPanelBottomClose } from "react-icons/lu";
-import { AiOutlineArrowDown, AiOutlineArrowUp } from "react-icons/ai";
+import { AiOutlineArrowUp } from "react-icons/ai";
 
 export const Footer = () => {
   const footerDropdownKey = "footerDropdownState";
@@ -29,11 +29,15 @@ export const Footer = () => {
           <span className="ml-2 text-md tracking-wide truncate  ">Footer</span>
         </div>
         <div className="flex items-center">
-          {openFooterDropdown ? (
+          <div
+            className={`${
+              openFooterDropdown
+                ? "transition-transform duration-200 transform"
+                : "rotate-180 transition-transform duration-200 transform"
+            }`}
+          >
             <AiOutlineArrowUp size={14} />
-          ) : (
-            <AiOutlineArrowDown size={14} />
-          )}
+          </div>
         </div>
       </NavLink>
       {openFooterDropdown ? (

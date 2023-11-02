@@ -3,13 +3,8 @@ import { NavLink } from "react-router-dom";
 import { HiOutlineDocumentText } from "react-icons/hi";
 import { TbLayoutNavbarCollapse } from "react-icons/tb";
 import { AiOutlineArrowUp } from "react-icons/ai";
-import { LazyMotion, domAnimation, m } from "framer-motion";
 
 export const Header = () => {
-  const initial = { opacity: 0 };
-  const animate = { opacity: 1 };
-  const exit = { opacity: 0 };
-  const transition = { delay: 1 };
   const headerDropdownKey = "headerDropdownState";
   const [openHeaderDropdown, setOpenHeaderDropdown] = useState(() => {
     const storedValue = localStorage.getItem(headerDropdownKey);
@@ -22,81 +17,67 @@ export const Header = () => {
   };
 
   return (
-    <LazyMotion features={domAnimation}>
-      <m.div
-        initial={initial}
-        animate={animate}
-        exit={exit}
-        transition={transition}
+    <div>
+      <NavLink
+        onClick={toggleHeaderDropdown}
+        className="relative flex flex-row items-center px-4 justify-between h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
       >
-        <NavLink
-          onClick={toggleHeaderDropdown}
-          className="relative flex flex-row items-center px-4 justify-between h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
+        <div className="flex items-center">
+          <span className="inline-flex justify-center items-center">
+            <TbLayoutNavbarCollapse size={20} />
+          </span>
+          <span className="ml-2 text-md tracking-wide truncate">Header</span>
+        </div>
+        <div
+          className={`${
+            openHeaderDropdown
+              ? "transition-transform duration-200 transform"
+              : "rotate-180 transition-transform duration-200 transform"
+          }`}
         >
-          <div className="flex items-center">
-            <span className="inline-flex justify-center items-center">
-              <TbLayoutNavbarCollapse size={20} />
-            </span>
-            <span className="ml-2 text-md tracking-wide truncate">Header</span>
-          </div>
-          <div
-            className={`${
-              openHeaderDropdown
-                ? "transition-transform duration-200 transform"
-                : "rotate-180 transition-transform duration-200 transform"
-            }`}
-          >
-            <AiOutlineArrowUp size={14} />
-          </div>
-        </NavLink>
-        <LazyMotion features={domAnimation}>
-          <m.div
-            initial={initial}
-            animate={animate}
-            exit={exit}
-            transition={transition}
-          >
-            {openHeaderDropdown ? (
-              <ul className="py-2 px-2 space-y-2">
-                <li>
-                  <NavLink
-                    to="/header/title"
-                    className={({ isActive }) =>
-                      isActive
-                        ? "relative flex flex-row items-center h-11 bg-slate-600 mx-2 rounded-lg text-white focus:outline-none"
-                        : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
-                    }
-                  >
-                    <span className="inline-flex justify-center items-center pl-6">
-                      <HiOutlineDocumentText size={20} />
-                    </span>
-                    <span className="pl-2 text-md tracking-wide truncate">
-                      Title
-                    </span>
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to="/header/link"
-                    className={({ isActive }) =>
-                      isActive
-                        ? "relative flex flex-row items-center h-11 bg-slate-600 mx-2 rounded-lg text-white focus:outline-none"
-                        : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
-                    }
-                  >
-                    <span className="inline-flex justify-center items-center pl-6">
-                      <HiOutlineDocumentText size={20} />
-                    </span>
-                    <span className="pl-2 text-md tracking-wide truncate">
-                      Link
-                    </span>
-                  </NavLink>
-                </li>
-              </ul>
-            ) : null}
-          </m.div>
-        </LazyMotion>
-      </m.div>
-    </LazyMotion>
+          <AiOutlineArrowUp size={14} />
+        </div>
+      </NavLink>
+      <div>
+        {openHeaderDropdown ? (
+          <ul className="py-2 px-2 space-y-2">
+            <li>
+              <NavLink
+                to="/header/title"
+                className={({ isActive }) =>
+                  isActive
+                    ? "relative flex flex-row items-center h-11 bg-slate-600 mx-2 rounded-lg text-white focus:outline-none"
+                    : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
+                }
+              >
+                <span className="inline-flex justify-center items-center pl-6">
+                  <HiOutlineDocumentText size={20} />
+                </span>
+                <span className="pl-2 text-md tracking-wide truncate">
+                  Title
+                </span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/header/link"
+                className={({ isActive }) =>
+                  isActive
+                    ? "relative flex flex-row items-center h-11 bg-slate-600 mx-2 rounded-lg text-white focus:outline-none"
+                    : "relative flex flex-row items-center h-11 focus:outline-none hover:bg-slate-500 text-gray-900 hover:text-gray-100 mx-2 rounded-lg"
+                }
+              >
+                <span className="inline-flex justify-center items-center pl-6">
+                  <HiOutlineDocumentText size={20} />
+                </span>
+                <span className="pl-2 text-md tracking-wide truncate">
+                  Link
+                </span>
+              </NavLink>
+            </li>
+          </ul>
+        ) : null}
+      </div>
+    </div>
   );
 };

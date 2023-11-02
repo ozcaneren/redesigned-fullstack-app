@@ -39,7 +39,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="w-full text-gray-700 z-50 bg-white shadow-sm body-font">
+      <header className="w-full text-gray-700 z-50 bg-white shadow-sm fixed body-font">
         <div className="container flex flex-col items-center z-20 p-6 mx-auto md:flex-row">
           <a className="flex items-center mb-4 font-medium text-gray-900 title-font md:mb-0">
             <div>

@@ -21,9 +21,9 @@ export default function HeroSection() {
 
   return (
     <div>
-      <header className="bg-center bg-fixed bg-no-repeat bg-cover h-screen relative">
-        <div className="h-screen bg-black flex items-center justify-center bg-[url('http://www.clubaida.com.tr//tema/genel/uploads/slider/1.jpg')]">
-          <div className="absolute inset-0 bg-slate-800/50"></div>
+      <header className="">
+        <div className="h-screen bg-black flex items-center justify-center bg-bottom bg-cover bg-[url('https://images4.alphacoders.com/132/1329900.jpeg')]">
+          <div className="absolute inset-0 bg-gray-800/60"></div>
           {hero.map((hero, index) => (
             <div
               key={index}
