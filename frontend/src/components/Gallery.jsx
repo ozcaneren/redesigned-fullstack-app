@@ -1,5 +1,17 @@
 import Slider from "react-slick";
 
+function Card() {
+  return (
+    <div className="max-w-sm relative shadow-md rounded-lg cursor-pointer mx-4 my-8">
+      <img
+        src="https://picsum.photos/300/200?random=1"
+        alt="Img by Meriç Dağlı https://unsplash.com/@meric"
+        className="w-full h-auto object-cover"
+      />
+    </div>
+  );
+}
+
 function Gallery() {
   const settings = {
     dots: false,
@@ -29,50 +41,14 @@ function Gallery() {
 
   return (
     <div className="container mx-auto text-black">
-      <div className="text-black">
+      <div className="">
         <Slider {...settings}>
-          <div className="w-full">
-            <img
-              alt="ecommerce"
-              className="block w-full object-cover object-center bg-yellow-500"
-              src={"https://picsum.photos/300/200?random=1"}
-            />
-          </div>
-          <div className="w-full">
-            <img
-              alt="ecommerce"
-              className="block h-[260px] w-full object-cover object-center bg-yellow-500"
-              src={"https://picsum.photos/300/200?random=2"}
-            />
-          </div>
-          <div className="w-full">
-            <img
-              alt="ecommerce"
-              className="block w-full object-cover object-center bg-yellow-500"
-              src={"https://picsum.photos/300/200?random=3"}
-            />
-          </div>
-          <div className="w-full">
-            <img
-              alt="ecommerce"
-              className="block w-full object-cover object-center bg-yellow-500"
-              src={"https://picsum.photos/300/200?random=4"}
-            />
-          </div>
-          <div className="w-full">
-            <img
-              alt="ecommerce"
-              className="block w-full object-cover object-center bg-yellow-500"
-              src={"https://picsum.photos/300/200?random=5"}
-            />
-          </div>
-          <div className="w-full">
-            <img
-              alt="ecommerce"
-              className="block w-full object-cover object-center bg-yellow-500"
-              src={"https://picsum.photos/300/200?random=6"}
-            />
-          </div>
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
         </Slider>
       </div>
     </div>

@@ -15,7 +15,7 @@ function Sidebar() {
   return (
     <div>
       <div className="fixed flex flex-col top-0 left-0 w-64 pb-24 bg-white font-medium transition-all duration-300 z-10">
-        <div className="overflow-y-auto overflow-x-auto flex flex-col justify-between flex-grow">
+        <div className="overflow-y-auto h-screen overflow-x-auto flex flex-col justify-between flex-grow">
           <ul className="flex flex-col py-4 space-y-1">
             <li className="block mb-2">
               <div className="text-center">
