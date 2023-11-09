@@ -4,6 +4,18 @@ function Card() {
   return (
     <div className="max-w-sm relative shadow-md rounded-lg cursor-pointer mx-4 my-8">
       <img
+        src="https://picsum.photos/300/200?random=0"
+        alt="Img by Meriç Dağlı https://unsplash.com/@meric"
+        className="w-full h-auto object-cover"
+      />
+    </div>
+  );
+}
+
+function Card1() {
+  return (
+    <div className="max-w-sm relative shadow-md rounded-lg cursor-pointer mx-4 my-8">
+      <img
         src="https://picsum.photos/300/200?random=1"
         alt="Img by Meriç Dağlı https://unsplash.com/@meric"
         className="w-full h-auto object-cover"
@@ -12,6 +24,50 @@ function Card() {
   );
 }
 
+function Card2() {
+  return (
+    <div className="max-w-sm relative shadow-md rounded-lg cursor-pointer mx-4 my-8">
+      <img
+        src="https://picsum.photos/300/200?random=2"
+        alt="Img by Meriç Dağlı https://unsplash.com/@meric"
+        className="w-full h-auto object-cover"
+      />
+    </div>
+  );
+}
+function Card3() {
+  return (
+    <div className="max-w-sm relative shadow-md rounded-lg cursor-pointer mx-4 my-8">
+      <img
+        src="https://picsum.photos/300/200?random=3"
+        alt="Img by Meriç Dağlı https://unsplash.com/@meric"
+        className="w-full h-auto object-cover"
+      />
+    </div>
+  );
+}
+function Card4() {
+  return (
+    <div className="max-w-sm relative shadow-md rounded-lg cursor-pointer mx-4 my-8">
+      <img
+        src="https://picsum.photos/300/200?random=4"
+        alt="Img by Meriç Dağlı https://unsplash.com/@meric"
+        className="w-full h-auto object-cover"
+      />
+    </div>
+  );
+}
+function Card5() {
+  return (
+    <div className="max-w-sm relative shadow-md rounded-lg cursor-pointer mx-4 my-8">
+      <img
+        src="https://picsum.photos/300/200?random=5"
+        alt="Img by Meriç Dağlı https://unsplash.com/@meric"
+        className="w-full h-auto object-cover"
+      />
+    </div>
+  );
+}
 function Gallery() {
   const settings = {
     dots: false,
@@ -44,11 +100,11 @@ function Gallery() {
       <div className="">
         <Slider {...settings}>
           <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          <Card1 />
+          <Card2 />
+          <Card3 />
+          <Card4 />
+          <Card5 />
         </Slider>
       </div>
     </div>

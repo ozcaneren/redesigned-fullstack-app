@@ -47,7 +47,7 @@ function MyRooms() {
                             {room.roomTitle}
                           </h2>
                           <button
-                            onClick={handleCardClick}
+                            onClick={() => handleCardClick(room._id)}
                             className="bg-blue-500 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded"
                           >
                             Daha Fazla
